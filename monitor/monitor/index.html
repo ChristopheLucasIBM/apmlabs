@@ -312,10 +312,14 @@ In this case, we named the  <em>starts hourly count</em> using a naming similar 
 <img alt="Monitor11" src="../../img/monitor/Monitor-11.png" /> &nbsp;</p>
 </li>
 <li>
-<p>On the <code>Data</code> tab, click the <code>+</code> icon, select the <code>Count</code> function, click <code>Next</code>.
-<img alt="Monitor12" src="../../img/monitor/Monitor-12.png" /> &nbsp;</p>
+<p>On the <code>Data</code> tab, click the <code>+</code> icon, select the <code>PythonExpression</code> function, click <code>Next</code>.
+In the <em>expression</em> field, type this: <code>df['temperature'] * 1.8 + 32</code> - note this is a very simple Python expression using pandas syntax, for more info, see:
+<a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/analytics/reference/references.html">Built-in functions</a> and
+<a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/analytics/as_add_custom_expressions.html?view=embed">Using Expressions</a>.</p>
 </li>
 </ol>
+<p><img alt="Monitor12" src="../../img/monitor/Monitor-12.png" /> &nbsp;
+5. bhbh</p>
 <hr />
 <h3 id="4-create-some-anomalous-iot-readings">4. Create some anomalous IoT Readings</h3>
 <p>Remember <a href="#2-create-iot-simulation">2. Create IoT Simulation</a> ? 
