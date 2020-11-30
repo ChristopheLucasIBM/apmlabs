@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
+     <loc>https://mam-hol.eu-gb.mybluemix.net/</loc>
+     <lastmod>2020-11-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://mam-hol.eu-gb.mybluemix.net/monitor/monitor/</loc>
+     <lastmod>2020-11-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://mam-hol.eu-gb.mybluemix.net/health/health/</loc>
+     <lastmod>2020-11-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://mam-hol.eu-gb.mybluemix.net/predict/predict/</loc>
+     <lastmod>2020-11-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+</urlset>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Christophe Lucas">
+  <link rel="canonical" href="https://mam-hol.eu-gb.mybluemix.net/monitor/monitor/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>MONITOR - IBM Maximo Asset Performance Management (APM) Labs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "MONITOR";
+    var mkdocs_page_input_path = "monitor/monitor.md";
+    var mkdocs_page_url = "/monitor/monitor/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> IBM Maximo Asset Performance Management (APM) Labs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <p class="caption"><span class="caption-text">APM Labs</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../..">APM OVERVIEW</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">MONITOR</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#0-overview-prerequisites">0. Overview &amp; Prerequisites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-generate-the-data">1. Generate the data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-create-device-type-3-devices">1. Create Device Type &amp; 3 Devices</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-create-iot-simulation">2. Create IoT Simulation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-create-watson-iot-platform-dashboard">3. Create Watson IoT Platform Dashboard</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-create-physical-logical-interfaces">4. Create Physical &amp; Logical Interfaces</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-take-a-break-and-let-some-magic-happen">5. Take a break and let some magic happen ...</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-monitor-the-data">2. Monitor the data</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-check-your-iot-data-made-it-to-the-monitor-data-lake">1. Check your IoT data made it to the Monitor data lake</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-explore-the-data-create-new-data-items">3. Explore the Data &amp; create new Data Items</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-create-some-anomalous-iot-readings">4. Create some anomalous IoT Readings</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-optional-understand-monitors-anomaly-detection-capabilities">5. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-create-anomaly-detection-functions-on-your-iot-data">6. Create Anomaly Detection functions on your IoT data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7-create-alerts-based-on-anomaly-scores">7. Create Alerts based on Anomaly scores</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#8-update-your-summary-dashboard">8. Update your Summary Dashboard</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../health/health/">HEALTH</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../predict/predict/">PREDICT</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">IBM Maximo Asset Performance Management (APM) Labs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>APM Labs &raquo;</li>
+        
+      
+    
+    <li>MONITOR</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="monitor-lab">MONITOR Lab</h1>
+<h2 id="0-overview-prerequisites">0. Overview &amp; Prerequisites</h2>
+<p>Welcome to the IBM Maximo Asset Performance Management (APM) labs.</p>
+<p>These labs were conceived to:</p>
+<ul>
+<li>take you through</li>
+<li>again</li>
+</ul>
+<p>This picture summarises the main elements of APM and how they are integrated.</p>
+<p><img alt="Monitor0" src="../../img/monitor/Monitor-0.png" /> &nbsp;  </p>
+<h2 id="1-generate-the-data">1. Generate the data</h2>
+<p>In this Module you will:</p>
+<ul>
+<li>Create a Device Type and 3 Devices of that Type</li>
+<li>Generate IoT data for those 3 Devices using an IoT simulation</li>
+<li>Create Physical &amp; Logical interfaces to send the IoT data to the Monitor data lake</li>
+<li>Visualise the IoT data in a Watson IoT Platform simple dashboard</li>
+</ul>
+<hr />
+<p><em>Before you begin:</em><br />
+This Exercise requires that you have completed Exercise 1 Connected Devices</p>
+<hr />
+<h3 id="1-create-device-type-3-devices">1. Create Device Type &amp; 3 Devices</h3>
+<p>Let's first create a <em>Device Type</em>. </p>
+<ol>
+<li>From your <em>Monitor</em> Instance <em>Home</em> page, click <code>Connect Devices</code></li>
+<li>On the opened <em>Connect</em> menu, click <code>Open Platform Service application</code> in the top-right corner. This will launch the associated <em>Watson IoT Platform</em> in a separate browser tab.</li>
+<li>Go to the <em>Device Types</em> menu, and click <code>Add Device Type</code>.</li>
+<li>Enter <code>XY_Asset</code> in the <em>Name</em> and <em>Description</em> fields - where <code>XY</code> are your initials. Note that for the rest of this lab, we will use <code>CL_Asset</code> (e.g. CL for Christophe Lucas). Click <code>Next</code>.</li>
+<li>On the next <em>Metadata</em> page, enter <code>CL</code> in <em>Model</em> and <em>Manufacturer</em> fields, and enter <code>CL_Asset</code> in <em>Device Class</em> field. The reason why we want to enter values here is to later show how <em>Dimensions</em> can be used in <em>Monitor</em> to slide and dice the data. Click <code>Finish</code>.</li>
+</ol>
+<p>The below picture shows the 5 previous steps.
+<img alt="Monitor1" src="../../img/monitor/Monitor-1.png" />&nbsp; </p>
+<p>Now, let's create 3 <em>Devices</em> of type <em>CL_Asset</em>.</p>
+<ol>
+<li>Stay in the <em>Watson IoT Platform</em>, go to the <em>Browse</em> menu and click <code>Add Device</code>.</li>
+<li>On the <em>identity</em> page, select your just created <code>CL_Asset</code> as <em>Entity Type</em> and enter <code>CL_Asset_1</code> in <em>Device ID</em>. Click <code>Next</code>.</li>
+<li>On the <em>Device Information</em> page, accept the defaults, click <code>Next</code>.</li>
+<li>On the <em>Security</em> page, accept the defaults, click <code>Next</code>.</li>
+<li>On the <em>Security</em> page, accept the defaults, click <code>Next</code>.</li>
+<li>Click <code>Back</code>, and repeat above steps 1 to 5 for 2 more Assets: <code>CL_Asset_2</code> and <code>CL_Asset_3</code>.</li>
+<li>Finally, go to the <code>Browse</code> menu, enter <code>CL_Asset</code> in the <em>Search</em> field, and you will now see your 3 Devices.</li>
+</ol>
+<p>You have now created the required <code>CL_Asset</code> <em>Device Type</em> and the 3 <code>CL_Asset_1</code>, <code>CL_Asset_2</code> and <code>CL_Asset_3</code> <em>Devices</em> that we will use throughout the labs.</p>
+<p>The below pictures shows the 7 previous steps.
+<img alt="Monitor2" src="../../img/monitor/Monitor-2.png" /> &nbsp;  </p>
+<hr />
+<h3 id="2-create-iot-simulation">2. Create IoT Simulation</h3>
+<p>Let's now send data to those 3 Devices !</p>
+<p>Using the Watson IoT Platform <a href="https://www.ibm.com/support/knowledgecenter/en/SSQP8H/iot/platform/reference/dashboard/device_sim.html">IoT Simulation</a> capabilities,
+it is possible to simulate a device and its IoT readings - exactly as if this was a real IoT device really connected to the platform and sending real IoT readings.
+We are going to use this great functionality as it allows one to literally simulate any asset (e.g. <em>Pump, Engine, Truck, Conveyor Belt</em> - you name it !), any IoT readings and do any demo.
+For this Lab, we will simulate our 3 <code>CL_Asset_1_2_3</code> Devices generating the following IoT readings: <code>temperature</code>, <code>vibration</code>, <code>pressure</code>, <code>speed</code>, <code>acceleration</code>, <code>load</code>, <code>torque</code>, <code>starts</code> . You can of course change the IoT reading names and/or their values to fit your demo needs.</p>
+<ol>
+<li>First of all, make sure that in your <em>Watson IoT Platform</em>, <em>Settings</em> menu, the <code>Activate Device Simulator</code> is ON. Once that is done, you will see a little box in bottom-right of your screen showing <em>0 Simulation</em>.</li>
+<li>Click on that <code>0 Simulation</code> bottom-right box, and click <code>Create Simulation</code>.</li>
+<li>In the <code>Select or create a device type</code> box, select the <code>CL_Asset</code> device type you earlier created. That will open a window as you can see kit in picture below - let's customize this.</li>
+<li>In <code>Event type name</code>, enter <em>CLA</em>. in the <code>Schedule</code> field, enter <code>4 Every Minute</code>. In the <code>Payload</code>, copy-paste the following .json code. Make sure at this stage that the <code>Store events in the data lake</code> box remains unchecked ! Click <code>Save</code>.</li>
+<li>Click <code>Use Registerd Device</code>, enter <em>CL_Asset</em> in the <code>Pick Device</code> box, select <em>CL_Asset_1</em>. Repeat for <em>CL_Asset_2</em> and <em>CL_Asset_3</em>.</li>
+<li>You should now start seeing Events flowing in the bottom Events box.</li>
+</ol>
+<p>Note that the values in the <code>random(35,40)</code> functions can be considered being the 'standard operating conditions' for the given IoT reading. 
+Later on in the lab, we will change those value ranges for short periods of time (i.e. change the <code>temperature</code> ranges from <code>random(35,40)</code> to <code>random(46,49)</code>) and show how Monitor's out-of-the-box anomaly functions can automatically spot these 'anomalies' which are deviations from the 'standard operating conditions'.</p>
+<pre><code> {
+    &quot;temperature&quot;: random(35,40),
+    &quot;vibration&quot;: random(1,5),
+    &quot;pressure&quot;: random(20,25),
+    &quot;speed&quot;: random(15,20),
+    &quot;acceleration&quot;: random(8,10),
+    &quot;load&quot;: random(90,110),
+    &quot;torque&quot;: random(12,14),
+    &quot;starts&quot;: increment(1,1)
+ }  
+</code></pre>
+<p>The below pictures shows the 6 previous steps.
+<img alt="Monitor3" src="../../img/monitor/Monitor-3.png" /> &nbsp; </p>
+<p>Great, you now have your 3 <code>CL_Asset_1_2_3</code> Devices generating IoT readings 4 times every minute. 
+Let's check those readings on a Dashboard.</p>
+<hr />
+<h3 id="3-create-watson-iot-platform-dashboard">3. Create Watson IoT Platform Dashboard</h3>
+<p>Let's create a Dashboard so we can see the simulated IoT readings for 1 of our devices: <code>CL_Asset_1</code>. 
+This Dashboard will allow us to clearly visualise the anomalies earlier mentioned.</p>
+<ol>
+<li>Still in the <em>Watson IoT Platform</em>, click on the <em>Boards</em> menu. Click <code>Create Board</code>. Name the Board <code>CL_Asset IoT Readings Dashobard</code>. Click <code>Next</code> then <code>Submit</code>. Open the Board.</li>
+<li>Let's first create a small card which displays the 8 IoT Readings we simulated, getting updated every 15 seconds. Click <code>Add New Card</code>. Select <code>All device properties</code> then <code>CL_Asset_1</code>, then <code>Next</code> then <code>Submit</code>.</li>
+<li>Let's now create a card which whos the flow of data. Click <code>Add New Card</code>. Click <code>Line Chart</code>, then select <code>CL_Asset_1</code>. </li>
+<li>Click <code>Connect data set</code>. In the <em>event</em> field, select <code>CLA</code> (that is the name of the IoT Simulation we created earlier),
+then in the <em>Property</em> select <code>temperature</code>. Repeat this for a couple more properties, e.g. <code>vibration</code> and <code>pressure</code>. Click <code>Next</code>, select the <code>XL</code> size, click <code>Next</code> then <code>Submit</code>.</li>
+<li>Drag and drop the second card next to the first one. Play with the <code>5 minutes</code> to <code>24 hours</code> views.</li>
+</ol>
+<p>The below pictures summarise the previous steps and show what your Dashboard should like.
+<img alt="Monitor4" src="../../img/monitor/Monitor-4.png" /> &nbsp;</p>
+<hr />
+<h3 id="4-create-physical-logical-interfaces">4. Create Physical &amp; Logical Interfaces</h3>
+<p>So far, we have only generated simulated IoT data. 
+What Monitor uses for all its visualisations and calculations is the data from the <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/overview/architecture_mon.html">data lake</a>.
+Monitor's data lake is being populated through the use of <a href="https://www.ibm.com/support/knowledgecenter/en/SSQP8H/iot/platform/GA_information_management/ga_im_device_twin.html">Physical &amp; Logical</a> interfaces.
+Let's create those interfaces and populate that data lake !</p>
+<p>First let's create the Physical Interface.</p>
+<ol>
+<li>Still in the <em>Watson IoT Platform</em>, go to the <em>Device Types</em> menu, search then select <em>CL_Asset</em>, then click on the <em>Interface</em> menu.</li>
+<li>Click <code>Create Physical Interface</code>. Leave the default name <em>CL_Asset_PI</em>, click <code>Next</code>.</li>
+<li>Click <code>Create event type</code>. Wait 15 seconds or click <code>Use Last Event Cache</code> and you will see the <em>CLA</em> (which corresponds to the IoT Simulation we earlier created) event appear. </li>
+<li>Click that event, click <code>Add</code>. Cick <code>Done</code>.</li>
+</ol>
+<p>This picture shows the previous steps and where you should be by now.
+<img alt="Monitor5" src="../../img/monitor/Monitor-5.png" /> &nbsp;</p>
+<p>Let's now create the Logical Interface.</p>
+<ol>
+<li>Click <code>Create Logical Interface</code>. Leave the default name <em>CL_Asset_LI</em>, click <code>Next</code>.</li>
+<li>Click <code>Add Property</code>, <code>Select</code> the <code>temperature</code>, click <code>Save</code>. Repeat this for the 7 other IoT readings.</li>
+<li>Make sure you tick the <code>Allow Additional Properties</code> ON, as that would allow you to add more readings in the future if you wish.</li>
+<li>Click <code>Next</code>, click <code>no event notifications</code> and change it to <code>All events</code>.</li>
+<li>Click <code>Apply</code>, then <code>Done</code>.</li>
+<li>Click <code>Activate</code> twice.</li>
+</ol>
+<p>This picture shows the previous steps and what your screen should finally look like after you created your Physical &amp; Logical interfaces.
+<img alt="Monitor6" src="../../img/monitor/Monitor-6.png" /> &nbsp;</p>
+<h3 id="5-take-a-break-and-let-some-magic-happen">5. Take a break and let some magic happen ...</h3>
+<p>Brilliant ! You have created all that is needed to start monitoring your own IoT data.
+In the next module, we will check that your data lake is now populated.
+But first take a break (count 15 minutes at least, but I recommend several hours as all the following reports will show more data), because:</p>
+<ul>
+<li>some background job needs to run to populate your data lake with your IoT data, via the logical interface you just created.</li>
+<li>it is good for the IoT Simulation to keep running a bit, so the visualisations that we will build in next module will show data for more than just 1 hour.
+Also, for Anomaly functions to detect anomalies, 'normal conditions' must first occur</li>
+</ul>
+<h2 id="2-monitor-the-data">2. Monitor the data</h2>
+<h3 id="1-check-your-iot-data-made-it-to-the-monitor-data-lake">1. Check your IoT data made it to the Monitor data lake</h3>
+<ol>
+<li>Back to the Monitor interface, click <code>Monitor Entities</code>. If you see 3 in <code>Number of Entities</code>, it means that your data did make it to the dat lake. Let's have a look around.</li>
+<li>Click on <code>CL_Asset</code>. Then click on <code>CL_Asset_1</code>, then on its <code>Metrics</code> tab. Play with the 'slider' on e.g. <code>acceleration</code> - you can see your data now.</li>
+<li>Go back to the <code>CL_Asset</code> main page, and click the <code>Data</code> tab. 
+See all your (raw) IoT Metrics &amp; Dimensions. Note that at this stage it is normal to see only a couple points on the graph as we have only been generating data for so long ! Play with the top 'slider' here too.</li>
+</ol>
+<p>If you see this, so far so good !
+<img alt="Monitor7" src="../../img/monitor/Monitor-7.png" /> &nbsp;</p>
+<h3 id="2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</h3>
+<ol>
+<li>Back to the <code>CL_Asset</code> main page, click <code>New Summary</code>.</li>
+<li>Enter <code>Hourly</code> as your <em>Dashboard title</em>, select <code>Hourly</code> <em>Time grain</em>, click all <em>Dimensions</em>. Click <code>Next</code>.</li>
+<li>Click all <code>Dat Item</code>, and for just 1 reading e.g. <code>temperature</code>, select all <code>Methods</code> i.e. <code>max</code>, <code>min</code>, <code>mean</code>, <code>std</code> etc. Click <code>Configure Dashboard</code>.</li>
+<li>Click <code>Create</code>. Note that it will take a couple minutes for your Hourly dashboard is ready, and you will note a <em>Preparing</em> icon during that time. 
+<img alt="Monitor8" src="../../img/monitor/Monitor-8.png" /> &nbsp;</li>
+</ol>
+<p>Once it is ready, your dashboard should look like this (with possibly less data points depending on how fast you have been to get here and for how long data has been sent).
+Notice the hourly grain of the cards (vs. the shorter time grain that you just saw on the <em>CL_Asset_1</em> Metrics tab).
+On the left side in <code>Summary Controls</code>, notice the so-called Dimensions that correspond to the Metadata we associated to the <code>CL_Asset</code> Device Type and 3 Devices when we created them in the Watson IoT Platform.
+Notice how you can change the 'time scope' of each card. 
+Finally, also notice how the <code>temperature</code> card displays the <code>max</code>, <code>min</code>, <code>mean</code> etc that we defined via the <code>Methods</code> and how you can click on 1 or several of these.
+<img alt="Monitor9" src="../../img/monitor/Monitor-9.png" /> &nbsp;</p>
+<h3 id="3-explore-the-data-create-new-data-items">3. Explore the Data &amp; create new Data Items</h3>
+<ol>
+<li>Back to the <code>CL_Asset</code> main page, click on the <code>Data</code> tab. Observe that new Data Items have appeared, i.e. under the <code>Metric (Calculated)</code> section. 
+Notice that for all the IoT Readings, a new <code>reading_Hourly_mean</code> calculated metric was created - this was automatically done when we crated the hourly dashboard in previous step.</li>
+<li>In the filer just below <em>Data Item</em>, start writing <em>temp</em>. This filters the data items displayed. 
+Note that for the temperature reading, on top of the mean data item, <code>temperature_Hourly_min</code>, <code>temperature_Hourly_max</code>, <code>temperature_Hourly_std</code> etc were also created - that is because of the 8 <em>Methods</em> that we earlier selected for that data item when creating the dashboard.
+<img alt="Monitor10" src="../../img/monitor/Monitor-10.png" /> &nbsp;</li>
+</ol>
+<h3 id="4-create-some-anomalous-iot-readings">4. Create some anomalous IoT Readings</h3>
+<p>Remember <a href="#2-create-iot-simulation">2. Create IoT Simulation</a></p>
+<h3 id="5-optional-understand-monitors-anomaly-detection-capabilities">5. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities</h3>
+<p>Although this section is optional, I highly recommend it.
+This is a full Lab on itself, and plan 2 to 3 hours to complete it.
+You can access it here: <a href="https://mam-hol.eu-gb.mybluemix.net/monitor-hol/monitor_anomalies/">Monitor Anomalies</a>.</p>
+<p>In this deep-dive lab, you will:</p>
+<ul>
+<li>view 3 great short Youtube movies explaining all the ins and outs of anomaly detection</li>
+<li></li>
+<li>cdcd</li>
+</ul>
+<h3 id="6-create-anomaly-detection-functions-on-your-iot-data">6. Create Anomaly Detection functions on your IoT data</h3>
+<h3 id="7-create-alerts-based-on-anomaly-scores">7. Create Alerts based on Anomaly scores</h3>
+<h3 id="8-update-your-summary-dashboard">8. Update your Summary Dashboard</h3>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../health/health/" class="btn btn-neutral float-right" title="HEALTH">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../.." class="btn btn-neutral" title="APM OVERVIEW"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../health/health/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
