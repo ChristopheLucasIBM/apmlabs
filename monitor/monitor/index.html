@@ -53,9 +53,9 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">MONITOR</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#0-overview-prerequisites">0. Overview &amp; Prerequisites</a>
+    <li class="toctree-l2"><a class="reference internal" href="#0-objectives">0. Objectives</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-generate-the-data">1. Generate the data</a>
+    <li class="toctree-l2"><a class="reference internal" href="#1-generate-iot-data">1. Generate IoT data</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#1-create-device-type-3-devices">1. Create Device Type &amp; 3 Devices</a>
     </li>
@@ -69,7 +69,7 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-monitor-the-data">2. Monitor the data</a>
+    <li class="toctree-l2"><a class="reference internal" href="#2-monitor-iot-data">2. Monitor IoT data</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#1-check-your-iot-data-made-it-to-the-monitor-data-lake">1. Check your IoT data made it to the Monitor data lake</a>
     </li>
@@ -85,7 +85,9 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#7-create-alerts-based-on-anomaly-scores">7. Create Alerts based on Anomaly scores</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#8-update-your-summary-dashboard">8. Update your Summary Dashboard</a>
+    <li class="toctree-l3"><a class="reference internal" href="#8-use-monitor-api-to-change-dimensions-and-load-a-picture">8. Use Monitor API to change Dimensions and load a Picture</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#9-update-your-summary-dashboard">9. Update your Summary Dashboard</a>
     </li>
         </ul>
     </li>
@@ -133,27 +135,26 @@
             <div class="section">
               
                 <h1 id="monitor-lab">MONITOR Lab</h1>
-<h2 id="0-overview-prerequisites">0. Overview &amp; Prerequisites</h2>
-<p>Welcome to the IBM Maximo Asset Performance Management (APM) labs.</p>
-<p>These labs were conceived to:</p>
-<ul>
-<li>take you through</li>
-<li>again</li>
-</ul>
-<p>This picture summarises the main elements of APM and how they are integrated.</p>
-<p><img alt="Monitor0" src="../../img/monitor/Monitor-0.png" /> &nbsp;  </p>
-<h2 id="1-generate-the-data">1. Generate the data</h2>
+<h2 id="0-objectives">0. Objectives</h2>
 <p>In this Module you will:</p>
 <ul>
+<li>Generate IoT Data<ul>
 <li>Create a Device Type and 3 Devices of that Type</li>
 <li>Generate IoT data for those 3 Devices using an IoT simulation</li>
 <li>Create Physical &amp; Logical interfaces to send the IoT data to the Monitor data lake</li>
 <li>Visualise the IoT data in a Watson IoT Platform simple dashboard</li>
 </ul>
+</li>
+<li>Monitor IoT Data<ul>
+<li>Create a Device Type and 3 Devices of that Type</li>
+</ul>
+</li>
+</ul>
 <hr />
 <p><em>Before you begin:</em><br />
 This Exercise requires that you have completed Exercise 1 Connected Devices</p>
 <hr />
+<h2 id="1-generate-iot-data">1. Generate IoT data</h2>
 <h3 id="1-create-device-type-3-devices">1. Create Device Type &amp; 3 Devices</h3>
 <p>Let's first create a <em>Device Type</em>. </p>
 <ol>
@@ -250,6 +251,7 @@ Let's create those interfaces and populate that data lake !</p>
 </ol>
 <p>This picture shows the previous steps and what your screen should finally look like after you created your Physical &amp; Logical interfaces.
 <img alt="Monitor6" src="../../img/monitor/Monitor-6.png" /> &nbsp;</p>
+<hr />
 <h3 id="5-take-a-break-and-let-some-magic-happen">5. Take a break and let some magic happen ...</h3>
 <p>Brilliant ! You have created all that is needed to start monitoring your own IoT data.
 In the next module, we will check that your data lake is now populated.
@@ -259,7 +261,8 @@ But first take a break (count 15 minutes at least, but I recommend several hours
 <li>it is good for the IoT Simulation to keep running a bit, so the visualisations that we will build in next module will show data for more than just 1 hour.
 Also, for Anomaly functions to detect anomalies, 'normal conditions' must first occur</li>
 </ul>
-<h2 id="2-monitor-the-data">2. Monitor the data</h2>
+<hr />
+<h2 id="2-monitor-iot-data">2. Monitor IoT data</h2>
 <h3 id="1-check-your-iot-data-made-it-to-the-monitor-data-lake">1. Check your IoT data made it to the Monitor data lake</h3>
 <ol>
 <li>Back to the Monitor interface, click <code>Monitor Entities</code>. If you see 3 in <code>Number of Entities</code>, it means that your data did make it to the dat lake. Let's have a look around.</li>
@@ -269,6 +272,7 @@ See all your (raw) IoT Metrics &amp; Dimensions. Note that at this stage it is n
 </ol>
 <p>If you see this, so far so good !
 <img alt="Monitor7" src="../../img/monitor/Monitor-7.png" /> &nbsp;</p>
+<hr />
 <h3 id="2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</h3>
 <ol>
 <li>Back to the <code>CL_Asset</code> main page, click <code>New Summary</code>.</li>
@@ -283,16 +287,47 @@ On the left side in <code>Summary Controls</code>, notice the so-called Dimensio
 Notice how you can change the 'time scope' of each card. 
 Finally, also notice how the <code>temperature</code> card displays the <code>max</code>, <code>min</code>, <code>mean</code> etc that we defined via the <code>Methods</code> and how you can click on 1 or several of these.
 <img alt="Monitor9" src="../../img/monitor/Monitor-9.png" /> &nbsp;</p>
+<hr />
 <h3 id="3-explore-the-data-create-new-data-items">3. Explore the Data &amp; create new Data Items</h3>
 <ol>
 <li>Back to the <code>CL_Asset</code> main page, click on the <code>Data</code> tab. Observe that new Data Items have appeared, i.e. under the <code>Metric (Calculated)</code> section. 
-Notice that for all the IoT Readings, a new <code>reading_Hourly_mean</code> calculated metric was created - this was automatically done when we crated the hourly dashboard in previous step.</li>
+Notice that for all the IoT Readings, a new <code>reading_Hourly_mean</code> <em>calculated metric</em> was created - this was automatically done when we crated the hourly dashboard in previous step.</li>
 <li>In the filer just below <em>Data Item</em>, start writing <em>temp</em>. This filters the data items displayed. 
 Note that for the temperature reading, on top of the mean data item, <code>temperature_Hourly_min</code>, <code>temperature_Hourly_max</code>, <code>temperature_Hourly_std</code> etc were also created - that is because of the 8 <em>Methods</em> that we earlier selected for that data item when creating the dashboard.
 <img alt="Monitor10" src="../../img/monitor/Monitor-10.png" /> &nbsp;</li>
 </ol>
+<p>On top of those automatically generated <em>calculated metric</em>, it is of course possible to create a vast range of new <em>calculated metric</em>.
+In the following exercise, we will (a) create an hourly <em>count</em> of the number of <code>starts</code>, 
+(b) use a simple Python function to transform the temperature readings from Celsius to Fahrenheit,
+(c) use the <code>Entity Filter</code> function to retrieve data for only 1 of our Devices (vs. for all Devices of the <em>CL_Asset</em> Device Type).</p>
+<ol>
+<li>On the <code>Data</code> tab, click the <code>+</code> icon, select the <code>Count</code> function, click <code>Next</code>. </li>
+<li>On the first screen, select <code>starts</code> as the data source, enter <code>1</code> (default value) in <em>min_output</em>. 
+Click <code>Next</code>. Select <code>Hourly</code> in the <em>Granularity</em>, untick the <code>Auto Schedule</code> and enter <code>5</code> in <em>Executing query</em> and <code>2</code> in <em>Calculating last</em> fields.
+In the <em>Output metric</em> field, enter <code>starts_Hourly_count</code>. Click <code>Create</code>.
+<strong>NOTE</strong>: as always, naming convention is important. As the amount of your data items will grow, you want to use a consistent naming convention that will e.g. facilitate your data viewing capabilities by making filtering easy and straightforward.
+In this case, we named the  <em>starts hourly count</em> using a naming similar to the one that was used to create the <em>temperature hourly count</em> !</li>
+<li>
+<p>You will now see the new appear in your <em>Metrics (calculated)</em> menu. Wait for 5 minutes for results to appear.
+<img alt="Monitor11" src="../../img/monitor/Monitor-11.png" /> &nbsp;</p>
+</li>
+<li>
+<p>On the <code>Data</code> tab, click the <code>+</code> icon, select the <code>Count</code> function, click <code>Next</code>.
+<img alt="Monitor12" src="../../img/monitor/Monitor-12.png" /> &nbsp;</p>
+</li>
+</ol>
+<hr />
 <h3 id="4-create-some-anomalous-iot-readings">4. Create some anomalous IoT Readings</h3>
-<p>Remember <a href="#2-create-iot-simulation">2. Create IoT Simulation</a></p>
+<p>Remember <a href="#2-create-iot-simulation">2. Create IoT Simulation</a> ? 
+In that IoT simulation (which should have been running for some time now), we defined random ranges of values
+for each IoT reading, e.g. <code>"temperature": random(35,40)</code>. 
+In this section, we are going to change that range during a couple minutes to simulate a sudden and temporary surge in <code>temperature</code>.
+That will enable us to demonstrate in <a href="#6-create-anomaly-detection-functions-on-your-iot-data">6. Create Anomaly Detection functions on your IoT data</a>
+section that Monitor's out-of-the-box Anomaly Detection functions do actually spot that anomalous 'spike in temperature'.</p>
+<ol>
+<li>Back to the <em>Watson IoT Platform</em>, </li>
+</ol>
+<hr />
 <h3 id="5-optional-understand-monitors-anomaly-detection-capabilities">5. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities</h3>
 <p>Although this section is optional, I highly recommend it.
 This is a full Lab on itself, and plan 2 to 3 hours to complete it.
@@ -303,9 +338,14 @@ You can access it here: <a href="https://mam-hol.eu-gb.mybluemix.net/monitor-hol
 <li></li>
 <li>cdcd</li>
 </ul>
+<hr />
 <h3 id="6-create-anomaly-detection-functions-on-your-iot-data">6. Create Anomaly Detection functions on your IoT data</h3>
+<hr />
 <h3 id="7-create-alerts-based-on-anomaly-scores">7. Create Alerts based on Anomaly scores</h3>
-<h3 id="8-update-your-summary-dashboard">8. Update your Summary Dashboard</h3>
+<hr />
+<h3 id="8-use-monitor-api-to-change-dimensions-and-load-a-picture">8. Use Monitor API to change Dimensions and load a Picture</h3>
+<hr />
+<h3 id="9-update-your-summary-dashboard">9. Update your Summary Dashboard</h3>
               
             </div>
           </div>
