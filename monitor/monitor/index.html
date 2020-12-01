@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Christophe Lucas">
-  <link rel="canonical" href="https://mam-hol.eu-gb.mybluemix.net/monitor/monitor/">
+  <link rel="canonical" href="https://christophelucasibm.github.io/apmlabs/monitor/monitor/">
   <link rel="shortcut icon" href="../../img/favicon.ico">
   <title>MONITOR - IBM Maximo Asset Performance Management (APM) Labs</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "MONITOR";
     var mkdocs_page_input_path = "monitor/monitor.md";
-    var mkdocs_page_url = "/monitor/monitor/";
+    var mkdocs_page_url = "/apmlabs/monitor/monitor/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js" defer></script>
@@ -49,7 +49,7 @@
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
                 <p class="caption"><span class="caption-text">APM Labs</span></p>
                 <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../..">APM OVERVIEW</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">GET STARTED</a>
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">MONITOR</a>
     <ul class="current">
@@ -297,9 +297,13 @@ Note that for the temperature reading, on top of the mean data item, <code>tempe
 <img alt="Monitor10" src="../../img/monitor/Monitor-10.png" /> &nbsp;</li>
 </ol>
 <p>On top of those automatically generated <em>calculated metric</em>, it is of course possible to create a vast range of new <em>calculated metric</em>.
-In the following exercise, we will (a) create an hourly <em>count</em> of the number of <code>starts</code>, 
-(b) use a simple Python function to transform the temperature readings from Celsius to Fahrenheit,
-(c) use the <code>Entity Filter</code> function to retrieve data for only 1 of our Devices (vs. for all Devices of the <em>CL_Asset</em> Device Type).</p>
+In the following exercise, we will:</p>
+<ul>
+<li>(a - step 1 to 3) create an hourly <em>count</em> of the number of <em>starts</em> using the <code>Count</code> function, </li>
+<li>(b - step 4) use a simple <code>PythonExpression</code> function to create temperature readings in Fahrenheit vs. Celsius,</li>
+<li>(c - step 5) use the <code>Entity Filter</code> and <code>Filter</code> functions to retrieve data for only 1 of our Devices (vs. for all Devices of the <em>CL_Asset</em> Device Type).</li>
+</ul>
+<p>Let's go:</p>
 <ol>
 <li>On the <code>Data</code> tab, click the <code>+</code> icon, select the <code>Count</code> function, click <code>Next</code>. </li>
 <li>On the first screen, select <code>starts</code> as the data source, enter <code>1</code> (default value) in <em>min_output</em>. 
@@ -308,18 +312,24 @@ In the <em>Output metric</em> field, enter <code>starts_Hourly_count</code>. Cli
 <strong>NOTE</strong>: as always, naming convention is important. As the amount of your data items will grow, you want to use a consistent naming convention that will e.g. facilitate your data viewing capabilities by making filtering easy and straightforward.
 In this case, we named the  <em>starts hourly count</em> using a naming similar to the one that was used to create the <em>temperature hourly count</em> !</li>
 <li>
-<p>You will now see the new appear in your <em>Metrics (calculated)</em> menu. Wait for 5 minutes for results to appear.
+<p>You will now see the new data item appear in your <em>Metrics (calculated)</em> menu. Wait for 5 minutes for results to appear.
 <img alt="Monitor11" src="../../img/monitor/Monitor-11.png" /> &nbsp;</p>
 </li>
 <li>
 <p>On the <code>Data</code> tab, click the <code>+</code> icon, select the <code>PythonExpression</code> function, click <code>Next</code>.
 In the <em>expression</em> field, type this: <code>df['temperature'] * 1.8 + 32</code> - note this is a very simple Python expression using pandas syntax, for more info, see:
 <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/analytics/reference/references.html">Built-in functions</a> and
-<a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/analytics/as_add_custom_expressions.html?view=embed">Using Expressions</a>.</p>
+<a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/analytics/as_add_custom_expressions.html?view=embed">Using Expressions</a>.
+Name the <em>Output metric</em> field <code>temperature_farhenheit</code>. Set the <code>Schedule</code> as we did in step 3., wait 5 minutes. Watch the newly created <code>temperature_farhenheit</code> data item.
+<img alt="Monitor12" src="../../img/monitor/Monitor-12.png" /> &nbsp;</p>
+</li>
+<li>
+<p>This is a 2-steps process. Firstly, on the <code>Data</code> tab, click the <code>+</code> icon, select the <code>EntityFilter</code> function, click <code>Next</code>. In the <em>entity_list</em> section, enter <code>CL_Asset_1</code>.
+Click <code>Next</code>, name the <em>Output metric</em> field <code>CL_Asset_1</code>. Set the <code>Schedule</code> as we did in step 3., wait 5 minutes. In <code>Metrics (calculated)</code>, search for then watch <code>CL_Asset_1</code>. 
+Secondly, we will use this <em>filter</em> and apply it to the 
+<img alt="Monitor13" src="../../img/monitor/Monitor-13.png" /> &nbsp;</p>
 </li>
 </ol>
-<p><img alt="Monitor12" src="../../img/monitor/Monitor-12.png" /> &nbsp;
-5. bhbh</p>
 <hr />
 <h3 id="4-create-some-anomalous-iot-readings">4. Create some anomalous IoT Readings</h3>
 <p>Remember <a href="#2-create-iot-simulation">2. Create IoT Simulation</a> ? 
@@ -329,7 +339,12 @@ In this section, we are going to change that range during a couple minutes to si
 That will enable us to demonstrate in <a href="#6-create-anomaly-detection-functions-on-your-iot-data">6. Create Anomaly Detection functions on your IoT data</a>
 section that Monitor's out-of-the-box Anomaly Detection functions do actually spot that anomalous 'spike in temperature'.</p>
 <ol>
-<li>Back to the <em>Watson IoT Platform</em>, </li>
+<li>Back to the <em>Watson IoT Platform</em>, click the IoT Simulation box in bottom-right corner.
+Change the values of <code>"temperature": random(35,40)</code> line to <code>"temperature": random(46,48)</code>, click <code>Save</code>.
+Take note of the time on your watch. Let the updated simulation run for 3 to 4 minutes.
+After 3 to 4 minutes, set the <code>"temperature": random(46,48)</code> back to <code>"temperature": random(35,40)</code>, CLICK <code>Save</code>.</li>
+<li>as you can clearly see on the Dashboard (<em>10 minutes, 1 hour, 6 hours, 12 hours</em> views), 
+the 'anomaly' we just created is visible, i.e. we clearly see a temporary surge in the temperature readings in the top-right of the screen.</li>
 </ol>
 <hr />
 <h3 id="5-optional-understand-monitors-anomaly-detection-capabilities">5. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities</h3>
@@ -360,7 +375,7 @@ You can access it here: <a href="https://mam-hol.eu-gb.mybluemix.net/monitor-hol
         <a href="../../health/health/" class="btn btn-neutral float-right" title="HEALTH">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../.." class="btn btn-neutral" title="APM OVERVIEW"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../.." class="btn btn-neutral" title="GET STARTED"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
