@@ -101,6 +101,8 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../predict/predict/">PREDICT</a>
                     </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../../predict/predict/">(ABOUT)</a>
+                    </li>
                 </ul>
       </div>
     </div>
@@ -408,7 +410,62 @@ This picture gives a very quick overview of the main types of anomalies that <em
 and the Y-axis is an <em>Anomaly Score</em>.
 Each function returns a different score <em>range</em> (that is inherent to each model essence). 
 What we are typically interested in our 'Anomaly Detection' work is to spot peaks in those scores, which correspond to the most likely anomalous readings we want to be alerted of.
-This is where Monitor's <em>Alerts</em> come into play.</p>
+This is where Monitor's <em>Alerts</em> come into play.
+<em>Alerts</em> can be automatically generated in <em>Monitor</em> when one (any) of the <em>Metrics</em> of Monitor go above or below a certain value.
+In this exercise, we will generate <em>Alerts</em> based on the <code>temperature_anomaly_*</code> metrics we created in the previous section.</p>
+<p>The whole idea is that we want to be alerted when a serious anomaly occurs, but we do NOT want to be over alerted and drown in a 
+so-called 'alert storm'.
+Also, what we want to avoid is generating way too many alerts into the system which would just 'pollute the database' with thousands of irrelevant and meaningless rows !
+Because <em>Anomaly Scores</em> are something very dynamic, it is key that we look at those score values first before creating alerts based on them.</p>
+<p>So first of all, let's have a detailed look at your anomaly scores.
+Let's focus just on <code>temperature_anomaly_generalized</code>, <code>temperature_anomaly_kmeans</code> and <code>temperature_anomaly_fft</code> in this exercise.
+Although your scores might be slightly different, what you should note is that, whereas the (max values of the) anomaly scores remained consistently
+low most of the time that our IoT Simulation was running (i.e. <code>"temperature": random(35,40)</code>),
+we can observe a clear spike for each of those scores corresponding to the November 20, 04:50 PM (i.e. <code>"temperature": random(46,48)</code>).
+The picture and table below give an idea of those scores.
+This should give us a good-enough idea of where to start ... </p>
+<table>
+<thead>
+<tr>
+<th>Anomaly Data Item</th>
+<th align="center">Normal Condition Score</th>
+<th align="right">Anomalous Condition Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>temperature_anomaly_generalized</code></td>
+<td align="center">&lt;&lt;0.200</td>
+<td align="right">&gt;1.5</td>
+</tr>
+<tr>
+<td><code>temperature_anomaly_kmeans</code></td>
+<td align="center">&lt;&lt;10</td>
+<td align="right">&gt;30</td>
+</tr>
+<tr>
+<td><code>temperature_anomaly_fft</code></td>
+<td align="center">&lt;&lt;100</td>
+<td align="right">&gt;450</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Monitor17" src="../../img/monitor/Monitor-17.png" /> &nbsp;</p>
+<ol>
+<li>On the <code>Data</code> tab, click the <code>+</code> icon, select <code>AlertHighValue</code>. Select <code>temperature_alert_kmeans</code> as <em>input_item</em>,
+enter <code>30</code> as the <em>upper_threshold</em>, select <code>Medium</code> in <em>Severity</em> and <code>New</code> in <em>Status</em>.
+Click <code>Next</code>, set the <code>Schedule</code> and name </li>
+<li>Repeat above step for <code>temperature_alert_generalized</code> (<em>upper_threshold</em> = <code>1.5</code>, <em>Severity</em> = <code>High</code>, <em>Status</em> = <code>Validated</code>),
+and <code>temperature_alert_fft</code> (<em>upper_threshold</em> = <code>450</code>, <em>Severity</em> = <code>Low</code>, <em>Status</em> = <code>Acknowledged</code>).</li>
+<li>Let's now have a look at the number of <em>Alerts</em> we generated. First notice that the newly created Alerts appear as
+another data item in the <em>Alert (calculated)</em> section. Click on e.g. <code>temperature_alert_kmeans</code>. NOTE: it might be that you see
+nothing on the graph and on the table under it, e.g. that might be the case if your IoT reading anomalies were generated yesterday. 
+That is normal, because the default time range of those graphs are 1 day.
+On the table below the graph, click <code>Last Week</code> (vs. the default). See that for <code>temperature_alert_kmeans</code>, 4 Alerts were generated.</li>
+<li>Under the column <em>Entity ID</em>, click <code>CL_Asset_1</code>, this will open a new window. Click <code>Events</code>, click <code>Last Week</code> (vs. the default),
+and you will see that we generated about 9 Alerts for <em>CL_Asset_1</em> - that is a reasonable number, we are not going to overflow the system !
+<img alt="Monitor18" src="../../img/monitor/Monitor-18.png" /> &nbsp;</li>
+</ol>
 <hr />
 <h3 id="9-use-monitor-api-to-change-dimensions-and-load-a-picture">9. Use Monitor API to change Dimensions and load a Picture</h3>
 <hr />
