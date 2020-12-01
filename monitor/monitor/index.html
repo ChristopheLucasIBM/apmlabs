@@ -304,7 +304,7 @@ In the following exercise, we will:</p>
 <ul>
 <li>(a - step 1 to 3) create an hourly <em>count</em> of the number of <em>starts</em> using the <code>Count</code> function, </li>
 <li>(b - step 4) use a simple <code>PythonExpression</code> function to create temperature readings in Fahrenheit vs. Celsius,</li>
-<li>(c - step 5) use the <code>Entity Filter</code> and <code>Filter</code> functions to retrieve data for only 1 of our Devices (vs. for all Devices of the <em>CL_Asset</em> Device Type).</li>
+<li>(c - step 5 to 6) use the <code>Entity Filter</code> and <code>Filter</code> functions to retrieve data for only 1 of our Devices (vs. for all Devices of the <em>CL_Asset</em> Device Type).</li>
 </ul>
 <p>Let's go:</p>
 <ol>
@@ -328,8 +328,10 @@ Name the <em>Output metric</em> field <code>temperature_farhenheit</code>. Set t
 </li>
 <li>
 <p>This is a 2-steps process. Firstly, on the <code>Data</code> tab, click the <code>+</code> icon, select the <code>EntityFilter</code> function, click <code>Next</code>. In the <em>entity_list</em> section, enter <code>CL_Asset_1</code>.
-Click <code>Next</code>, name the <em>Output metric</em> field <code>CL_Asset_1</code>. Set the <code>Schedule</code> as we did in step 3., wait 5 minutes. In <code>Metrics (calculated)</code>, search for then watch <code>CL_Asset_1</code>. 
-Secondly, we will use this <em>filter</em> and apply it to the <em>temperature</em> IoT reading. 
+Click <code>Next</code>, name the <em>Output metric</em> field <code>CL_Asset_1</code>. Set the <code>Schedule</code> as we did in step 3., wait 5 minutes. In <code>Metrics (calculated)</code>, search for then watch <code>CL_Asset_1</code>. </p>
+</li>
+<li>
+<p>Secondly, we will use this <em>filter</em> and apply it to the <em>temperature</em> IoT reading. 
 On the <code>Data</code> tab, click the <code>+</code> icon, select the <code>Filter</code> function, click <code>Next</code>. In the <em>sources</em> section, select the just created <code>CL_Asset_1</code> data item. 
 In the <em>expression</em> field, type <code>${CL_Asset_1} == True</code>. In the <em>filtered_sources</em> field, select <code>temperature</code>. Click <code>Next</code>.
 Set the <code>Schedule</code> as we did in step 3. Name the <em>Output metric</em> field <code>temperature_CL_Asset_1</code>. Wait 5 minutes.
@@ -351,9 +353,12 @@ Change the values of <code>"temperature": random(35,40)</code> line to <code>"te
 Take note of the time on your watch. Let the updated simulation run for 3 to 4 minutes.
 After 3 to 4 minutes, set the <code>"temperature": random(46,48)</code> back to <code>"temperature": random(35,40)</code>, CLICK <code>Save</code>.</li>
 <li>the 'anomaly' we just created is visible on the Dashboard (<em>10 minutes, 1 hour, 6 hours, 12 hours</em> views), 
-, i.e. we clearly see a temporary surge in the temperature readings in the top-right of the screen.
-<img alt="Monitor14" src="../../img/monitor/Monitor-14.png" /> &nbsp;</li>
+, i.e. we clearly see a temporary surge in the temperature readings in the top-right of the screen.</li>
 </ol>
+<p><strong>NOTE</strong>: take note of the date and time when you generated those anomalous IoT readings, as we will see in further sections
+how <em>Monitor</em>'s Anomaly models pick these anomalous readings up. As you can see in below picture, the anomalous readings
+for these labs were created on November 2020, around 04:50 PM.
+<img alt="Monitor14" src="../../img/monitor/Monitor-14.png" /> &nbsp;</p>
 <hr />
 <h3 id="6-optional-understand-monitors-anomaly-detection-capabilities">6. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities</h3>
 <p>Although this section is optional, it is highly recommended.
@@ -362,15 +367,48 @@ You can access it here: <a href="https://mam-hol.eu-gb.mybluemix.net/monitor-hol
 <p>In this great deep-dive lab, you will:</p>
 <ul>
 <li>View 3 great short Youtube movies explaining all the ins and outs of Anomaly Detection.</li>
-<li>Creates simulated <code>Robots</code> that <em>Monitor</em> enables you to easily create and that come with all the required data needed to understand and play with Anomaly Detection. </li>
+<li>Create simulated <code>Robots</code> that <em>Monitor</em> enables you to easily create and that come with all the required data needed to understand and play with Anomaly Detection. </li>
 <li>Understand the distinction between <em>Summary</em> &amp; <em>Instance</em> dashboards and create both.</li>
 <li>Understand how to create <em>Metric Line Cards</em> and display <em>Anomaly Detections</em> on them.</li>
 <li>Create and display <em>Alerts</em> and display them ... and so much more !</li>
 </ul>
 <hr />
 <h3 id="7-create-anomaly-detection-functions-on-your-iot-data">7. Create Anomaly Detection functions on your IoT data</h3>
+<p>In this section, we are going to create 5 Anomaly models and see if they detect 
+the <em>temperature</em> anomalous IoT readings we generated in <a href="#5-create-some-anomalous-iot-readings">5. Create some anomalous IoT Readings</a> section.</p>
+<ol>
+<li>On the <code>Data</code> tab, click the <code>+</code> icon, enter <code>Anomaly</code> in the <em>Search</em> box and have a look at all out 
+<em>Monitor</em>'s available models. Click the <code>FFTbasedGeneralizedAnomalyScore</code> one. Click <code>Next</code>.</li>
+<li>Select the <code>Apply to all entities of the selected type</code> scope. Click <code>Next</code>.</li>
+<li>Select the <code>temperature</code> as <em>input item</em> and leave the default <em>windowsize</em> to <code>12</code>. Click <code>Next</code>.</li>
+<li>Set the Schedule as in previous section, and name the <em>Output metric</em> field <code>temperature_anomaly_fft</code>.</li>
+<li>Wait 5 minutes, and now watch the <code>temperature_anomaly_fft</code> graph. Do notice how a sudden peak of the anomaly score is observed 
+on the 04:00 PM line ... remember 04:50 PM on November 2020 !
+This confirms that this FFT model did perfectly pick up the anomalous <code>temperature</code> IoT readings we generated.</li>
+<li>Repeat steps 5 to 6 (keep all the defaluts) for the following anomaly detection functions: 
+<code>GeneralizedAnomalyScore</code>, <code>KMeansAnomalyScore</code>, <code>SaliencybasedGeneralizedAnomalyScore</code>, <code>SpectralAnomalyScore</code>.
+Respecting the naming conventions, name your associated data items <code>temperature_anomaly_generalized</code>, <code>temperature_anomaly_kmeans</code>,
+<code>temperature_anomaly_saliency</code>, <code>temperature_anomaly_spectral</code> respectively. Open the corresponding <code>Metric (calculated)</code> <em>data item</em>
+and notice how all 5 Anomaly functions perfectly spotted the November 2020, 04:50 PM anomalies, i.e. display a sudden peak in their score at that time !
+<img alt="Monitor15" src="../../img/monitor/Monitor-15.png" /> &nbsp;</li>
+</ol>
+<p><strong>NOTE</strong>: the anomalies we earlier generated are very obvious - on purpose for this demo -, 
+i.e. during just a couple minutes (around 04:50 PM), we generated <em>temperature</em> readings ranging from 46 to 48,
+whereas our IoT Simulation generated readings ranging from 35 to 40 for most of the time.
+No surprise then that all the 5 Anomaly models that we created spotted those obvious anomalies.
+However, be aware that those <em>Monitor</em>'s out-of-the-box anomaly models can detect much more than those obvious anomalies !
+You can find more information on those models here: 
+<a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/analytics/as_anomaly_unsupervised.html">Unsupervised anomaly detectors</a>
+and <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/analytics/as_anomaly_supervised.html">Supervised anomaly detectors</a>.
+This picture gives a very quick overview of the main types of anomalies that <em>Monitor</em> can detect and which models are available.
+<img alt="Monitor16" src="../../img/monitor/Monitor-16.png" /> &nbsp;</p>
 <hr />
 <h3 id="8-create-alerts-based-on-anomaly-scores">8. Create Alerts based on Anomaly scores</h3>
+<p>As you just learned, <em>Monitor</em>'s Anomaly Detection functions can easily spot anomalies and be viewed on a graph where the X-axis is <em>Time</em>
+and the Y-axis is an <em>Anomaly Score</em>.
+Each function returns a different score <em>range</em> (that is inherent to each model essence). 
+What we are typically interested in our 'Anomaly Detection' work is to spot peaks in those scores, which correspond to the most likely anomalous readings we want to be alerted of.
+This is where Monitor's <em>Alerts</em> come into play.</p>
 <hr />
 <h3 id="9-use-monitor-api-to-change-dimensions-and-load-a-picture">9. Use Monitor API to change Dimensions and load a Picture</h3>
 <hr />
