@@ -1,0 +1,616 @@
+{
+    "timeGrain": "hour",
+    "cards": [
+        {
+            "id": "card-vibration-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "mean",
+                        "attribute": "vibration_Hourly_mean",
+                        "id": "vibration_Hourly_mean"
+                    }
+                ],
+                "range": {
+                    "count": -24,
+                    "interval": "hour"
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "vibration_Hourly_mean",
+                        "label": "Mean"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Vibration"
+            },
+            "size": "MEDIUM",
+            "title": "vibration",
+            "type": "TIMESERIES"
+        },
+        {
+            "id": "card-load-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "mean",
+                        "attribute": "load_Hourly_mean",
+                        "id": "load_Hourly_mean"
+                    }
+                ],
+                "range": {
+                    "count": -24,
+                    "interval": "hour"
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "load_Hourly_mean",
+                        "label": "Mean"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Load"
+            },
+            "size": "MEDIUM",
+            "title": "load",
+            "type": "TIMESERIES"
+        },
+        {
+            "id": "card-speed-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "mean",
+                        "attribute": "speed_Hourly_mean",
+                        "id": "speed_Hourly_mean"
+                    }
+                ],
+                "range": {
+                    "count": -24,
+                    "interval": "hour"
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "speed_Hourly_mean",
+                        "label": "Mean"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Speed"
+            },
+            "size": "MEDIUM",
+            "title": "speed",
+            "type": "TIMESERIES"
+        },
+        {
+            "id": "card-torque-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "mean",
+                        "attribute": "torque_Hourly_mean",
+                        "id": "torque_Hourly_mean"
+                    }
+                ],
+                "range": {
+                    "count": -24,
+                    "interval": "hour"
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "torque_Hourly_mean",
+                        "label": "Mean"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Torque"
+            },
+            "size": "MEDIUM",
+            "title": "torque",
+            "type": "TIMESERIES"
+        },
+        {
+            "id": "card-starts-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "mean",
+                        "attribute": "starts_Hourly_mean",
+                        "id": "starts_Hourly_mean"
+                    }
+                ],
+                "range": {
+                    "count": -24,
+                    "interval": "hour"
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "starts_Hourly_mean",
+                        "label": "Mean"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Starts"
+            },
+            "size": "MEDIUM",
+            "title": "starts",
+            "type": "TIMESERIES"
+        },
+        {
+            "id": "card-acceleration-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "mean",
+                        "attribute": "acceleration_Hourly_mean",
+                        "id": "acceleration_Hourly_mean"
+                    }
+                ],
+                "range": {
+                    "count": -24,
+                    "interval": "hour"
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "acceleration_Hourly_mean",
+                        "label": "Mean"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Acceleration"
+            },
+            "size": "MEDIUM",
+            "title": "acceleration",
+            "type": "TIMESERIES"
+        },
+        {
+            "id": "card-entity_id-value",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "last",
+                        "attribute": "entity_id_Hourly_last",
+                        "id": "entity_id_Hourly_last"
+                    }
+                ]
+            },
+            "content": {
+                "attributes": [
+                    {
+                        "dataSourceId": "entity_id_Hourly_last",
+                        "label": "Last entity_id"
+                    }
+                ]
+            },
+            "size": "SMALLWIDE",
+            "title": "entity_id",
+            "type": "VALUE"
+        },
+        {
+            "id": "card-pressure-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "mean",
+                        "attribute": "pressure_Hourly_mean",
+                        "id": "pressure_Hourly_mean"
+                    }
+                ],
+                "range": {
+                    "count": -24,
+                    "interval": "hour"
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "pressure_Hourly_mean",
+                        "label": "Mean"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Pressure"
+            },
+            "size": "MEDIUM",
+            "title": "pressure",
+            "type": "TIMESERIES"
+        },
+        {
+            "id": "card-temperature-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "count",
+                        "attribute": "temperature_Hourly_count",
+                        "id": "temperature_Hourly_count"
+                    },
+                    {
+                        "aggregator": "first",
+                        "attribute": "temperature_Hourly_first",
+                        "id": "temperature_Hourly_first"
+                    },
+                    {
+                        "aggregator": "last",
+                        "attribute": "temperature_Hourly_last",
+                        "id": "temperature_Hourly_last"
+                    },
+                    {
+                        "aggregator": "max",
+                        "attribute": "temperature_Hourly_max",
+                        "id": "temperature_Hourly_max"
+                    },
+                    {
+                        "aggregator": "mean",
+                        "attribute": "temperature_Hourly_mean",
+                        "id": "temperature_Hourly_mean"
+                    },
+                    {
+                        "aggregator": "min",
+                        "attribute": "temperature_Hourly_min",
+                        "id": "temperature_Hourly_min"
+                    },
+                    {
+                        "aggregator": "std",
+                        "attribute": "temperature_Hourly_std",
+                        "id": "temperature_Hourly_std"
+                    },
+                    {
+                        "aggregator": "sum",
+                        "attribute": "temperature_Hourly_sum",
+                        "id": "temperature_Hourly_sum"
+                    }
+                ],
+                "range": {
+                    "count": -24,
+                    "interval": "hour"
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "temperature_Hourly_count",
+                        "label": "Count"
+                    },
+                    {
+                        "dataSourceId": "temperature_Hourly_first",
+                        "label": "First"
+                    },
+                    {
+                        "dataSourceId": "temperature_Hourly_last",
+                        "label": "Last"
+                    },
+                    {
+                        "dataSourceId": "temperature_Hourly_max",
+                        "label": "Max"
+                    },
+                    {
+                        "dataSourceId": "temperature_Hourly_mean",
+                        "label": "Mean"
+                    },
+                    {
+                        "dataSourceId": "temperature_Hourly_min",
+                        "label": "Min"
+                    },
+                    {
+                        "dataSourceId": "temperature_Hourly_std",
+                        "label": "Std"
+                    },
+                    {
+                        "dataSourceId": "temperature_Hourly_sum",
+                        "label": "Sum"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Temperature"
+            },
+            "size": "MEDIUM",
+            "title": "temperature",
+            "type": "TIMESERIES"
+        }
+    ],
+    "title": "Hourly",
+    "layouts": {
+        "max": [
+            {
+                "i": "card-vibration-timeseries",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "i": "card-load-timeseries",
+                "x": 4,
+                "y": 0
+            },
+            {
+                "i": "card-speed-timeseries",
+                "x": 8,
+                "y": 0
+            },
+            {
+                "i": "card-torque-timeseries",
+                "x": 12,
+                "y": 0
+            },
+            {
+                "i": "card-starts-timeseries",
+                "x": 0,
+                "y": 2
+            },
+            {
+                "i": "card-acceleration-timeseries",
+                "x": 4,
+                "y": 2
+            },
+            {
+                "i": "card-entity_id-value",
+                "x": 8,
+                "y": 2
+            },
+            {
+                "i": "card-pressure-timeseries",
+                "x": 12,
+                "y": 2
+            },
+            {
+                "i": "card-temperature-timeseries",
+                "x": 8,
+                "y": 3
+            }
+        ],
+        "xl": [
+            {
+                "i": "card-vibration-timeseries",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "i": "card-load-timeseries",
+                "x": 4,
+                "y": 0
+            },
+            {
+                "i": "card-speed-timeseries",
+                "x": 8,
+                "y": 0
+            },
+            {
+                "i": "card-torque-timeseries",
+                "x": 12,
+                "y": 0
+            },
+            {
+                "i": "card-starts-timeseries",
+                "x": 0,
+                "y": 2
+            },
+            {
+                "i": "card-acceleration-timeseries",
+                "x": 4,
+                "y": 2
+            },
+            {
+                "i": "card-entity_id-value",
+                "x": 8,
+                "y": 2
+            },
+            {
+                "i": "card-pressure-timeseries",
+                "x": 12,
+                "y": 2
+            },
+            {
+                "i": "card-temperature-timeseries",
+                "x": 8,
+                "y": 3
+            }
+        ],
+        "lg": [
+            {
+                "i": "card-vibration-timeseries",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "i": "card-load-timeseries",
+                "x": 4,
+                "y": 0
+            },
+            {
+                "i": "card-speed-timeseries",
+                "x": 8,
+                "y": 0
+            },
+            {
+                "i": "card-torque-timeseries",
+                "x": 12,
+                "y": 0
+            },
+            {
+                "i": "card-starts-timeseries",
+                "x": 0,
+                "y": 2
+            },
+            {
+                "i": "card-acceleration-timeseries",
+                "x": 4,
+                "y": 2
+            },
+            {
+                "i": "card-entity_id-value",
+                "x": 8,
+                "y": 2
+            },
+            {
+                "i": "card-pressure-timeseries",
+                "x": 12,
+                "y": 2
+            },
+            {
+                "i": "card-temperature-timeseries",
+                "x": 8,
+                "y": 3
+            }
+        ],
+        "md": [
+            {
+                "i": "card-vibration-timeseries",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "i": "card-load-timeseries",
+                "x": 4,
+                "y": 0
+            },
+            {
+                "i": "card-speed-timeseries",
+                "x": 0,
+                "y": 2
+            },
+            {
+                "i": "card-torque-timeseries",
+                "x": 4,
+                "y": 2
+            },
+            {
+                "i": "card-starts-timeseries",
+                "x": 0,
+                "y": 4
+            },
+            {
+                "i": "card-acceleration-timeseries",
+                "x": 4,
+                "y": 4
+            },
+            {
+                "i": "card-entity_id-value",
+                "x": 0,
+                "y": 6
+            },
+            {
+                "i": "card-pressure-timeseries",
+                "x": 4,
+                "y": 6
+            },
+            {
+                "i": "card-temperature-timeseries",
+                "x": 0,
+                "y": 7
+            }
+        ],
+        "sm": [
+            {
+                "i": "card-vibration-timeseries",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "i": "card-load-timeseries",
+                "x": 0,
+                "y": 2
+            },
+            {
+                "i": "card-speed-timeseries",
+                "x": 0,
+                "y": 4
+            },
+            {
+                "i": "card-torque-timeseries",
+                "x": 0,
+                "y": 6
+            },
+            {
+                "i": "card-starts-timeseries",
+                "x": 0,
+                "y": 8
+            },
+            {
+                "i": "card-acceleration-timeseries",
+                "x": 0,
+                "y": 10
+            },
+            {
+                "i": "card-entity_id-value",
+                "x": 0,
+                "y": 12
+            },
+            {
+                "i": "card-pressure-timeseries",
+                "x": 0,
+                "y": 14
+            },
+            {
+                "i": "card-temperature-timeseries",
+                "x": 0,
+                "y": 16
+            }
+        ],
+        "xs": [
+            {
+                "i": "card-vibration-timeseries",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "i": "card-load-timeseries",
+                "x": 0,
+                "y": 2
+            },
+            {
+                "i": "card-speed-timeseries",
+                "x": 0,
+                "y": 4
+            },
+            {
+                "i": "card-torque-timeseries",
+                "x": 0,
+                "y": 6
+            },
+            {
+                "i": "card-starts-timeseries",
+                "x": 0,
+                "y": 8
+            },
+            {
+                "i": "card-acceleration-timeseries",
+                "x": 0,
+                "y": 10
+            },
+            {
+                "i": "card-entity_id-value",
+                "x": 0,
+                "y": 12
+            },
+            {
+                "i": "card-pressure-timeseries",
+                "x": 0,
+                "y": 13
+            },
+            {
+                "i": "card-temperature-timeseries",
+                "x": 0,
+                "y": 15
+            }
+        ]
+    }
+}
