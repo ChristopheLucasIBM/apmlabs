@@ -421,9 +421,9 @@ Because <em>Anomaly Scores</em> are something very dynamic, it is key that we lo
 Let's focus just on <code>temperature_anomaly_generalized</code>, <code>temperature_anomaly_kmeans</code> and <code>temperature_anomaly_fft</code> in this exercise.
 Although your scores might be slightly different, what you should note is that, whereas the (max values of the) anomaly scores remained consistently
 low most of the time that our IoT Simulation was running (i.e. <code>"temperature": random(35,40)</code>),
-we can observe a clear spike for each of those scores corresponding to the November 20, 04:50 PM (i.e. <code>"temperature": random(46,48)</code>).
+we can observe a clear spike for each of those scores corresponding to the November 20, 04:50 PM surge (i.e. <code>"temperature": random(46,48)</code>).
 The picture and table below give an idea of those scores.
-This should give us a good-enough idea of where to start ... </p>
+This should give us a good-enough idea of where to start with our alerts ... </p>
 <table>
 <thead>
 <tr>
@@ -521,8 +521,32 @@ https://api-us.connectedproducts.internetofthings.ibmcloud.com/api/master/v1/CTP
 ]
 </code></pre>
 <p><img alt="Monitor20" src="../../img/monitor/Monitor-20.png" /> &nbsp;</p>
+<p>Let's now check that our changes worked ! There are several ways we can do that:</p>
+<ol>
+<li>Go to the <em>Monitor</em> left menu. Search for and open <code>CL_Asset</code>. Watch the updated values for <code>descriptiveLocation</code> and <code>model</code> fields for the 3 Assets.</li>
+<li>Go to the <code>Data</code> tab, in the <code>Dimensions</code> section, select <code>Model</code> then <code>descriptiveLocation</code> and watch !
+<img alt="Monitor21" src="../../img/monitor/Monitor-21.png" /> &nbsp;</li>
+</ol>
 <hr />
 <h3 id="10-update-your-summary-dashboard">10. Update your Summary Dashboard</h3>
+<p><em>[Note that in a future release of Monitor, Dashboard creation and editing will be do-able directly via Monitor's user interface.
+However, this section will remain relevant to understand how dashboards are structured]</em></p>
+<p>In this final 'Monitor Lab' section, we are going to bring everything together and show how you can customise
+dashboards to - literally - visualise whatever you want from all the data we generated so far.</p>
+<p>Remember <a href="#2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</a> section ? 
+We then created the simplest, out-of-the-box, Hourly dashboard.
+In this section, we will (a) understand the .json file structure and <em>card</em> elements that make up dashboards,
+(b) create a simple custom dashboard, (c) create an advanced dashboard using most of the <em>cards</em> possibilities.
+Note that this will imply .json file editing and we therefore recommend a cool json editing tool that should at least 
+provide the ability to collapse .json file levels for better visibility and easier navigation - we used the free
+version of <a href="https://www.barebones.com/products/bbedit/download.html">BBEdit</a> here.</p>
+<ol>
+<li>Open the <em>CL_Asset Hourly</em> dashboard. Top-right, click <code>Edit Dashboard</code>, then <code>Export</code>. 
+Your browser will automatically download a .json file called <em>Hourly-dashboard.json</em>. For your reference, you can also find
+that original .json here: <a href="../../files/Hourly-dashboard-ORIGINAL.json">Hourly-dashboard-ORIGINAL.json</a>.</li>
+</ol>
+<p><img alt="Monitor22" src="../../img/monitor/Monitor-22.png" /> &nbsp;</p>
+<p>https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/dashboard/dashboard_json_ref.html </p>
               
             </div>
           </div>
