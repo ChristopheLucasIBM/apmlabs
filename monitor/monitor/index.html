@@ -494,8 +494,8 @@ where you will first need to:
 (b) replace <code>{{tenantID}}</code> with your <em>Monitor Tenant ID</em> which you can find in the top right corner of your Monitor webpage underneath your IBMiD.
 An example of that string (which is the one used for these Labs) can be found below. </li>
 <li>On the <em>Headers</em> tab, in the <em>Key</em> and <em>Value</em> columns, enter the following 3 rows 
-(a) <em>Key</em> = <code>Content-Type</code> and <em>Value</em> = <code>application/json</code>, (b) <em>Key</em> = <code>x-api-key</code> and <em>Value</em> = <code>Write the *API Key* you fetched in step 1.</code>,
-(c) <em>Key</em> = <code>x-api-token</code> and <em>Value</em> = <code>Write the *Authentication Token* you fetched in step 1.</code>,</li>
+(a) <em>Key</em> = <code>Content-Type</code> and <em>Value</em> = <code>application/json</code>, (b) <em>Key</em> = <code>x-api-key</code> and <em>Value</em> = <code>Write the 'API Key' you fetched in step 1.</code>,
+(c) <em>Key</em> = <code>x-api-token</code> and <em>Value</em> = <code>Write the 'Authentication Token' you fetched in step 1.</code>,</li>
 <li>On the <em>Body</em> tab, click the <code>raw</code> tick-box and enter the below .json snippet. Click <code>Send</code>. 
 You should get a returned result as per picture below.</li>
 <li>Repeat steps 2. to 6. for (a) <code>CL_Asset_2</code> where you enter for the <em>descriptiveLocation</em>: <code>"value" : "Melbourne"</code> and for <em>model</em>: <code>Model_B</code>,
@@ -527,11 +527,34 @@ https://api-us.connectedproducts.internetofthings.ibmcloud.com/api/master/v1/CTP
 <li>Go to the <code>Data</code> tab, in the <code>Dimensions</code> section, select <code>Model</code> then <code>descriptiveLocation</code> and watch !
 <img alt="Monitor21" src="../../img/monitor/Monitor-21.png" /> &nbsp;</li>
 </ol>
+<p>We are now going to use another API call to upload a picture to the system.
+This picture will be used in the final <a href="#10-update-your-summary-dashboard">10. Update your Summary Dashboard</a>.</p>
+<ol>
+<li>Create a new <code>POST Image to CL_Asset EntityType</code> Request in Postman, make it of POST type.</li>
+<li>Next to the <em>POST</em> field, enter this value:
+<code>https://api-{{geo_country_code}}.connectedproducts.internetofthings.ibmcloud.com/api/images/v1/{{tenantID}}/entityType/CL_Asset</code>
+after having replaced <code>{{geo_country_code}}</code> and <code>{{tenantID}}</code> with your values (see below for the sample string used for this lab).</li>
+<li>On the <em>Authorization</em> tab, leave the default <em>Type</em> to <em>inherit auth from parent</em>.
+On the <em>Headers</em> tab, in the <em>Key</em> and <em>Value</em> columns, enter the 2 rows <code>x-api-key</code> and <code>x-api-token</code> 
+as you did previously (no need for the <code>Content-Type</code> / <code>application/json</code> row here).</li>
+<li>Download this image <a href="../../files/CL_Asset.jpg">Image</a> and save it as <code>CL_Asset.jpg</code> on your computer.</li>
+<li>On the <em>Body</em> tab, select the <code>form-data</code> tick-box. Enter enter the following 3 rows: 
+(a) <em>Key</em> = <code>imagefilecontent</code>, select <code>File</code> on the right of the box. That will populate the <code>Value</code>
+column with a <code>Choose Files</code> button. Click it and select your <code>CL_Asset.jpg</code>.
+(b) <em>Key</em> = <code>imageid</code> and <em>Value</em> = <code>CL_Asset</code>
+(c) <em>Key</em> = <code>tags</code> and <em>Value</em> = <code>CL_Asset</code>.
+Click <code>Send</code>, observe the returned <code>"message": "success"</code> body.</li>
+</ol>
+<pre><code>Example of the string to be used in Postman 'POST Image to CL_Asset EntityType' call:
+
+https://api-us.connectedproducts.internetofthings.ibmcloud.com/api/images/v1/CTP-PMI-Democore-2/entityType/CL_Asset
+</code></pre>
+<p><img alt="Monitor21b" src="../../img/monitor/Monitor-21b.png" /> &nbsp;</p>
 <hr />
 <h3 id="10-update-your-summary-dashboard">10. Update your Summary Dashboard</h3>
 <p><em>[Note that in a future release of Monitor, Dashboard creation and editing will be do-able directly via Monitor's user interface.
 However, this section will remain relevant to understand how dashboards are structured]</em></p>
-<p>In this final 'Monitor Lab' section, we are going to bring everything together and show how you can customise
+<p>In this final 'Monitor Lab' section, we are going to bring everything together and show how you can create and customise
 dashboards to - literally - visualise whatever you want from all the data we generated so far.</p>
 <p>Remember <a href="#2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</a> section ? 
 We then created the simplest, out-of-the-box, Hourly dashboard.
@@ -541,12 +564,36 @@ Note that this will imply .json file editing and we therefore recommend a cool j
 provide the ability to collapse .json file levels for better visibility and easier navigation - we used the free
 version of <a href="https://www.barebones.com/products/bbedit/download.html">BBEdit</a> here.</p>
 <ol>
-<li>Open the <em>CL_Asset Hourly</em> dashboard. Top-right, click <code>Edit Dashboard</code>, then <code>Export</code>. 
+<li>
+<p>Open the <em>CL_Asset Hourly</em> dashboard. Top-right, click <code>Edit Dashboard</code>, then <code>Export</code>. 
 Your browser will automatically download a .json file called <em>Hourly-dashboard.json</em>. For your reference, you can also find
-that original .json here: <a href="../../files/Hourly-dashboard-ORIGINAL.json">Hourly-dashboard-ORIGINAL.json</a>.</li>
+that original .json here: <a href="../../files/Hourly-dashboard-ORIGINAL.json">Hourly-dashboard-ORIGINAL.json</a>.
+<img alt="Monitor22" src="../../img/monitor/Monitor-22.png" /> &nbsp;</p>
+</li>
+<li>
+<p>Let's have a look at the main elements of that .json file. In your .json editor, <code>Collapse Folds below Level 2</code>. 
+This shows the main elements of the file, i.e. : <code>timeGrain</code>, <code>cards</code>, <code>title</code>, <code>layouts</code>.</p>
+</li>
+<li>In your .json editor, <code>Collapse Folds below Level 3</code>. Note that you have 9 <code>cards</code> - one for each of the cards you see on the dashboard.
+Note that each card has several sub-sections, including <code>id</code> (must be unique), 
+<code>dataSource</code> (this where you define what <em>data item(s)</em> you want to display on the card),
+<code>content</code> (this is where you define the labels of your card),
+<code>size</code>, <code>title</code> and <code>type</code> (note all cards are presently of type <em>TIMESERIES</em>, we'll soon see other types).</li>
+<li>In your .json editor, <code>Collapse Folds below Level 4</code>. Let's focus on the most complex card, i.e. 
+the one displaying <code>temperature</code> IoT readings for which we earlier defined <code>mean</code>, <code>max</code>, <code>min</code>, <code>std</code>, <code>count</code>, <code>sum</code> data items.
+In the <code>dataSource</code> section, note (a) the <code>attributes</code> sub-sections (1 for each above data item),
+(b) the <code>range</code> section where we define the default <code>count</code> and <code>interval</code> of the card,
+(c) the <code>timeGrain</code>. 
+In the <code>content</code> section, we define the labels of the card - note that each <em>attribute</em> defined in the <em>attributes</em> section 
+MUST have a corresponding <em>dataSourceID</em> in the <em>content-series</em>.
+<img alt="Monitor23" src="../../img/monitor/Monitor-23.png" /> &nbsp;</li>
 </ol>
-<p><img alt="Monitor22" src="../../img/monitor/Monitor-22.png" /> &nbsp;</p>
-<p>https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/dashboard/dashboard_json_ref.html </p>
+<p>OK, that should be enough to understand at a high-level how dashboards work.
+Go through this <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/dashboard/dashboard_json_ref.html">Dashboard JSON Reference</a>
+documentation to see all that can be done with dashboards, i.e. what types of cards you can add 
+(value card, table card, image card etc), how to change the layout etc.
+This <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/dashboard/tutorials/instance_dashboard_tutorial_adv.html">Tutorial</a> 
+will show you how to customize a dashboard.</p>
               
             </div>
           </div>
