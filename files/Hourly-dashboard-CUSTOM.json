@@ -2,14 +2,35 @@
     "timeGrain": "hour",
     "cards": [
         {
-            "id": "car-image",
+            "id": "card-image",
             "dataSource": {
                 "attributes": [
                     {
                         "attribute": "temperature",
                         "id": "temperature",
                         "aggregator": "mean"
-                    }
+                    },
+                    {
+                        "attribute": "temperature_anomaly_fft",
+                        "id": "temperature_anomaly_fft",
+                        "aggregator": "mean"
+                    },
+                    {
+                        "attribute": "pressure",
+                        "id": "pressure",
+                        "aggregator": "mean"
+                    },
+                    {
+                        "attribute": "vibration",
+                        "id": "vibration",
+                        "aggregator": "min"
+                    },
+                    {
+                        "attribute": "starts_Hourly_count",
+                        "id": "starts_Hourly_count",
+                        "aggregator": "max"
+                    }                                                             
+                                                                                 
                 ],
                 "range": {
                     "type": "periodToDate",
@@ -34,11 +55,51 @@
                         },
                         "locations": [
                             {
-                                "x": "28",
+                                "x": "87",
                                 "y": "62"
                             }
                         ]
-                    }
+                    },
+                    {
+                        "icon": "icon--info--solid",
+                        "color": "red",
+                        "content": {
+                            "title": "GOLDEN NUGGET found !",
+                            "description": "Christophe Lucas was here in December 2020 and dropped this golden nugget. If you also made it here today, it means you completed the APM labs - CONGRATULATIONS ! With this dashboard, you are rewarded with a special view of the data items you've been working on so hard lately. Hope you enjoyed this lab, cheers, Christophe",
+                            "attributes": [
+                                {
+                                    "dataSourceId": "temperature_anomaly_fft",
+                                    "label": "TEMP Fast Fourier Transform Anomaly",
+                                    "unit": "Points"
+                                },
+                                {
+                                    "dataSourceId": "pressure",
+                                    "label": "PRESSURE (MEAN)",
+                                    "unit": "Points"
+                                },
+                                {
+                                    "dataSourceId": "starts_Hourly_count",
+                                    "label": "Your Asset restarted ",
+                                    "unit": "times"
+                                }
+                            ]
+                        },
+                        "locations": [
+                            {
+                                "x": "28",
+                                "y": "63"
+                            }
+                        ],
+                        "thresholds": [
+                            {
+                                "dataSourceId": "water_usage",
+                                "value": 0,
+                                "comparison": ">=",
+                                "color": "red",
+                                "icon": "icon--info--solid"
+                            }
+                        ]
+                    }                    
                 ]
             },            
             "size": "LARGE",
