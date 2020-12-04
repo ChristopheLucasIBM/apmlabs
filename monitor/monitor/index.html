@@ -574,7 +574,7 @@ that original .json here: <a href="../../files/Hourly-dashboard-ORIGINAL.json">H
 <p>Let's have a look at the main elements of that .json file. In your .json editor, <code>Collapse Folds below Level 2</code>. 
 This shows the main elements of the file, i.e. : <code>timeGrain</code>, <code>cards</code>, <code>title</code>, <code>layouts</code>.</p>
 </li>
-<li>In your .json editor, <code>Collapse Folds below Level 3</code>. Note that you have 9 <code>cards</code> - one for each of the cards you see on the dashboard.
+<li>In your .json editor, <code>Collapse Folds below Level 3</code>. Note that you have 9 <code>cards</code> - one for each of the graphs you see on the dashboard.
 Note that each card has several sub-sections, including <code>id</code> (must be unique), 
 <code>dataSource</code> (this where you define what <em>data item(s)</em> you want to display on the card),
 <code>content</code> (this is where you define the labels of your card),
@@ -591,9 +591,26 @@ MUST have a corresponding <em>dataSourceID</em> in the <em>content-series</em>.
 <p>OK, that should be enough to understand at a high-level how dashboards work.
 Go through this <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/dashboard/dashboard_json_ref.html">Dashboard JSON Reference</a>
 documentation to see all that can be done with dashboards, i.e. what types of cards you can add 
-(value card, table card, image card etc), how to change the layout etc.
+(value card, table card, bar chart card, image card etc), how to change the layout etc.
 This <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/dashboard/tutorials/instance_dashboard_tutorial_adv.html">Tutorial</a> 
-will show you how to customize a dashboard.</p>
+(which will show you how to customize a dashboard) is just 1 out of 7 tutorials which will help you master dashboarding.</p>
+<p>As a final exercise, let's now create an advanced dashboard which will incorporate most of the card types 
+(i.e. <code>BAR</code>, <code>TIMESERIES</code>, <code>ALERT</code>, <code>IMAGE</code>, <code>VALUE</code>) and dashboarding capabilities.</p>
+<ol>
+<li>Open the <em>CL_Asset</em> <code>Hourly</code> dashboard. Top-right, click <code>Edit dashboard</code>.</li>
+<li>Save this <a href="../../files/Hourly-dashboard-CUSTOM.json">Hourly-dashboard-CUSTOM.json</a> file to your computer.</li>
+<li>Click <code>Import</code>, select the just-saved <em>Hourly-dashboard-CUSTOM.json</em>. You now have a preview of what your new
+dashboard will look like. 
+The json provided will work if you followed the naming conventions, as all <em>dataSourceId</em> (like e.g.
+Note that if you have any error while saving, check the error message which 
+is usually helpful by providing you with a specific problematic <em>data item</em> name which you should then search within the .json.</li>
+</ol>
+<p>Likely causes of error you might encounter will be related to how you named all the the labs data items -
+<img alt="Monitor24" src="../../img/monitor/Monitor-24.png" /> &nbsp; </p>
+<p>The first picture below shows what your final dashboard should look like, 
+and the second one shows which .json snippet corresponds to each of the card - have a look, and try new stuff !</p>
+<p>Hope you enjoyed this lab - Congratulations, you made it !</p>
+<p>P.S.: Have you found the GOLDEN NUGGET yet ?</p>
               
             </div>
           </div>

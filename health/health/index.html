@@ -63,6 +63,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#3-associate-meter-group-to-your-assets-create-meter-readings">3. Associate Meter Group to your Assets &amp; create Meter Readings</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-associate-meter-group-to-your-assets-create-meter-readings_1">3. Associate Meter Group to your Assets &amp; create Meter Readings</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../predict/predict/">PREDICT</a>
@@ -110,7 +112,8 @@
 <p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
 <h2 id="0-objectives">0. Objectives</h2>
 <p>In this Module you will:
-* bh</p>
+* bhcdcdcdcd</p>
+<hr />
 <h2 id="1-create-3-assets-1-query-in-maximo">1. Create 3 Assets &amp; 1 Query in Maximo</h2>
 <ol>
 <li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. Click the + button to create an Asset, 
@@ -121,6 +124,7 @@ This should return the list of your 3 just-created <em>CL_Assets</em>.
 Click the <code>Save Query</code> button, enter <code>CL_Assets</code> in in both the <em>Query Name</em> &amp; <em>Description</em>. Tick the <code>Public</code> box.
 <img alt="Health1" src="../../img/health/Health-1.png" />&nbsp; </li>
 </ol>
+<hr />
 <h2 id="2-create-a-meter-group">2. Create a Meter Group</h2>
 <p>In this section, we will create a maximo <em>Meter Group</em> containing 8 <em>Meters</em> that we will later associate to the 
 <em>IoT readings</em> that we defined in the first section of the MONITOR lab.</p>
@@ -137,11 +141,23 @@ some of the Meters appearing in step 4. might not exist in Maximo yet. In which 
 (a) Go to the <code>Meters</code> menu via <code>Find Navigation Item</code>, (b) click <code>Create</code> new Meter, enter e.g. <code>ACCELERAT</code> (the maximum name length is 9 ),
 select <code>GAUGE</code> as <code>Meter Type</code>, then <code>Save</code>. That newly created <em>Meter</em> can now be added to the <em>Meter Group</em> in step 4.
 <img alt="Health2" src="../../img/health/Health-2.png" />&nbsp; </p>
+<hr />
 <h2 id="3-associate-meter-group-to-your-assets-create-meter-readings">3. Associate Meter Group to your Assets &amp; create Meter Readings</h2>
 <ol>
 <li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. In the Asset field, enter <code>CL_Asset*</code>, click enter.
 This will return the list of you 3 <em>CL_Assets</em>, click <code>CL_Asset_1</code>.</li>
+<li>Go to On <em>CL_Asset_1</em>, go to its <em>Meters</em> tab, click <code>Meter Group - Select Value</code>. In the <em>Select Value</em> window,
+<code>CL_Asset*</code>, click enter, select the <code>CL_Asset</code> Meter Group. Click <code>Save</code>.
+This has loaded all the <em>Meters</em> we defined in the <em>Meter Group</em>.</li>
+<li>In left <em>Find Navigation item</em> box, enter <code>Enter M</code>, click <code>Enter Meter Readings</code>. For each Meter, enter values within the ranges 
+that we defined for the IoT readings at the beginning of the Monitor lab in <a href="../../monitor/monitor/#2-create-iot-simulation">2. Create IoT Simulation</a>.
+For example: <code>TEMP-C</code> = <code>37</code>, <code>VIBRATIONH</code> = <code>4</code>, <code>PRESSURE</code> = <code>22</code>, <code>SPEED</code> = <code>17</code>, 
+<code>ACCELERAT</code> = <code>9</code>, <code>LOAD</code> = <code>100</code>, <code>TORQUE</code> = <code>12</code>, <code>STARTS</code> = <code>1</code>. Click <code>OK</code>.</li>
+<li>Repeat steps 1. to 3. for <code>CL_Asset_2</code> and <code>CL_Asset_3</code> with whatever Meter values you want.
+<img alt="Health3" src="../../img/health/Health-3.png" />&nbsp;</li>
 </ol>
+<hr />
+<h2 id="3-associate-meter-group-to-your-assets-create-meter-readings_1">3. Associate Meter Group to your Assets &amp; create Meter Readings</h2>
               
             </div>
           </div>

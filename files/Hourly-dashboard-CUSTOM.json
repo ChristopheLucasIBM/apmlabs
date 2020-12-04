@@ -255,8 +255,8 @@
                         ]
                     },
                     {
-                        "dataSourceId": "starts_Hourly_mean",
-                        "label": "Blockages",
+                        "dataSourceId": "load_Hourly_mean",
+                        "label": "Load",
                         "color": [
                             "green"
                         ]
@@ -275,8 +275,8 @@
                     },
                     {
                         "aggregator": "mean",
-                        "attribute": "starts_Hourly_count",
-                        "id": "starts_Hourly_count"
+                        "attribute": "load_Hourly_mean",
+                        "id": "load_Hourly_mean"
                     }
                 ],
                 "range": {
@@ -300,7 +300,92 @@
                 "timeGrain": "input",
                 "type": "alert"
             }
-        }        
+        },
+        {
+            "id": "card-anomaly-scores-line-timeseries",
+            "dataSource": {
+                "attributes": [
+                    {
+                        "aggregator": "max",
+                        "attribute": "temperature",
+                        "id": "temperature"
+                    },
+                    {
+                        "aggregator": "mean",
+                        "attribute": "temperature_anomaly_fft",
+                        "id": "temperature_anomaly_fft"
+                    },
+                    {
+                        "aggregator": "mean",
+                        "attribute": "temperature_anomaly_generalized",
+                        "id": "temperature_anomaly_generalized"
+                    },
+                    {
+                        "aggregator": "mean",
+                        "attribute": "temperature_anomaly_kmeans",
+                        "id": "temperature_anomaly_kmeans"
+                    },
+                    {
+                        "aggregator": "mean",
+                        "attribute": "temperature_anomaly_saliency",
+                        "id": "temperature_anomaly_saliency"
+                    },
+                    {
+                        "aggregator": "mean",
+                        "attribute": "temperature_anomaly_spectral",
+                        "id": "temperature_anomaly_spectral"
+                    }
+                ],
+                "range": {
+                    "count": -120,
+                    "interval": "hour"
+                },
+                "additionalData": {
+                    "type": "alert",
+                    "dataFilter": {
+                        "name": [
+                            "temperature_alert_spectral",
+                            "temperature_alert_generalized",
+                            "temperature_alert_kmeans"
+                        ]
+                    }
+                },
+                "timeGrain": "hour"
+            },
+            "content": {
+                "series": [
+                    {
+                        "dataSourceId": "temperature",
+                        "label": "Temperature (Max)"
+                    },
+                    {
+                        "dataSourceId": "temperature_anomaly_fft",
+                        "label": "Anomaly (FFT)"
+                    },
+                    {
+                        "dataSourceId": "temperature_anomaly_generalized",
+                        "label": "Anomaly (Generalized)"
+                    },
+                    {
+                        "dataSourceId": "temperature_anomaly_kmeans",
+                        "label": "Anomaly (KMeans)"
+                    },
+                    {
+                        "dataSourceId": "temperature_anomaly_saliency",
+                        "label": "Anomaly (Saliency)"
+                    },
+                    {
+                        "dataSourceId": "temperature_anomaly_spectral",
+                        "label": "Anomaly (Spectral)"
+                    }
+                ],
+                "xLabel": "Time",
+                "yLabel": "Score"
+            },
+            "size": "LARGEWIDE",
+            "title": "Temperature Anomalies & Alerts",
+            "type": "TIMESERIES"
+        }                               
     ],
     "title": "Hourly",
     "layouts": {
