@@ -253,10 +253,28 @@ On all <code>CL_Asset_1</code> rows, click the <code>Device Type</code> column, 
 </ol>
 <hr />
 <h2 id="3-create-scoring-method-and-dashboard">3. Create Scoring Method and Dashboard</h2>
-<hr />
 <h3 id="1-create-required-scoring-factors">1. Create required Scoring Factors</h3>
+<p>Note that in most Maximo installations, some of the <em>Meters</em> like e.g. <em>TEMP-C</em> might already be defined as <em>Scoring Factors</em>.
+However, the <em>Meters</em> that we defined in <a href="####2-create-a-meter-group">2. Create a Meter Group</a> do not exist as <em>Scoring Factors</em>
+yet and we will define them in this. We will just use the sample of the <code>Torque</code> Meter here.</p>
+<ol>
+<li>Go to the left <code>Scoring</code> menu. Click on the <code>Scoring Factors</code>. Check which ones of the 8 Meters we defined already exist here.
+For each one which does not exist, click <code>Create Factor</code>.</li>
+<li>In the page that opens, click <code>Select Meter</code>, and search for e.g. <code>Torque</code> and click.</li>
+<li>Enter <code>Torque</code> in <em>Factor Name</em>. In the <code>High Threshold</code>, enter <code>15</code>, and in the <code>Low Threshold</code>, enter <code>10</code>.
+These threshold values are close to the range of the readings we defined for the associated IoT Reading in our initial IoT Simulation.
+Tick the <code>Use Condition Monitoring ?</code> box and click <code>Save</code>. Repeat this steps for all other <em>Meters</em> which do exist as a <em>Scoring Factor</em> yet.
+<img alt="Health8" src="../../img/health/Health-8.png" />&nbsp;</li>
+</ol>
 <hr />
 <h3 id="2-create-scoring-method">2. Create Scoring Method</h3>
+<ol>
+<li>Click the <code>Scoring Methods</code> tab and click the top-right <code>Create Method</code>. Tick the <code>Multiple Drivers</code> box and <code>Next</code>.</li>
+<li>In the <em>Method ID</em> and <em>Description</em> fields, write <code>CL_Asset</code>, click <code>Next</code>.</li>
+<li>In the <em>Select Query</em> field, search and click our earlier created <code>CL_Asset</code> query - you will see our 3 <em>CL_Assets</em> appear, click <code>Next</code>.</li>
+<li>In the <code>Best Score</code> enter <code>100</code>, in the <code>Worst Score</code> enter <code>0</code>. Click <code>Save</code>.
+<img alt="Health8" src="../../img/health/Health-8.png" />&nbsp;</li>
+</ol>
               
             </div>
           </div>
