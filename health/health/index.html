@@ -57,19 +57,35 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#0-objectives">0. Objectives</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-create-3-assets-1-query-in-maximo">1. Create 3 Assets &amp; 1 Query in Maximo</a>
+    <li class="toctree-l2"><a class="reference internal" href="#1-setup-assets-meters-condition-monitoring-in-maximo">1. Setup Assets, Meters &amp; Condition Monitoring in Maximo</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-create-3-assets-1-query-in-maximo">1. Create 3 Assets &amp; 1 Query in Maximo</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-create-a-meter-group">2. Create a Meter Group</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-create-a-meter-group">2. Create a Meter Group</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-associate-meter-group-to-your-assets-create-meter-readings">3. Associate Meter Group to your Assets &amp; create Meter Readings</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-associate-meter-group-to-assets-create-meter-readings">3. Associate Meter Group to Assets &amp; create Meter Readings</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3-associate-meter-group-to-your-assets-create-meter-readings_1">3. Associate Meter Group to your Assets &amp; create Meter Readings</a>
+    <li class="toctree-l3"><a class="reference internal" href="#4-create-a-condition-monitoring-rule">4. Create a Condition Monitoring Rule</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-map-iot-devices-readings-to-maximo-assets-meters">2. Map IoT Devices &amp; Readings to Maximo Assets &amp; Meters</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-register-iot-device-types-map-data-schema">1. Register IoT Device Types &amp; Map Data Schema</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-associate-iot-devices-to-maximo-assets">2. Associate IoT Devices to Maximo Assets</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#7-create-required-scoring-factors">7. Create required Scoring Factors</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#8-create-scoring-method">8. Create Scoring Method</a>
     </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../../predict/predict/">PREDICT</a>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../predict/predict/">(About & Feedback)</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../../about/about/">(About & Feedback)</a>
                     </li>
                 </ul>
       </div>
@@ -114,7 +130,9 @@
 <p>In this Module you will:
 * bhcdcdcdcd</p>
 <hr />
-<h2 id="1-create-3-assets-1-query-in-maximo">1. Create 3 Assets &amp; 1 Query in Maximo</h2>
+<h2 id="1-setup-assets-meters-condition-monitoring-in-maximo">1. Setup Assets, Meters &amp; Condition Monitoring in Maximo</h2>
+<hr />
+<h3 id="1-create-3-assets-1-query-in-maximo">1. Create 3 Assets &amp; 1 Query in Maximo</h3>
 <ol>
 <li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. Click the + button to create an Asset, 
 enter <code>CL_Asset_1</code> in both the <em>Asset ID</em> &amp; <em>Description</em> fields. Click <code>Save</code>. 
@@ -125,7 +143,7 @@ Click the <code>Save Query</code> button, enter <code>CL_Assets</code> in in bot
 <img alt="Health1" src="../../img/health/Health-1.png" />&nbsp; </li>
 </ol>
 <hr />
-<h2 id="2-create-a-meter-group">2. Create a Meter Group</h2>
+<h3 id="2-create-a-meter-group">2. Create a Meter Group</h3>
 <p>In this section, we will create a maximo <em>Meter Group</em> containing 8 <em>Meters</em> that we will later associate to the 
 <em>IoT readings</em> that we defined in the first section of the MONITOR lab.</p>
 <ol>
@@ -142,7 +160,7 @@ some of the Meters appearing in step 4. might not exist in Maximo yet. In which 
 select <code>GAUGE</code> as <code>Meter Type</code>, then <code>Save</code>. That newly created <em>Meter</em> can now be added to the <em>Meter Group</em> in step 4.
 <img alt="Health2" src="../../img/health/Health-2.png" />&nbsp; </p>
 <hr />
-<h2 id="3-associate-meter-group-to-your-assets-create-meter-readings">3. Associate Meter Group to your Assets &amp; create Meter Readings</h2>
+<h3 id="3-associate-meter-group-to-assets-create-meter-readings">3. Associate Meter Group to Assets &amp; create Meter Readings</h3>
 <ol>
 <li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. In the Asset field, enter <code>CL_Asset*</code>, click enter.
 This will return the list of you 3 <em>CL_Assets</em>, click <code>CL_Asset_1</code>.</li>
@@ -157,7 +175,47 @@ For example: <code>TEMP-C</code> = <code>37</code>, <code>VIBRATIONH</code> = <c
 <img alt="Health3" src="../../img/health/Health-3.png" />&nbsp;</li>
 </ol>
 <hr />
-<h2 id="3-associate-meter-group-to-your-assets-create-meter-readings_1">3. Associate Meter Group to your Assets &amp; create Meter Readings</h2>
+<h3 id="4-create-a-condition-monitoring-rule">4. Create a Condition Monitoring Rule</h3>
+<p>We are now going to create a <em>Condition Monitoring</em> rule.
+The ultimate idea here is that we will create upper and lower limits for the Meter Readings which, when passed, can automatically trigger work orders.
+Because we will later tie our original IoT readings from the <em>Watson IoT Platform</em> to Meter readings in <em>Maximo</em>,
+this will literally allow us to move towards a real <em>Condition Based</em> maintenance regime !</p>
+<p>In this exercise, we will create such a rule for just 1 Asset (<em>CL_Asset_1</em>) and 1 reading (<em>TEMP-C</em>), but you can
+of course create more rules for other Assets and/or other readings.</p>
+<ol>
+<li>
+<p>In Maximo, click the <code>Go To Applications - Condition Monitoring</code> Menu. 
+Click the <code>+</code> to create a new Condition Monitoring. Name it <code>CL_Asset</code>. 
+In the <em>Point</em> and <em>Description</em> fields, enter <code>CL_Asset*</code>.
+Next to the <em>Asset</em> field, click <code>Select Value</code>, search for <code>CL_Asset_1</code>, select it.
+Next to the <em>Meter</em> field, click <code>Select Value</code>, search for <code>TEMP-C</code>, select it.</p>
+</li>
+<li>
+<p>In the <em>Upper Warning Limit</em> field, enter <code>40</code>, in the <em>Lower Warning Limit</em> field, enter <code>35</code>.
+In the <em>Upper Action Limit</em> field, enter <code>45</code>, in the <em>Lower Action Limit</em> field, enter <code>30</code>.
+Note that those values roughly correspond to the <code>"temperature": random(35,40),</code> values we originally defined in our IoT Simulation.
+With those limits defined, Condition Monitoring should pick-up those anomalous <code>"temperature": random(46,48),</code> we generated !</p>
+</li>
+<li>
+<p>In the <em>Upper Limit Job Pan</em> field, click <code>Select Value</code> and select whatever existing <em>Job Plan</em> you want (we're just
+doing a demo here !). Do the same for <em>Upper Limit Job Pan</em>. Click <code>Save</code>. Your final screen should look like picture below.
+<img alt="Health4" src="../../img/health/Health-4.png" />&nbsp;</p>
+</li>
+</ol>
+<hr />
+<h2 id="2-map-iot-devices-readings-to-maximo-assets-meters">2. Map IoT Devices &amp; Readings to Maximo Assets &amp; Meters</h2>
+<hr />
+<h3 id="1-register-iot-device-types-map-data-schema">1. Register IoT Device Types &amp; Map Data Schema</h3>
+<ol>
+<li>In In left <em>Find Navigation item</em> box, enter <code>Rel</code>, click <code>Reliability Engineer</code>.
+This will open the <em>Reliability Engineer</em> work centre. In the left menu, click <code>Integration</code>.</li>
+</ol>
+<hr />
+<h3 id="2-associate-iot-devices-to-maximo-assets">2. Associate IoT Devices to Maximo Assets</h3>
+<hr />
+<h2 id="7-create-required-scoring-factors">7. Create required Scoring Factors</h2>
+<hr />
+<h2 id="8-create-scoring-method">8. Create Scoring Method</h2>
               
             </div>
           </div>
