@@ -71,7 +71,9 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#2-map-iot-devices-readings-to-maximo-assets-meters">2. Map IoT Devices &amp; Readings to Maximo Assets &amp; Meters</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-register-iot-device-types-map-data-schema">1. Register IoT Device Types &amp; Map Data Schema</a>
+    <li class="toctree-l3"><a class="reference internal" href="#1-register-iot-device-type-as-an-asset">1. Register IoT Device Type as an Asset</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#map-iot-readings-to-maximo-meters">Map IoT Readings to Maximo Meters</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#2-associate-iot-devices-to-maximo-assets">2. Associate IoT Devices to Maximo Assets</a>
     </li>
@@ -205,10 +207,27 @@ doing a demo here !). Do the same for <em>Upper Limit Job Pan</em>. Click <code>
 <hr />
 <h2 id="2-map-iot-devices-readings-to-maximo-assets-meters">2. Map IoT Devices &amp; Readings to Maximo Assets &amp; Meters</h2>
 <hr />
-<h3 id="1-register-iot-device-types-map-data-schema">1. Register IoT Device Types &amp; Map Data Schema</h3>
+<h3 id="1-register-iot-device-type-as-an-asset">1. Register IoT Device Type as an Asset</h3>
+<p><em>[As earlier mentioned, this step assumes that the integrations between the Watson IoT Platform and Maximo Reliability
+Engineer work centre exists. If not, here are the <a href="https://www.ibm.com/support/knowledgecenter/SSYKK9_7.6.1/com.ibm.ah.doc/integrate/t_ctr_int_iot.html">Integration Setup Instructions</a> ]</em>.</p>
 <ol>
-<li>In In left <em>Find Navigation item</em> box, enter <code>Rel</code>, click <code>Reliability Engineer</code>.
-This will open the <em>Reliability Engineer</em> work centre. In the left menu, click <code>Integration</code>.</li>
+<li>
+<p>In the left <em>Find Navigation item</em> box, enter <code>Rel</code>, click <code>Reliability Engineer</code>.
+This will open the <em>Reliability Engineer</em> work centre. In the left menu, click <code>Integration</code>.
+Click <code>Next</code> 3 times through the <code>Select IoT Service</code> then <code>Configure IoT Service</code> then <code>Configure End Points</code> then <code>Register Device Types</code>.</p>
+</li>
+<li>
+<p>On the <em>Register Device Types</em> page, select <code>CL_Asset</code>, click <code>Register as Asset</code> then <code>Next</code>.
+This will take you to the <code>Map Data Schema</code> page.
+<img alt="Health5" src="../../img/health/Health-5.png" />&nbsp;</p>
+</li>
+</ol>
+<hr />
+<h3 id="map-iot-readings-to-maximo-meters">Map IoT Readings to Maximo Meters</h3>
+<ol>
+<li>On the first <em>Schema</em> tab of the <em>Map Data Schema</em> page, tuck ... and click <code>Get now</code>. Note that if this doesn't return
+anything (because e.g. your IoT Simulation is not running at this time), you can manually enter this value in the field:
+<code>{"acceleration":10,"load":99,"temperature":39,"torque":14,"pressure":22,"vibration":2,"starts":86,"speed":19}</code>. </li>
 </ol>
 <hr />
 <h3 id="2-associate-iot-devices-to-maximo-assets">2. Associate IoT Devices to Maximo Assets</h3>
