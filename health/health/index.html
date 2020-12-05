@@ -73,15 +73,19 @@
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#1-register-iot-device-type-as-an-asset">1. Register IoT Device Type as an Asset</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#map-iot-readings-to-maximo-meters">Map IoT Readings to Maximo Meters</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-map-iot-readings-to-maximo-meters">2. Map IoT Readings to Maximo Meters</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-associate-iot-devices-to-maximo-assets">2. Associate IoT Devices to Maximo Assets</a>
+    <li class="toctree-l3"><a class="reference internal" href="#3-associate-iot-devices-to-maximo-assets">3. Associate IoT Devices to Maximo Assets</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#7-create-required-scoring-factors">7. Create required Scoring Factors</a>
+    <li class="toctree-l2"><a class="reference internal" href="#3-create-scoring-method-and-dashboard">3. Create Scoring Method and Dashboard</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-create-required-scoring-factors">1. Create required Scoring Factors</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#8-create-scoring-method">8. Create Scoring Method</a>
+    <li class="toctree-l3"><a class="reference internal" href="#2-create-scoring-method">2. Create Scoring Method</a>
+    </li>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -127,7 +131,6 @@
             <div class="section">
               
                 <h1 id="health-lab">HEALTH Lab</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
 <h2 id="0-objectives">0. Objectives</h2>
 <p>In this Module you will:
 * bhcdcdcdcd</p>
@@ -223,18 +226,37 @@ This will take you to the <code>Map Data Schema</code> page.
 </li>
 </ol>
 <hr />
-<h3 id="map-iot-readings-to-maximo-meters">Map IoT Readings to Maximo Meters</h3>
+<h3 id="2-map-iot-readings-to-maximo-meters">2. Map IoT Readings to Maximo Meters</h3>
 <ol>
-<li>On the first <em>Schema</em> tab of the <em>Map Data Schema</em> page, tuck ... and click <code>Get now</code>. Note that if this doesn't return
-anything (because e.g. your IoT Simulation is not running at this time), you can manually enter this value in the field:
-<code>{"acceleration":10,"load":99,"temperature":39,"torque":14,"pressure":22,"vibration":2,"starts":86,"speed":19}</code>. </li>
+<li>On the first <em>Schema</em> tab of the <em>Map Data Schema</em> page, tick <code>Detect from a connected device</code>
+and <code>From first available</code> then click <code>Get now</code>. If your IoT Simulation is still running, 
+this will return a .json string similar to this: <code>{"acceleration":10,"load":99,"temperature":39,"torque":14,"pressure":22,"vibration":2,"starts":86,"speed":19}</code>.
+If that string is not returned (because e.g. your IoT Simulation is not running at this time), 
+you can manually enter this value in the field. Click <code>Save</code> then switch to the <code>Device Type Mappings tab</code>.</li>
+<li>Click <code>Add Mapping</code>, then <code>Select Meter</code>. Find and select <code>TEMP-C</code> - that's the Maximo <em>Meter</em>.
+On the <code>IoT Device Type Property</code>, select <code>temperature</code> - that's the <em>IoT Reading</em>.
+In the <code>Data Collection</code> section, tick <code>Aggregated</code> with <code>Value</code> = <code>AVG</code> and <code>Time Period</code> = <code>Hour</code>.
+This means that once every hour, a <em>Meter</em> reading will be created with a value equal to the <em>average</em> of your IoT Readings for the past hour.</li>
+<li>Repeat steps 2. to 3. for the other readings, i.e. <code>VIBRATIONH</code>, <code>PRESSURE</code>, <code>SPEED</code>, 
+<code>ACCELERAT</code>, <code>LOAD</code>, <code>TORQUE</code>. For <code>STARTS</code>, select <code>COUNT</code> instead of <code>AVG</code>. 
+<img alt="Health6" src="../../img/health/Health-6.png" />&nbsp;</li>
 </ol>
 <hr />
-<h3 id="2-associate-iot-devices-to-maximo-assets">2. Associate IoT Devices to Maximo Assets</h3>
+<h3 id="3-associate-iot-devices-to-maximo-assets">3. Associate IoT Devices to Maximo Assets</h3>
+<ol>
+<li>Move to the <code>Associate Devices</code> top-menu. On the first <code>Associate Assets</code> tab, filter on <code>CL_Asset</code>.
+This will display 1 row for each <em>Asset</em> and <em>Meter</em>, i.e. 8 rows per Asset.
+On all <code>CL_Asset_1</code> rows, click the <code>Device Type</code> column, select <code>CL_Asset</code>, then on the next column, select <code>CL_Asset_1</code>.</li>
+<li>Repeat step 1. for all other rows corresponding to <code>CL_Asset_2</code> and <code>CL_Asset_3</code>. Do not forget to click <code>Save</code>.</li>
+<li>Once that is done, those 24 rows will have moved to the <code>Manage Assets</code>.
+<img alt="Health7" src="../../img/health/Health-7.png" />&nbsp;</li>
+</ol>
 <hr />
-<h2 id="7-create-required-scoring-factors">7. Create required Scoring Factors</h2>
+<h2 id="3-create-scoring-method-and-dashboard">3. Create Scoring Method and Dashboard</h2>
 <hr />
-<h2 id="8-create-scoring-method">8. Create Scoring Method</h2>
+<h3 id="1-create-required-scoring-factors">1. Create required Scoring Factors</h3>
+<hr />
+<h3 id="2-create-scoring-method">2. Create Scoring Method</h3>
               
             </div>
           </div>
