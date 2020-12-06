@@ -53,10 +53,10 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">MONITOR</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#0-objectives">0. Objectives</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#1-generate-iot-data">1. Generate IoT data</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#0-objectives">0. Objectives</a>
-    </li>
     <li class="toctree-l3"><a class="reference internal" href="#1-create-device-type-3-devices">1. Create Device Type &amp; 3 Devices</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#2-create-iot-simulation">2. Create IoT Simulation</a>
@@ -144,8 +144,7 @@
 <hr />
 <p><em>Before you begin:</em>  </p>
 <hr />
-<h2 id="1-generate-iot-data">1. Generate IoT data</h2>
-<h3 id="0-objectives">0. Objectives</h3>
+<h2 id="0-objectives">0. Objectives</h2>
 <p>In this Module you will:</p>
 <ul>
 <li>Create a Device Type and 3 Devices of that Type</li>
@@ -153,6 +152,7 @@
 <li>Create Physical &amp; Logical interfaces to send the IoT data to the Monitor data lake</li>
 <li>Visualise the IoT data in a Watson IoT Platform simple dashboard</li>
 </ul>
+<h2 id="1-generate-iot-data">1. Generate IoT data</h2>
 <h3 id="1-create-device-type-3-devices">1. Create Device Type &amp; 3 Devices</h3>
 <p>Let's first create a <em>Device Type</em>. </p>
 <ol>
@@ -408,7 +408,7 @@ This picture gives a very quick overview of the main types of anomalies that <em
 <p>As you just learned, <em>Monitor</em>'s Anomaly Detection functions can easily spot anomalies and be viewed on a graph where the X-axis is <em>Time</em>
 and the Y-axis is an <em>Anomaly Score</em>.
 Each function returns a different score <em>range</em> (that is inherent to each model essence). 
-What we are typically interested in our 'Anomaly Detection' work is to spot peaks in those scores, which correspond to the most likely anomalous readings we want to be alerted of.
+What we are typically interested in our 'Anomaly Detection' work is to spot peaks in those scores, which correspond to the most likely anomalous readings we want to be alerted of. <br />
 This is where Monitor's <em>Alerts</em> come into play.
 <em>Alerts</em> can be automatically generated in <em>Monitor</em> when one (any) of the <em>Metrics</em> of Monitor go above or below a certain value.
 In this exercise, we will generate <em>Alerts</em> based on the <code>temperature_anomaly_*</code> metrics we created in the previous section.</p>
@@ -600,15 +600,19 @@ This <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/das
 <li>Save this <a href="../../files/Hourly-dashboard-CUSTOM.json">Hourly-dashboard-CUSTOM.json</a> file to your computer.</li>
 <li>Click <code>Import</code>, select the just-saved <em>Hourly-dashboard-CUSTOM.json</em>. You now have a preview of what your new
 dashboard will look like. 
-The json provided will work if you followed the naming conventions, as all <em>dataSourceId</em> (like e.g.
+The json provided will work if you followed the naming conventions throughout the labs, as all <em>dataSourceId</em> (like e.g. <code>temperature</code>, 
+<code>pressure_Hourly_mean</code> etc) are pretty straightforward and did not involve your initials.
 Note that if you have any error while saving, check the error message which 
-is usually helpful by providing you with a specific problematic <em>data item</em> name which you should then search within the .json.</li>
+is usually helpful by providing you with a specific problematic <em>data item</em> name which you should then search within the .json.
+Likely causes of errors you might encounter will be related to how you named data items - e.g. if you named
+the picture <em>XY_Asset.jpg</em> instead of <em>CL_Asset.jpg</em>.
+<img alt="Monitor24" src="../../img/monitor/Monitor-24.png" /> &nbsp; </li>
 </ol>
-<p>Likely causes of error you might encounter will be related to how you named all the the labs data items -
-<img alt="Monitor24" src="../../img/monitor/Monitor-24.png" /> &nbsp; </p>
-<p>The first picture below shows what your final dashboard should look like, 
-and the second one shows which .json snippet corresponds to each of the card - have a look, and try new stuff !</p>
-<p>Hope you enjoyed this lab - Congratulations, you made it !</p>
+<p>This picture shows what your final dashboard should look like.
+<img alt="Monitor25" src="../../img/monitor/Monitor-25.png" /> &nbsp; </p>
+<p>And this final picture shows which .json snippet corresponds to each of the card - have a detailed look at everything, and 
+you are strongly encouraged to try new stuff ...</p>
+<p>Congratulations, you made it - hope you enjoyed this lab !</p>
 <p>P.S.: Have you found the GOLDEN NUGGET yet ?</p>
               
             </div>

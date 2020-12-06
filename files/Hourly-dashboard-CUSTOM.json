@@ -46,6 +46,8 @@
                         "color": "#00F",
                         "icon": "icon--info--outline",
                         "content": {
+                            "title": "Simple Hotspot",
+                            "description": "Just a TEMP value in the middle of the ocean. Keep looking out for the golden nugget, it's really close ...",                        
                             "attributes": [
                                 {
                                     "dataSourceId": "temperature",
@@ -55,8 +57,8 @@
                         },
                         "locations": [
                             {
-                                "x": "87",
-                                "y": "62"
+                                "x": "9",
+                                "y": "12"
                             }
                         ]
                     },
@@ -300,9 +302,80 @@
             "type": "TIMESERIES"
         },
         {
+            "id": "card-temperature-barchart",
+            "size": "MEDIUM",
+            "title": "Max Temperature by City",
+            "type": "BAR",
+            "content": {
+                "layout": "HORIZONTAL",
+                "type": "SIMPLE",
+                "series": [
+                    {
+                        "dataSourceId": "temperature"
+                    }
+                ],
+                "categoryDataSourceId": "descriptiveLocation",
+                "xLabel": "City",
+                "yLabel": "Max"
+            },
+            "dataSource": {
+                "groupBy": [
+                    "descriptiveLocation"
+                ],
+                "attributes": [
+                    {
+                        "aggregator": "max",
+                        "attribute": "temperature",
+                        "id": "temperature"
+                    }
+                ],
+                "range": {
+                    "type": "rolling",
+                    "count": -7,
+                    "interval": "day"
+                }
+            }
+        },        
+        {
+            "id": "card-starts-barchart",
+            "size": "MEDIUM",
+            "title": "Starts Hourly Count Max",
+            "type": "BAR",
+            "content": {
+                "layout": "VERTICAL",
+                "type": "SIMPLE",
+                "series": [
+                    {
+                        "dataSourceId": "starts_Hourly_count"
+                    }
+                ],
+                "categoryDataSourceId": "descriptiveLocation",
+                "xLabel": "City",
+                "yLabel": "Max"
+            },
+            "dataSource": {
+                "groupBy": [
+                    "descriptiveLocation"
+                ],
+                "attributes": [
+                    {
+                        "aggregator": "max",
+                        "attribute": "starts_Hourly_count",
+                        "id": "starts_Hourly_count"
+                    }
+                ],
+                "range": {
+                    "type": "rolling",
+                    "count": -7,
+                    "interval": "day"
+                }
+            }
+        },        
+        
+        {
             "id": "card-starts-stacked-time-barchart",
             "size": "MEDIUMWIDE",
-            "title": "Starts over time",
+            "title": "Starts & Load over time",
             "type": "BAR",
             "content": {
                 "layout": "VERTICAL",
@@ -347,7 +420,59 @@
                 },
                 "timeGrain": "hour"
             }
-        },                     
+        },
+        {
+            "id": "group-barchart",
+            "size": "MEDIUMWIDE",
+            "title": "Mean Vibration & Pressure by Model",
+            "type": "BAR",
+            "content": {
+                "layout": "VERTICAL",
+                "type": "GROUPED",
+                "series": [
+                    {
+                        "dataSourceId": "vibration",
+                        "label": "Vibration",
+                        "color": [
+                            "red"
+                        ]
+                    },
+                    {
+                        "dataSourceId": "pressure",
+                        "label": "Pressure",
+                        "color": [
+                            "green"
+                        ]
+                    }
+                ],
+                "categoryDataSourceId": "model",
+                "xLabel": "Model",
+                "yLabel": "Average no."
+            },
+            "dataSource": {
+                "groupBy": [
+                    "model"
+                ],
+                "attributes": [
+                    {
+                        "aggregator": "mean",
+                        "attribute": "vibration",
+                        "id": "vibration"
+                    },
+                    {
+                        "aggregator": "mean",
+                        "attribute": "pressure",
+                        "id": "pressure"
+                    }
+                ],
+                "range": {
+                    "type": "rolling",
+                    "count": -6,
+                    "interval": "day"
+                },
+                "timeGrain": "hour"
+            }
+        },                             
         {
             "id": "card-temperature_alert_fft",
             "size": "LARGEWIDE",
