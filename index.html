@@ -54,14 +54,16 @@
     <li class="toctree-l2"><a class="reference internal" href="#what-is-asset-performance-management-apm">What is Asset Performance Management (APM) ?</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#apm-labs-overview">APM Labs Overview</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#intended-audience">Intended Audience</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#intended-audience-goals">Intended Audience &amp; Goals</a>
+    <li class="toctree-l3"><a class="reference internal" href="#lab-principles">Lab principles</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#these-labs">These labs</a>
+    <li class="toctree-l3"><a class="reference internal" href="#overview-of-what-you-will-do">Overview of what you will do</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#principles-limitations-tips">Principles, Limitations &amp; Tips</a>
+    <li class="toctree-l3"><a class="reference internal" href="#prerequisites-tools-versions">Prerequisites &amp; Tools Versions</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#prerequisites-tools-versions">Prerequisites &amp; Tools Versions</a>
+        </ul>
     </li>
     </ul>
                     </li>
@@ -70,6 +72,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="health/health/">HEALTH</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="predict/predict/">PREDICT</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="assist/assist/">ASSIST</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="about/about/">(About & Feedback)</a>
                     </li>
@@ -146,36 +150,77 @@ Those APM elements are:</p>
 <p><strong>MANAGE</strong>: bh</p>
 </li>
 <li>
-<p><strong>MONITOR</strong>: mk</p>
+<p><strong><a href="https://www.ibm.com/products/ibm-maximo-asset-performance-management/asset-monitor">MONITOR</a></strong>: provides enterprise scale monitoring and AI-based anomaly detection. Main capabilities include:
+easily configurable dashboard (no-code widgets), 
+workflow to drive ownership of issues,
+auto-generation of work orders,
+rapid data integration and
+hierarchical data filtering and management.  </p>
 </li>
 <li>
-<p><strong>HEALTH</strong>: cdc</p>
+<p><strong><a href="https://www.ibm.com/products/ibm-maximo-asset-performance-management/asset-health">HEALTH</a></strong>: 
+provides a consolidated global view of assets, health visibility and analysis, condition based actions and
+replacement planning. Main capabilities include: dashboard with cards, map view, spreadsheet view, 
+fleet-wide view and health drilldown, 
+health based notifications and actions,
+flexible health scoring by asset type or groups, 
+sensor data integration, 
+job plan efficacy analysis,
+refurbish / replace prioritisation</p>
 </li>
 <li>
-<p><strong>PREDICT</strong>: cdc</p>
+<p><strong><a href="https://www.ibm.com/products/ibm-maximo-asset-performance-management/predictive-maintenance-insights">PREDICT</a></strong>:
+provides the ability to build asset failure models, to 
+predict failures, to 
+determine factors that contribute to failure and to
+score models with current sensor data. Main capabilities include:
+templates provided to build 5 common predictive models, 
+view pre-built visualizations for the 5 common models,
+model scores contribute to the overall asset health in the HEALTH component.</p>
 </li>
 </ul>
-<p>The APM tools/elements that we will extensively use in the first version (December 2020) of these labs are MANAGE, MONITOR and HEALTH,
-which main capabilities are summarized below:</p>
-<p>This picture summarises the main elements of APM and how they are integrated.
-<img alt="Monitor0" src="img/monitor/Monitor-0.png" /> &nbsp;  </p>
+<p>The APM tools/elements that we will extensively use in the first version (December 2020) 
+of these labs are <strong>MANAGE</strong>, <strong>MONITOR</strong> and <strong>HEALTH</strong>.
+In future versions will add <strong>PREDICT</strong> and <strong>ASSIST</strong>.</p>
+<p><img alt="Monitor0" src="img/monitor/Monitor-0.png" /> &nbsp;  </p>
 <hr />
 <h2 id="apm-labs-overview">APM Labs Overview</h2>
-<p>Audience:
-IBM demo'er
-Business Partner
-Everyone</p>
 <hr />
-<h2 id="intended-audience-goals">Intended Audience &amp; Goals</h2>
-<h2 id="these-labs">These labs</h2>
-<h2 id="principles-limitations-tips">Principles, Limitations &amp; Tips</h2>
-<p>Principles:</p>
+<h3 id="intended-audience">Intended Audience</h3>
+<p>These labs were conceived with the following audience in mind:</p>
 <ul>
 <li>
-<p><strong>Fully data driven</strong> bh</p>
+<p><strong>IBMers &amp; Business Partners</strong>: the main goal is to help you understand how the APM elements work and integrate.
+If you go step-by-step through all the lab material, you will become able to create an end-to-end custom APM demo for any scenario or customer.</p>
 </li>
 <li>
-<p><strong>Any Asset ! Customn</strong></p>
+<p><strong>Anybody interested in APM</strong>: by just scrolling through the pages of these labs, you should get a clear view
+of the rich functionalities of the APM solution and how they could possibly help you on your 'Asset Optimisation' journey.</p>
+</li>
+</ul>
+<hr />
+<h3 id="lab-principles">Lab principles</h3>
+<p>These labs were created with the following principles in mind:</p>
+<ul>
+<li>
+<p><strong>Fully data driven</strong>: you will start by creating simulated IoT data.
+That data will be our guide and 'golden thread' throughout all the labs: in <em>Monitor</em> you will create anomalies on it, then create
+advanced visualisations of it, then, in <em>Health</em> it is that same data that you will use to 
+visualise the condition of your asset.</p>
+</li>
+<li>
+<p><strong>Fully Customisable</strong>: the IoT data we will use throughout these labs consists of 8 generic readings like
+<code>temperature</code>, <code>pressure</code>, <code>vibration</code>, <code>speed</code> etc. For each of those, we simulate random readings in a certain range 
+e.g. <code>"temperature": random(35,40)</code>.
+If you wish to simulate fewer, more or other types of readings, or change the range of value for any reading feel free.
+Similarly, we decided to use a very generic naming for the <em>Asset</em>: <code>YourInitials_Asset</code>, 
+i.e.<code>CL_Asset</code> for all the labs (<em>CL</em> standing for <em>Christophe Lucas</em>). 
+You can of course decide to name your Asset differently, e.g. <code>Pump</code>, <code>Engine</code>, <code>Conveyor Belt</code>, <code>Compressor</code>, <code>Turbine</code> - you name it ! <br />
+If you change the readings or asset name, the labs principles will remain exactly the same - 
+you will just need to pay extra attention to your naming conventions and consistently substitue the names used in this material to yours ...</p>
+</li>
+<li>
+<p><strong>Monkey See, Monkey Do</strong>: for every lab (sub)section, </p>
 </li>
 <li>
 <p><strong>Right-click images</strong></p>
@@ -188,7 +233,9 @@ Everyone</p>
 <p>TIPS:
 might not be exact same screen</p>
 <hr />
-<h2 id="prerequisites-tools-versions">Prerequisites &amp; Tools Versions</h2>
+<h3 id="overview-of-what-you-will-do">Overview of what you will do</h3>
+<hr />
+<h3 id="prerequisites-tools-versions">Prerequisites &amp; Tools Versions</h3>
               
             </div>
           </div>
