@@ -877,10 +877,10 @@ What we are typically interested in our 'Anomaly Detection' work is to spot peak
 This is where Monitor's <em>Alerts</em> come into play.
 <em>Alerts</em> can be automatically generated in <em>Monitor</em> when one (any) of the <em>Metrics</em> of Monitor go above or below a certain value.
 In this exercise, we will generate <em>Alerts</em> based on the <code>temperature_anomaly_*</code> metrics we created in the previous section.</p>
-<p>The whole idea is that we want to be alerted when a serious anomaly occurs, but we do NOT want to be over alerted and drown in a 
-so-called 'alert storm'.
+<p>The whole idea is that we want to be alerted when a serious anomaly occurs, 
+but we do NOT want to be over alerted and drown into a so-called 'alert storm'.
 Also, what we want to avoid is generating way too many alerts into the system which would just 'pollute the database' with thousands of irrelevant and meaningless rows !
-Because <em>Anomaly Scores</em> are something very dynamic, it is key that we look at those score values first before creating alerts based on them.</p>
+Because <em>Anomaly Scores</em> are something dynamic, it is key that we look at those score values first before creating alerts based on them.</p>
 <p>So first of all, let's have a detailed look at your anomaly scores.
 Let's focus just on <code>temperature_anomaly_generalized</code>, <code>temperature_anomaly_kmeans</code> and <code>temperature_anomaly_fft</code> in this exercise.
 Although your scores might be slightly different, what you should note is that, whereas the (max values of the) anomaly scores remained consistently
@@ -924,15 +924,15 @@ and <code>temperature_alert_fft</code> (<em>upper_threshold</em> = <code>450</co
 <li>Let's now have a look at the number of <em>Alerts</em> we generated. First notice that the newly created Alerts appear as
 another data item in the <em>Alert (calculated)</em> section. Click on e.g. <code>temperature_alert_kmeans</code>. NOTE: it might be that you see
 nothing on the graph and on the table under it, e.g. that might be the case if your IoT reading anomalies were generated yesterday. 
-That is normal, because the default time range of those graphs are 1 day.
+That is normal, because the default time range of those graphs is 1 day.
 On the table below the graph, click <code>Last Week</code> (vs. the default). See that for <code>temperature_alert_kmeans</code>, 4 Alerts were generated.</li>
 <li>Under the column <em>Entity ID</em>, click <code>CL_Asset_1</code>, this will open a new window. Click <code>Events</code>, click <code>Last Week</code> (vs. the default),
-and you will see that we generated about 9 Alerts for <em>CL_Asset_1</em> - that is a reasonable number, we are not going to overflow the system !
+and you will see that we generated about 10 Alerts for <em>CL_Asset_1</em> - that is a reasonable number, we are not going to overflow the system !
 <img alt="Monitor18" src="../../img/monitor/Monitor-18.png" /> &nbsp;</li>
 </ol>
 <hr />
 <h3 id="9-use-monitor-api-to-change-dimensions-and-load-a-picture">9. Use Monitor API to change Dimensions and load a Picture</h3>
-<p>In the next section, we'll explain how to update and customize the standard Dashboard that we created in .
+<p>In the next section, we'll explain how to update and customize the initial Dashboard that we created earlier.
 Prior to that, we are going to use Monitor's API to:
 (a)change the <code>CL_Asset_1_2_3</code> <em>Metadata</em> values in the Watson IoT
 platform so we can later see how Dashboards can be 'filtered' on those metadata values (called <em>Dimensions</em> on Monitor side),
@@ -941,8 +941,8 @@ We will be using <a href="https://www.postman.com/downloads/">Postman</a> to do 
 <ol>
 <li>
 <p>In <em>Monitor</em>'s left menu, click the <em>Services</em> menu. On the <em>Watson IoT Platform Service</em> row, click <code>View Details</code> then <code>View More</code>.
-Next to the  <em>API Key</em>, click <code>Copy to clipboard</code> - paste this is to your favourite notepad for future retrieval.
-Next to the  <em>API Token</em>, click <code>Copy to clipboard</code> - paste this is to your favourite notepad for future retrieval. 
+Next to the  <em>API Key</em>, click <code>Copy to clipboard</code> - paste this into your favourite notepad for future retrieval.
+Next to the  <em>API Token</em>, click <code>Copy to clipboard</code> - paste this into your favourite notepad for future retrieval. 
 <img alt="Monitor19" src="../../img/monitor/Monitor-19.png" /> &nbsp;</p>
 </li>
 <li>
@@ -1023,7 +1023,7 @@ dashboards to - literally - visualise whatever you want from all the data we gen
 <p>Remember <a href="#2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</a> section ? 
 We then created the simplest, out-of-the-box, Hourly dashboard.
 In this section, we will (a) understand the .json file structure and <em>card</em> elements that make up dashboards,
-(b) create a simple custom dashboard, (c) create an advanced dashboard using most of the <em>cards</em> possibilities.
+(b) create an advanced dashboard using most of the <em>cards</em> possibilities.
 Note that this will imply .json file editing and we therefore recommend a cool json editing tool that should at least 
 provide the ability to collapse .json file levels for better visibility and easier navigation - we used the free
 version of <a href="https://www.barebones.com/products/bbedit/download.html">BBEdit</a> here.</p>
@@ -1075,8 +1075,6 @@ the picture <em>XY_Asset.jpg</em> instead of <em>CL_Asset.jpg</em>.
 </ol>
 <p>This picture shows what your final dashboard should look like.
 <img alt="Monitor25" src="../../img/monitor/Monitor-25.png" /> &nbsp; </p>
-<p>And this final picture shows which .json snippet corresponds to each of the card - have a detailed look at everything, and 
-you are strongly encouraged to try new stuff ...</p>
 <p>Congratulations, you made it - hope you enjoyed this lab !</p>
 <p>P.S.: Have you found the GOLDEN NUGGET yet ?</p>
                 

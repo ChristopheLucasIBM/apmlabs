@@ -562,7 +562,9 @@
                 <p><em>[Page last updated on 08 December 2020]</em></p>
 <h1 id="health-lab">HEALTH Lab</h1>
 <hr />
-<p><em>Before you begin:</em>  Log into your Monitor instance using your IBM ID and the environment details provided by the instructor. </p>
+<p><em>Before you begin:</em>  You must have completed the <a href="../../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>
+section of the MONITOR lab before starting this HEALTH lab.
+Note that it is not required to have completed the second <a href="../../monitor/monitor/##2-monitor-iot-data">2. Monitor IoT data</a> section to go on here.</p>
 <hr />
 <h2 id="0-objectives">0. Objectives</h2>
 <p>In this Module you will:</p>
@@ -578,12 +580,12 @@ and Maximo Assets <em>Meter</em> readings.</li>
 <hr />
 <h3 id="1-create-3-assets-1-query-in-maximo">1. Create 3 Assets &amp; 1 Query in Maximo</h3>
 <ol>
-<li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. Click the + button to create an Asset, 
+<li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. Click the <code>+</code> button to create an Asset, 
 enter <code>CL_Asset_1</code> in both the <em>Asset ID</em> &amp; <em>Description</em> fields. Click <code>Save</code>. 
 Repeat this step for <code>CL_Asset_2</code> and <code>CL_Asset_3</code>.</li>
 <li>Click the <code>List View</code> menu. In the Asset field, enter <code>CL_Asset*</code>, click enter. 
 This should return the list of your 3 just-created <em>CL_Assets</em>. 
-Click the <code>Save Query</code> button, enter <code>CL_Assets</code> in in both the <em>Query Name</em> &amp; <em>Description</em>. Tick the <code>Public</code> box.
+Click the <code>Save Query</code> button, enter <code>CL_Assets</code> in both the <em>Query Name</em> &amp; <em>Description</em>. Tick the <code>Public</code> box.
 <img alt="Health1" src="../../img/health/Health-1.png" />&nbsp; </li>
 </ol>
 <hr />
@@ -694,7 +696,7 @@ On all <code>CL_Asset_1</code> rows, click the <code>Device Type</code> column, 
 <h2 id="3-create-scoring-method-and-dashboard">3. Create Scoring Method and Dashboard</h2>
 <h3 id="1-create-required-scoring-factors">1. Create required Scoring Factors</h3>
 <p>Note that in most Maximo installations, some of the <em>Meters</em> like e.g. <em>TEMP-C</em> might already be defined as <em>Scoring Factors</em>.
-However, the <em>Meters</em> that we defined in <a href="####2-create-a-meter-group">2. Create a Meter Group</a> do not exist as <em>Scoring Factors</em>
+However, the <em>Meters</em> that we defined in <a href="###2-create-a-meter-group">2. Create a Meter Group</a> do not exist as <em>Scoring Factors</em>
 yet and we will define them in this. We will just use the sample of the <code>Torque</code> Meter here.</p>
 <ol>
 <li>Go to the left <code>Scoring</code> menu. Click on the <code>Scoring Factors</code>. Check which ones of the 8 Meters we defined already exist here.
@@ -751,7 +753,7 @@ using your mouse and 'drawing rectangles'. Notice several things here:
 (a) the red and orange lines correspond to the <em>Condition Monitoring</em> rules we defined <a href="#4-create-a-condition-monitoring-rule">here</a>,
 (b) the green dots correspond to the Maximo Meter Readings we entered <a href="#3-associate-meter-group-to-assets-create-meter-readings">here</a>,
 (c) the black lines actually are ... those same IoT readings we generated in the <a href="../../monitor/monitor/#2-create-iot-simulation">first steps</a> of our MONITOR lab !</li>
-<li>As a final step, just remind yourself of how really integrated all this was: the <em>anomalous Io readings</em>
+<li>As a final step, just remind yourself of how really integrated all this was: the <em>anomalous IoT readings</em>
 that we created and saw in the Watson IoT Platform on 30 November 2020, around 04:50 PM, were 
 spotted by the <em>Anomaly Detection</em> functions that we created in Monitor, and are visible, finally, in this last HEALTH screen. </li>
 </ol>
