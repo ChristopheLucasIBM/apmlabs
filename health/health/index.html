@@ -140,8 +140,14 @@
 <p><em>Before you begin:</em>  Log into your Monitor instance using your IBM ID and the environment details provided by the instructor. </p>
 <hr />
 <h2 id="0-objectives">0. Objectives</h2>
-<p>In this Module you will:
-* bhcdcdcdcd</p>
+<p>In this Module you will:</p>
+<ul>
+<li>set up the required <em>Assets</em> and <em>Meter Groups</em> in Maximo,</li>
+<li>register your IoT <em>Devices</em> and associate them to Maximo <em>Assets</em> and set up the required mappings between your <em>IoT readings</em> 
+and Maximo Assets <em>Meter</em> readings.</li>
+<li>create a sample <em>Scoring Method</em> to view the health of your Assets</li>
+<li>create a final dashboard and retrospect on the data that we have been using since the start.</li>
+</ul>
 <hr />
 <h2 id="1-setup-assets-meters-condition-monitoring-in-maximo">1. Setup Assets, Meters &amp; Condition Monitoring in Maximo</h2>
 <hr />
@@ -317,9 +323,16 @@ in the previous exercise. NOTE: if no score appears here on the first time, clic
 rule <a href="#4-create-a-condition-monitoring-rule">earlier</a> is coloured. Click <code>TEMP-C</code> factor and <code>Vie Selected Meter</code>.</li>
 <li>In the <code>Meter History</code>, click <code>Week</code> or <code>Day</code> and wait a couple seconds. You can zoom in and out by 
 using your mouse and 'drawing rectangles'. Notice several things here:
-(a) the red and orange lines correspond to the <em>Condition Monitoring</em> rules we defined <a href="#4-create-a-condition-monitoring-rule">here</a>.</li>
+(a) the red and orange lines correspond to the <em>Condition Monitoring</em> rules we defined <a href="#4-create-a-condition-monitoring-rule">here</a>,
+(b) the green dots correspond to the Maximo Meter Readings we entered <a href="#3-associate-meter-group-to-assets-create-meter-readings">here</a>,
+(c) the black lines actually are ... those same IoT readings we generated in the <a href="../../monitor/monitor/#2-create-iot-simulation">first steps</a> of our MONITOR lab !</li>
+<li>As a final step, just remind yourself of how really integrated all this was: the <em>anomalous Io readings</em>
+that we created and saw in the Watson IoT Platform on 30 November 2020, around 04:50 PM, were 
+spotted by the <em>Anomaly Detection</em> functions that we created in Monitor, and are visible, finally, in this last HEALTH screen. </li>
 </ol>
 <p><img alt="Health11" src="../../img/health/Health-11.png" />&nbsp;</p>
+<p>Congratulations, again - you are now DONE with the HEALTH lab !</p>
+<p>Do not hesitate to re-do all by creating your own assets, readings, anomalies, dashboards etc and by bringing your twists in ...</p>
               
             </div>
           </div>

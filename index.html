@@ -133,7 +133,7 @@ make better decisions around their assets' lifecycle.  </p>
 <li>operations people to have an enterprise wide view of their fleets of assets and detect anomalies in near real-time, </li>
 <li>reliability and maintenance professionals to track the real condition and health of assets and predict their failures,</li>
 <li>technicians to more quickly maintain or fix assets by providing them AI-based problem diagnosis and
-expert guidance</li>
+expert guidance,</li>
 </ul>
 <p>... a sound use of an end-to-end APM solution can help: </p>
 <ul>
@@ -145,7 +145,7 @@ a shift of maintenance strategies from a calendar or preventive base to a real
 condition, then predictive and prescriptive base.</li>
 </ul>
 <p>IBM Maximo APM is a fully integrated set of tools which is part of a yet broader 
-ecosystem of IBM solutions which will help you accelerate 'Asset Optimisation' efforts. 
+ecosystem of IBM solutions which will help accelerate your 'Asset Optimisation' efforts. 
 Those APM elements are:</p>
 <ul>
 <li>
@@ -183,7 +183,12 @@ view pre-built visualizations for the 5 common models,
 model scores contribute to the overall asset health in the HEALTH component.</p>
 </li>
 <li>
-<p><strong><a href="https://www.ibm.com/products/maximo-equipment-maintenance-assistant">ASSIST</a></strong>:</p>
+<p><strong><a href="https://www.ibm.com/products/maximo-equipment-maintenance-assistant">ASSIST</a></strong>:
+is an AI Assistance for field technicians which provides <em>Diagnosis</em> and <em>Query</em> capabilities.
+Using historical remote assistance data like past work orders, unstructured data like OEM manuals,
+as well as structured data like IoT readings, it allows technicians to: (a)<br />
+ask questions in plain english to quickly find information relevant to the problem at hand,
+(b) diagnose asset issues based on observed factors, and get recommendations for the fix.</p>
 </li>
 </ul>
 <p>The APM tools/elements that we will extensively use in the first version (December 2020) 
@@ -212,7 +217,7 @@ of the rich functionalities of the APM solution and how they could possibly help
 <li>
 <p><strong>Fully data driven</strong>: you will start by creating simulated IoT data.
 That data will be our guide and 'golden thread' throughout all the labs: in <em>Monitor</em> you will create anomalies on it, then create
-advanced visualisations of it, then, in <em>Health</em> it is that same data that you will use to 
+advanced visualisations of it, then, in <em>Health</em>, it is that same data that you will use to 
 visualise the condition of your asset.</p>
 </li>
 <li>
@@ -221,22 +226,22 @@ visualise the condition of your asset.</p>
 e.g. <code>"temperature": random(35,40)</code>.
 If you wish to simulate fewer, more or other types of readings, or change the range of values for any reading - feel free !
 Similarly, we decided to use a very generic naming for the <em>Asset</em>: <code>YourInitials_Asset</code>, 
-i.e.<code>CL_Asset</code> for all the labs (<em>CL</em> standing for <em>Christophe Lucas</em>). 
+i.e. <code>CL_Asset</code> for all the labs (<em>CL</em> standing for <em>Christophe Lucas</em>). 
 You can of course decide to name your Asset differently, e.g. <code>Pump</code>, <code>Engine</code>, <code>Conveyor Belt</code>, <code>Compressor</code>, <code>Turbine</code> - you name it ! <br />
 If you change the readings or asset name, the labs principles will remain exactly the same - 
-you will just need to pay extra attention to your naming conventions and consistently substitue the names used in this material to yours ...</p>
+you will just need to pay extra attention to your naming conventions and consistently substitue 
+the names used in this material with yours ...</p>
 </li>
 <li>
 <p><strong>Monkey See, Monkey Do</strong>: we have really tried to make these labs as easy and failure-proof as possible. 
-For each (sub)section, a clearly numbered list of <em>steps</em> is provided, and below each list, a picture
-summarises shows the screens corresponding to each step - with a <code>1., 2., 3. ...</code> red number making the mapping.
+For each (sub)section, a clearly numbered list of <em>steps</em> is provided, and below each list, a picture shows the screens corresponding to each step - with a <code>1., 2., 3. ...</code> red number making the mapping.
 Also, if the images are too small, do not hesitate to right-click and <code>open in new tab</code> on them - 
 they will appear bigger.</p>
 </li>
 </ul>
 <hr />
 <h3 id="overview-of-what-you-will-do">Overview of what you will do</h3>
-<p>Each section will detail <code>0. Objectives</code>, but high-level, this is what you are going to do:</p>
+<p>Each section will detail its objectives, but high-level, this is what you are going to do:</p>
 <p>In the MONITOR lab, you will:</p>
 <ol>
 <li>Create 3 IoT Devices of type <code>CL_Asset</code> and generate simulated IoT data for them. 
@@ -248,6 +253,13 @@ Focusing on the <code>temperature</code> reading, we will generate <em>anomalous
 <img alt="Monitor0b" src="img/monitor/Monitor-0b.png" /> &nbsp;</li>
 </ol>
 <p>In the HEALTH lab, you will:</p>
+<ol>
+<li>set up the required mappings and associations between the <code>CL_Asset</code> <em>IoT Devices</em> and corresponding Maximo <em>Assets</em>.</li>
+<li>set up the required mappings and associations between <em>IoT readings</em> and Maximo <em>Meter Readings</em>.</li>
+<li>create a sample <em>Scoring Method</em> to calculate the health of your Assets.</li>
+<li>Visualise the health of your Assets through a <em>Dashboard</em>. </li>
+</ol>
+<p><img alt="Monitor0c" src="img/monitor/Monitor-0c.png" /> &nbsp;</p>
 <hr />
 <h3 id="the-treasure-hunt">The Treasure Hunt ...</h3>
 <p>To 'fun up' the game, we included a little treasure hunt in this material, i.e. we hid a GOLDEN NUGGET within the Labs.
