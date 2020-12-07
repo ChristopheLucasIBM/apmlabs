@@ -85,6 +85,8 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#2-create-scoring-method">2. Create Scoring Method</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-create-a-new-card-and-contemplate-your-great-work">2. Create a new Card and contemplate your great work !</a>
+    </li>
         </ul>
     </li>
     </ul>
@@ -289,7 +291,31 @@ A <em>Scoring Method</em>  is defined by a 100% mix of 1 or n <em>Drivers</em>, 
 </ol>
 <p>Let's now build this <em>CL_Asset</em> Scoring Method:</p>
 <ol>
-<li>cd</li>
+<li>Click the <code>CL_Asset</code> scoring method you just created. Click <code>Create Driver</code>. 
+In <em>Driver Name</em>, enter <code>Temperature, Vibration &amp; Pressure</code>. In the <em>Weight</em> field, enter <code>60</code>.
+Tick the <code>Use Factors?</code> box. </li>
+<li>Click <code>Select Factors</code>. One by one, search and select the following <em>factors</em> and give them the following <em>weight</em>:
+<code>TEMP-C</code> = <code>60</code>, <code>VIBRATIONH</code> = 20, <code>PRESSURE</code> = <code>20</code>. Keep the <code>Zero Override</code> unticked. Click <code>Save</code>.</li>
+<li>Repeat steps 1. and 2. for (a) a <em>Driver</em> called <code>Speed &amp; Accleration</code> (weight at 20) with the following 
+<em>Factors</em> and associated <em>Weight</em>: <code>SPEED</code> = <code>50</code> and <code>ACCELERAT</code> = <code>50</code>,
+(b) a <em>Driver</em> called <code>Torque, Load &amp; Starts</code> (weight at 20) with the following 
+<em>Factors</em> and associated <em>Weight</em>: <code>LOAD</code> = <code>25</code> and <code>TORQUE</code> = <code>50</code> and <code>STARTS</code> = <code>25</code>.</li>
+<li>Back to the <code>Scoring Methods</code> menu, make sure you click the <code>Active</code> tick next to <code>CL_Asset</code>.
+<img alt="Health10" src="../../img/health/Health-10.png" />&nbsp;</li>
+</ol>
+<h3 id="2-create-a-new-card-and-contemplate-your-great-work">2. Create a new Card and contemplate your great work !</h3>
+<ol>
+<li>Go to the <code>Health</code> left menu, and on the top-right, click <code>Add Card</code>.
+In <em>Insight App</em>, select <code>Asset</code>. In <em>Insight Type</em>, select <code>Saved Query</code>. In <em>Insight Content</em>, 
+select your earlier created <code>CL_Assets</code> query. Click <code>Save</code>.</li>
+<li>This will create a new <code>CL_Assets</code> card, open it. 
+This screen will list your 3 <em>CL_Assets</em> on the left, each with a <em>Health Score</em>, and provide a
+<em>Health Summary</em> of your 'fleet of assets' on the right. Click <code>CL_Asset_1</code>.</li>
+<li>First watch the <code>Asset Health</code> tab which details the 3 <em>Drivers</em> and associated <em>Factors</em> we created
+in the previous exercise. NOTE: if no score appears here on the first time, click <code>Refresh Score</code> and wait a couple seconds.</li>
+<li>Move to the <code>Meter Reading</code> tab. Observe that he <code>TEMP_C</code> <em>Factor</em> for which we defined a <em>Condition Monitoring</em>
+rule <a href="#4-create-a-condition-monitoring-rule">earlier</a> is coloured. Click <code>TEMP-C</code> factor and <code>Vie Selected Meter</code>.</li>
+<li>In the <code>Meter History</code>, click <code>Week</code> or <code>Day</code> and wait a couple seconds.</li>
 </ol>
               
             </div>
