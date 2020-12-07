@@ -1,147 +1,608 @@
-<!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <meta name="author" content="Christophe Lucas">
-  <link rel="canonical" href="https://christophelucasibm.github.io/apmlabs/monitor/monitor/">
-  <link rel="shortcut icon" href="../../img/favicon.ico">
-  <title>MONITOR - IBM Maximo Asset Performance Management (APM) Labs</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
-  <link rel="stylesheet" href="../../css/theme.css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "MONITOR";
-    var mkdocs_page_input_path = "monitor/monitor.md";
-    var mkdocs_page_url = "/apmlabs/monitor/monitor/";
-  </script>
-  
-  <script src="../../js/jquery-2.1.1.min.js" defer></script>
-  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script> 
-  
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
     
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
-      <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> IBM Maximo Asset Performance Management (APM) Labs</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
-  </form>
-</div>
-      </div>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Maximo APM Hands on Labs">
+      
+      
+      
+        <link rel="canonical" href="https://christophelucasibm.github.io/apmlabs/monitor/monitor/">
+      
+      
+        <meta name="author" content="Christophe Lucas">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.6">
+    
+    
+      
+        <title>MONITOR - IBM Maximo Asset Performance Management (APM) Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6910b76c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.196e0c26.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#monitor-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-                <p class="caption"><span class="caption-text">APM Labs</span></p>
-                <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../..">GET STARTED</a>
-                    </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">MONITOR</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#0-objectives">0. Objectives</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-generate-iot-data">1. Generate IoT data</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-create-device-type-3-devices">1. Create Device Type &amp; 3 Devices</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-create-iot-simulation">2. Create IoT Simulation</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-create-watson-iot-platform-dashboard">3. Create Watson IoT Platform Dashboard</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-create-physical-logical-interfaces">4. Create Physical &amp; Logical Interfaces</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5-take-a-break-and-let-some-magic-happen">5. Take a break and let some magic happen ...</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-monitor-iot-data">2. Monitor IoT data</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#0-objectives_1">0. Objectives</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#1-check-your-iot-data-made-it-to-the-monitor-data-lake">1. Check your IoT data made it to the Monitor data lake</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-explore-the-data">3. Explore the Data</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-create-new-data-items">4. Create new Data Items</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5-create-some-anomalous-iot-readings">5. Create some anomalous IoT Readings</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#6-optional-understand-monitors-anomaly-detection-capabilities">6. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#7-create-anomaly-detection-functions-on-your-iot-data">7. Create Anomaly Detection functions on your IoT data</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#8-create-alerts-based-on-anomaly-scores">8. Create Alerts based on Anomaly scores</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#9-use-monitor-api-to-change-dimensions-and-load-a-picture">9. Use Monitor API to change Dimensions and load a Picture</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#10-update-your-summary-dashboard">10. Update your Summary Dashboard</a>
-    </li>
-        </ul>
-    </li>
-    </ul>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../health/health/">HEALTH</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../predict/predict/">PREDICT</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../assist/assist/">ASSIST</a>
-                    </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../../about/about/">(About & Feedback)</a>
-                    </li>
-                </ul>
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://christophelucasibm.github.io/apmlabs/" title="IBM Maximo Asset Performance Management (APM) Labs" class="md-header-nav__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            IBM Maximo Asset Performance Management (APM) Labs
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              MONITOR
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
       </div>
     </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">IBM Maximo Asset Performance Management (APM) Labs</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
-    
-      
-        
-          <li>APM Labs &raquo;</li>
-        
-      
-    
-    <li>MONITOR</li>
-    <li class="wy-breadcrumbs-aside">
-      
-    </li>
-  </ul>
-  
-  <hr/>
+  </div>
 </div>
-          <div role="main">
-            <div class="section">
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://christophelucasibm.github.io/apmlabs/" title="IBM Maximo Asset Performance Management (APM) Labs" class="md-nav__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    IBM Maximo Asset Performance Management (APM) Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
+    <label class="md-nav__link" for="nav-1">
+      APM Labs
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="APM Labs" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        <span class="md-nav__icon md-icon"></span>
+        APM Labs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      GET STARTED
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        MONITOR
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      MONITOR
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-objectives" class="md-nav__link">
+    0. Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-generate-iot-data" class="md-nav__link">
+    1. Generate IoT data
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Generate IoT data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-device-type-3-devices" class="md-nav__link">
+    1. Create Device Type &amp; 3 Devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-iot-simulation" class="md-nav__link">
+    2. Create IoT Simulation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-watson-iot-platform-dashboard" class="md-nav__link">
+    3. Create Watson IoT Platform Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-physical-logical-interfaces" class="md-nav__link">
+    4. Create Physical &amp; Logical Interfaces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-take-a-break-and-let-some-magic-happen" class="md-nav__link">
+    5. Take a break and let some magic happen ...
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-monitor-iot-data" class="md-nav__link">
+    2. Monitor IoT data
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Monitor IoT data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-check-your-iot-data-made-it-to-the-monitor-data-lake" class="md-nav__link">
+    1. Check your IoT data made it to the Monitor data lake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-an-hourly-summary-dashboard" class="md-nav__link">
+    2. Create an Hourly Summary Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-explore-the-data" class="md-nav__link">
+    3. Explore the Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-new-data-items" class="md-nav__link">
+    4. Create new Data Items
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-some-anomalous-iot-readings" class="md-nav__link">
+    5. Create some anomalous IoT Readings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-optional-understand-monitors-anomaly-detection-capabilities" class="md-nav__link">
+    6. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-create-anomaly-detection-functions-on-your-iot-data" class="md-nav__link">
+    7. Create Anomaly Detection functions on your IoT data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-create-alerts-based-on-anomaly-scores" class="md-nav__link">
+    8. Create Alerts based on Anomaly scores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-use-monitor-api-to-change-dimensions-and-load-a-picture" class="md-nav__link">
+    9. Use Monitor API to change Dimensions and load a Picture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-update-your-summary-dashboard" class="md-nav__link">
+    10. Update your Summary Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../health/health/" class="md-nav__link">
+      HEALTH
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../predict/predict/" class="md-nav__link">
+      PREDICT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../assist/assist/" class="md-nav__link">
+      ASSIST
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../about/about/" class="md-nav__link">
+      (About & Feedback)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-objectives" class="md-nav__link">
+    0. Objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-generate-iot-data" class="md-nav__link">
+    1. Generate IoT data
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Generate IoT data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-device-type-3-devices" class="md-nav__link">
+    1. Create Device Type &amp; 3 Devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-iot-simulation" class="md-nav__link">
+    2. Create IoT Simulation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-watson-iot-platform-dashboard" class="md-nav__link">
+    3. Create Watson IoT Platform Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-physical-logical-interfaces" class="md-nav__link">
+    4. Create Physical &amp; Logical Interfaces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-take-a-break-and-let-some-magic-happen" class="md-nav__link">
+    5. Take a break and let some magic happen ...
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-monitor-iot-data" class="md-nav__link">
+    2. Monitor IoT data
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Monitor IoT data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-check-your-iot-data-made-it-to-the-monitor-data-lake" class="md-nav__link">
+    1. Check your IoT data made it to the Monitor data lake
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-an-hourly-summary-dashboard" class="md-nav__link">
+    2. Create an Hourly Summary Dashboard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-explore-the-data" class="md-nav__link">
+    3. Explore the Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-create-new-data-items" class="md-nav__link">
+    4. Create new Data Items
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-some-anomalous-iot-readings" class="md-nav__link">
+    5. Create some anomalous IoT Readings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-optional-understand-monitors-anomaly-detection-capabilities" class="md-nav__link">
+    6. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-create-anomaly-detection-functions-on-your-iot-data" class="md-nav__link">
+    7. Create Anomaly Detection functions on your IoT data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-create-alerts-based-on-anomaly-scores" class="md-nav__link">
+    8. Create Alerts based on Anomaly scores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-use-monitor-api-to-change-dimensions-and-load-a-picture" class="md-nav__link">
+    9. Use Monitor API to change Dimensions and load a Picture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-update-your-summary-dashboard" class="md-nav__link">
+    10. Update your Summary Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
               
+                
+                
                 <p><em>[Page last updated on 08 December 2020]</em></p>
 <h1 id="monitor-lab">MONITOR Lab</h1>
 <hr />
@@ -177,34 +638,33 @@
 <li>Enter <code>XY_Asset</code> in the <em>Name</em> and <em>Description</em> fields - where <code>XY</code> are your initials. Note that for the rest of this lab, we will use <code>CL_Asset</code> (e.g. CL for Christophe Lucas). Click <code>Next</code>.</li>
 <li>On the next <em>Metadata</em> page, enter <code>CL</code> in <em>Model</em> and <em>Manufacturer</em> fields, and enter <code>CL_Asset</code> in <em>Device Class</em> field. The reason why we want to enter values here is to later show how <em>Dimensions</em> can be used in <em>Monitor</em> to slide and dice the data. Click <code>Finish</code>.</li>
 </ol>
-<p>The below picture shows the 5 previous steps.
-<img alt="Monitor1" src="../../img/monitor/Monitor-1.png" />&nbsp; </p>
+<p><img alt="Monitor1" src="../../img/monitor/Monitor-1.png" />&nbsp; </p>
 <p>Now, let's create 3 <em>Devices</em> of type <em>CL_Asset</em>.</p>
 <ol>
 <li>Stay in the <em>Watson IoT Platform</em>, go to the <em>Browse</em> menu and click <code>Add Device</code>.</li>
-<li>On the <em>identity</em> page, select your just created <code>CL_Asset</code> as <em>Entity Type</em> and enter <code>CL_Asset_1</code> in <em>Device ID</em>. Click <code>Next</code>.</li>
+<li>On the <em>identity</em> page, select your just-created <code>CL_Asset</code> as <em>Entity Type</em> and enter <code>CL_Asset_1</code> in <em>Device ID</em>. Click <code>Next</code>.</li>
 <li>On the <em>Device Information</em> page, accept the defaults, click <code>Next</code>.</li>
 <li>On the <em>Security</em> page, accept the defaults, click <code>Next</code>.</li>
-<li>On the <em>Security</em> page, accept the defaults, click <code>Next</code>.</li>
-<li>Click <code>Back</code>, and repeat above steps 1 to 5 for 2 more Assets: <code>CL_Asset_2</code> and <code>CL_Asset_3</code>.</li>
+<li>On the <em>Summary</em> page, accept the defaults, click <code>Finish</code>.</li>
+<li>Click <code>Back</code>, and repeat above steps 1. to 5. for 2 more Assets: <code>CL_Asset_2</code> and <code>CL_Asset_3</code>.</li>
 <li>Finally, go to the <code>Browse</code> menu, enter <code>CL_Asset</code> in the <em>Search</em> field, and you will now see your 3 Devices.</li>
 </ol>
 <p>You have now created the required <code>CL_Asset</code> <em>Device Type</em> and the 3 <code>CL_Asset_1</code>, <code>CL_Asset_2</code> and <code>CL_Asset_3</code> <em>Devices</em> that we will use throughout the labs.</p>
-<p>The below pictures shows the 7 previous steps.
-<img alt="Monitor2" src="../../img/monitor/Monitor-2.png" /> &nbsp;  </p>
+<p><img alt="Monitor2" src="../../img/monitor/Monitor-2.png" /> &nbsp;  </p>
 <hr />
 <h3 id="2-create-iot-simulation">2. Create IoT Simulation</h3>
 <p>Let's now send data to those 3 Devices !</p>
 <p>Using the Watson IoT Platform <a href="https://www.ibm.com/support/knowledgecenter/en/SSQP8H/iot/platform/reference/dashboard/device_sim.html">IoT Simulation</a> capabilities,
-it is possible to simulate a device and its IoT readings - exactly as if this was a real IoT device really connected to the platform and sending real IoT readings.
+it is possible to simulate a device and its IoT readings - exactly as if it was a real IoT device really connected to the platform and sending real IoT readings.
 We are going to use this great functionality as it allows one to literally simulate any asset (e.g. <em>Pump, Engine, Truck, Conveyor Belt</em> - you name it !), any IoT readings and do any demo.
 For this Lab, we will simulate our 3 <code>CL_Asset_1_2_3</code> Devices generating the following IoT readings: <code>temperature</code>, <code>vibration</code>, <code>pressure</code>, <code>speed</code>, <code>acceleration</code>, <code>load</code>, <code>torque</code>, <code>starts</code> . You can of course change the IoT reading names and/or their values to fit your demo needs.</p>
 <ol>
 <li>First of all, make sure that in your <em>Watson IoT Platform</em>, <em>Settings</em> menu, the <code>Activate Device Simulator</code> is ON. Once that is done, you will see a little box in bottom-right of your screen showing <em>0 Simulation</em>.</li>
 <li>Click on that <code>0 Simulation</code> bottom-right box, and click <code>Create Simulation</code>.</li>
-<li>In the <code>Select or create a device type</code> box, select the <code>CL_Asset</code> device type you earlier created. That will open a window as you can see kit in picture below - let's customize this.</li>
-<li>In <code>Event type name</code>, enter <em>CLA</em>. in the <code>Schedule</code> field, enter <code>4 Every Minute</code>. In the <code>Payload</code>, copy-paste the following .json code. Make sure at this stage that the <code>Store events in the data lake</code> box remains unchecked ! Click <code>Save</code>.</li>
-<li>Click <code>Use Registerd Device</code>, enter <em>CL_Asset</em> in the <code>Pick Device</code> box, select <em>CL_Asset_1</em>. Repeat for <em>CL_Asset_2</em> and <em>CL_Asset_3</em>.</li>
+<li>In the <em>Select or create a device type</em> box, select the <code>CL_Asset</code> device type you earlier created. That will open a window as you can see in picture below.</li>
+<li>In <em>Event type name</em>, enter <code>CLA</code>. in the <em>Schedule</em> field, enter <code>4 Every Minute</code>. In the <em>Payload</em> field, copy-paste the following .json code. Make sure at this stage that the <code>Store events in the data lake</code> box remains unchecked ! Click <code>Save</code>.</li>
+<li>Click <code>Use Registerd Device</code>, enter <code>CL_Asset</code> in the <em>Pick Device</em> box, select <code>CL_Asset_1</code>. 
+Repeat for <em>CL_Asset_2</em> and <em>CL_Asset_3</em>.</li>
 <li>You should now start seeing Events flowing in the bottom Events box.</li>
 </ol>
 <p>Note that the values in the <code>random(35,40)</code> functions can be considered being the 'standard operating conditions' for the given IoT reading. 
@@ -231,29 +691,27 @@ This Dashboard will allow us to clearly visualise the anomalies earlier mentione
 <ol>
 <li>Still in the <em>Watson IoT Platform</em>, click on the <em>Boards</em> menu. Click <code>Create Board</code>. Name the Board <code>CL_Asset IoT Readings Dashobard</code>. Click <code>Next</code> then <code>Submit</code>. Open the Board.</li>
 <li>Let's first create a small card which displays the 8 IoT Readings we simulated, getting updated every 15 seconds. Click <code>Add New Card</code>. Select <code>All device properties</code> then <code>CL_Asset_1</code>, then <code>Next</code> then <code>Submit</code>.</li>
-<li>Let's now create a card which whos the flow of data. Click <code>Add New Card</code>. Click <code>Line Chart</code>, then select <code>CL_Asset_1</code>. </li>
+<li>Let's now create a card which shows the flow of data. Click <code>Add New Card</code>. Click <code>Line Chart</code>, then select <code>CL_Asset_1</code>. </li>
 <li>Click <code>Connect data set</code>. In the <em>event</em> field, select <code>CLA</code> (that is the name of the IoT Simulation we created earlier),
 then in the <em>Property</em> select <code>temperature</code>. Repeat this for a couple more properties, e.g. <code>vibration</code> and <code>pressure</code>. Click <code>Next</code>, select the <code>XL</code> size, click <code>Next</code> then <code>Submit</code>.</li>
 <li>Drag and drop the second card next to the first one. Play with the <code>5 minutes</code> to <code>24 hours</code> views.</li>
 </ol>
-<p>The below pictures summarise the previous steps and show what your Dashboard should like.
-<img alt="Monitor4" src="../../img/monitor/Monitor-4.png" /> &nbsp;</p>
+<p><img alt="Monitor4" src="../../img/monitor/Monitor-4.png" /> &nbsp;</p>
 <hr />
 <h3 id="4-create-physical-logical-interfaces">4. Create Physical &amp; Logical Interfaces</h3>
 <p>So far, we have only generated simulated IoT data. 
 What Monitor uses for all its visualisations and calculations is the data from the <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/overview/architecture_mon.html">data lake</a>.
 Monitor's data lake is being populated through the use of <a href="https://www.ibm.com/support/knowledgecenter/en/SSQP8H/iot/platform/GA_information_management/ga_im_device_twin.html">Physical &amp; Logical</a> interfaces.
 Let's create those interfaces and populate that data lake !</p>
-<p>First let's create the Physical Interface.</p>
+<p>First let's create the <em>Physical Interface</em>.</p>
 <ol>
 <li>Still in the <em>Watson IoT Platform</em>, go to the <em>Device Types</em> menu, search then select <em>CL_Asset</em>, then click on the <em>Interface</em> menu.</li>
 <li>Click <code>Create Physical Interface</code>. Leave the default name <em>CL_Asset_PI</em>, click <code>Next</code>.</li>
 <li>Click <code>Create event type</code>. Wait 15 seconds or click <code>Use Last Event Cache</code> and you will see the <em>CLA</em> (which corresponds to the IoT Simulation we earlier created) event appear. </li>
 <li>Click that event, click <code>Add</code>. Cick <code>Done</code>.</li>
 </ol>
-<p>This picture shows the previous steps and where you should be by now.
-<img alt="Monitor5" src="../../img/monitor/Monitor-5.png" /> &nbsp;</p>
-<p>Let's now create the Logical Interface.</p>
+<p><img alt="Monitor5" src="../../img/monitor/Monitor-5.png" /> &nbsp;</p>
+<p>Let's now create the <em>Logical Interface</em>.</p>
 <ol>
 <li>Click <code>Create Logical Interface</code>. Leave the default name <em>CL_Asset_LI</em>, click <code>Next</code>.</li>
 <li>Click <code>Add Property</code>, <code>Select</code> the <code>temperature</code>, click <code>Save</code>. Repeat this for the 7 other IoT readings.</li>
@@ -262,8 +720,7 @@ Let's create those interfaces and populate that data lake !</p>
 <li>Click <code>Apply</code>, then <code>Done</code>.</li>
 <li>Click <code>Activate</code> twice.</li>
 </ol>
-<p>This picture shows the previous steps and what your screen should finally look like after you created your Physical &amp; Logical interfaces.
-<img alt="Monitor6" src="../../img/monitor/Monitor-6.png" /> &nbsp;</p>
+<p><img alt="Monitor6" src="../../img/monitor/Monitor-6.png" /> &nbsp;</p>
 <hr />
 <h3 id="5-take-a-break-and-let-some-magic-happen">5. Take a break and let some magic happen ...</h3>
 <p>Brilliant ! You have created all that is needed to start monitoring your own IoT data.
@@ -276,27 +733,21 @@ Also, for Anomaly functions to detect anomalies, 'normal conditions' must first 
 </ul>
 <hr />
 <h2 id="2-monitor-iot-data">2. Monitor IoT data</h2>
-<h3 id="0-objectives_1">0. Objectives</h3>
-<p>In this Module you will:</p>
-<ul>
-<li>TBC</li>
-</ul>
 <h3 id="1-check-your-iot-data-made-it-to-the-monitor-data-lake">1. Check your IoT data made it to the Monitor data lake</h3>
 <ol>
 <li>Back to the Monitor interface, click <code>Monitor Entities</code>. If you see 3 in <code>Number of Entities</code>, it means that your data did make it to the data lake. Let's have a look around.</li>
 <li>Click on <code>CL_Asset</code>. Then click on <code>CL_Asset_1</code>, then on its <code>Metrics</code> tab. Play with the 'slider' on e.g. <code>acceleration</code> - you can see your data now.</li>
 <li>Go back to the <code>CL_Asset</code> main page, and click the <code>Data</code> tab. 
-See all your (raw) IoT Metrics &amp; Dimensions. Note that at this stage it is normal to see only a couple points on the graph as we have only been generating data for so long ! Play with the top 'slider' here too.</li>
+See all your (raw) IoT <em>Metrics</em> &amp; <em>Dimensions</em>. Note that at this stage it is normal to see only a couple points on the graph as we have only been generating data for so long ! Play with the top 'slider' here too.</li>
 </ol>
-<p>If you see this, so far so good !
-<img alt="Monitor7" src="../../img/monitor/Monitor-7.png" /> &nbsp;</p>
+<p><img alt="Monitor7" src="../../img/monitor/Monitor-7.png" /> &nbsp;</p>
 <hr />
 <h3 id="2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</h3>
 <ol>
 <li>Back to the <code>CL_Asset</code> main page, click <code>New Summary</code>.</li>
 <li>Enter <code>Hourly</code> as your <em>Dashboard title</em>, select <code>Hourly</code> <em>Time grain</em>, click all <em>Dimensions</em>. Click <code>Next</code>.</li>
-<li>Click all <code>Dat Item</code>, and for just 1 reading e.g. <code>temperature</code>, select all <code>Methods</code> i.e. <code>max</code>, <code>min</code>, <code>mean</code>, <code>std</code> etc. Click <code>Configure Dashboard</code>.</li>
-<li>Click <code>Create</code>. Note that it will take a couple minutes for your Hourly dashboard is ready, and you will note a <em>Preparing</em> icon during that time. 
+<li>Click all <code>Data Item</code>, and for just 1 reading e.g. <code>temperature</code>, select all <code>Methods</code> i.e. <code>max</code>, <code>min</code>, <code>mean</code>, <code>std</code> etc. Click <code>Configure Dashboard</code>.</li>
+<li>Click <code>Create</code>. Note that it will take a couple minutes for your Hourly dashboard to be ready, and you will note a <em>Preparing</em> icon during that time. 
 <img alt="Monitor8" src="../../img/monitor/Monitor-8.png" /> &nbsp;</li>
 </ol>
 <p>Once it is ready, your dashboard should look like this (with possibly less data points depending on how fast you have been to get here and for how long data has been sent).
@@ -328,8 +779,7 @@ In the following exercise, we will:</p>
 <li>On the first screen, select <code>starts</code> as the data source, enter <code>1</code> (default value) in <em>min_output</em>. 
 Click <code>Next</code>. Select <code>Hourly</code> in the <em>Granularity</em>, untick the <code>Auto Schedule</code> and enter <code>5</code> in <em>Executing query</em> and <code>2</code> in <em>Calculating last</em> fields.
 In the <em>Output metric</em> field, enter <code>starts_Hourly_count</code>. Click <code>Create</code>.
-<strong>NOTE</strong>: as always, naming convention is important. As the amount of your data items will grow, you want to use a consistent naming convention that will e.g. facilitate your data viewing capabilities by making filtering easy and straightforward.
-In this case, we named the  <em>starts hourly count</em> using a naming similar to the one that was used to create the <em>temperature hourly count</em> !</li>
+<strong>NOTE</strong>: as always, naming convention is important. As the amount of your data items will grow, you want to use a consistent naming convention that will e.g. facilitate your data viewing capabilities by making filtering easy and straightforward.</li>
 <li>
 <p>You will now see the new data item appear in your <em>Metrics (calculated)</em> menu. Wait for 5 minutes for results to appear.
 <img alt="Monitor11" src="../../img/monitor/Monitor-11.png" /> &nbsp;</p>
@@ -367,13 +817,13 @@ section that Monitor's out-of-the-box Anomaly Detection functions do actually sp
 <li>Back to the <em>Watson IoT Platform</em>, click the IoT Simulation box in bottom-right corner.
 Change the values of <code>"temperature": random(35,40)</code> line to <code>"temperature": random(46,48)</code>, click <code>Save</code>.
 Take note of the time on your watch. Let the updated simulation run for 3 to 4 minutes.
-After 3 to 4 minutes, set the <code>"temperature": random(46,48)</code> back to <code>"temperature": random(35,40)</code>, CLICK <code>Save</code>.</li>
+After 3 to 4 minutes, set the <code>"temperature": random(46,48)</code> back to <code>"temperature": random(35,40)</code>, click <code>Save</code>.</li>
 <li>the 'anomaly' we just created is visible on the Dashboard (<em>10 minutes, 1 hour, 6 hours, 12 hours</em> views), 
-, i.e. we clearly see a temporary surge in the temperature readings in the top-right of the screen.</li>
+i.e. we clearly see a temporary surge in the temperature readings in the top-right of the screen.</li>
 </ol>
-<p><strong>NOTE</strong>: take note of the date and time when you generated those anomalous IoT readings, as we will see in further sections
-how <em>Monitor</em>'s Anomaly models pick these anomalous readings up. As you can see in below picture, the anomalous readings
-for these labs were created on November 2020, around 04:50 PM.
+<p><strong>NOTE</strong>: take note of the date and time when you generated those anomalous IoT readings. 
+As you can see in below picture, the anomalous readings
+for these labs were created on 30 November 2020, around 04:50 PM.
 <img alt="Monitor14" src="../../img/monitor/Monitor-14.png" /> &nbsp;</p>
 <hr />
 <h3 id="6-optional-understand-monitors-anomaly-detection-capabilities">6. [OPTIONAL] Understand Monitor's Anomaly Detection capabilities</h3>
@@ -629,57 +1079,85 @@ the picture <em>XY_Asset.jpg</em> instead of <em>CL_Asset.jpg</em>.
 you are strongly encouraged to try new stuff ...</p>
 <p>Congratulations, you made it - hope you enjoyed this lab !</p>
 <p>P.S.: Have you found the GOLDEN NUGGET yet ?</p>
+                
               
-            </div>
+              
+                
+
+
+              
+            </article>
           </div>
-          <footer>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../../health/health/" class="btn btn-neutral float-right" title="HEALTH">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../.." class="btn btn-neutral" title="GET STARTED"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../.." class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                GET STARTED
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../../health/health/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                HEALTH
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     </div>
   
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
   </div>
-
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
-        </div>
-      </div>
-
-    </section>
-
-  </div>
-
-  <div class="rst-versions" role="note" aria-label="versions">
-    <span class="rst-current-version" data-toggle="rst-current-version">
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.fd16492e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7836ba4d.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
       
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
       
-        <span><a href="../.." style="color: #fcfcfc;">&laquo; Previous</a></span>
-      
-      
-        <span style="margin-left: 15px"><a href="../../health/health/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
-</div>
-    <script>var base_url = '../..';</script>
-    <script src="../../js/theme.js" defer></script>
-      <script src="../../search/main.js" defer></script>
-    <script defer>
-        window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        };
-    </script>
-
-</body>
+    
+  </body>
 </html>
