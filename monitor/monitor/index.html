@@ -2,15 +2,6 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PYCR42KWD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2PYCR42KWD');
-</script>    
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -672,7 +663,7 @@ For this Lab, we will simulate our 3 <code>CL_Asset_1_2_3</code> Devices generat
 <li>Click on that <code>0 Simulation</code> bottom-right box, and click <code>Create Simulation</code>.</li>
 <li>In the <em>Select or create a device type</em> box, select the <code>CL_Asset</code> device type you earlier created. That will open a window as you can see in picture below.</li>
 <li>In <em>Event type name</em>, enter <code>CLA</code>. in the <em>Schedule</em> field, enter <code>4 Every Minute</code>. In the <em>Payload</em> field, copy-paste the following .json code. Make sure at this stage that the <code>Store events in the data lake</code> box remains unchecked ! Click <code>Save</code>.</li>
-<li>Click <code>Use Registerd Device</code>, enter <code>CL_Asset</code> in the <em>Pick Device</em> box, select <code>CL_Asset_1</code>. 
+<li>Click <code>Use Registered Device</code>, enter <code>CL_Asset</code> in the <em>Pick Device</em> box, select <code>CL_Asset_1</code>. 
 Repeat for <em>CL_Asset_2</em> and <em>CL_Asset_3</em>.</li>
 <li>You should now start seeing Events flowing in the bottom Events box.</li>
 </ol>
@@ -698,7 +689,7 @@ Let's check those readings on a Dashboard.</p>
 <p>Let's create a Dashboard so we can see the simulated IoT readings for 1 of our devices: <code>CL_Asset_1</code>. 
 This Dashboard will allow us to clearly visualise the anomalies earlier mentioned.</p>
 <ol>
-<li>Still in the <em>Watson IoT Platform</em>, click on the <em>Boards</em> menu. Click <code>Create Board</code>. Name the Board <code>CL_Asset IoT Readings Dashobard</code>. Click <code>Next</code> then <code>Submit</code>. Open the Board.</li>
+<li>Still in the <em>Watson IoT Platform</em>, click on the <em>Boards</em> menu. Click <code>Create New Board</code>. Name the Board <code>CL_Asset IoT Readings Dashobard</code>. Click <code>Next</code> then <code>Submit</code>. Open the Board.</li>
 <li>Let's first create a small card which displays the 8 IoT Readings we simulated, getting updated every 15 seconds. Click <code>Add New Card</code>. Select <code>All device properties</code> then <code>CL_Asset_1</code>, then <code>Next</code> then <code>Submit</code>.</li>
 <li>Let's now create a card which shows the flow of data. Click <code>Add New Card</code>. Click <code>Line Chart</code>, then select <code>CL_Asset_1</code>. </li>
 <li>Click <code>Connect data set</code>. In the <em>event</em> field, select <code>CLA</code> (that is the name of the IoT Simulation we created earlier),
