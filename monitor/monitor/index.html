@@ -2,15 +2,7 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PYCR42KWD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2PYCR42KWD');
-</script>     
+    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
@@ -611,7 +603,7 @@
               
                 
                 
-                <p><em>[Page last updated on 08 December 2020]</em></p>
+                <p><em>[Page last updated on 18 February 2021]</em></p>
 <h1 id="monitor-lab">MONITOR Lab</h1>
 <hr />
 <p><em>Before you begin:</em>  Log into your Monitor instance using your IBM ID and the environment details provided by the instructor. </p>
@@ -755,15 +747,18 @@ See all your (raw) IoT <em>Metrics</em> &amp; <em>Dimensions</em>. Note that at 
 <li>Back to the <code>CL_Asset</code> main page, click <code>New Summary</code>.</li>
 <li>Enter <code>Hourly</code> as your <em>Dashboard title</em>, select <code>Hourly</code> <em>Time grain</em>, click all <em>Dimensions</em>. Click <code>Next</code>.</li>
 <li>Click all <code>Data Item</code>, and for just 1 reading e.g. <code>temperature</code>, select all <code>Methods</code> i.e. <code>max</code>, <code>min</code>, <code>mean</code>, <code>std</code> etc. Click <code>Configure Dashboard</code>.</li>
-<li>Click <code>Create</code>. Note that it will take a couple minutes for your Hourly dashboard to be ready, and you will note a <em>Preparing</em> icon during that time. 
-<img alt="Monitor8" src="../../img/monitor/Monitor-8.png" /> &nbsp;</li>
+<li>Click <code>Configure Dashboard</code>. The next page shows an overview of what the 
+Dashboard will look like. Click <code>Create</code>. Note that it will take a couple minutes for your Hourly dashboard to be ready, and you will note a <em>Preparing</em> icon during that time.
+<img alt="Monitor8" src="../../img/monitor/Monitor-8b.png" /> &nbsp;</li>
 </ol>
-<p>Once it is ready, your dashboard should look like this (with possibly less data points depending on how fast you have been to get here and for how long data has been sent).
+<p>Once it is ready, your dashboard should look like this 
+(with possibly less data points depending on how fast you have been to get here and for how long data has been sent).
 Notice the hourly grain of the cards (vs. the shorter time grain that you just saw on the <em>CL_Asset_1</em> Metrics tab).
 On the left side in <code>Summary Controls</code>, notice the so-called Dimensions that correspond to the Metadata we associated to the <code>CL_Asset</code> Device Type and 3 Devices when we created them in the Watson IoT Platform.
-Notice how you can change the 'time scope' of each card. 
+Notice how you can change the 'time scope' of each card.
+Also notice how you can view each card in 'full screen' mode, and further focus on a time period with the top slider-bar.
 Finally, also notice how the <code>temperature</code> card displays the <code>max</code>, <code>min</code>, <code>mean</code> etc that we defined via the <code>Methods</code> and how you can click on 1 or several of these.
-<img alt="Monitor9" src="../../img/monitor/Monitor-9.png" /> &nbsp;</p>
+<img alt="Monitor9" src="../../img/monitor/Monitor-9b.png" /> &nbsp;</p>
 <hr />
 <h3 id="3-explore-the-data">3. Explore the Data</h3>
 <ol>
@@ -859,7 +854,7 @@ the <em>temperature</em> anomalous IoT readings we generated in <a href="#5-crea
 <li>Wait 5 minutes, and now watch the <code>temperature_anomaly_fft</code> graph. Do notice how a sudden peak of the anomaly score is observed 
 on the 04:00 PM line ... remember 04:50 PM on November 2020 !
 This confirms that this FFT model did perfectly pick up the anomalous <code>temperature</code> IoT readings we generated.</li>
-<li>Repeat steps 5 to 6 (keep all the defaluts) for the following anomaly detection functions: 
+<li>Repeat steps 5 to 6 (keep all the defaults) for the following anomaly detection functions: 
 <code>GeneralizedAnomalyScore</code>, <code>KMeansAnomalyScore</code>, <code>SaliencybasedGeneralizedAnomalyScore</code>, <code>SpectralAnomalyScore</code>.
 Respecting the naming conventions, name your associated data items <code>temperature_anomaly_generalized</code>, <code>temperature_anomaly_kmeans</code>,
 <code>temperature_anomaly_saliency</code>, <code>temperature_anomaly_spectral</code> respectively. Open the corresponding <code>Metric (calculated)</code> <em>data item</em>
@@ -924,11 +919,11 @@ This should give us a good-enough idea of where to start with our alerts ... </p
 </table>
 <p><img alt="Monitor17" src="../../img/monitor/Monitor-17.png" /> &nbsp;</p>
 <ol>
-<li>On the <code>Data</code> tab, click the <code>+</code> icon, select <code>AlertHighValue</code>. Select <code>temperature_alert_kmeans</code> as <em>input_item</em>,
+<li>On the <code>Data</code> tab, click the <code>+</code> icon, select <code>AlertHighValue</code>. Select <code>temperature_anomaly_kmeans</code> as <em>input_item</em>,
 enter <code>30</code> as the <em>upper_threshold</em>, select <code>Medium</code> in <em>Severity</em> and <code>New</code> in <em>Status</em>.
-Click <code>Next</code>, set the <code>Schedule</code> and name </li>
-<li>Repeat above step for <code>temperature_alert_generalized</code> (<em>upper_threshold</em> = <code>1.5</code>, <em>Severity</em> = <code>High</code>, <em>Status</em> = <code>Validated</code>),
-and <code>temperature_alert_fft</code> (<em>upper_threshold</em> = <code>450</code>, <em>Severity</em> = <code>Low</code>, <em>Status</em> = <code>Acknowledged</code>).</li>
+Click <code>Next</code>, set the <code>Schedule</code> and name it <code>temperature_alert_kmeans</code>.</li>
+<li>Repeat above step for <code>temperature_alert_generalized</code> (<em>input_item</em> = <code>temperature_anomaly_generalized</code>, <em>upper_threshold</em> = <code>1.5</code>, <em>Severity</em> = <code>High</code>, <em>Status</em> = <code>Validated</code>),
+and <code>temperature_alert_fft</code> (<em>input_item</em> = <code>temperature_anomaly_fft</code>, <em>upper_threshold</em> = <code>450</code>, <em>Severity</em> = <code>Low</code>, <em>Status</em> = <code>Acknowledged</code>).</li>
 <li>Let's now have a look at the number of <em>Alerts</em> we generated. First notice that the newly created Alerts appear as
 another data item in the <em>Alert (calculated)</em> section. Click on e.g. <code>temperature_alert_kmeans</code>. NOTE: it might be that you see
 nothing on the graph and on the table under it, e.g. that might be the case if your IoT reading anomalies were generated yesterday. 
