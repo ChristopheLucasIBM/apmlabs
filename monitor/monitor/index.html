@@ -2,15 +2,7 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PYCR42KWD"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2PYCR42KWD');
-</script>    
+    
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
@@ -359,15 +351,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#9-use-monitor-api-to-change-dimensions-and-load-a-picture" class="md-nav__link">
-    9. Use Monitor API to change Dimensions and load a Picture
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#10-update-your-summary-dashboard" class="md-nav__link">
-    10. Update your Summary Dashboard
+  <a href="#9-update-your-summary-dashboard" class="md-nav__link">
+    9. Update your Summary Dashboard
   </a>
   
 </li>
@@ -592,15 +577,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#9-use-monitor-api-to-change-dimensions-and-load-a-picture" class="md-nav__link">
-    9. Use Monitor API to change Dimensions and load a Picture
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#10-update-your-summary-dashboard" class="md-nav__link">
-    10. Update your Summary Dashboard
+  <a href="#9-update-your-summary-dashboard" class="md-nav__link">
+    9. Update your Summary Dashboard
   </a>
   
 </li>
@@ -954,91 +932,7 @@ and you will see that we generated about 10 Alerts for <em>CL_Asset_1</em> - tha
 <img alt="Monitor18" src="../../img/monitor/Monitor-18.png" /> &nbsp;</li>
 </ol>
 <hr />
-<h3 id="9-use-monitor-api-to-change-dimensions-and-load-a-picture">9. Use Monitor API to change Dimensions and load a Picture</h3>
-<p>In the next section, we'll explain how to update and customize the initial Dashboard that we created earlier.
-Prior to that, we are going to use Monitor's API to:
-(a)change the <code>CL_Asset_1_2_3</code> <em>Metadata</em> values in the Watson IoT
-platform so we can later see how Dashboards can be 'filtered' on those metadata values (called <em>Dimensions</em> on Monitor side),
-(b) add an image and tie it to the <code>CL_Asset</code> Entity Type so we can display it on the dashboard.
-We will be using <a href="https://www.postman.com/downloads/">Postman</a> to do this.</p>
-<ol>
-<li>
-<p>In <em>Monitor</em>'s left menu, click the <em>Services</em> menu. On the <em>Watson IoT Platform Service</em> row, click <code>View Details</code> then <code>View More</code>.
-Next to the  <em>API Key</em>, click <code>Copy to clipboard</code> - paste this into your favourite notepad for future retrieval.
-Next to the  <em>API Token</em>, click <code>Copy to clipboard</code> - paste this into your favourite notepad for future retrieval. 
-<img alt="Monitor19" src="../../img/monitor/Monitor-19.png" /> &nbsp;</p>
-</li>
-<li>
-<p>In Postman, click <code>Create New Request</code>. In <em>Select a collection or folder to save to</em>, click <code>Create Collection</code>, name it <code>APM Labs</code>.
-Name your Request <code>POST Dimensions to CL_Asset_1</code>. Click <code>Save to APM Labs</code>.</p>
-</li>
-<li>Open the Request, and change its (default) Type from <em>GET</em> to <em>POST</em>.</li>
-<li>On the <em>Authorization</em> tab, leave the default <em>Type</em> to <em>inherit auth from parent</em>. Next to the <em>POST</em> field, enter this value:
-<code>https://api-{{geo_country_code}}.connectedproducts.internetofthings.ibmcloud.com/api/images/v1/{{tenantID}}/entityType/CL_Asset/dimensional</code>
-where you will first need to: 
-(a) replace <code>{{geo_country_code}}</code> with your specific country code 
-(your country code is in the beginning of your <em>Monitor</em> Dashboard URL: <code>https://dashboard-{{geo_country_code}}</code>), i.e. to either <code>us</code>,<code>uk</code>,<code>de</code>, or <code>beta</code>
-(b) replace <code>{{tenantID}}</code> with your <em>Monitor Tenant ID</em> which you can find in the top right corner of your Monitor webpage underneath your IBMiD.
-An example of that string (which is the one used for these Labs) can be found below. </li>
-<li>On the <em>Headers</em> tab, in the <em>Key</em> and <em>Value</em> columns, enter the following 3 rows 
-(a) <em>Key</em> = <code>Content-Type</code> and <em>Value</em> = <code>application/json</code>, (b) <em>Key</em> = <code>x-api-key</code> and <em>Value</em> = <code>Write the 'API Key' you fetched in step 1.</code>,
-(c) <em>Key</em> = <code>x-api-token</code> and <em>Value</em> = <code>Write the 'Authentication Token' you fetched in step 1.</code>,</li>
-<li>On the <em>Body</em> tab, click the <code>raw</code> tick-box and enter the below .json snippet. Click <code>Send</code>. 
-You should get a returned result as per picture below.</li>
-<li>Repeat steps 2. to 6. for (a) <code>CL_Asset_2</code> where you enter for the <em>descriptiveLocation</em>: <code>"value" : "Melbourne"</code> and for <em>model</em>: <code>Model_B</code>,
-(b) <code>CL_Asset_2</code> where you enter for the <em>descriptiveLocation</em>: <code>"value" : "Sydney"</code> and for <em>model</em>: <code>Model_B</code>.</li>
-</ol>
-<pre><code>Example of the string to be used in Postman 'POST Dimensions to CL_Asset_1' call:
-
-https://api-us.connectedproducts.internetofthings.ibmcloud.com/api/master/v1/CTP-PMI-Democore-2/entity/type/CL_Asset/dimensional
-</code></pre>
-<pre><code>[
-    {
-        &quot;id&quot;: &quot;CL_Asset_1&quot;,
-        &quot;name&quot; : &quot;descriptiveLocation&quot;,
-        &quot;type&quot; : &quot;LITERAL&quot;,
-        &quot;value&quot; : &quot;Perth&quot;
-    },
-    {
-        &quot;id&quot;: &quot;CL_Asset_1&quot;,
-        &quot;name&quot; : &quot;model&quot;,
-        &quot;type&quot; : &quot;LITERAL&quot;,
-        &quot;value&quot; : &quot;Model_A&quot;
-    }
-]
-</code></pre>
-<p><img alt="Monitor20" src="../../img/monitor/Monitor-20.png" /> &nbsp;</p>
-<p>Let's now check that our changes worked ! There are several ways we can do that:</p>
-<ol>
-<li>Go to the <em>Monitor</em> left menu. Search for and open <code>CL_Asset</code>. Watch the updated values for <code>descriptiveLocation</code> and <code>model</code> fields for the 3 Assets.</li>
-<li>Go to the <code>Data</code> tab, in the <code>Dimensions</code> section, select <code>Model</code> then <code>descriptiveLocation</code> and watch !
-<img alt="Monitor21" src="../../img/monitor/Monitor-21.png" /> &nbsp;</li>
-</ol>
-<p>We are now going to use another API call to upload a picture to the system.
-This picture will be used in the final <a href="#10-update-your-summary-dashboard">10. Update your Summary Dashboard</a>.</p>
-<ol>
-<li>Create a new <code>POST Image to CL_Asset EntityType</code> Request in Postman, make it of POST type.</li>
-<li>Next to the <em>POST</em> field, enter this value:
-<code>https://api-{{geo_country_code}}.connectedproducts.internetofthings.ibmcloud.com/api/images/v1/{{tenantID}}/entityType/CL_Asset</code>
-after having replaced <code>{{geo_country_code}}</code> and <code>{{tenantID}}</code> with your values (see below for the sample string used for this lab).</li>
-<li>On the <em>Authorization</em> tab, leave the default <em>Type</em> to <em>inherit auth from parent</em>.
-On the <em>Headers</em> tab, in the <em>Key</em> and <em>Value</em> columns, enter the 2 rows <code>x-api-key</code> and <code>x-api-token</code> 
-as you did previously (no need for the <code>Content-Type</code> / <code>application/json</code> row here).</li>
-<li>Download this image <a href="../../files/CL_Asset.jpg">Image</a> and save it as <code>CL_Asset.jpg</code> on your computer.</li>
-<li>On the <em>Body</em> tab, select the <code>form-data</code> tick-box. Enter enter the following 3 rows: 
-(a) <em>Key</em> = <code>imagefilecontent</code>, select <code>File</code> on the right of the box. That will populate the <code>Value</code>
-column with a <code>Choose Files</code> button. Click it and select your <code>CL_Asset.jpg</code>.
-(b) <em>Key</em> = <code>imageid</code> and <em>Value</em> = <code>CL_Asset</code>
-(c) <em>Key</em> = <code>tags</code> and <em>Value</em> = <code>CL_Asset</code>.
-Click <code>Send</code>, observe the returned <code>"message": "success"</code> body.</li>
-</ol>
-<pre><code>Example of the string to be used in Postman 'POST Image to CL_Asset EntityType' call:
-
-https://api-us.connectedproducts.internetofthings.ibmcloud.com/api/images/v1/CTP-PMI-Democore-2/entityType/CL_Asset
-</code></pre>
-<p><img alt="Monitor21b" src="../../img/monitor/Monitor-21b.png" /> &nbsp;</p>
-<hr />
-<h3 id="10-update-your-summary-dashboard">10. Update your Summary Dashboard</h3>
+<h3 id="9-update-your-summary-dashboard">9. Update your Summary Dashboard</h3>
 <p>In this final 'Monitor Lab' section, we are going to bring everything together and show how you can create and customise
 dashboards to - literally - visualise whatever you want from all the data we generated so far.</p>
 <ol>
