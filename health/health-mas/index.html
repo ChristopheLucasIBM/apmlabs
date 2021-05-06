@@ -756,37 +756,40 @@
                 <p><strong>[WORK STILL IN PROGRESS - Page last updated on 05 May 2021]</strong></p>
 <h1 id="new-health-lab-on-maximo-application-suite-83">[NEW] HEALTH Lab on Maximo Application Suite (8.3)</h1>
 <hr />
-<p><strong>IMPORTANT NOTE</strong>: in this lab, </p>
 <p><strong>TIP</strong>: If the images seem too small to read, just right-click them,
 open in new tab and zoom in/out.
 I have tried to make all images readable with clear 1., 2. etc references to the corresponding instruction steps.</p>
 <hr />
 <h2 id="0-prerequisites-objectives">0. Prerequisites &amp; Objectives</h2>
 <h3 id="prerequisites">Prerequisites</h3>
-<p>There are NO prerequisites if you just plan to go till section <a href="#9-update-the-health-scoring-method">9. Update the Health Scoring Method</a>
+<p>There are no prerequisites if you just plan to go till section <a href="#9-update-the-health-scoring-method">9. Update the Health Scoring Method</a>
 - you will generate all the data that you need in this Health lab which is self-contained.</p>
 <p>But if you plan to also complete the last section <a href="#10-map-iot-devices-readings-to-assets-meter-readings">10. Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</a>,
 then you will need to have completed the first section of the Monitor lab:
 <a href="../../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>.
 This is because - and that is the beauty of the fully-integrated suite - the IoT data that we created
-in the first Monitor Lab steps of these APM labs is the exact same data 
+in the first <a href="../monitor/monitor">Monitor</a> Lab steps of these APM labs is the exact same data 
 that is used in these last Health Lab steps - 
-thus enabling true, near real-time health and condition monitoring !</p>
+thus enabling true, near real-time monitoring and condition-based maintenance of your assets !</p>
 <h3 id="objectives">Objectives</h3>
 <p>In this Module you will:</p>
 <ul>
 <li>set up the required Assets and Meter Groups in Manage (aka Maximo)</li>
-<li>create a sample Health Scoring Method, a Criticality and a Risk Method in Health</li>
+<li>create a sample Health Scoring Method, a Criticality Method and a Risk Method in Health</li>
 <li>populate all Cards (i.e. Health Score, Criticality, Risk, RUL, Age, Next PM, MRR) on your sample <code>CL_Asset_1</code> in Health</li>
 <li>[OPTIONAL] finally, associate the IoT Devices we defined in the first Monitor Lab steps of 
 <a href="../../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>
-to the Manage Assets and set up the required mappings between your IoT readings 
-and Maximo Assets Meter Readings.</li>
+to the <code>CL_Asset_1</code> and set up the required mappings between your IoT readings 
+and Maximo Meter Readings.</li>
 </ul>
 <p>Note that in this section, we will alternatively mention Manage or Maximo 
 - both names refer to the 1 same thing.</p>
 <hr />
 <h2 id="1-setup-initial-manage-data">1. Setup initial Manage data</h2>
+<p><strong>Important Note on Naming Conventions</strong>: in this lab, you will create Assets which we name here <code>CL_Asset_1</code>
+, <code>CL_Asset_2</code> etc (<code>CL</code> standing for Christophe Lucas). 
+In a classroom setting, make sure every student replaces the <code>CL</code> by their initials throughout the lab e.g. <code>XY_Asset_1</code>,
+<code>AB_Asset_1</code> etc.</p>
 <hr />
 <h3 id="1-launch-manage-from-mas-suite-navigator">1. Launch   Manage from MAS Suite Navigator</h3>
 <ol>
@@ -798,7 +801,9 @@ This will open Maximo in another browser tab. Login with your Maximo ID/pwd.
 <h3 id="2-create-3-assets-1-query">2. Create 3 Assets &amp; 1 Query</h3>
 <ol>
 <li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. Click the <code>+</code> button to create an Asset, 
-enter <code>CL_Asset_1</code> in both the Asset ID &amp; Description fields. Click <code>Save</code>. 
+enter <code>XY_Asset_1</code> - where <code>XY</code> are your initials. 
+Note that for the rest of this lab, we will use <code>CL_Asset_1</code> (e.g. CL for Christophe Lucas).
+<code>CL_Asset_1</code> in both the Asset ID &amp; Description fields. Click <code>Save</code>. 
 Repeat this step for <code>CL_Asset_2</code> and <code>CL_Asset_3</code>.</li>
 <li>Click the <code>List View</code> menu. In the Asset field, enter <code>CL_Asset*</code>, click enter.
 This should return the list of your  3 just-created CL_Assets.
@@ -841,7 +846,7 @@ For example: <code>TEMP-C</code> = <code>37</code>, <code>VIBRATIONH</code> = <c
 <hr />
 <h3 id="5-create-a-condition-monitoring-rule">5. Create a Condition Monitoring Rule</h3>
 <p>We are now going to define a Condition Monitoring rule where 
-we will create upper and lower limits for the Meter Readings corresponding t0o the .
+we will create upper and lower limits for the Meter Readings corresponding to <code>TEMP-C</code>.
 Because we will later tie our original IoT readings from the <em>Watson IoT Platform</em> to Meter readings in <em>Maximo</em>,
 this will literally allow us to move towards a real <em>Condition Based</em> maintenance regime !</p>
 <p>In this exercise, we will create such a rule for just 1 Asset (<em>CL_Asset_1</em>) and 1 reading (<em>TEMP-C</em>), but you can
@@ -917,7 +922,7 @@ Name your method <code>CL_Asset_Health</code>, and select <code>Health</code> in
 Name it <code>Meter Readings</code>, select <code>One or more factors</code> in the <code>Calculate a score from</code> tick-box.
 Click <code>Create</code>.</li>
 <li>The <code>Meter Readings</code> Driver now appears in the Drivers list, but is still empty.
-We'll now add all the Factors (associated to Meter Readings) we just created to this Driver.
+Let's add all the Factors (associated to Meter Readings) we just created to this Driver.
 Click the <code>+</code> top-right icon to select those Factors.
 <img alt="Health" src="../../img/health-mas/Health-MAS-8.png" />&nbsp;</li>
 <li>In the opened <code>Select factors</code> window, select the 8 Factors relevant to our CL_Assets and click <code>Add to driver</code>.
@@ -1022,10 +1027,16 @@ the <code>Estimated Next Due Date</code>, enter a date e.g. <code>55</code> days
 menu ... and you should now see a <code>Next PM</code> value !</li>
 </ol>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-15.png" />&nbsp;</p>
-<p>The <code>MRR</code> card displays: <em>The maintenance-to-replacement ratio (MRR) for the asset. The MRR is calculated by dividing the current total cost of all maintenance for the asset, including parts and labor, by the replacement cost.</em>
-To populate it, we must now create work that has costs associated !
-1. cd
-2.</p>
+<p>The <code>MRR</code> card displays: <em>The maintenance-to-replacement ratio (MRR) for the asset. The MRR is calculated by dividing the current total cost of all maintenance for the asset, including parts and labor, by the replacement cost.</em></p>
+<p>To populate it, we must therefore create work that has costs associated !</p>
+<ol>
+<li>cd</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-16.png" />&nbsp;
+2. v</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-17.png" />&nbsp;
+3. bhbhbh</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-18.png" />&nbsp;</p>
 <hr />
 <h3 id="9-update-the-health-scoring-method">9. Update the Health Scoring Method</h3>
 <p><strong> TO BE COMPLETED</strong></p>
