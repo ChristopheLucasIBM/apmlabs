@@ -408,8 +408,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#10-map-iot-devices-readings-to-assets-meter-readings" class="md-nav__link">
-    10. Map IoT Devices &amp; Readings to Assets &amp; Meter Readings
+  <a href="#10-optional-map-iot-devices-readings-to-assets-meter-readings" class="md-nav__link">
+    10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings
   </a>
   
 </li>
@@ -729,8 +729,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#10-map-iot-devices-readings-to-assets-meter-readings" class="md-nav__link">
-    10. Map IoT Devices &amp; Readings to Assets &amp; Meter Readings
+  <a href="#10-optional-map-iot-devices-readings-to-assets-meter-readings" class="md-nav__link">
+    10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings
   </a>
   
 </li>
@@ -758,13 +758,13 @@
 <hr />
 <p><strong>TIP</strong>: If the images seem too small to read, just right-click them,
 open in new tab and zoom in/out.
-I have tried to make all images readable with clear 1., 2. etc references to the corresponding instruction steps.</p>
+I have tried to make all images readable with clear 1., 2., 3. etc references to the corresponding instruction steps.</p>
 <hr />
 <h2 id="0-prerequisites-objectives">0. Prerequisites &amp; Objectives</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <p>There are no prerequisites if you just plan to go till section <a href="#9-update-the-health-scoring-method">9. Update the Health Scoring Method</a>
 - you will generate all the data that you need in this Health lab which is self-contained.</p>
-<p>But if you plan to also complete the last section <a href="#10-map-iot-devices-readings-to-assets-meter-readings">10. Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</a>,
+<p>But if you plan to also complete the last section <a href="#10-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</a>,
 then you will need to have completed the first section of the Monitor lab:
 <a href="../../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>.
 This is because - and that is the beauty of the fully-integrated suite - the IoT data that we created
@@ -1050,25 +1050,44 @@ In this case, the MRR now equals <code>27.5%</code> - which indeed is the result
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-18.png" />&nbsp;</p>
 <hr />
 <h3 id="9-update-the-health-scoring-method">9. Update the Health Scoring Method</h3>
-<p><strong> TO BE COMPLETED</strong></p>
+<p>As a last exercise, we are going to update the Health Scoring Method we <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers">earlier defined</a>.
+This will you give you a glimpse at how configurable health scores are.</p>
+<ol>
+<li>In Health, go back to the left <code>Scoring</code> menu. Open the <code>CL_Asset_Health</code> Method and <code>Deactivate</code> it (top-right).
+Click the <code>+</code> top-right icon to add a new <code>Driver</code>.
+Enter <code>Year to Date vs. Replacement Cost</code> in the Name and tick the <code>A custom formula</code> tickbox.
+In the formula field, enter <code>IF(ytdcost&gt;(replacecost/50),20,20-PCT(ytdcost,replacecost))</code>.
+This is another calculation involving the <code>Year to Date Cost</code> and <code>Replacement Cost</code> associated to <code>CL_Asset_1</code>.
+In the <code>Best Score</code> enter <code>100</code>, and in <code>Worst Score</code> enter <code>0</code>. Click <code>Create</code>.</li>
+<li>Similarly to what we just did, create another <code>Driver</code>, call it <code>Open Work Orders</code>.
+In the <code>Custom formula</code> field, enter <code>count$openwo</code>.
+In the <code>Best Score</code> enter <code>0</code>, and in <code>Worst Score</code> enter <code>5</code>. Click <code>Create</code>.</li>
+<li>On the Drivers list, click the top-right pencil, and give weights to the 3 Drivers, 
+e.g. <code>Meter Readings</code> at <code>60%</code>, <code>Year to Date vs. Replacement Cost</code> and <code>Open Work Orders</code> at <code>20%</code>.</li>
+<li>This is what your <code>CL_Asset_Health</code> Drivers list should look like.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-19.png" />&nbsp;</p>
+<p>Finally, come back to your <code>CL_Asset_1</code>, click <code>Recalculate Score</code> and ... contemplate your work !</p>
+<p>WELL DONE 
+<img alt="Health" src="../../img/health-mas/Health-MAS-19a.png" />&nbsp;</p>
 <hr />
-<h3 id="10-map-iot-devices-readings-to-assets-meter-readings">10. Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</h3>
+<h3 id="10-optional-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</h3>
 <p><strong> TO BE COMPLETED</strong></p>
 <ol>
 <li>
-<p>From the top-left <code>Scoring</code> menu, 
+<p>Check Integration ...
 <img alt="Health" src="../../img/health-mas/Health-MAS-20.png" />&nbsp;</p>
 </li>
 <li>
-<p>From the top-left <code>Scoring</code> menu, 
+<p>Register Device and Map Data Schemas ... 
 <img alt="Health" src="../../img/health-mas/Health-MAS-21.png" />&nbsp;</p>
 </li>
 <li>
-<p>From the top-left <code>Scoring</code> menu, 
+<p>Device Type mappings ...
 <img alt="Health" src="../../img/health-mas/Health-MAS-22.png" />&nbsp;</p>
 </li>
 <li>
-<p>From the top-left <code>Scoring</code> menu, 
+<p>Associate Assets ... 
 <img alt="Health" src="../../img/health-mas/Health-MAS-23.png" />&nbsp;</p>
 </li>
 </ol>

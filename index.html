@@ -586,11 +586,11 @@ These Labs all assume that you have a working environment with the required acce
 </tr>
 <tr>
 <td><a href="../health/health-mas">Health on Maximo Application Suite 8.3</a></td>
-<td align="left"><strong>[NEW]</strong>  This Lab can be run standalone up till its section <a href="../health/health-mas/#9-update-the-health-scoring-method">9. Update the Health Scoring Method</a>. To complete its final step <a href="../health/health-mas/#10-map-iot-devices-readings-to-assets-meter-readings">10. Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</a>, you must have completed this Monitor Lab section <a href="../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>.</td>
+<td align="left"><strong>[NEW]</strong>  This Lab can be run standalone up till its section <a href="../health/health-mas/#9-update-the-health-scoring-method">9. Update the Health Scoring Method</a>. To complete its final step <a href="../health/health-mas/#10-optional-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</a>, you must have completed this Monitor Lab section <a href="../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>.</td>
 </tr>
 <tr>
 <td><a href="../health/health">Maximo Asset Health Insights 7.6.1</a></td>
-<td align="left">till section <a href="../health/health-mas/##10-map-iot-devices-readings-to-assets-meter-readings">9. Update the Health Scoring Method</a>.</td>
+<td align="left">To run this Lab, you must have completed this Monitor Lab section <a href="../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>.</td>
 </tr>
 <tr>
 <td>Other</td>
@@ -599,15 +599,14 @@ These Labs all assume that you have a working environment with the required acce
 </tbody>
 </table>
 <p>In the <a href="../monitor/monitor">Monitor on Maximo Application Suite 8.3 &amp; SaaS</a> lab, you will:</p>
-<ul>
-<li>set up the required Assets and Meter Groups in Manage (aka Maximo)</li>
-<li>create a sample Health Scoring Method, a Criticality and a Risk Method in Health</li>
-<li>populate all Cards (i.e. Health Score, Criticality, Risk, RUL, Age, Next PM, MRR) on your sample <code>CL_Asset_1</code> in Health</li>
-<li>[OPTIONAL] finally, associate the IoT Devices we defined in the first Monitor Lab steps of 
-<a href="../monitor/monitor.md#1-generate-iot-data">1. Generate IoT data</a>
-to the Manage Assets and set up the required mappings between your IoT readings 
-and Maximo Assets Meter Readings.</li>
-</ul>
+<ol>
+<li>Create 3 IoT Devices of type <code>CL_Asset</code> and generate simulated IoT data for them. 
+Focusing on the <code>temperature</code> reading, we will generate anomalous readings during a couple minutes.</li>
+<li>Visualise the IoT data in Monitor and generate new data items.</li>
+<li>Create <code>Anomaly Detection</code> functions that will spot the anomalous readings you generated.</li>
+<li>Create <code>Alerts</code> based on the anomalies detected.</li>
+<li>Create a custom dashboard that will bring everything together.</li>
+</ol>
 <p><img alt="Monitor0b" src="img/monitor/Monitor-0b.png" /> &nbsp;</p>
 <p>In the <a href="../health/health-mas">Health on Maximo Application Suite 8.3</a> lab, you will:</p>
 <ul>
@@ -617,15 +616,17 @@ and Maximo Assets Meter Readings.</li>
 <li>[OPTIONAL] finally, associate the IoT Devices we defined in the first Monitor Lab steps of 
 <a href="../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>
 to the Manage Assets and set up the required mappings between your IoT readings 
-and Maximo Assets Meter Readings.</li>
+and Maximo Assets Meter Readings.
+At the end of this Lab, your <code>CL_Asset_1</code> will look like this in Health, with all its cards populated and explained.
+<img alt="Monitor0c" src="img/monitor/Monitor-0d.png" /> &nbsp;</li>
 </ul>
 <p>In the <a href="../health/health">Maximo Asset Health Insights 7.6.1</a> lab, you will:</p>
-<ul>
+<ol>
 <li>set up the required mappings and associations between the <code>CL_Asset</code> <em>IoT Devices</em> and corresponding Maximo <em>Assets</em>.</li>
 <li>set up the required mappings and associations between <em>IoT readings</em> and Maximo <em>Meter Readings</em>.</li>
 <li>create a sample <em>Scoring Method</em> to calculate the health of your Assets.</li>
 <li>Visualise the health of your Assets through a <em>Dashboard</em>. </li>
-</ul>
+</ol>
 <p><img alt="Monitor0c" src="img/monitor/Monitor-0c.png" /> &nbsp;</p>
 <hr />
 <h3 id="intended-audience">Intended audience</h3>
@@ -747,19 +748,34 @@ of these labs are <strong>MANAGE</strong>, <strong>MONITOR</strong> and <strong>
 In future versions we will add <strong>PREDICT</strong> and <strong>ASSIST</strong>.</p>
 <p><img alt="Monitor0" src="img/monitor/Monitor-0.png" /> &nbsp;  </p>
 <h2 id="prerequisites-tools-versions">Prerequisites &amp; Tools Versions</h2>
-<p>These APM labs assume that you have a fully working APM environment set up and the IDs required to access them.
-That includes:</p>
-<ul>
-<li>A Maximo environment at the correct version and an ID with ad'hoc rights, including access to the <em>Reliability Engineer</em> work centre where you will do the HEALTH lab.</li>
-<li>An IBM ID and a MONITOR environment which <em>Watson IoT component</em> is <a href="https://www.ibm.com/support/knowledgecenter/SSYKK9_7.6.1/com.ibm.ah.doc/integrate/t_ctr_int_iot.html">integrated</a>
-with HEALTH </li>
-</ul>
-<p>The tool versions that were used to build these labs are:</p>
-<ul>
-<li>IBM Maximo Asset Management 7.6.1.1</li>
-<li>IBM Maximo APM - Asset Health Insights 7.6.1.1</li>
-<li>IBM Maximo Asset Monitor SaaS: November 2020 (then February 2021 for latest updates)</li>
-</ul>
+<p>These APM labs assume that you have a fully working and integrated environment set up and the IDs required to access them.
+The tool versions that were used to build these labs are:</p>
+<table>
+<thead>
+<tr>
+<th>Lab Name</th>
+<th align="left">Tools Versions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../monitor/monitor">Monitor on Maximo Application Suite 8.3 &amp; SaaS</a></td>
+<td align="left">IBM Maximo Asset Monitor SaaS: November 2020 (then February 2021 for latest updates). Works on MAS83-Monitor too.</td>
+</tr>
+<tr>
+<td><a href="../health/health-mas">Health on Maximo Application Suite 8.3</a></td>
+<td align="left">Running on an OpenShift Cluster on IBM Cloud: MAS83-Monitor &amp; MAS83-Health &amp; Maximo 7.6.1.2</td>
+</tr>
+<tr>
+<td><a href="../health/health">Maximo Asset Health Insights 7.6.1</a></td>
+<td align="left">IBM Maximo Asset Management 7.6.1.1 &amp; IBM Maximo APM - Asset Health Insights 7.6.1.1.</td>
+</tr>
+<tr>
+<td>Other</td>
+<td align="left">Note available yet (stay tuned): <a href="../predict/predict">Predict on Maximo Application Suite 8.3</a> and <a href="../assist/assist">Assist on Maximo Application Suite 8.3</a></td>
+</tr>
+</tbody>
+</table>
 <p>If you have questions about how to get access to such an environment, about how to install, 
 about which exact versions 
 are required, about pricing etc ... please contact you instructor or your local IBM representative.</p>
