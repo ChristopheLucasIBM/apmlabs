@@ -753,7 +753,7 @@
               
                 
                 
-                <p><strong>[WORK STILL IN PROGRESS - Page last updated on 05 May 2021]</strong></p>
+                <p><em>[Page last updated on 06 May 2021]</em></p>
 <h1 id="new-health-lab-on-maximo-application-suite-83">[NEW] HEALTH Lab on Maximo Application Suite (8.3)</h1>
 <hr />
 <p><strong>TIP</strong>: If the images seem too small to read, just right-click them,
@@ -764,11 +764,11 @@ I have tried to make all images readable with clear 1., 2., 3. etc references to
 <h3 id="prerequisites">Prerequisites</h3>
 <p>There are no prerequisites if you just plan to go till section <a href="#9-update-the-health-scoring-method">9. Update the Health Scoring Method</a>
 - you will generate all the data that you need in this Health lab which is self-contained.</p>
-<p>But if you plan to also complete the last section <a href="#10-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</a>,
+<p>But if you plan to also complete the last section <a href="#10-optional-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</a>,
 then you will need to have completed the first section of the Monitor lab:
 <a href="../../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>.
 This is because - and that is the beauty of the fully-integrated suite - the IoT data that we created
-in the first <a href="../monitor/monitor">Monitor</a> Lab steps of these APM labs is the exact same data 
+in the first <a href="../../monitor/monitor/#1-generate-iot-data">Monitor</a> Lab steps of these APM labs is the exact same data 
 that is used in these last Health Lab steps - 
 thus enabling true, near real-time monitoring and condition-based maintenance of your assets !</p>
 <h3 id="objectives">Objectives</h3>
@@ -846,11 +846,7 @@ For example: <code>TEMP-C</code> = <code>37</code>, <code>VIBRATIONH</code> = <c
 <hr />
 <h3 id="5-create-a-condition-monitoring-rule">5. Create a Condition Monitoring Rule</h3>
 <p>We are now going to define a Condition Monitoring rule where 
-we will create upper and lower limits for the Meter Readings corresponding to <code>TEMP-C</code>.
-Because we will later tie our original IoT readings to Meter readings in Maximo,
-this will literally allow us to move towards a real Condition Based maintenance regime !</p>
-<p>In this exercise, we will create such a rule for just 1 Asset <code>CL_Asset_1</code> and 1 reading <code>TEMP-C</code>, but you can
-of course create more rules for other Assets and/or other readings.</p>
+we will create upper and lower limits for the Meter Readings corresponding to <code>TEMP-C</code>, for Asset <code>CL_Asset_1</code>.</p>
 <ol>
 <li>
 <p>In Maximo, click the <code>Go To Applications - Condition Monitoring</code> Menu. 
@@ -879,7 +875,7 @@ doing a demo here !). Do the same for <em>Upper Limit Job Pan</em>. Click <code>
 <li>From the MAS homepage, Click <code>Launch</code> on the Health card. </li>
 <li>Go to the top-left Assets menu. Enter <code>CL</code> in the Search bar. 
 This will return the 3 Assets we just created in Maximo.</li>
-<li>Click on e.g. <code>CL_Asset_1</code>, and observe the various cards that
+<li>Click on <code>CL_Asset_1</code>, and observe the various cards that
 appear out-of-the-box - they are all empty for the moment. Let's populate them !</li>
 </ol>
 <p><strong>NOTE</strong>: it is normal that you see Predict in the top middle menu, 
@@ -953,7 +949,7 @@ This will display the 3 <code>CL_Assets</code>, select your <code>CL_Asset_1</co
 In the <code>Find Navigation Item</code> menu, write <code>Enter Meter Readings</code>, click Enter and just enter 
 a value of <code>55</code> for <code>TEMP-C</code>. This means that <code>TEMP-C</code> is going to move above the 
 normal operating conditions we originally defined in the 
-<a href="../monitor/monitor/#2-create-iot-simulation">IoT Simulation</a> 
+<a href="../monitor/monitor/#2-create-iot-simulation">IoT Simulation</a>
 (i.e. between 35 &amp; 40 Celsius).</li>
 <li>Go back to Health. Select your <code>CL_Asset_1</code> row. Top-rigt, click <code>Recalculate Health score</code>.
 Observe how your Health card gets updated from <code>70%</code> (orange) to <code>40%</code> (red).
@@ -981,7 +977,7 @@ our <code>CL_Asset_Criticality</code> method.</li>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-12.png" />&nbsp;</p>
 <p>Let's now create a Risk Method and populate the Risk card.</p>
 <p><strong>NOTE</strong>: Because the definition of Risk might vary from an organisation to another, this Risk Method is fully configurable. 
-You can use these <a href="https://mam-hol.eu-gb.mybluemix.net/monitor-hol/monitor_anomalies/">Formulas references</a>
+You can use these <a href="https://community.ibm.com/community/user/iot/viewdocument/maximo-formula-documentation?CommunityKey=ed77c224-45e2-47b0-b574-cc31496f9a41&amp;tab=librarydocuments&amp;LibraryFolderKey=7b6b215d-3d7b-4c21-a720-e8c2c62b7f07&amp;DefaultView=folder">Formulas references</a>
 to have an idea of what custom formulas you can construct. 
 By default, the Risk Score in MAS-Health is defined as follows:
 <em>By default, risk is calculated by dividing 
@@ -991,7 +987,7 @@ the remainder of the health score by 100 and then multiplying the resulting numb
 Name it <code>CL_Asset_Risk</code>. In the <code>Type</code>, select <code>Risk</code>.
 In the <code>Scored Assets</code>, select the <code>CL_Assets</code> query as we did in <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers">section 3.</a>
 Click <code>Create</code>.</li>
-<li>Click on the just created <code>CL_Asset_Risk</code> link. Click the to-right Edit pencil.
+<li>Click on the just created <code>CL_Asset_Risk</code> link. Click the top-right Edit pencil.
 In the <code>Formula</code> field, write <code>IF((ISNULLF(ASSETLOCSCORE("health")) || ISNULLF(ASSETLOCSCORE("criticality"))), NULLVALUE(),((100-ASSETLOCSCORE("health"))/100)*ASSETLOCSCORE("criticality"))</code>.
 That is the code translation of what we just wrote in earlier Note.
 Make sure you tick the <code>Active</code> checkbox to activate our <code>CL_Asset_Risk</code> method.</li>
@@ -1007,7 +1003,7 @@ and <code>Risk</code> cards now display data !</li>
 <p>The <code>Age</code> card displays <em>the current system date minus the installation date</em> of an asset.</p>
 <p>The <code>RUL</code> card is calculated as follows: <em>The remaining percentage of the asset's useful life. The remaining useful life (RUL) is calculated by subtracting the age from the manufacturer’s expected life. If the age exceeds the expected life, the RUL is 0%.</em>.</p>
 <p>So back to <code>CL_Asset_1</code> in Maximo, simply set a value in <code>Installation Date</code> (set it e.g. &gt; 5 years in the past),
-and a value in <code>Expected Life</code> (make it &gt; 15 years). Go back to in Health, click top-right <code>Recalculate health score</code>
+and a value in <code>Expected Life</code> (make it &gt; 15 years). Go back to <code>CL_Asset_1</code> in Health, click top-right <code>Recalculate health score</code>
 button, and ... there you go: the <code>Age</code> and <code>RUL</code> cards are now populated !</p>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-14.png" />&nbsp;</p>
 <hr />
@@ -1051,7 +1047,7 @@ In this case, the MRR now equals <code>27.5%</code> - which indeed is the result
 <hr />
 <h3 id="9-update-the-health-scoring-method">9. Update the Health Scoring Method</h3>
 <p>As a last exercise, we are going to update the Health Scoring Method we <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers">earlier defined</a>.
-This will you give you a glimpse at how configurable health scores are.</p>
+This will give you a glimpse at how configurable health scores are.</p>
 <ol>
 <li>In Health, go back to the left <code>Scoring</code> menu. Open the <code>CL_Asset_Health</code> Method and <code>Deactivate</code> it (top-right).
 Click the <code>+</code> top-right icon to add a new <code>Driver</code>.
