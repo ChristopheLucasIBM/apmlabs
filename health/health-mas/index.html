@@ -756,9 +756,10 @@
                 <p><strong>[WORK STILL IN PROGRESS - Page last updated on 05 May 2021]</strong></p>
 <h1 id="new-health-lab-on-maximo-application-suite-83">[NEW] HEALTH Lab on Maximo Application Suite (8.3)</h1>
 <hr />
+<p><strong>IMPORTANT NOTE</strong>: in this lab, </p>
 <p><strong>TIP</strong>: If the images seem too small to read, just right-click them,
 open in new tab and zoom in/out.
-I have tried to make all images readable with 1., 2. etc references to the corresponding instruction steps. </p>
+I have tried to make all images readable with clear 1., 2. etc references to the corresponding instruction steps.</p>
 <hr />
 <h2 id="0-prerequisites-objectives">0. Prerequisites &amp; Objectives</h2>
 <h3 id="prerequisites">Prerequisites</h3>
@@ -782,7 +783,7 @@ thus enabling true, near real-time health and condition monitoring !</p>
 to the Manage Assets and set up the required mappings between your IoT readings 
 and Maximo Assets Meter Readings.</li>
 </ul>
-<p>Note that in this section, we will alternatively use MANAGE or Maximo 
+<p>Note that in this section, we will alternatively mention Manage or Maximo 
 - both names refer to the 1 same thing.</p>
 <hr />
 <h2 id="1-setup-initial-manage-data">1. Setup initial Manage data</h2>
@@ -793,6 +794,7 @@ and Maximo Assets Meter Readings.</li>
 This will open Maximo in another browser tab. Login with your Maximo ID/pwd.
 <img alt="Health1" src="../../img/health-mas/Health-MAS-1.png" />&nbsp; </li>
 </ol>
+<hr />
 <h3 id="2-create-3-assets-1-query">2. Create 3 Assets &amp; 1 Query</h3>
 <ol>
 <li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. Click the <code>+</code> button to create an Asset, 
@@ -977,10 +979,8 @@ our <code>CL_Asset_Criticality</code> method.</li>
 You can use these <a href="https://mam-hol.eu-gb.mybluemix.net/monitor-hol/monitor_anomalies/">Formulas references</a>
 to have an idea of what custom formulas you can construct. 
 By default, the Risk Score in MAS-Health is defined as follows:
-<em>The level of risk that is associated with this asset. By default, risk is calculated by dividing 
-the remainder of the health score by 100 and then multiplying the resulting number by the criticality score. 
-For example, if the health score is 65 and the criticality score is 3, the remainder of the health score is 35, 
-and the risk is 1.05. Both a health score and a criticality score must exist to calculate risk.</em></p>
+<em>By default, risk is calculated by dividing 
+the remainder of the health score by 100 and then multiplying the resulting number by the criticality score.</em></p>
 <ol>
 <li>From the top-left <code>Scoring</code> menu, go to the <code>Method</code> tab and click <code>Create method</code>.
 Name it <code>CL_Asset_Risk</code>. In the <code>Type</code>, select <code>Risk</code>.
@@ -1008,8 +1008,24 @@ button, and ... there you go: the <code>Age</code> and <code>RUL</code> cards ar
 <hr />
 <h3 id="7-populate-the-next-pm-mrr-cards-and-the-asset-timeline">7. Populate the Next PM &amp; MRR cards and the Asset Timeline</h3>
 <p><strong> TO BE COMPLETED</strong></p>
-<p>The <code>Next PM</code> and <code>MRR</code> cards require a bit more work ...</p>
+<p>The <code>Next PM</code> card displays <em>the time until the next scheduled preventive maintenance (PM) event.</em>
+To populate it, we must therefore associate a preventive maintenance to our asset. To do that:</p>
+<ol>
+<li>Go back your <code>CL_Asset_1</code> in Maximo. In the top-left <code>Find Navigation Item</code> menu, 
+write <code>Preventive Maintenance</code> and click enter. That will take you to the <code>Preventive Maintenance</code> menu.</li>
+<li>Click the <code>+</code> top button to create a new <code>Preventive Maintenance</code>.
+Leave the PM ID as-is, and write <code>CL_Asset_1_PM</code> in the PM Description field. In the <code>Asset</code> field, select your <code>CL_Asset_1</code>.</li>
+<li>Go to the <code>Frequency</code> tab. In the section <code>Time Based Frequency</code>, enter <code>3</code> in <code>Frequency</code>, and in
+the <code>Estimated Next Due Date</code>, enter a date e.g. <code>55</code> days in the future.</li>
+<li>In <code>Find Navigation Item</code> menu, write <code>Change Status</code>, click enter, and set the Status to <code>Active</code>, click OK.</li>
+<li>Wait a minute, then go back to <code>CL_Asset_1</code> in Health. Click <code>Recalculate health score</code> in top-right <code>Actions</code>
+menu ... and you should now see a <code>Next PM</code> value !</li>
+</ol>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-15.png" />&nbsp;</p>
+<p>The <code>MRR</code> card displays: <em>The maintenance-to-replacement ratio (MRR) for the asset. The MRR is calculated by dividing the current total cost of all maintenance for the asset, including parts and labor, by the replacement cost.</em>
+To populate it, we must now create work that has costs associated !
+1. cd
+2.</p>
 <hr />
 <h3 id="9-update-the-health-scoring-method">9. Update the Health Scoring Method</h3>
 <p><strong> TO BE COMPLETED</strong></p>
