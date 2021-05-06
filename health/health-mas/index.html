@@ -847,9 +847,9 @@ For example: <code>TEMP-C</code> = <code>37</code>, <code>VIBRATIONH</code> = <c
 <h3 id="5-create-a-condition-monitoring-rule">5. Create a Condition Monitoring Rule</h3>
 <p>We are now going to define a Condition Monitoring rule where 
 we will create upper and lower limits for the Meter Readings corresponding to <code>TEMP-C</code>.
-Because we will later tie our original IoT readings from the <em>Watson IoT Platform</em> to Meter readings in <em>Maximo</em>,
-this will literally allow us to move towards a real <em>Condition Based</em> maintenance regime !</p>
-<p>In this exercise, we will create such a rule for just 1 Asset (<em>CL_Asset_1</em>) and 1 reading (<em>TEMP-C</em>), but you can
+Because we will later tie our original IoT readings to Meter readings in Maximo,
+this will literally allow us to move towards a real Condition Based maintenance regime !</p>
+<p>In this exercise, we will create such a rule for just 1 Asset <code>CL_Asset_1</code> and 1 reading <code>TEMP-C</code>, but you can
 of course create more rules for other Assets and/or other readings.</p>
 <ol>
 <li>
@@ -1012,7 +1012,6 @@ button, and ... there you go: the <code>Age</code> and <code>RUL</code> cards ar
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-14.png" />&nbsp;</p>
 <hr />
 <h3 id="7-populate-the-next-pm-mrr-cards-and-the-asset-timeline">7. Populate the Next PM &amp; MRR cards and the Asset Timeline</h3>
-<p><strong> TO BE COMPLETED</strong></p>
 <p>The <code>Next PM</code> card displays <em>the time until the next scheduled preventive maintenance (PM) event.</em>
 To populate it, we must therefore associate a preventive maintenance to our asset. To do that:</p>
 <ol>
@@ -1030,12 +1029,24 @@ menu ... and you should now see a <code>Next PM</code> value !</li>
 <p>The <code>MRR</code> card displays: <em>The maintenance-to-replacement ratio (MRR) for the asset. The MRR is calculated by dividing the current total cost of all maintenance for the asset, including parts and labor, by the replacement cost.</em></p>
 <p>To populate it, we must therefore create work that has costs associated !</p>
 <ol>
-<li>cd</li>
+<li>In Maximo, open <code>CL_Asset_1</code>. In the keft-menu, click <code>Create - Work Order</code>, name it <code>CL_Asset_1_WO_1</code>.</li>
+<li>Go to the <code>Work</code> tab, you will see the just created <code>CL_Asset_1_WO_1</code>. Click <code>Go To Work Order Tracking</code>.</li>
+<li>On the opened work order, from left-menu, click <code>Change Status</code> and set the status of the work order to <code>Approved</code>.</li>
 </ol>
-<p><img alt="Health" src="../../img/health-mas/Health-MAS-16.png" />&nbsp;
-2. v</p>
-<p><img alt="Health" src="../../img/health-mas/Health-MAS-17.png" />&nbsp;
-3. bhbhbh</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-16.png" />&nbsp;</p>
+<ol>
+<li>Go to the <code>Actuals</code> tab and at the bottom of that tab, click the <code>Select Labor</code> button. (<strong>NOTE</strong>: Here we expect that your Maximo instance has a least 1 existing Labor already). Select e.g. <code>BALL</code>. Extend the <code>BALL</code> row.</li>
+<li>In the <code>Details</code> section, enter a <code>Start Date</code> in the past, and enter e.g. <code>10</code> in the <code>Regular Hours</code>
+field. Note the <code>Rate</code> value (i.e. <code>22</code> in this case) and how the <code>Line Cost</code> = <code>Hours x Rate</code> (e.g. 220 = 22 x 10 in our case).</li>
+<li>Click <code>Change Status</code> and set the status of the work order to <code>Complete</code>.</li>
+<li>In the left-menu <code>Find Navigation Item</code>, type then launch <code>Run Reports</code>.
+In the <code>Reports and Schedules</code> window that opens, navigate to the <code>Maintenanc Cost Rollup Update</code>. Click <code>Create Report</code>.
+On the <code>Request Page</code>, select a <code>Site</code> (e.g. =BEDFORD) and set the <code>Schedule</code> to <code>Immediate</code>. Click <code>Submit</code>.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-17.png" />&nbsp;</p>
+<p>Finally, we can see our last card populated !
+In this case, the MRR now equals <code>27.5%</code> - which indeed is the result of this calculation:
+<code>Total Cost / Replacement Cost = 220/800 = 27.5%</code>.</p>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-18.png" />&nbsp;</p>
 <hr />
 <h3 id="9-update-the-health-scoring-method">9. Update the Health Scoring Method</h3>
