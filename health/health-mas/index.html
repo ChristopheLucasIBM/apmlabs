@@ -1067,16 +1067,30 @@ contemplate your work - well done and congratulations !</p>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-19a.png" />&nbsp;</p>
 <hr />
 <h3 id="10-optional-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</h3>
-<p><strong> TO BE COMPLETED</strong></p>
+<p>In this last optional section, we will map the IoT Devices &amp; Readings as we defined them
+in the first steps of the <a href="../../monitor/monitor/#1-generate-iot-data">Monitor</a> Lab 
+to the Assets &amp; Meter Readings we defined in the earlier <a href="#1-setup-initial-manage-data">1. Setup initial Manage data</a> step of this Health Lab.
+This will enable the automated synching of the IoT Readings to Manage Meter Readings - in this case,
+we will take an hourly average of the IoT readings and transform them into 1 new Meter Reading every hour.
+That is what will ultimately make real condition-based maintenance a true possibility !</p>
+<p>Go to your Manage - Health integration page (typically set at: <code>http://MANAGE-URL/maximo-x/#/administrator/integration</code>),
+and to the <code>IoT Connector</code> tab.</p>
 <ol>
-<li>
-<p>Check Integration ...
-<img alt="Health" src="../../img/health-mas/Health-MAS-20.png" />&nbsp;</p>
-</li>
-<li>
-<p>Register Device and Map Data Schemas ... 
-<img alt="Health" src="../../img/health-mas/Health-MAS-21.png" />&nbsp;</p>
-</li>
+<li>On the <code>IoT Connection Service</code> tab, tick the <code>IBM Maximo Asset Monitor</code> tick-box. Click <code>Next</code> 3 times.
+<strong>NOTE:</strong> For these labs, we assume that the <code>Configure IoT Service</code> and <code>Configure End Points</code> were already set by your instructor. 
+<img alt="Health" src="../../img/health-mas/Health-MAS-20.png" />&nbsp;</li>
+<li>On the <code>Register Device Types</code> tab, select <code>CL_Asset_LI</code> (which corresponds to the Logical Interface you defined in
+<a href="../../monitor/monitor/#4-create-physical-logical-interfaces">4. Create Physical &amp; Logical Interfaces</a>).
+Click the <code>Register as asset</code> button.</li>
+<li>That will move you to the <code>Map Data Schema</code> page. On the <code>CL_Asset_LI</code> row, click the right Edit pencil.
+Then click <code>Add Mapping</code> button.</li>
+<li>On the opened <code>Schema</code> tab, click <code>Detect from a connected device</code> and <code>From first available</code>.
+Click <code>Get Now</code>.
+Assuming data is flowing to your <code>CL_Asset_1</code> device, that should populate the box below the button
+with a json corresponding to your IoT readings. Click <code>Save changes</code>.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-21.png" />&nbsp;</p>
+<ol>
 <li>
 <p>Device Type mappings ...
 <img alt="Health" src="../../img/health-mas/Health-MAS-22.png" />&nbsp;</p>
