@@ -1066,8 +1066,9 @@ e.g. <code>Meter Readings</code> at <code>60%</code>, <code>Year to Date vs. Rep
 contemplate your work - well done and congratulations !</p>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-19a.png" />&nbsp;</p>
 <hr />
+<hr />
 <h3 id="10-optional-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</h3>
-<p>In this last optional section, we will map the IoT Devices &amp; Readings as we defined them
+<p>In this last optional section, we will map the IoT Devices &amp; Readings we defined
 in the first steps of the <a href="../../monitor/monitor/#1-generate-iot-data">Monitor</a> Lab 
 to the Assets &amp; Meter Readings we defined in the earlier <a href="#1-setup-initial-manage-data">1. Setup initial Manage data</a> step of this Health Lab.
 This will enable the automated synching of the IoT Readings to Manage Meter Readings - in this case,
@@ -1082,23 +1083,38 @@ and to the <code>IoT Connector</code> tab.</p>
 <li>On the <code>Register Device Types</code> tab, select <code>CL_Asset_LI</code> (which corresponds to the Logical Interface you defined in
 <a href="../../monitor/monitor/#4-create-physical-logical-interfaces">4. Create Physical &amp; Logical Interfaces</a>).
 Click the <code>Register as asset</code> button.</li>
-<li>That will move you to the <code>Map Data Schema</code> page. On the <code>CL_Asset_LI</code> row, click the right Edit pencil.
-Then click <code>Add Mapping</code> button.</li>
-<li>On the opened <code>Schema</code> tab, click <code>Detect from a connected device</code> and <code>From first available</code>.
+<li>
+<p>That will move you to the <code>Map Data Schema</code> page. On the <code>CL_Asset_LI</code> row, click the right Edit pencil.
+On the opened <code>Schema</code> tab, click <code>Detect from a connected device</code> and <code>From first available</code>.
 Click <code>Get Now</code>.
 Assuming data is flowing to your <code>CL_Asset_1</code> device, that should populate the box below the button
-with a json corresponding to your IoT readings. Click <code>Save changes</code>.</li>
+with a json corresponding to your IoT readings. Click <code>Save changes</code>.</p>
+</li>
+<li>
+<p>On the <code>Device Type mappings</code> tab, click <code>Add Mapping</code> button.</p>
+</li>
 </ol>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-21.png" />&nbsp;</p>
+<p>Let's now do the associations between the IoT Device Readings and Manage Meter Readings.</p>
 <ol>
-<li>
-<p>Device Type mappings ...
-<img alt="Health" src="../../img/health-mas/Health-MAS-22.png" />&nbsp;</p>
-</li>
-<li>
-<p>Associate Assets ... 
-<img alt="Health" src="../../img/health-mas/Health-MAS-23.png" />&nbsp;</p>
-</li>
+<li>Click <code>Select meter</code> and select <code>TEMP-C</code>. In the <code>IoT Device Type Property</code>, select <code>temperature</code>.
+In the <code>Data collection</code> section, tick the <code>Agregated</code> then 
+<code>Detect from a connected device</code> and <code>From first available</code> tick boxes.
+Click <code>Get now</code> then <code>Save changes</code>. Select <code>avg</code> (i.e. average) in the <code>Value</code> field,
+and <code>HOUR</code> in the <code>Time Period</code> field.
+In the <code>Dat Synchronization</code> section, make sure you tick <code>Cron Task Instance Active</code>.</li>
+<li>Repeat step 1. for the 7 other readings. Select <code>avg</code> for all, except for <code>STARTS</code> for which select <code>count</code>.</li>
+<li>Your final <code>Device Type mappings</code> tab should look like this.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-22.png" />&nbsp;</p>
+<p>Finally let's associate the IoT Devices and Manage Assets.</p>
+<ol>
+<li>On the <code>Associate Devices</code> tab, click the <code>Associate Assets</code> sub tab. 
+Type <code>CL_</code> in the Search field. On the first row  where <code>CL_Asset</code> = <code>CL_Asset_1</code> and <code>Meter =</code>PRESSURE<code>, 
+select</code>CL_Asset_1_LI<code>in the</code>Device Type<code>column, and</code>CL_Asset_1<code>in the</code>Device ID` column.</li>
+<li>Repeat step 1. for the other 7 Readings. Do not forget to click the <code>Save</code> icon. That wil move
+you to the <code>Manage Assets</code> tab which should look like this.
+<img alt="Health" src="../../img/health-mas/Health-MAS-23.png" />&nbsp;</li>
 </ol>
                 
               
