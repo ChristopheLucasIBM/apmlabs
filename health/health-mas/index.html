@@ -939,7 +939,7 @@ Then, we will enter new Meter Readings for CL_Asset_1 and notice that its Health
 Select <code>CL_Asset_1</code>. 
 Notice how the <code>Health</code> card displays a score of 70%.
 Going into the <code>Health details</code> card, notice how you can see the values of all the Meter Readings we entered,
-and how, based on the factors and Method we defined, each Meter either shows red or green.
+and how, based on the Factors and Method we defined, each Meter either shows red or green.
 Note that you can also see all Meter Readings in the <code>Operational status</code> section.
 <img alt="Health" src="../../img/health-mas/Health-MAS-10.png" />&nbsp;</li>
 <li>From Health, access Manage by clicking on the top-left 
@@ -965,10 +965,9 @@ Name it <code>CL_Asset_Criticality</code>. In the <code>Type</code>, select <cod
 In the <code>Scored Assets</code>, select the <code>CL_Assets</code> query as we did in <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers">section 3.</a>
 Click <code>Create</code>.</li>
 <li>Click on the just created <code>CL_Asset_Criticality</code> link. Click the to-right Edit pencil.
-In the <code>Formula</code> field, just write <code>Priority</code>. This field corresponds to the Maximo Priority field we defined in
-<a href="#6-populate-other-maximo-data-for-the-upcoming-health-cards">section 1.6</a>.
-So in  this case, we are simply defining the Health Criticality score of a given Asset
-as the value of the Asset's <code>Priority</code> field.
+In the <code>Formula</code> field, just write <code>Priority</code>.
+<strong>NOTE:</strong> in  this case, we are simply defining the Health Criticality score of a given Asset
+as the value of the Asset's <code>Priority</code> field - which we will populate in Maximo in next steps.
 We will see in next sections how more advanced formulas can be defined, where pretty much any other
 field associated to the given Asset in Maximo can be used.</li>
 <li>As a final step for this Criticality card, make sure you tick the <code>Active</code> checkbox to activate
@@ -991,7 +990,7 @@ Click <code>Create</code>.</li>
 In the <code>Formula</code> field, write <code>IF((ISNULLF(ASSETLOCSCORE("health")) || ISNULLF(ASSETLOCSCORE("criticality"))), NULLVALUE(),((100-ASSETLOCSCORE("health"))/100)*ASSETLOCSCORE("criticality"))</code>.
 That is the code translation of what we just wrote in earlier Note.
 Make sure you tick the <code>Active</code> checkbox to activate our <code>CL_Asset_Risk</code> method.</li>
-<li>Go back to <code>CL_Asset_1</code>, open it and top-right, click <code>Edit source aset record</code>, that will open the aset in Maximo.
+<li>Go back to <code>CL_Asset_1</code>, open it and top-right, click <code>Edit source aset record</code>, that will open the asset in Maximo.
 There, simply enter <code>3</code> in the <code>Priority</code> field, click <code>Save</code>, go back to Health.</li>
 <li>Wait a minute (for some Manage-Health background process to complete),
 go back to your <code>CL_Asset_1</code>, click top-rigt <code>Recalculate Health score</code> and observe how both your <code>Criticality</code>
@@ -1025,9 +1024,9 @@ menu ... and you should now see a <code>Next PM</code> value !</li>
 <p>The <code>MRR</code> card displays: <em>The maintenance-to-replacement ratio (MRR) for the asset. The MRR is calculated by dividing the current total cost of all maintenance for the asset, including parts and labor, by the replacement cost.</em></p>
 <p>To populate it, we must therefore create work that has costs associated !</p>
 <ol>
-<li>In Maximo, open <code>CL_Asset_1</code>. In the keft-menu, click <code>Create - Work Order</code>, name it <code>CL_Asset_1_WO_1</code>.</li>
+<li>In Maximo, open <code>CL_Asset_1</code>. In the left menu, click <code>Create - Work Order</code>, name it <code>CL_Asset_1_WO_1</code>.</li>
 <li>Go to the <code>Work</code> tab, you will see the just created <code>CL_Asset_1_WO_1</code>. Click <code>Go To Work Order Tracking</code>.</li>
-<li>On the opened work order, from left-menu, click <code>Change Status</code> and set the status of the work order to <code>Approved</code>.</li>
+<li>On the opened work order, from left menu, click <code>Change Status</code> and set the status of the work order to <code>Approved</code>.</li>
 </ol>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-16.png" />&nbsp;</p>
 <ol>
@@ -1035,7 +1034,7 @@ menu ... and you should now see a <code>Next PM</code> value !</li>
 <li>In the <code>Details</code> section, enter a <code>Start Date</code> in the past, and enter e.g. <code>10</code> in the <code>Regular Hours</code>
 field. Note the <code>Rate</code> value (i.e. <code>22</code> in this case) and how the <code>Line Cost</code> = <code>Hours x Rate</code> (e.g. 220 = 22 x 10 in our case).</li>
 <li>Click <code>Change Status</code> and set the status of the work order to <code>Complete</code>.</li>
-<li>In the left-menu <code>Find Navigation Item</code>, type then launch <code>Run Reports</code>.
+<li>In the left menu <code>Find Navigation Item</code>, type then launch <code>Run Reports</code>.
 In the <code>Reports and Schedules</code> window that opens, navigate to the <code>Maintenanc Cost Rollup Update</code>. Click <code>Create Report</code>.
 On the <code>Request Page</code>, select a <code>Site</code> (e.g. =BEDFORD) and set the <code>Schedule</code> to <code>Immediate</code>. Click <code>Submit</code>.</li>
 </ol>
@@ -1063,9 +1062,9 @@ e.g. <code>Meter Readings</code> at <code>60%</code>, <code>Year to Date vs. Rep
 <li>This is what your <code>CL_Asset_Health</code> Drivers list should look like.</li>
 </ol>
 <p><img alt="Health" src="../../img/health-mas/Health-MAS-19.png" />&nbsp;</p>
-<p>Finally, come back to your <code>CL_Asset_1</code>, click <code>Recalculate Score</code> and ... contemplate your work !</p>
-<p>WELL DONE 
-<img alt="Health" src="../../img/health-mas/Health-MAS-19a.png" />&nbsp;</p>
+<p>Finally, come back to your <code>CL_Asset_1</code>, click <code>Recalculate Score</code> and ... 
+contemplate your work - well done and congratulations !</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-19a.png" />&nbsp;</p>
 <hr />
 <h3 id="10-optional-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</h3>
 <p><strong> TO BE COMPLETED</strong></p>
