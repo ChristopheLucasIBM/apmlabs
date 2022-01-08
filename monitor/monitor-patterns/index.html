@@ -2,6 +2,15 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PYCR42KWD"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'G-2PYCR42KWD');
+</script> 
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -409,6 +418,13 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-verify-the-data-is-flowing-into-the-device-in-monitor" class="md-nav__link">
+    3.3 Verify the data is flowing into the Device in Monitor
+  </a>
   
 </li>
         
@@ -910,6 +926,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#33-verify-the-data-is-flowing-into-the-device-in-monitor" class="md-nav__link">
+    3.3 Verify the data is flowing into the Device in Monitor
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -996,7 +1019,7 @@
               
                 
                 
-                <p><em>[DRAFT WORK IN PROGRESS, UNDER REVIEW - Page last updated on 10 January 2022]</em></p>
+                <p><em>[DRAFT WORK IN PROGRESS - Page last updated on 07 January 2022]</em></p>
 <h1 id="discover-monitor-with-pattern-files">Discover MONITOR with Pattern Files</h1>
 <hr />
 <p><strong>PREREQUISITES &amp; DISCLAIMER</strong>  </p>
@@ -1017,7 +1040,7 @@ to <a href="https://www.linkedin.com/in/christophe-lucas-a5abab28/">Christophe L
   MAS CP4D instance to run this lab - however the instructions should also work with a 'stand-alone' CP4D.</p>
 </li>
 </ul>
-<p>This Lab was built using a Cloud Pak For Data instance and a MONITOR 8.6 instance both part of a MAS 8.6 environment 
+<p>This Lab was built using a Cloud Pak For Data instance and a Monitor 8.6 instance both part of a MAS 8.6 environment 
 running on <a href="https://www.ibm.com/au-en/cloud">IBM Cloud</a>.</p>
 <hr />
 <hr />
@@ -1025,7 +1048,7 @@ running on <a href="https://www.ibm.com/au-en/cloud">IBM Cloud</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>I tried to make the instructions of this Lab as (visually) clear as possible, i.e. each set of numbered instructions
-is followed by screenshots reflecting those numbers. Do not hesitate to right-click the images and <em>Open Image in New Tab</em>
+is followed by a picture reflecting those numbers. Do not hesitate to right-click the images and <em>Open Image in New Tab</em>
 to see all the image details and zoom-in/out.</p>
 </div>
 <p>In this Lab you will:</p>
@@ -1313,8 +1336,8 @@ to send data to the <code>CL_Device001</code> we registered in section <a href="
 <p><code>python
 pip install wiotp.sdk</code></p>
 <p>Click the <code>Run</code> button in the toolbar. This installation will take 5 to 10 seconds. Look for the message at the end of the output console, which should look like this:
-   <code>Successfully installed ... wiotp.sdk</code>.
-   Note: you may need to restart the kernel to use updated packages.
+   <em>Successfully installed iso8601-1.0.2 paho-mqtt-1.6.1 requests-toolbelt-0.9.1 wiotp.sdk
+   Note: you may need to restart the kernel to use updated packages</em>.
    From the <code>Kernel</code> menu, click <code>Restart Kernel</code>, and wait a couple seconds. 
    <strong>OPTIONAL</strong>: you can double-check the SDK was installed successfully by inserting a new cell, issuing a <code>pip list</code> command, and checking that
    it returns <em>wiotp-sdk 0.11.0</em> as an installed package.</p>
@@ -1390,14 +1413,14 @@ myConfig = {
 <h4 id="324-connect-to-monitor-and-read-the-pattern-file">3.2.4 Connect to Monitor and read the pattern file</h4>
 <p>We can finally connect to the <code>Device001</code> on MONITOR's Watson IoT Platform 
 using the <code>myConfig</code> (Option A or B) we defined in the previous section/cell.</p>
-<p>1. From the Notebook <code>Insert</code> menu, click <code>Insert Cell below</code>. Copy-paste the below code, and <code>Run</code> the cell.</p>
+<p>1.From the Notebook <code>Insert</code> menu, click <code>Insert Cell below</code>. Copy-paste the below code, and <code>Run</code> the cell.</p>
 <pre><code class="language-python">deviceCli = wiotp.sdk.device.DeviceClient(config=myConfig)
 print(myConfig)
 deviceCli.connect()
 </code></pre>
 <p>Notice that we are using the <code>connect()</code> method of the <a href="https://ibm-watson-iot.github.io/iot-python/device/">Watson IoT Platform - Python Device SDK</a> 
 <code>wiotp.sdk.device.DeviceClient</code>, using <code>myConfig</code>. The red output of the cell should be a string (cf. 1. in image below) containing <code>wiotp.sdk.device.client.DeviceClient  INFO    Connected successfully</code>.</p>
-<p>2. Remember the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> (included in <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>)
+<p>2.Remember the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> (included in <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>)
 we loaded to CP4D in <a href="#12-setup-a-cp4d-project-and-load-the-pattern-files">Section 1.2</a> ?
 Let's now read it into a pandas <code>monitor_patterns_readings</code> dataframe that we will then use to send the data.
 Insert a new <code>Code</code> cell and copy-paste the following code:</p>
@@ -1405,23 +1428,11 @@ Insert a new <code>Code</code> cell and copy-paste the following code:</p>
                  index_col=False)
 monitor_patterns_readings.info()
 </code></pre>
-<p><code>Run</code> the cell. The output should confirm that the file has 1080 rows of <code>reading_1</code> to <code>reading_6</code> readings.</p>
+<p><code>Run</code> the cell. The output should confirm that the file has 1080 rows of <code>reading_1</code> to <code>reading_6</code>.</p>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.4.png" />&nbsp;</p>
 <h4 id="325-send-the-data-to-the-device-on-monitor">3.2.5 Send the data to the Device on Monitor</h4>
-<p>This is the key part of the Notebook, where we finally send the pattern data to <code>CL_Device001</code> on MONITOR's Watson IoT Platform.
-The code is pretty self-explanatory, i.e. it loops over the 1080 rows of the <code>monitor_patterns_readings</code> dataframe,
-publishes an event for each (<code>publishEvent(...)</code>), and does a <code>disconnect()</code> when all rows have been read.</p>
-<p>Do notice the
-<code>parser.add_argument("-D", "--delay", required=False, type=float, default=5, help="number of seconds between msgs")</code>
-line where you can define the frequency of your 'data sending' (cf. table in <a href="#11-what-are-the-6-pattern-demo-files-all-about">Section 1.1</a>),
-e.g. using <code>default=5</code> means a message is sent every 5 seconds, i.e. it will take 1.5 hour for the 1080 rows to be sent. </p>
-<p>1. From the Notebook <code>Insert menu</code>, click <code>Insert Cell below</code> and copy-paste the below code snippet into it.
-Click <code>Run</code>. </p>
-<p>This cell will keep running for the duration of the 1080 rows 'iteration'.
-Every e.g. 5 seconds, you will see one new message in the output console, which should look like this:
-<code>{'reading_1': 10.59574274, 'reading_2': 10.80853745, 'reading_3': 20.87205928, 'reading_4': 20.10878476, 'reading_5': 10.17112379, 'reading_6': 10.32845991}
-======SUCCESS====== 2022-01-06 08:29:27.415862 ===Row: 1 Success: True</code>.
-Also note that at the end of the '1080-iteration', you will get a final <code>Dicsonnected from the Watson IoT Platform</code> message.</p>
+<p>This is the key part of the Notebook, where we will finally send the pattern data to <code>CL_Device001</code>.
+<code>parser.add_argument("-D", "--delay", required=False, type=float, default=5, help="number of seconds between msgs")</code></p>
 <pre><code class="language-python">for index, row in monitor_patterns_readings.iterrows():
     data = {'reading_1': row['reading_1'],
             'reading_2': row['reading_2'],
@@ -1453,12 +1464,11 @@ Also note that at the end of the '1080-iteration', you will get a final <code>Di
 deviceCli.disconnect()
 
 </code></pre>
-<p>2. Let's now check that the data is flowing into MONITOR's Watson IoT Platform.
-Back to your MONITOR Homepage, click the <code>Connect</code> menu (left-side bar) and go to the <code>Devices</code> tab. 
-Search and select <code>CL_Device001</code>. Wait a couple of seconds, and you will see on the <code>Recent events</code> section
-that new MQTT messages pop up at the frequency you definedn (e.g. every 5 seconds).</p>
-<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.5.png" />&nbsp;</p>
 <hr />
+<h3 id="33-verify-the-data-is-flowing-into-the-device-in-monitor">3.3 Verify the data is flowing into the Device in Monitor</h3>
+<pre><code class="language-python">deviceCli = wiotp.sdk.device.DeviceClient(config=myConfig)                        
+deviceCli.connect()
+</code></pre>
 <hr />
 <h2 id="4-create-the-physical-logical-interfaces">4. Create the Physical &amp; Logical Interfaces</h2>
 <p>In order for the pattern data to land into MONITOR's data lake, we now need to create both Physical and Logical Interfaces.</p>

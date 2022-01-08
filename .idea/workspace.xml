@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c74f69f2-f2f4-4a13-9ace-4b71bc3ec67a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Health-MAS-15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/about/about.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/assist/assist.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/extras/extras.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/1080_Continuous_2Peaks_1Drop_1BuildUp.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/1080_Plateaus.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/1080_Sinus_1Peak_2Drops.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/1080_Sinus_2Woblings.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/1080_Sinus_SignalLoss.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/CL_Asset.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/Hourly-dashboard-CUSTOM.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/Hourly-dashboard-ORIGINAL.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/0_1080_All.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/0_1080_All.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/3_1080_Sinus_2Woblings.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/3_1080_Sinus_2Woblings.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/4_1080_Sinus_SignalLoss.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/4_1080_Sinus_SignalLoss.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/5_1080_Plateaus.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/5_1080_Plateaus.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/6_1080_Amplitude_Changes.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/6_1080_Amplitude_Changes.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/files/monitor-patterns-data/All_Pattern_Files.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/health/health-mas.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/health/health.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-19a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health-mas/Health-MAS-9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/health/Health-9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.1.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.1.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.1.3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.1.4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.1.5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.1.6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.1.7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.2.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.2.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.3.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-1.3.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-2.1.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-2.2.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-3.1.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-3.1.3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-3.2.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-3.2.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-3.2.3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-3.2.4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-4.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-4.2.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-4.2.2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-4.3.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-5.1.1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-0b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-0c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-0d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-12.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-14.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-15.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-17.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-18.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-19.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-20.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-21.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-21b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22c.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22g.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22h.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22i.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-22j.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-23.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-25.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-8b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Monitor-9b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/monitor/Picture 1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/monitor/img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/monitor/img_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/monitor/monitor-patterns.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/monitor/monitor.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/notebooks/Load_Pattern_Files_To_Monitor_FINAL.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/predict/predict.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mkdocs.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assist/assist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/assist/assist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health/health-mas/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/health/health-mas/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/health/health/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/health/health/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/monitor-patterns/monitor-patterns-3.2.5.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/img/monitor-patterns/monitor-patterns-3.2.5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitor/monitor-patterns/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/monitor-patterns/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitor/monitor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/monitor/monitor/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict/predict/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/predict/predict/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/search_index.json" beforeDir="false" afterPath="$PROJECT_DIR$/search/search_index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitemap.xml.gz" beforeDir="false" afterPath="$PROJECT_DIR$/sitemap.xml.gz" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1z2Iwq1cbAdoLcTTxPftOHVyBg3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs/monitor" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c74f69f2-f2f4-4a13-9ace-4b71bc3ec67a" name="Default Changelist" comment="" />
+      <created>1633339997936</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633339997936</updated>
+    </task>
+    <servers />
+  </component>
+</project>

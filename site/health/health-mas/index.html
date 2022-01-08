@@ -1,0 +1,1305 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Maximo APM Hands on Labs">
+      
+      
+      
+        <meta name="author" content="Christophe Lucas">
+      
+      
+        <link rel="canonical" href="https://christophelucasibm.github.io/apmlabs/health/health-mas/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.1">
+    
+    
+      
+        <title>(MAS83) Health on Maximo Application Suite 8.3 [NEW] - IBM Maximo Asset Performance Management (APM) Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1c75ef36.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#new-health-lab-on-maximo-application-suite-83" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IBM Maximo Asset Performance Management (APM) Labs" class="md-header__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Maximo Asset Performance Management (APM) Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              (MAS83) Health on Maximo Application Suite 8.3 [NEW]
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IBM Maximo Asset Performance Management (APM) Labs" class="md-nav__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    IBM Maximo Asset Performance Management (APM) Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Intro - Start Here
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Monitor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitor" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Monitor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitor/monitor-patterns/" class="md-nav__link">
+        (MAS86) Discover Monitor with Pattern Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitor/monitor/" class="md-nav__link">
+        (MAS83) Monitor on Maximo Application Suite & Saas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Health
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Health" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Health
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          (MAS83) Health on Maximo Application Suite 8.3 [NEW]
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        (MAS83) Health on Maximo Application Suite 8.3 [NEW]
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-prerequisites-objectives" class="md-nav__link">
+    0. Prerequisites &amp; Objectives
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Prerequisites &amp; Objectives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-setup-initial-manage-data" class="md-nav__link">
+    1. Setup initial Manage data
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Setup initial Manage data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-launch-manage-from-mas-suite-navigator" class="md-nav__link">
+    1. Launch   Manage from MAS Suite Navigator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-3-assets-1-query" class="md-nav__link">
+    2. Create 3 Assets &amp; 1 Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-a-meter-group" class="md-nav__link">
+    3. Create a Meter Group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-associate-meter-group-to-assets-create-meter-readings" class="md-nav__link">
+    4. Associate Meter Group to Assets &amp; create Meter Readings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-a-condition-monitoring-rule" class="md-nav__link">
+    5. Create a Condition Monitoring Rule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setup-health" class="md-nav__link">
+    2. Setup Health
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Setup Health">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-view-your-assets-in-health" class="md-nav__link">
+    1. View your Assets in Health
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-factors-in-health-associated-to-meters-in-manage" class="md-nav__link">
+    2. Create Factors in Health associated to Meters in Manage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers" class="md-nav__link">
+    3. Create a simple Health Scoring Method and associated Drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-check-your-health-score-card-and-make-it-change" class="md-nav__link">
+    4. Check your Health Score card and make it change
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-criticality-risk-scoring-methods-and-populate-criticality-risk-cards" class="md-nav__link">
+    5. Create Criticality &amp; Risk Scoring Methods and populate Criticality &amp; Risk cards
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-populate-the-rul-age-cards" class="md-nav__link">
+    6. Populate the RUL &amp; Age cards
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-populate-the-next-pm-mrr-cards-and-the-asset-timeline" class="md-nav__link">
+    7. Populate the Next PM &amp; MRR cards and the Asset Timeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-update-the-health-scoring-method" class="md-nav__link">
+    9. Update the Health Scoring Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-optional-map-iot-devices-readings-to-assets-meter-readings" class="md-nav__link">
+    10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../health/" class="md-nav__link">
+        (MAHI) Maximo Asset Health Insights 7.6.1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Predict
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Predict" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Predict
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predict/predict/" class="md-nav__link">
+        Predict on Maximo Application Suite [TBA]
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Assist
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Assist" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Assist
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assist/assist/" class="md-nav__link">
+        Assist on Maximo Application Suite [TBA]
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          (About, Feedback & Extras)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="(About, Feedback & Extras)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          (About, Feedback & Extras)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/about/" class="md-nav__link">
+        About & Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/extras/" class="md-nav__link">
+        Extras & Archive
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-prerequisites-objectives" class="md-nav__link">
+    0. Prerequisites &amp; Objectives
+  </a>
+  
+    <nav class="md-nav" aria-label="0. Prerequisites &amp; Objectives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objectives" class="md-nav__link">
+    Objectives
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-setup-initial-manage-data" class="md-nav__link">
+    1. Setup initial Manage data
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Setup initial Manage data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-launch-manage-from-mas-suite-navigator" class="md-nav__link">
+    1. Launch   Manage from MAS Suite Navigator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-3-assets-1-query" class="md-nav__link">
+    2. Create 3 Assets &amp; 1 Query
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-a-meter-group" class="md-nav__link">
+    3. Create a Meter Group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-associate-meter-group-to-assets-create-meter-readings" class="md-nav__link">
+    4. Associate Meter Group to Assets &amp; create Meter Readings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-a-condition-monitoring-rule" class="md-nav__link">
+    5. Create a Condition Monitoring Rule
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setup-health" class="md-nav__link">
+    2. Setup Health
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Setup Health">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-view-your-assets-in-health" class="md-nav__link">
+    1. View your Assets in Health
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-factors-in-health-associated-to-meters-in-manage" class="md-nav__link">
+    2. Create Factors in Health associated to Meters in Manage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers" class="md-nav__link">
+    3. Create a simple Health Scoring Method and associated Drivers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-check-your-health-score-card-and-make-it-change" class="md-nav__link">
+    4. Check your Health Score card and make it change
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-create-criticality-risk-scoring-methods-and-populate-criticality-risk-cards" class="md-nav__link">
+    5. Create Criticality &amp; Risk Scoring Methods and populate Criticality &amp; Risk cards
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-populate-the-rul-age-cards" class="md-nav__link">
+    6. Populate the RUL &amp; Age cards
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-populate-the-next-pm-mrr-cards-and-the-asset-timeline" class="md-nav__link">
+    7. Populate the Next PM &amp; MRR cards and the Asset Timeline
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-update-the-health-scoring-method" class="md-nav__link">
+    9. Update the Health Scoring Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-optional-map-iot-devices-readings-to-assets-meter-readings" class="md-nav__link">
+    10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <p><em>[Page last updated on 06 May 2021]</em></p>
+<h1 id="new-health-lab-on-maximo-application-suite-83">[NEW] HEALTH Lab on Maximo Application Suite (8.3)</h1>
+<div class="admonition disclaimer">
+<p class="admonition-title">Disclaimer</p>
+<p>This Lab is provided as-is and does NOT represent formal IBM documentation in any way. Please send any feedback directly 
+to <a href="https://www.linkedin.com/in/christophe-lucas-a5abab28/">Christophe Lucas</a>.</p>
+</div>
+<hr />
+<p><strong>TIP</strong>: If the images seem too small to read, just right-click them,
+open in new tab and zoom in/out.
+I have tried to make all images readable with clear 1., 2., 3. etc references to the corresponding instruction steps.</p>
+<hr />
+<h2 id="0-prerequisites-objectives">0. Prerequisites &amp; Objectives</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>There are no prerequisites if you just plan to go till section <a href="#9-update-the-health-scoring-method">9. Update the Health Scoring Method</a>
+- you will generate all the data that you need in this Health lab which is self-contained.</p>
+<p>But if you plan to also complete the last section <a href="#10-optional-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</a>,
+then you will need to have completed the first section of the Monitor lab:
+<a href="../../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>.
+This is because - and that is the beauty of the fully-integrated suite - the IoT data that we created
+in the first <a href="../../monitor/monitor/#1-generate-iot-data">Monitor</a> Lab steps of these APM labs is the exact same data 
+that is used in these last Health Lab steps - 
+thus enabling true, near real-time monitoring and condition-based maintenance of your assets !</p>
+<h3 id="objectives">Objectives</h3>
+<p>In this Module you will:</p>
+<ul>
+<li>set up the required Assets and Meter Groups in Manage (aka Maximo)</li>
+<li>create a sample Health Scoring Method, a Criticality Method and a Risk Method in Health</li>
+<li>populate all Cards (i.e. Health Score, Criticality, Risk, RUL, Age, Next PM, MRR) on your sample <code>CL_Asset_1</code> in Health</li>
+<li>[OPTIONAL] finally, associate the IoT Devices we defined in the first Monitor Lab steps of 
+<a href="../../monitor/monitor/#1-generate-iot-data">1. Generate IoT data</a>
+to the <code>CL_Asset_1</code> and set up the required mappings between your IoT readings 
+and Maximo Meter Readings.</li>
+</ul>
+<p>Note that in this section, we will alternatively mention Manage or Maximo 
+- both names refer to the 1 same thing.</p>
+<hr />
+<h2 id="1-setup-initial-manage-data">1. Setup initial Manage data</h2>
+<p><strong>Important Note on Naming Conventions</strong>: in this lab, you will create Assets which we name here <code>CL_Asset_1</code>
+, <code>CL_Asset_2</code> etc (<code>CL</code> standing for Christophe Lucas). 
+In a classroom setting, make sure every student replaces the <code>CL</code> by their initials throughout the lab e.g. <code>XY_Asset_1</code>,
+<code>AB_Asset_1</code> etc.</p>
+<hr />
+<h3 id="1-launch-manage-from-mas-suite-navigator">1. Launch   Manage from MAS Suite Navigator</h3>
+<ol>
+<li>Login to your MAS homepage. Click <code>Launch</code> on the Manage card.
+This will open Maximo in another browser tab. Login with your Maximo ID/pwd.
+<img alt="Health1" src="../../img/health-mas/Health-MAS-1.png" />&nbsp; </li>
+</ol>
+<hr />
+<h3 id="2-create-3-assets-1-query">2. Create 3 Assets &amp; 1 Query</h3>
+<ol>
+<li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. Click the <code>+</code> button to create an Asset, 
+enter <code>XY_Asset_1</code> - where <code>XY</code> are your initials. 
+Note that for the rest of this lab, we will use <code>CL_Asset_1</code> (e.g. CL for Christophe Lucas).
+<code>CL_Asset_1</code> in both the Asset ID &amp; Description fields. Click <code>Save</code>. 
+Repeat this step for <code>CL_Asset_2</code> and <code>CL_Asset_3</code>.</li>
+<li>Click the <code>List View</code> menu. In the Asset field, enter <code>CL_Asset*</code>, click enter.
+This should return the list of your  3 just-created CL_Assets.
+Click the Save Query button, enter <code>CL_Assets</code> in both the Query Name &amp; Description. 
+Tick the <code>Public</code> box.</li>
+</ol>
+<p><img alt="Health1" src="../../img/health-mas/Health-MAS-2.png" />&nbsp; </p>
+<hr />
+<h3 id="3-create-a-meter-group">3. Create a Meter Group</h3>
+<p>In this section, we will create a Maximo Meter Group containing 8 Meters that we will later associate to the 
+IoT readings that we defined in the first section of the MONITOR lab.</p>
+<ol>
+<li>In Maximo left <code>Find Navigation Item</code> box, enter the <code>Meter Groups</code> application.</li>
+<li>Click the + button to create a Meter Group, enter <code>CL_Asset</code> in both the <em>Meter Group</em> &amp; <em>Description</em> fields.</li>
+<li>Click <code>New Row</code> and in the <em>Meter</em> field, click <code>Select Value</code>. 
+In the <em>Select Value</em> window that opens, enter <code>Temp</code> in the Meter field, hit Enter, select <code>TEMP-C</code>.</li>
+<li>Repeat previous step with the following <em>Meters</em>: 
+<code>VIBRATIONH</code>, <code>PRESSURE</code>, <code>SPEED</code>, <code>ACCELERAT</code>, <code>LOAD</code>, <code>TORQUE</code>, <code>STARTS</code>. Click the <code>Save</code> button.</li>
+</ol>
+<p>Note that, although Meters like <code>PRESSURE</code> often exist in Maximo installations out-of-the-box, 
+some of the Meters appearing in step 4. might not exist in Maximo yet. In which case, do the following:
+(a) Go to the <code>Meters</code> menu via <code>Find Navigation Item</code>, (b) click <code>Create</code> new Meter, enter e.g. <code>ACCELERAT</code> (the maximum name length is 9 ),
+select <code>GAUGE</code> as <code>Meter Type</code>, then <code>Save</code>. That newly created <em>Meter</em> can now be added to the <em>Meter Group</em> in step 4.</p>
+<p><img alt="Health1" src="../../img/health-mas/Health-MAS-3.png" />&nbsp; </p>
+<hr />
+<h3 id="4-associate-meter-group-to-assets-create-meter-readings">4. Associate Meter Group to Assets &amp; create Meter Readings</h3>
+<ol>
+<li>In Maximo, click the <code>Go To Applications - Asset</code> Menu. In the Asset field, enter <code>CL_Asset*</code>, click enter.
+This will return the list of you 3 <em>CL_Assets</em>, click <code>CL_Asset_1</code>.</li>
+<li>Go to On <em>CL_Asset_1</em>, go to its <em>Meters</em> tab, click <code>Meter Group - Select Value</code>. In the <em>Select Value</em> window,
+<code>CL_Asset*</code>, click enter, select the <code>CL_Asset</code> Meter Group. Click <code>Save</code>.
+This has loaded all the <em>Meters</em> we defined in the <em>Meter Group</em>.</li>
+<li>In left <em>Find Navigation item</em> box, enter <code>Enter M</code>, click <code>Enter Meter Readings</code>. For each Meter, enter values within the ranges 
+that we defined for the IoT readings at the beginning of the Monitor lab in <a href="../../monitor/monitor/#2-create-iot-simulation">2. Create IoT Simulation</a>.
+For example: <code>TEMP-C</code> = <code>37</code>, <code>VIBRATIONH</code> = <code>4</code>, <code>PRESSURE</code> = <code>22</code>, <code>SPEED</code> = <code>17</code>, 
+<code>ACCELERAT</code> = <code>9</code>, <code>LOAD</code> = <code>100</code>, <code>TORQUE</code> = <code>12</code>, <code>STARTS</code> = <code>1</code>. Click <code>OK</code>.</li>
+<li>Repeat steps 1. to 3. for <code>CL_Asset_2</code> and <code>CL_Asset_3</code> with whatever Meter values you want.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-4.png" />&nbsp;</p>
+<hr />
+<h3 id="5-create-a-condition-monitoring-rule">5. Create a Condition Monitoring Rule</h3>
+<p>We are now going to define a Condition Monitoring rule where 
+we will create upper and lower limits for the Meter Readings corresponding to <code>TEMP-C</code>, for Asset <code>CL_Asset_1</code>.</p>
+<ol>
+<li>
+<p>In Maximo, click the <code>Go To Applications - Condition Monitoring</code> Menu. 
+Click the <code>+</code> to create a new Condition Monitoring. Name it <code>CL_Asset</code>. 
+In the <em>Point</em> and <em>Description</em> fields, enter <code>CL_Asset*</code>.
+Next to the <em>Asset</em> field, click <code>Select Value</code>, search for <code>CL_Asset_1</code>, select it.
+Next to the <em>Meter</em> field, click <code>Select Value</code>, search for <code>TEMP-C</code>, select it.</p>
+</li>
+<li>
+<p>In the <em>Upper Warning Limit</em> field, enter <code>40</code>, in the <em>Lower Warning Limit</em> field, enter <code>35</code>.
+In the <em>Upper Action Limit</em> field, enter <code>45</code>, in the <em>Lower Action Limit</em> field, enter <code>30</code>.
+Note that those values roughly correspond to the <code>"temperature": random(35,40),</code> values we originally defined in our IoT Simulation.
+With those limits defined, Condition Monitoring should pick-up those anomalous <code>"temperature": random(46,48),</code> we generated !</p>
+</li>
+<li>
+<p>In the <em>Upper Limit Job Pan</em> field, click <code>Select Value</code> and select whatever existing <em>Job Plan</em> you want (we're just
+doing a demo here !). Do the same for <em>Upper Limit Job Pan</em>. Click <code>Save</code>. Your final screen should look like picture below.
+<img alt="Health4" src="../../img/health/Health-4.png" />&nbsp;</p>
+</li>
+</ol>
+<hr />
+<h2 id="2-setup-health">2. Setup Health</h2>
+<hr />
+<h3 id="1-view-your-assets-in-health">1. View your Assets in Health</h3>
+<ol>
+<li>From the MAS homepage, Click <code>Launch</code> on the Health card. </li>
+<li>Go to the top-left Assets menu. Enter <code>CL</code> in the Search bar. 
+This will return the 3 Assets we just created in Maximo.</li>
+<li>Click on <code>CL_Asset_1</code>, and observe the various cards that
+appear out-of-the-box - they are all empty for the moment. Let's populate them !</li>
+</ol>
+<p><strong>NOTE</strong>: it is normal that you see Predict in the top middle menu, 
+even though you accessed this screen via the Health card.
+As you can see, Health &amp; Predict actually appear on the 
+same UI (i.e. Predict corresponding to the Predictions section just below the 
+Health details section). 
+When a user is entitled to both Predict &amp; Health,
+Predict is always displayed. With a user only entitled to Health and NOT Predict, the top-middle menu
+would display Health.</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-5.png" />&nbsp;</p>
+<hr />
+<h3 id="2-create-factors-in-health-associated-to-meters-in-manage">2. Create Factors in Health associated to Meters in Manage</h3>
+<p>Before we create our Scoring Methods, let's first check that the Meters we
+associated to the 3 CL_Assets in <a href="#4-associate-meter-group-to-assets-create-meter-readings">4. Associate Meter Group to Assets &amp; create Meter Readings</a>
+exist (or not) as Factors in Health already - if they already exist, good,
+if not, we'll just create them.</p>
+<ol>
+<li>Go to the top-left Scoring menu, then go to the Factors tab.
+Check which ones of the Meters you earlier defined already exist as Factors in Health, e.g. typically you will see that <code>VIBRATIONH</code>, <code>TEMP-C</code> are already defined, but NOT e.g. <code>Speed</code>.
+Let's add <code>Speed</code> as a Factor. On the Factors tab, click <code>Creat Factor</code>.</li>
+<li>Name your Factor <code>Speed</code>, select <code>Meter</code> in the <code>Calculate a score from</code> box. Then select <code>Speed</code> in the pop-up box.
+In the Score Normalization's Upper &amp; Lower Limits, enter <code>20</code> &amp; <code>15</code> (corresponding to the upper &amp; lower limits we
+originally defined in <a href="../../monitor/monitor/#2-create-iot-simulation">1. Create IoT Simulation</a>).</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-6.png" />&nbsp;</p>
+<hr />
+<h3 id="3-create-a-simple-health-scoring-method-and-associated-drivers">3. Create a simple Health Scoring Method and associated Drivers</h3>
+<p>Let's first create the Health Method itself:</p>
+<ol>
+<li>Via the Scoring menu, go to the  <code>Methods</code> tab and click <code>Create method</code>.
+Name your method <code>CL_Asset_Health</code>, and select <code>Health</code> in the Type drop-box.</li>
+<li>Under the <code>Scored Assets</code> field, click <code>Select</code> and select the <code>CL_Assets</code> query we defined in 
+<a href="#2-create-3-assets-1-query">2. Create 3 Assets &amp; 1 Query</a> section.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-7.png" />&nbsp;</p>
+<p>Let's now add Drivers to this Method:</p>
+<ol>
+<li>Staying on the <code>CL_Asset_Health</code> Method, click the <code>+</code> top-right icon to create a Driver.
+Name it <code>Meter Readings</code>, select <code>One or more factors</code> in the <code>Calculate a score from</code> tick-box.
+Click <code>Create</code>.</li>
+<li>The <code>Meter Readings</code> Driver now appears in the Drivers list, but is still empty.
+Let's add all the Factors (associated to Meter Readings) we just created to this Driver.
+Click the <code>+</code> top-right icon to select those Factors.
+<img alt="Health" src="../../img/health-mas/Health-MAS-8.png" />&nbsp;</li>
+<li>In the opened <code>Select factors</code> window, select the 8 Factors relevant to our CL_Assets and click <code>Add to driver</code>.
+The 8 Factors are now added to the Meter Readings Driver.</li>
+<li>Click the top-right pencil to give a Weight to the 8 Factors.
+Note the total of the 8 Weights must be 100%. Enter <code>10%</code> for all Factors, 
+except for <code>TEMP-C</code> for which enter <code>30%</code>.
+<img alt="Health" src="../../img/health-mas/Health-MAS-9.png" />&nbsp;</li>
+</ol>
+<hr />
+<h3 id="4-check-your-health-score-card-and-make-it-change">4. Check your Health Score card and make it change</h3>
+<p>We are now going to first check that the Health Scoring Method we just defined results in 
+a Health score being calculated for our CL_Assets, based on the Meter Readings we entered
+in earlier <a href="#4-associate-meter-group-to-assets-create-meter-readings">section</a>. 
+Then, we will enter new Meter Readings for CL_Asset_1 and notice that its Health Score automatically changes.</p>
+<ol>
+<li>Go to the top-left Assets menu. Enter CL in the Search bar. This will return the 3 <code>CL_Assets</code>. 
+Select <code>CL_Asset_1</code>. 
+Notice how the <code>Health</code> card displays a score of 70%.
+Going into the <code>Health details</code> card, notice how you can see the values of all the Meter Readings we entered,
+and how, based on the Factors and Method we defined, each Meter either shows red or green.
+Note that you can also see all Meter Readings in the <code>Operational status</code> section.
+<img alt="Health" src="../../img/health-mas/Health-MAS-10.png" />&nbsp;</li>
+<li>From Health, access Manage by clicking on the top-left 
+<code>IBM Maximo Application Suite</code> banner, then by clicking the Manage card.</li>
+<li>Go to Maximo's Asset menu, enter <code>CL*</code> in the Asset field and click enter.
+This will display the 3 <code>CL_Assets</code>, select your <code>CL_Asset_1</code>.
+In the <code>Find Navigation Item</code> menu, write <code>Enter Meter Readings</code>, click Enter and just enter 
+a value of <code>55</code> for <code>TEMP-C</code>. This means that <code>TEMP-C</code> is going to move above the 
+normal operating conditions we originally defined in the 
+<a href="../monitor/monitor/#2-create-iot-simulation">IoT Simulation</a>
+(i.e. between 35 &amp; 40 Celsius).</li>
+<li>Go back to Health. Select your <code>CL_Asset_1</code> row. Top-rigt, click <code>Recalculate Health score</code>.
+Observe how your Health card gets updated from <code>70%</code> (orange) to <code>40%</code> (red).
+<img alt="Health" src="../../img/health-mas/Health-MAS-11.png" />&nbsp;</li>
+</ol>
+<hr />
+<h3 id="5-create-criticality-risk-scoring-methods-and-populate-criticality-risk-cards">5. Create Criticality &amp; Risk Scoring Methods and populate Criticality &amp; Risk cards</h3>
+<p>We now are going to create another type of Method, i.e. a Method of type <code>Criticality</code>
+which will feed the <code>Criticality</code> card on a given Asset.</p>
+<ol>
+<li>From the top-left <code>Scoring</code> menu,go to the <code>Method</code> tab and click <code>Create method</code>.
+Name it <code>CL_Asset_Criticality</code>. In the <code>Type</code>, select <code>Criticality</code>.
+In the <code>Scored Assets</code>, select the <code>CL_Assets</code> query as we did in <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers">section 3.</a>
+Click <code>Create</code>.</li>
+<li>Click on the just created <code>CL_Asset_Criticality</code> link. Click the to-right Edit pencil.
+In the <code>Formula</code> field, just write <code>Priority</code>.
+<strong>NOTE:</strong> in  this case, we are simply defining the Health Criticality score of a given Asset
+as the value of the Asset's <code>Priority</code> field - which we will populate in Maximo in next steps.
+We will see in next sections how more advanced formulas can be defined, where pretty much any other
+field associated to the given Asset in Maximo can be used.</li>
+<li>As a final step for this Criticality card, make sure you tick the <code>Active</code> checkbox to activate
+our <code>CL_Asset_Criticality</code> method.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-12.png" />&nbsp;</p>
+<p>Let's now create a Risk Method and populate the Risk card.</p>
+<p><strong>NOTE</strong>: Because the definition of Risk might vary from an organisation to another, this Risk Method is fully configurable. 
+You can use these <a href="https://community.ibm.com/community/user/iot/viewdocument/maximo-formula-documentation?CommunityKey=ed77c224-45e2-47b0-b574-cc31496f9a41&amp;tab=librarydocuments&amp;LibraryFolderKey=7b6b215d-3d7b-4c21-a720-e8c2c62b7f07&amp;DefaultView=folder">Formulas references</a>
+to have an idea of what custom formulas you can construct. 
+By default, the Risk Score in MAS-Health is defined as follows:
+<em>By default, risk is calculated by dividing 
+the remainder of the health score by 100 and then multiplying the resulting number by the criticality score.</em></p>
+<ol>
+<li>From the top-left <code>Scoring</code> menu, go to the <code>Method</code> tab and click <code>Create method</code>.
+Name it <code>CL_Asset_Risk</code>. In the <code>Type</code>, select <code>Risk</code>.
+In the <code>Scored Assets</code>, select the <code>CL_Assets</code> query as we did in <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers">section 3.</a>
+Click <code>Create</code>.</li>
+<li>Click on the just created <code>CL_Asset_Risk</code> link. Click the top-right Edit pencil.
+In the <code>Formula</code> field, write <code>IF((ISNULLF(ASSETLOCSCORE("health")) || ISNULLF(ASSETLOCSCORE("criticality"))), NULLVALUE(),((100-ASSETLOCSCORE("health"))/100)*ASSETLOCSCORE("criticality"))</code>.
+That is the code translation of what we just wrote in earlier Note.
+Make sure you tick the <code>Active</code> checkbox to activate our <code>CL_Asset_Risk</code> method.</li>
+<li>Go back to <code>CL_Asset_1</code>, open it and top-right, click <code>Edit source aset record</code>, that will open the asset in Maximo.
+There, simply enter <code>3</code> in the <code>Priority</code> field, click <code>Save</code>, go back to Health.</li>
+<li>Wait a minute (for some Manage-Health background process to complete),
+go back to your <code>CL_Asset_1</code>, click top-rigt <code>Recalculate Health score</code> and observe how both your <code>Criticality</code>
+and <code>Risk</code> cards now display data !</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-13.png" />&nbsp;</p>
+<hr />
+<h3 id="6-populate-the-rul-age-cards">6. Populate the RUL &amp; Age cards</h3>
+<p>The <code>Age</code> card displays <em>the current system date minus the installation date</em> of an asset.</p>
+<p>The <code>RUL</code> card is calculated as follows: <em>The remaining percentage of the asset's useful life. The remaining useful life (RUL) is calculated by subtracting the age from the manufacturer’s expected life. If the age exceeds the expected life, the RUL is 0%.</em>.</p>
+<p>So back to <code>CL_Asset_1</code> in Maximo, simply set a value in <code>Installation Date</code> (set it e.g. &gt; 5 years in the past),
+and a value in <code>Expected Life</code> (make it &gt; 15 years). Go back to <code>CL_Asset_1</code> in Health, click top-right <code>Recalculate health score</code>
+button, and ... there you go: the <code>Age</code> and <code>RUL</code> cards are now populated !</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-14.png" />&nbsp;</p>
+<hr />
+<h3 id="7-populate-the-next-pm-mrr-cards-and-the-asset-timeline">7. Populate the Next PM &amp; MRR cards and the Asset Timeline</h3>
+<p>The <code>Next PM</code> card displays <em>the time until the next scheduled preventive maintenance (PM) event.</em>
+To populate it, we must therefore associate a preventive maintenance to our asset. To do that:</p>
+<ol>
+<li>Go back your <code>CL_Asset_1</code> in Maximo. In the top-left <code>Find Navigation Item</code> menu, 
+write <code>Preventive Maintenance</code> and click enter. That will take you to the <code>Preventive Maintenance</code> menu.</li>
+<li>Click the <code>+</code> top button to create a new <code>Preventive Maintenance</code>.
+Leave the PM ID as-is, and write <code>CL_Asset_1_PM</code> in the PM Description field. In the <code>Asset</code> field, select your <code>CL_Asset_1</code>.</li>
+<li>Go to the <code>Frequency</code> tab. In the section <code>Time Based Frequency</code>, enter <code>3</code> in <code>Frequency</code>, and in
+the <code>Estimated Next Due Date</code>, enter a date e.g. <code>55</code> days in the future.</li>
+<li>In <code>Find Navigation Item</code> menu, write <code>Change Status</code>, click enter, and set the Status to <code>Active</code>, click OK.</li>
+<li>Wait a minute, then go back to <code>CL_Asset_1</code> in Health. Click <code>Recalculate health score</code> in top-right <code>Actions</code>
+menu ... and you should now see a <code>Next PM</code> value !</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-15.png" />&nbsp;</p>
+<p>The <code>MRR</code> card displays: <em>The maintenance-to-replacement ratio (MRR) for the asset. The MRR is calculated by dividing the current total cost of all maintenance for the asset, including parts and labor, by the replacement cost.</em></p>
+<p>To populate it, we must therefore create work that has costs associated !</p>
+<ol>
+<li>In Maximo, open <code>CL_Asset_1</code>. In the left menu, click <code>Create - Work Order</code>, name it <code>CL_Asset_1_WO_1</code>.</li>
+<li>Go to the <code>Work</code> tab, you will see the just created <code>CL_Asset_1_WO_1</code>. Click <code>Go To Work Order Tracking</code>.</li>
+<li>On the opened work order, from left menu, click <code>Change Status</code> and set the status of the work order to <code>Approved</code>.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-16.png" />&nbsp;</p>
+<ol>
+<li>Go to the <code>Actuals</code> tab and at the bottom of that tab, click the <code>Select Labor</code> button. (<strong>NOTE</strong>: Here we expect that your Maximo instance has a least 1 existing Labor already). Select e.g. <code>BALL</code>. Extend the <code>BALL</code> row.</li>
+<li>In the <code>Details</code> section, enter a <code>Start Date</code> in the past, and enter e.g. <code>10</code> in the <code>Regular Hours</code>
+field. Note the <code>Rate</code> value (i.e. <code>22</code> in this case) and how the <code>Line Cost</code> = <code>Hours x Rate</code> (e.g. 220 = 22 x 10 in our case).</li>
+<li>Click <code>Change Status</code> and set the status of the work order to <code>Complete</code>.</li>
+<li>In the left menu <code>Find Navigation Item</code>, type then launch <code>Run Reports</code>.
+In the <code>Reports and Schedules</code> window that opens, navigate to the <code>Maintenanc Cost Rollup Update</code>. Click <code>Create Report</code>.
+On the <code>Request Page</code>, select a <code>Site</code> (e.g. =BEDFORD) and set the <code>Schedule</code> to <code>Immediate</code>. Click <code>Submit</code>.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-17.png" />&nbsp;</p>
+<p>Finally, we can see our last card populated !
+In this case, the MRR now equals <code>27.5%</code> - which indeed is the result of this calculation:
+<code>Total Cost / Replacement Cost = 220/800 = 27.5%</code>.</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-18.png" />&nbsp;</p>
+<hr />
+<h3 id="9-update-the-health-scoring-method">9. Update the Health Scoring Method</h3>
+<p>As a last exercise, we are going to update the Health Scoring Method we <a href="#3-create-a-simple-health-scoring-method-and-associated-drivers">earlier defined</a>.
+This will give you a glimpse at how configurable health scores are.</p>
+<ol>
+<li>In Health, go back to the left <code>Scoring</code> menu. Open the <code>CL_Asset_Health</code> Method and <code>Deactivate</code> it (top-right).
+Click the <code>+</code> top-right icon to add a new <code>Driver</code>.
+Enter <code>Year to Date vs. Replacement Cost</code> in the Name and tick the <code>A custom formula</code> tickbox.
+In the formula field, enter <code>IF(ytdcost&gt;(replacecost/50),20,20-PCT(ytdcost,replacecost))</code>.
+This is another calculation involving the <code>Year to Date Cost</code> and <code>Replacement Cost</code> associated to <code>CL_Asset_1</code>.
+In the <code>Best Score</code> enter <code>100</code>, and in <code>Worst Score</code> enter <code>0</code>. Click <code>Create</code>.</li>
+<li>Similarly to what we just did, create another <code>Driver</code>, call it <code>Open Work Orders</code>.
+In the <code>Custom formula</code> field, enter <code>count$openwo</code>.
+In the <code>Best Score</code> enter <code>0</code>, and in <code>Worst Score</code> enter <code>5</code>. Click <code>Create</code>.</li>
+<li>On the Drivers list, click the top-right pencil, and give weights to the 3 Drivers, 
+e.g. <code>Meter Readings</code> at <code>60%</code>, <code>Year to Date vs. Replacement Cost</code> and <code>Open Work Orders</code> at <code>20%</code>.</li>
+<li>This is what your <code>CL_Asset_Health</code> Drivers list should look like.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-19.png" />&nbsp;</p>
+<p>Finally, come back to your <code>CL_Asset_1</code>, click <code>Recalculate Score</code> and ... 
+contemplate your work - well done and congratulations !</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-19a.png" />&nbsp;</p>
+<hr />
+<hr />
+<h3 id="10-optional-map-iot-devices-readings-to-assets-meter-readings">10. [OPTIONAL] Map IoT Devices &amp; Readings to Assets &amp; Meter Readings</h3>
+<p>In this last optional section, we will map the IoT Devices &amp; Readings we defined
+in the first steps of the <a href="../../monitor/monitor/#1-generate-iot-data">Monitor</a> Lab 
+to the Assets &amp; Meter Readings we defined in the earlier <a href="#1-setup-initial-manage-data">1. Setup initial Manage data</a> step of this Health Lab.
+This will enable the automated synching of the IoT Readings to Manage Meter Readings - in this case,
+we will take an hourly average of the IoT readings and transform them into 1 new Meter Reading every hour.
+That is what will ultimately make real condition-based maintenance a true possibility !</p>
+<p>Go to your Manage - Health integration page (typically set at: <code>http://MANAGE-URL/maximo-x/#/administrator/integration</code>),
+and to the <code>IoT Connector</code> tab.</p>
+<ol>
+<li>On the <code>IoT Connection Service</code> tab, tick the <code>IBM Maximo Asset Monitor</code> tick-box. Click <code>Next</code> 3 times.
+<strong>NOTE:</strong> For these labs, we assume that the <code>Configure IoT Service</code> and <code>Configure End Points</code> were already set by your instructor. 
+<img alt="Health" src="../../img/health-mas/Health-MAS-20.png" />&nbsp;</li>
+<li>On the <code>Register Device Types</code> tab, select <code>CL_Asset_LI</code> (which corresponds to the Logical Interface you defined in
+<a href="../../monitor/monitor/#4-create-physical-logical-interfaces">4. Create Physical &amp; Logical Interfaces</a>).
+Click the <code>Register as asset</code> button.</li>
+<li>
+<p>That will move you to the <code>Map Data Schema</code> page. On the <code>CL_Asset_LI</code> row, click the right Edit pencil.
+On the opened <code>Schema</code> tab, click <code>Detect from a connected device</code> and <code>From first available</code>.
+Click <code>Get Now</code>.
+Assuming data is flowing to your <code>CL_Asset_1</code> device, that should populate the box below the button
+with a json corresponding to your IoT readings. Click <code>Save changes</code>.</p>
+</li>
+<li>
+<p>On the <code>Device Type mappings</code> tab, click <code>Add Mapping</code> button.</p>
+</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-21.png" />&nbsp;</p>
+<p>Let's now do the associations between the IoT Device Readings and Manage Meter Readings.</p>
+<ol>
+<li>Click <code>Select meter</code> and select <code>TEMP-C</code>. In the <code>IoT Device Type Property</code>, select <code>temperature</code>.
+In the <code>Data collection</code> section, tick the <code>Agregated</code> then 
+<code>Detect from a connected device</code> and <code>From first available</code> tick boxes.
+Click <code>Get now</code> then <code>Save changes</code>. Select <code>avg</code> (i.e. average) in the <code>Value</code> field,
+and <code>HOUR</code> in the <code>Time Period</code> field.
+In the <code>Dat Synchronization</code> section, make sure you tick <code>Cron Task Instance Active</code>.</li>
+<li>Repeat step 1. for the 7 other readings. Select <code>avg</code> for all, except for <code>STARTS</code> for which select <code>count</code>.</li>
+<li>Your final <code>Device Type mappings</code> tab should look like this.</li>
+</ol>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-22.png" />&nbsp;</p>
+<p>Finally let's associate the IoT Devices and Manage Assets.</p>
+<ol>
+<li>On the <code>Associate Devices</code> tab, click the <code>Associate Assets</code> sub tab. 
+Type <code>CL_</code> in the Search field. On the first row  where <code>CL_Asset</code> = <code>CL_Asset_1</code> and <code>Meter =</code>PRESSURE<code>, 
+select</code>CL_Asset_1_LI<code>in the</code>Device Type<code>column, and</code>CL_Asset_1<code>in the</code>Device ID` column.</li>
+<li>Repeat step 1. for the other 7 Readings. Do not forget to click the <code>Save</code> icon. That wil move
+you to the <code>Manage Assets</code> tab which should look like this.
+<img alt="Health" src="../../img/health-mas/Health-MAS-23.png" />&nbsp;</li>
+</ol>
+<p>Thats' it ! To check that the associations worked well, just wait a couple hours, then
+back in Health, open <code>CL_Asset_1</code>, go to the <code>Operational Status</code> tab, click <code>TEMP-C</code> and observe that every hour, 
+a Meter Reading entry has been automatically created taking the average of the past hour IoT readings.</p>
+<p>Well done again - you are now ready to consider a move to a real Condition-based maintenance regime for your (critical) assets.</p>
+<p><img alt="Health" src="../../img/health-mas/Health-MAS-24.png" />&nbsp;</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../monitor/monitor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: (MAS83) Monitor on Maximo Application Suite &amp; Saas" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              (MAS83) Monitor on Maximo Application Suite & Saas
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../health/" class="md-footer__link md-footer__link--next" aria-label="Next: (MAHI) Maximo Asset Health Insights 7.6.1" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              (MAHI) Maximo Asset Health Insights 7.6.1
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c7d1b464.min.js"></script>
+      
+    
+  </body>
+</html>
