@@ -483,6 +483,33 @@
     6. Create Alerts based on the Anomalies detected
   </a>
   
+    <nav class="md-nav" aria-label="6. Create Alerts based on the Anomalies detected">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-analyze-the-anomaly-scores" class="md-nav__link">
+    6.1 Analyze the Anomaly Scores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-create-the-alerts" class="md-nav__link">
+    6.2 Create the Alerts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-add-the-alerts-to-the-dashboard" class="md-nav__link">
+    6.3 Add the Alerts to the Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -980,6 +1007,33 @@
   <a href="#6-create-alerts-based-on-the-anomalies-detected" class="md-nav__link">
     6. Create Alerts based on the Anomalies detected
   </a>
+  
+    <nav class="md-nav" aria-label="6. Create Alerts based on the Anomalies detected">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-analyze-the-anomaly-scores" class="md-nav__link">
+    6.1 Analyze the Anomaly Scores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-create-the-alerts" class="md-nav__link">
+    6.2 Create the Alerts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-add-the-alerts-to-the-dashboard" class="md-nav__link">
+    6.3 Add the Alerts to the Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1526,6 +1580,7 @@ The screenshot below shows how that dashboard progressively builds up, as the 10
 </ol>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.3.1.png" />&nbsp;</p>
 <hr />
+<hr />
 <h2 id="5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies">5. Create Anomaly Detection Functions to detect the pattern data anomalies</h2>
 <p>We are now going to create Anomaly Detection functions on the data, to see how they behave
 on the various <code>reading_1</code> to <code>reading_6</code> 'anomaly' patterns. </p>
@@ -1565,9 +1620,33 @@ Click the <code>reading_1</code> timeseries card. On the right <code>Content</co
    each card now displaying the raw readings, and associated Anomaly scores.</p>
 </li>
 </ol>
-<p>What is important to notice here is that the Anomaly Scores do react (e.g. with spikes) each time there is an anomaly or 'change of behaviour' in the pattern data. </p>
+<p>What is important to notice here is how the Anomaly Scores react (e.g. with spikes) each time there is an anomaly or 'change of behaviour' in the pattern data. </p>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.2.png" />&nbsp;</p>
+<hr />
+<hr />
 <h2 id="6-create-alerts-based-on-the-anomalies-detected">6. Create Alerts based on the Anomalies detected</h2>
+<p>In this final step, we'll now analyse the Anomaly Scores, and create an Alerting system based on those.</p>
+<hr />
+<h3 id="61-analyze-the-anomaly-scores">6.1 Analyze the Anomaly Scores</h3>
+<p>This is an important step to understand what 'anomaly thresholds' we should use to define the anomaly-based Alerts in the following section.
+We want to avoid having hundreds or thousands of Alerts that would just generate an 'Alert Storm'.</p>
+<ol>
+<li>
+<p>On the <code>reading_1</code> timeseries card, <code>Expand to fullscreen</code> (top-right). 
+This will expand the card and allow us to zoom-in/out of the data. Also, in the table below the graph, click the <code>reading_1_Anomaly_KMeans</code>
+   to order it ascendingly. </p>
+<p>Notice the values of the <code>reading_1_Anomaly_KMeans</code> scores over time. Take the 3 top values - e.g. in below screen, there are 3
+   times when the Anomaly Score goes above a value of <code>6.8</code>. This is the 'threshold' value that we will use to create the Alerts in next section.</p>
+</li>
+<li>
+<p>For the remaining <code>reading_2</code> to <code>reading_6</code>, repeat step 1., i.e. take note of the 3 top score values for the anomaly score. </p>
+</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.1.png" />&nbsp;</p>
+<hr />
+<h3 id="62-create-the-alerts">6.2 Create the Alerts</h3>
+<hr />
+<h3 id="63-add-the-alerts-to-the-dashboard">6.3 Add the Alerts to the Dashboard</h3>
                 
               
               
