@@ -1636,7 +1636,7 @@ We want to avoid having hundreds or thousands of Alerts that would just generate
 This will expand the card and allow us to zoom-in/out of the data. Also, in the table below the graph, click the <code>reading_1_Anomaly_KMeans</code>
    to order it ascendingly. </p>
 <p>Notice the values of the <code>reading_1_Anomaly_KMeans</code> scores over time. Take the 3 top values - e.g. in below screen, there are 3
-   times when the Anomaly Score goes above a value of <code>6.8</code>. This is the 'threshold' value that we will use to create the Alerts in next section.</p>
+   times when the Anomaly Score goes above a value of <code>6.7</code> (check your scores which might slightly differ). This is the 'threshold' value that we will use to create the Alerts in next section.</p>
 </li>
 <li>
 <p>For the remaining <code>reading_2</code> to <code>reading_6</code>, repeat step 1., i.e. take note of the 3 top score values for the anomaly score. </p>
@@ -1645,8 +1645,41 @@ This will expand the card and allow us to zoom-in/out of the data. Also, in the 
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.1.png" />&nbsp;</p>
 <hr />
 <h3 id="62-create-the-alerts">6.2 Create the Alerts</h3>
+<ol>
+<li>
+<p>Back to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button). Go to the <code>Data</code> tab.
+On the left <code>Data items</code> section, click the <code>+</code> button. Type <code>Alert</code> in the search bar. 
+   Select the <code>AlertHighValue</code> function. Select the <code>reading_1_Anomaly_KMeans</code> in the <code>input_item</code> box, and enter <code>6.7</code> in the <code>upper_threshold</code> box.
+   Select a <code>Severity</code> (e.g. <code>Medium</code>) and a <code>Status</code> (e.g. <code>New</code>). Click <code>Next</code>.
+   Turn the <code>Auto schedule</code> to <code>Off</code>. Enter <code>5</code> in the <code>Executing every</code> box, and <code>1 Day</code> in the 
+   <code>Calculating the last</code> box. In the <code>Output metric</code>, enter <code>reading_1_Alert_KMeans</code>. Click <code>Create</code>.</p>
+</li>
+<li>
+<p>Wait 5 minutes. Then on the <code>Data Items</code> (left) <code>Alert (calculated)</code> section. You will now see 3 <code>reading_1_Alert_KMeans</code> Alerts !</p>
+</li>
+<li>You can also see the Alerts by going back to the <code>Monitor</code> menu, selecting <code>CL_Device</code> then <code>CL_Device001</code> and watching the ootb <code>Alerts</code> tab.</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.2.png" />&nbsp;</p>
 <hr />
 <h3 id="63-add-the-alerts-to-the-dashboard">6.3 Add the Alerts to the Dashboard</h3>
+<p>Finally, let's see how we can overlay those Alerts on our timeseries cards - we will do this only for <code>reading_1</code> here,
+but you can of course repeat the steps for the other <code>reading_2</code> to <code>reading_6</code>.</p>
+<ol>
+<li>
+<p>Back to your <code>CL_Device001</code>'s <code>Asset Metrics Dashboard</code>, click the <code>Edit Dashboard</code> icon (to-right).
+Click the <code>reading_1</code> timeseries card. On the right <code>Content</code> panel, click the <code>Overlay with alerts</code> check box, and select 
+   the <code>reading_1_Alert_KMeans</code>. Click <code>Save and close</code>.</p>
+</li>
+<li>
+<p>Back on the dashboard, expan the <code>reading_1</code> timeseries card and notice how the Alerts now appear ...</p>
+</li>
+</ol>
+<p>BRAVO, you completed the Lab - hope you enjoyed !</p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.3.png" />&nbsp;</p>
+<p><strong>Suggested Next Steps</strong>: as you'll notice in previous picture, we only generated Alerts for the 'central peak' of <code>reading_1</code>.
+Have a new look at the Anomaly scores (cf. <a href="#61-analyze-the-anomaly-scores">Section 6.1</a>), and try to change the 
+<code>6.7</code> value we used to create the Alerts (cf. <a href="#62-create-the-alerts">Section 6.2</a>) to a lower value that will also
+generate Alerts for the other anomalies in the series.</p>
                 
               
               
