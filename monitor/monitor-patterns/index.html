@@ -1547,12 +1547,25 @@ In the <code>windowsize</code> box, enter <code>12</code> ( which is the default
 <p>Repeat the above steps by creating <code>reading_2_Anomaly_KMeans</code> to <code>reading_6_Anomaly_KMeans</code> Anomaly Detection functions for the 
 remaining <code>reading_2</code> to <code>reading_6</code> readings.</p>
 <p><strong>OPTIONAL</strong>: Feel free to explore more of the Functions Catalog, and create other types of Anomaly Detection
-functions on the data - e.g. try with <code>FFTbasedGeneralizedAnomalyScore</code> or <code>GeneralizedAnomalyScore</code> or
+functions on the data - e.g. in step 2. above, instead of the <code>KMeansAnomalyScore</code> function, select <code>FFTbasedGeneralizedAnomalyScore</code> or <code>GeneralizedAnomalyScore</code> or
 <code>SaliencybasedGeneralizedAnomalyScore</code> or <code>SpectralAnomalyScore</code>.</p>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.1.1.png" />&nbsp;</p>
 <hr />
 <h3 id="52-add-anomaly-scores-to-the-dashboard">5.2 Add Anomaly Scores to the Dashboard</h3>
-<p>Our goal is now</p>
+<p>Our goal is now to overlay the <code>reading_n</code> timeseries on the cards of the dashboard with the scores of the Anomaly Detection 
+functions we just defined.</p>
+<ol>
+<li>
+<p>Go back to your <code>CL_Device001</code>'s <code>Asset Metrics Dashboard</code>. Click the <code>Edit Dashboard</code> icon (to-right).
+Click the <code>reading_1</code> timeseries card. On the right <code>Content</code> panel, select <code>reading_1_Anomaly_KMeans</code> in the <code>Data Item</code> filter. That will add the
+   anomaly reading to the timeseries card.</p>
+</li>
+<li>
+<p>Repeat step 1. for <code>reading_2</code> to <code>reading_6</code> cards. Click <code>Save and close</code>. Your Dashboard should now look like the below, i.e. with
+   each card now displaying the raw readings, and associated Anomaly scores.</p>
+</li>
+</ol>
+<p>What is important to notice here is that the Anomaly Scores do react (e.g. with spikes) each time there is an anomaly or 'change of behaviour' in the pattern data. </p>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.2.png" />&nbsp;</p>
 <h2 id="6-create-alerts-based-on-the-anomalies-detected">6. Create Alerts based on the Anomalies detected</h2>
                 
