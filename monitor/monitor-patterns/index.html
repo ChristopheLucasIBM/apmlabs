@@ -1532,9 +1532,17 @@ on the various <code>reading_1</code> to <code>reading_6</code> 'anomaly' patter
 <hr />
 <h3 id="51-create-anomaly-functions">5.1 Create Anomaly Functions</h3>
 <ol>
-<li>Go to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button).</li>
-<li>On the left <code>Data items</code> section, click the <code>+</code> button. That will open the functions catalog. Type <code>Anmoly</code> in the search bar. 
-   Select</li>
+<li>Go to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button). Go to the <code>Data</code> tab.</li>
+<li>
+<p>On the left <code>Data items</code> section, click the <code>+</code> button. That will open the functions catalog. Type <code>Anmoly</code> in the search bar. 
+   Select the <code>KMeansAnomalyScore</code> function.</p>
+</li>
+<li>
+<p>Select <code>Apply to all assets of the selected type</code> option, click <code>Next</code>. in the data <code>item</code> drop down, seelect <code>reading_1</code>.
+In the <code>windowsize</code> box, enter <code>12</code> ( which is the default value), click <code>Next</code>.
+   Turn the <code>Auto schedule</code> to <code>Off</code>. Enter <code>5</code> in the <code>Executing every</code> box, and <code>1 Day</code> in the 
+   <code>Calculating the last</code> box. In the <code>Output metric</code>, enter <code>reading_1_Anomaly_KMeans</code>. Click <code>Create</code>.</p>
+</li>
 </ol>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.1.1.png" />&nbsp;</p>
 <hr />
