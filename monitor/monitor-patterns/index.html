@@ -1517,11 +1517,25 @@ Data will now soon arrive (wait 5 minutes) into the MONITOR data lake.
 Let's check !</p>
 <hr />
 <h3 id="43-view-the-data-in-ootb-dashboards">4.3 View the data in ootb Dashboards</h3>
+<p>After minimum 5 minutes:</p>
+<ol>
+<li>Go to the <code>Monitor</code> menu (left bar). On the <code>Device types</code> tab, search and select <code>CL_Device</code>.</li>
+<li>In the <code>Devices</code> (left panel), select the individual <code>CL_Device001</code> device. Go to the <code>Asset Metrics Dashboard</code>.
+The screenshot below shows how that dashboard progressively builds up, as the 1080 rows get injected into the data lake.
+   When the iteration is 'done', your dashboard should look like the last picture below.</li>
+</ol>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.3.1.png" />&nbsp;</p>
 <hr />
 <h2 id="5-create-anomaly-functions-to-detect-pattern-file-anomalies-in-monitor">5. Create Anomaly Functions to detect Pattern file anomalies in Monitor</h2>
+<p>We are now going to create Anomaly Detection functions on the data, to see how they behave
+on the various <code>reading_1</code> to <code>reading_6</code> 'anomaly' patterns. </p>
 <hr />
 <h3 id="51-create-anomaly-functions">5.1 Create Anomaly Functions</h3>
+<ol>
+<li>Go to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button).</li>
+<li>On the left <code>Data items</code> section, click the <code>+</code> button. That will open the functions catalog. Type <code>Anmoly</code> in the search bar. 
+   Select</li>
+</ol>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.1.1.png" />&nbsp;</p>
 <hr />
 <h3 id="52-add-anomaly-scores-to-the-dashboard">5.2 Add Anomaly Scores to the Dashboard</h3>
