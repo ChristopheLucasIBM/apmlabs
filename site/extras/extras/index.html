@@ -1,0 +1,783 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Maximo APM Hands on Labs">
+      
+      
+      
+        <meta name="author" content="Christophe Lucas">
+      
+      
+        <link rel="canonical" href="https://christophelucasibm.github.io/apmlabs/extras/extras/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.1">
+    
+    
+      
+        <title>Extras & Archive - IBM Maximo Asset Performance Management (APM) Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1c75ef36.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#use-monitor-api-to-change-dimensions-and-load-a-picture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IBM Maximo Asset Performance Management (APM) Labs" class="md-header__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Maximo Asset Performance Management (APM) Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Extras & Archive
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IBM Maximo Asset Performance Management (APM) Labs" class="md-nav__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    IBM Maximo Asset Performance Management (APM) Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Intro - Start Here
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Monitor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitor" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Monitor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitor/monitor-patterns/" class="md-nav__link">
+        (MAS86) Discover Monitor with Pattern Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../monitor/monitor/" class="md-nav__link">
+        (MAS83) Monitor on Maximo Application Suite & Saas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Health
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Health" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Health
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../health/health-mas/" class="md-nav__link">
+        (MAS83) Health on Maximo Application Suite 8.3 [NEW]
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../health/health/" class="md-nav__link">
+        (MAHI) Maximo Asset Health Insights 7.6.1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Predict
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Predict" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Predict
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predict/predict/" class="md-nav__link">
+        Predict on Maximo Application Suite [TBA]
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Assist
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Assist" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Assist
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assist/assist/" class="md-nav__link">
+        Assist on Maximo Application Suite [TBA]
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          (About, Feedback & Extras)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="(About, Feedback & Extras)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          (About, Feedback & Extras)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/about/" class="md-nav__link">
+        About & Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Extras & Archive
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Extras & Archive
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-monitor-api-to-change-dimensions-and-load-a-picture" class="md-nav__link">
+    Use Monitor API to change Dimensions and load a Picture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archive-update-your-summary-dashboard" class="md-nav__link">
+    [ARCHIVE] Update your Summary Dashboard
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-monitor-api-to-change-dimensions-and-load-a-picture" class="md-nav__link">
+    Use Monitor API to change Dimensions and load a Picture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#archive-update-your-summary-dashboard" class="md-nav__link">
+    [ARCHIVE] Update your Summary Dashboard
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Extras & Archive</h1>
+                
+                <h3 id="use-monitor-api-to-change-dimensions-and-load-a-picture">Use Monitor API to change Dimensions and load a Picture</h3>
+<p>In the next section, we'll explain how to update and customize the initial Dashboard that we created earlier.
+Prior to that, we are going to use Monitor's API to:
+(a)change the <code>CL_Asset_1_2_3</code> <em>Metadata</em> values in the Watson IoT
+platform so we can later see how Dashboards can be 'filtered' on those metadata values (called <em>Dimensions</em> on Monitor side),
+(b) add an image and tie it to the <code>CL_Asset</code> Entity Type so we can display it on the dashboard.
+We will be using <a href="https://www.postman.com/downloads/">Postman</a> to do this.</p>
+<ol>
+<li>
+<p>In <em>Monitor</em>'s left menu, click the <em>Services</em> menu. On the <em>Watson IoT Platform Service</em> row, click <code>View Details</code> then <code>View More</code>.
+Next to the  <em>API Key</em>, click <code>Copy to clipboard</code> - paste this into your favourite notepad for future retrieval.
+Next to the  <em>API Token</em>, click <code>Copy to clipboard</code> - paste this into your favourite notepad for future retrieval. 
+<img alt="Monitor19" src="../../img/monitor/Monitor-19.png" /> &nbsp;</p>
+</li>
+<li>
+<p>In Postman, click <code>Create New Request</code>. In <em>Select a collection or folder to save to</em>, click <code>Create Collection</code>, name it <code>APM Labs</code>.
+Name your Request <code>POST Dimensions to CL_Asset_1</code>. Click <code>Save to APM Labs</code>.</p>
+</li>
+<li>Open the Request, and change its (default) Type from <em>GET</em> to <em>POST</em>.</li>
+<li>On the <em>Authorization</em> tab, leave the default <em>Type</em> to <em>inherit auth from parent</em>. Next to the <em>POST</em> field, enter this value:
+<code>https://api-{{geo_country_code}}.connectedproducts.internetofthings.ibmcloud.com/api/images/v1/{{tenantID}}/entityType/CL_Asset/dimensional</code>
+where you will first need to: 
+(a) replace <code>{{geo_country_code}}</code> with your specific country code 
+(your country code is in the beginning of your <em>Monitor</em> Dashboard URL: <code>https://dashboard-{{geo_country_code}}</code>), i.e. to either <code>us</code>,<code>uk</code>,<code>de</code>, or <code>beta</code>
+(b) replace <code>{{tenantID}}</code> with your <em>Monitor Tenant ID</em> which you can find in the top right corner of your Monitor webpage underneath your IBMiD.
+An example of that string (which is the one used for these Labs) can be found below. </li>
+<li>On the <em>Headers</em> tab, in the <em>Key</em> and <em>Value</em> columns, enter the following 3 rows 
+(a) <em>Key</em> = <code>Content-Type</code> and <em>Value</em> = <code>application/json</code>, (b) <em>Key</em> = <code>x-api-key</code> and <em>Value</em> = <code>Write the 'API Key' you fetched in step 1.</code>,
+(c) <em>Key</em> = <code>x-api-token</code> and <em>Value</em> = <code>Write the 'Authentication Token' you fetched in step 1.</code>,</li>
+<li>On the <em>Body</em> tab, click the <code>raw</code> tick-box and enter the below .json snippet. Click <code>Send</code>. 
+You should get a returned result as per picture below.</li>
+<li>Repeat steps 2. to 6. for (a) <code>CL_Asset_2</code> where you enter for the <em>descriptiveLocation</em>: <code>"value" : "Melbourne"</code> and for <em>model</em>: <code>Model_B</code>,
+(b) <code>CL_Asset_2</code> where you enter for the <em>descriptiveLocation</em>: <code>"value" : "Sydney"</code> and for <em>model</em>: <code>Model_B</code>.</li>
+</ol>
+<pre><code>Example of the string to be used in Postman 'POST Dimensions to CL_Asset_1' call:
+
+https://api-us.connectedproducts.internetofthings.ibmcloud.com/api/master/v1/CTP-PMI-Democore-2/entity/type/CL_Asset/dimensional
+</code></pre>
+<pre><code>[
+    {
+        &quot;id&quot;: &quot;CL_Asset_1&quot;,
+        &quot;name&quot; : &quot;descriptiveLocation&quot;,
+        &quot;type&quot; : &quot;LITERAL&quot;,
+        &quot;value&quot; : &quot;Perth&quot;
+    },
+    {
+        &quot;id&quot;: &quot;CL_Asset_1&quot;,
+        &quot;name&quot; : &quot;model&quot;,
+        &quot;type&quot; : &quot;LITERAL&quot;,
+        &quot;value&quot; : &quot;Model_A&quot;
+    }
+]
+</code></pre>
+<p><img alt="Monitor20" src="../../img/monitor/Monitor-20.png" /> &nbsp;</p>
+<p>Let's now check that our changes worked ! There are several ways we can do that:</p>
+<ol>
+<li>Go to the <em>Monitor</em> left menu. Search for and open <code>CL_Asset</code>. Watch the updated values for <code>descriptiveLocation</code> and <code>model</code> fields for the 3 Assets.</li>
+<li>Go to the <code>Data</code> tab, in the <code>Dimensions</code> section, select <code>Model</code> then <code>descriptiveLocation</code> and watch !
+<img alt="Monitor21" src="../../img/monitor/Monitor-21.png" /> &nbsp;</li>
+</ol>
+<p>We are now going to use another API call to upload a picture to the system.
+This picture will be used in the final <a href="#10-update-your-summary-dashboard">10. Update your Summary Dashboard</a>.</p>
+<ol>
+<li>Create a new <code>POST Image to CL_Asset EntityType</code> Request in Postman, make it of POST type.</li>
+<li>Next to the <em>POST</em> field, enter this value:
+<code>https://api-{{geo_country_code}}.connectedproducts.internetofthings.ibmcloud.com/api/images/v1/{{tenantID}}/entityType/CL_Asset</code>
+after having replaced <code>{{geo_country_code}}</code> and <code>{{tenantID}}</code> with your values (see below for the sample string used for this lab).</li>
+<li>On the <em>Authorization</em> tab, leave the default <em>Type</em> to <em>inherit auth from parent</em>.
+On the <em>Headers</em> tab, in the <em>Key</em> and <em>Value</em> columns, enter the 2 rows <code>x-api-key</code> and <code>x-api-token</code> 
+as you did previously (no need for the <code>Content-Type</code> / <code>application/json</code> row here).</li>
+<li>Download this image <a href="../../files/CL_Asset.jpg">Image</a> and save it as <code>CL_Asset.jpg</code> on your computer.</li>
+<li>On the <em>Body</em> tab, select the <code>form-data</code> tick-box. Enter enter the following 3 rows: 
+(a) <em>Key</em> = <code>imagefilecontent</code>, select <code>File</code> on the right of the box. That will populate the <code>Value</code>
+column with a <code>Choose Files</code> button. Click it and select your <code>CL_Asset.jpg</code>.
+(b) <em>Key</em> = <code>imageid</code> and <em>Value</em> = <code>CL_Asset</code>
+(c) <em>Key</em> = <code>tags</code> and <em>Value</em> = <code>CL_Asset</code>.
+Click <code>Send</code>, observe the returned <code>"message": "success"</code> body.</li>
+</ol>
+<pre><code>Example of the string to be used in Postman 'POST Image to CL_Asset EntityType' call:
+
+https://api-us.connectedproducts.internetofthings.ibmcloud.com/api/images/v1/CTP-PMI-Democore-2/entityType/CL_Asset
+</code></pre>
+<p><img alt="Monitor21b" src="../../img/monitor/Monitor-21b.png" /> &nbsp;</p>
+<hr />
+<h3 id="archive-update-your-summary-dashboard">[ARCHIVE] Update your Summary Dashboard</h3>
+<p><em>[This section was created before the new MONITOR Dashboard Visual Editing Features of 2021, when JSON edition was required.]</em></p>
+<p>In this final 'Monitor Lab' section, we are going to bring everything together and show how you can create and customise
+dashboards to - literally - visualise whatever you want from all the data we generated so far.</p>
+<p>Remember <a href="#2-create-an-hourly-summary-dashboard">2. Create an Hourly Summary Dashboard</a> section ? 
+We then created the simplest, out-of-the-box, Hourly dashboard.
+In this section, we will (a) understand the .json file structure and <em>card</em> elements that make up dashboards,
+(b) create an advanced dashboard using most of the <em>cards</em> possibilities.
+Note that this will imply .json file editing and we therefore recommend a cool json editing tool that should at least 
+provide the ability to collapse .json file levels for better visibility and easier navigation - we used the free
+version of <a href="https://www.barebones.com/products/bbedit/download.html">BBEdit</a> here.</p>
+<ol>
+<li>
+<p>Open the <em>CL_Asset Hourly</em> dashboard. Top-right, click <code>Edit Dashboard</code>, then <code>Export</code>. 
+Your browser will automatically download a .json file called <em>Hourly-dashboard.json</em>. For your reference, you can also find
+that original .json here: <a href="../../files/Hourly-dashboard-ORIGINAL.json">Hourly-dashboard-ORIGINAL.json</a>.
+<img alt="Monitor22" src="../../img/monitor/Monitor-22.png" /> &nbsp;</p>
+</li>
+<li>
+<p>Let's have a look at the main elements of that .json file. In your .json editor, <code>Collapse Folds below Level 2</code>. 
+This shows the main elements of the file, i.e. : <code>timeGrain</code>, <code>cards</code>, <code>title</code>, <code>layouts</code>.</p>
+</li>
+<li>In your .json editor, <code>Collapse Folds below Level 3</code>. Note that you have 9 <code>cards</code> - one for each of the graphs you see on the dashboard.
+Note that each card has several sub-sections, including <code>id</code> (must be unique), 
+<code>dataSource</code> (this where you define what <em>data item(s)</em> you want to display on the card),
+<code>content</code> (this is where you define the labels of your card),
+<code>size</code>, <code>title</code> and <code>type</code> (note all cards are presently of type <em>TIMESERIES</em>, we'll soon see other types).</li>
+<li>In your .json editor, <code>Collapse Folds below Level 4</code>. Let's focus on the most complex card, i.e. 
+the one displaying <code>temperature</code> IoT readings for which we earlier defined <code>mean</code>, <code>max</code>, <code>min</code>, <code>std</code>, <code>count</code>, <code>sum</code> data items.
+In the <code>dataSource</code> section, note (a) the <code>attributes</code> sub-sections (1 for each above data item),
+(b) the <code>range</code> section where we define the default <code>count</code> and <code>interval</code> of the card,
+(c) the <code>timeGrain</code>. 
+In the <code>content</code> section, we define the labels of the card - note that each <em>attribute</em> defined in the <em>attributes</em> section 
+MUST have a corresponding <em>dataSourceID</em> in the <em>content-series</em>.
+<img alt="Monitor23" src="../../img/monitor/Monitor-23.png" /> &nbsp;</li>
+</ol>
+<p>OK, that should be enough to understand at a high-level how dashboards work.
+Go through this <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/dashboard/dashboard_json_ref.html">Dashboard JSON Reference</a>
+documentation to see all that can be done with dashboards, i.e. what types of cards you can add 
+(value card, table card, bar chart card, image card etc), how to change the layout etc.
+This <a href="https://www.ibm.com/support/knowledgecenter/SSQR84_monitor/iot/dashboard/tutorials/instance_dashboard_tutorial_adv.html">Tutorial</a> 
+(which will show you how to customize a dashboard) is just 1 out of 7 tutorials which will help you master dashboarding.</p>
+<p>As a final exercise, let's now create an advanced dashboard which will incorporate most of the card types 
+(i.e. <code>BAR</code>, <code>TIMESERIES</code>, <code>ALERT</code>, <code>IMAGE</code>, <code>VALUE</code>) and dashboarding capabilities.</p>
+<ol>
+<li>Open the <em>CL_Asset</em> <code>Hourly</code> dashboard. Top-right, click <code>Edit dashboard</code>.</li>
+<li>Save this <a href="../../files/Hourly-dashboard-CUSTOM.json">Hourly-dashboard-CUSTOM.json</a> file to your computer.</li>
+<li>Click <code>Import</code>, select the just-saved <em>Hourly-dashboard-CUSTOM.json</em>. You now have a preview of what your new
+dashboard will look like. 
+The json provided will work if you followed the naming conventions throughout the labs, as all <em>dataSourceId</em> (like e.g. <code>temperature</code>, 
+<code>pressure_Hourly_mean</code> etc) are pretty straightforward and did not involve your initials.
+Note that if you have any error while saving, check the error message which 
+is usually helpful by providing you with a specific problematic <em>data item</em> name which you should then search within the .json.
+Likely causes of errors you might encounter will be related to how you named data items - e.g. if you named
+the picture <em>XY_Asset.jpg</em> instead of <em>CL_Asset.jpg</em>.
+<img alt="Monitor24" src="../../img/monitor/Monitor-24.png" /> &nbsp; </li>
+</ol>
+<p>This picture shows what your final dashboard should look like.
+<img alt="Monitor25" src="../../img/monitor/Monitor-25.png" /> &nbsp; </p>
+<p>Congratulations, you made it - hope you enjoyed this lab !</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../about/about/" class="md-footer__link md-footer__link--prev" aria-label="Previous: About &amp; Feedback" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              About & Feedback
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c7d1b464.min.js"></script>
+      
+    
+  </body>
+</html>

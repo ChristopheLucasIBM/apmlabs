@@ -2,6 +2,15 @@
 <!doctype html>
 <html lang="en" class="no-js">
   <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2PYCR42KWD"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+
+ gtag('config', 'G-2PYCR42KWD');
+</script> 
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -412,6 +421,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#33-verify-the-data-is-flowing-into-the-device-in-monitor" class="md-nav__link">
+    3.3 Verify the data is flowing into the Device in Monitor
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -452,16 +468,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies" class="md-nav__link">
-    5. Create Anomaly Detection Functions to detect the pattern data anomalies
+  <a href="#5-create-anomaly-functions-to-detect-pattern-file-anomalies-in-monitor" class="md-nav__link">
+    5. Create Anomaly Functions to detect Pattern file anomalies in Monitor
   </a>
   
-    <nav class="md-nav" aria-label="5. Create Anomaly Detection Functions to detect the pattern data anomalies">
+    <nav class="md-nav" aria-label="5. Create Anomaly Functions to detect Pattern file anomalies in Monitor">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-create-anomaly-detection-functions" class="md-nav__link">
-    5.1 Create Anomaly Detection Functions
+  <a href="#51-create-anomaly-functions" class="md-nav__link">
+    5.1 Create Anomaly Functions
   </a>
   
 </li>
@@ -482,33 +498,6 @@
   <a href="#6-create-alerts-based-on-the-anomalies-detected" class="md-nav__link">
     6. Create Alerts based on the Anomalies detected
   </a>
-  
-    <nav class="md-nav" aria-label="6. Create Alerts based on the Anomalies detected">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61-analyze-the-anomaly-scores" class="md-nav__link">
-    6.1 Analyze the Anomaly Scores
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62-create-the-alerts" class="md-nav__link">
-    6.2 Create the Alerts
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#63-add-the-alerts-to-the-dashboard" class="md-nav__link">
-    6.3 Add the Alerts to the Dashboard
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -937,6 +926,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#33-verify-the-data-is-flowing-into-the-device-in-monitor" class="md-nav__link">
+    3.3 Verify the data is flowing into the Device in Monitor
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -977,16 +973,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies" class="md-nav__link">
-    5. Create Anomaly Detection Functions to detect the pattern data anomalies
+  <a href="#5-create-anomaly-functions-to-detect-pattern-file-anomalies-in-monitor" class="md-nav__link">
+    5. Create Anomaly Functions to detect Pattern file anomalies in Monitor
   </a>
   
-    <nav class="md-nav" aria-label="5. Create Anomaly Detection Functions to detect the pattern data anomalies">
+    <nav class="md-nav" aria-label="5. Create Anomaly Functions to detect Pattern file anomalies in Monitor">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-create-anomaly-detection-functions" class="md-nav__link">
-    5.1 Create Anomaly Detection Functions
+  <a href="#51-create-anomaly-functions" class="md-nav__link">
+    5.1 Create Anomaly Functions
   </a>
   
 </li>
@@ -1008,33 +1004,6 @@
     6. Create Alerts based on the Anomalies detected
   </a>
   
-    <nav class="md-nav" aria-label="6. Create Alerts based on the Anomalies detected">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#61-analyze-the-anomaly-scores" class="md-nav__link">
-    6.1 Analyze the Anomaly Scores
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#62-create-the-alerts" class="md-nav__link">
-    6.2 Create the Alerts
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#63-add-the-alerts-to-the-dashboard" class="md-nav__link">
-    6.3 Add the Alerts to the Dashboard
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1050,7 +1019,7 @@
               
                 
                 
-                <p><em>[DRAFT WORK IN PROGRESS, UNDER REVIEW - Page last updated on 10 January 2022]</em></p>
+                <p><em>[DRAFT WORK IN PROGRESS - Page last updated on 07 January 2022]</em></p>
 <h1 id="discover-monitor-with-pattern-files">Discover MONITOR with Pattern Files</h1>
 <hr />
 <p><strong>PREREQUISITES &amp; DISCLAIMER</strong>  </p>
@@ -1071,7 +1040,7 @@ to <a href="https://www.linkedin.com/in/christophe-lucas-a5abab28/">Christophe L
   MAS CP4D instance to run this lab - however the instructions should also work with a 'stand-alone' CP4D.</p>
 </li>
 </ul>
-<p>This Lab was built using a Cloud Pak For Data instance and a MONITOR 8.6 instance both part of a MAS 8.6 environment 
+<p>This Lab was built using a Cloud Pak For Data instance and a Monitor 8.6 instance both part of a MAS 8.6 environment 
 running on <a href="https://www.ibm.com/au-en/cloud">IBM Cloud</a>.</p>
 <hr />
 <hr />
@@ -1079,7 +1048,7 @@ running on <a href="https://www.ibm.com/au-en/cloud">IBM Cloud</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>I tried to make the instructions of this Lab as (visually) clear as possible, i.e. each set of numbered instructions
-is followed by screenshots reflecting those numbers. Do not hesitate to right-click the images and <em>Open Image in New Tab</em>
+is followed by a picture reflecting those numbers. Do not hesitate to right-click the images and <em>Open Image in New Tab</em>
 to see all the image details and zoom-in/out.</p>
 </div>
 <p>In this Lab you will:</p>
@@ -1091,11 +1060,11 @@ to see all the image details and zoom-in/out.</p>
 </ul>
 </li>
 <li>Learn how to:<ul>
-<li>Create the device in MONITOR that will receive the pattern readings </li>
-<li>Create a Jupyter Notebook on CP4D to send the content of the pattern files to the device</li>
+<li>Create the Device in MONITOR that will receive the pattern readings </li>
+<li>Create a Jupyter Notebook on CP4D to send the content of the pattern files to the Device</li>
 <li>Visualise the data on MONITOR's dashboard</li>
 <li>Apply (some of) MONITOR's out-of-the-box Anomaly Detection functions on the pattern data,
-and create Alerts based on the anomaly scores.</li>
+and create Alerts based on the Anomaly scores.</li>
 </ul>
 </li>
 </ul>
@@ -1124,8 +1093,7 @@ Every 30 seconds  ---&gt; 120 per hour   ---&gt; 9 hours
 <ul>
 <li>
 <p>Each file contains some anomalies (or 'changes of behaviour') that are pretty visible to the naked eye. The goal is to see in the last 2 
-sections of this Lab (<a href="#5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies">Section 5</a> &amp; 
-  <a href="#6-create-alerts-based-on-the-anomalies-detected">Section 6</a>)
+sections of this Lab (<a href="#5-create-anomaly-functions-to-detect-pattern-file-anomalies-in-monitor">Section 5</a> &amp; <a href="#6-create-alerts-based-on-the-anomalies-detected">Section 6</a>)
   how (some of) MONITOR's out-of-the-box
   <a href="https://www.ibm.com/docs/en/maximo-monitor/8.6.0?topic=data-detecting-anomalies">Anomaly Detection</a> functions
   pick those anomalies up, and how Alerts can be created using the Anomaly scores of those functions.</p>
@@ -1149,11 +1117,11 @@ can have a look at how I manually built those files, about 50 rows by 50 rows, u
 </thead>
 <tbody>
 <tr>
-<td><b>1_1080_2Peaks_1Drop_1BuildUp</b> (<a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv">.csv</a>, <a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.xlsx">.xlsx</a>) <br> Continuous readings of random values between 10 &amp; 11 (i.e. <code>=10+1*RAND()</code> ), with 4 noticeable events: <br> (1) a drop to values between 7 &amp; 8 (rows 200 to 250) <br> (2) a peak to values between 12 &amp; 13 (rows 350 to 380) <br> (3) a small spike buildup with values up to <code>=10.8+1*RAND()</code> (rows 500 to 515) <br> (4) a small 'buildown' where values progressively drop down to <code>=9.3+1*RAND()</code> (rows 600 to 680)</td>
+<td><b>1_1080_2Peaks_1Drop_1BuildUp</b> (<a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv">.csv</a>, <a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.xlsx">.xlsx</a>) <br> Continuous readings of random values between 10 &amp; 11 (i.e. <code>=10+1*RAND()</code> ), with 4 noticeable events: <br> (1) a drop to values between 7 &amp; 8 (rows 200 to 250). <br> (2) a peak to values between 12 &amp; 13 (rows 350 to 380), <br> (3) a small spike buildup with values up to <code>=10.8+1*RAND()</code> (rows 500 to 515). <br> (4) a small 'buildown' where values progressively drop down to <code>=9.3+1*RAND()</code> (rows 600 to 680).</td>
 <td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.1.png" />&nbsp;</td>
 </tr>
 <tr>
-<td><b>2_1080_Sinus_1Peak_2Drops</b> (<a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.csv">.csv</a>, <a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.xlsx">.xlsx</a>)<br> A sinusoidal type of input, with 3 noticeable events: <br> (1) a dropdown (rows around 323) <br> (2) another dropdown (around row 627) <br> (3) a spike (around row 839)</td>
+<td><b>2_1080_Sinus_1Peak_2Drops</b> (<a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.csv">.csv</a>, <a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.xlsx">.xlsx</a>)<br> A sinusoidal type of input, with 3 noticeable events: <br> (1) a dropdown (rows around 323). <br> (2) another dropdown (around row 627), <br> (3) a spike (around row 839)</td>
 <td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.2.png" />&nbsp;</td>
 </tr>
 <tr>
@@ -1190,12 +1158,12 @@ that will send the data to MONITOR.</p>
 <img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.2.1.png" />&nbsp; </li>
 </ol>
 <p>Download the zip file <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>.
-Unzip it on your local drive - the zip contains 14 (2 x 6+1 Files) files.
+Unzip it on your local drive.
 In your newly created <code>CL_Monitor_Patterns</code> project:</p>
 <ol>
 <li>
 <p>Click on the <code>Assets</code> tab and on the top-right <code>Data</code> icon. This will open a right-side 
-   window. On the <code>Load</code> tab, just drag and drop the 14 files (.csv and .xlsx formats).</p>
+   window. On the <code>Load</code> tab, just drag and drop the 2 x 6+1 Pattern Files (.csv and .xlsx formats).</p>
 </li>
 <li>
 <p>After a couple of seconds, those 14 files will appear under the <code>Data Assets</code> section of the <code>Assets</code> tab. </p>
@@ -1207,7 +1175,7 @@ In your newly created <code>CL_Monitor_Patterns</code> project:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following instructions can be carried using either the .csv or the 
-.xlsx version of the files. We will refer to the .csv version here, as ultimately it will be the .csv version we will 
+.xlsx files. We will refer to the .csv versions here, as ultimately it will be the .csv version we will 
 use to send the data to MONITOR's Watson IoT Platform.  </p>
 </div>
 <p>Let's first look at the <a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv">1_1080_2Peaks_1Drop_1BuildUp.csv</a>
@@ -1241,7 +1209,7 @@ The following image illustrates just some examples:</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Make sure that in this section' exercises, you take note of the following values which
-we will later need in the <a href="#323-capture-the-monitor-and-device-details">Section 3.2.3</a>:
+we will later need in the <a href="#323-capture-the-monitor-and-device-details-and-read-the-pattern-file">Section 3.2.3</a>:
 <code>orgId</code>, <code>typeId</code>,<code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>, and, 
 additionally for a MONITOR-on-MAS instance: <code>domain</code> and <code>caFile</code>.</p>
 </div>
@@ -1297,8 +1265,7 @@ Using a Firefox browser:</p>
    Save it to your local <code>Downloads</code> folder. <strong>NOTE</strong>: that is the file that we will use as our <code>caFile</code> in 
    <a href="#32-build-the-jupyter-notebook-in-cp4d">Section 3.2</a>.</li>
 <li>Back to CP4D's <code>Assets</code> tab, click the little top-right <code>Find and add data</code> waffle and drag and drop the
-<code>iot-maximoabc-yourcloud-info-chain.pem</code> file you just downloaded. Make sure it then appears on the 
-   <code>Data Assets</code> section.</li>
+<code>iot-maximoabc-yourcloud-info-chain.pem</code> file you just downloaded. Make sure it then appears on the </li>
 </ol>
 <p><img alt="Monitor1" src="../../img/monitor-patterns/monitor-patterns-2.2.1.png" />&nbsp; </p>
 <p>To confirm your <code>orgID</code>, and to get the <code>domain</code> value of the Watson IoT Platform associated to your MAS-MONITOR instance, 
@@ -1341,7 +1308,7 @@ Wait a couple of seconds for the runtime to initiate and for the Notebook to ope
 <li>install the required <a href="https://ibm-watson-iot.github.io/iot-python/">Watson IoT Platform Python SDK</a> and import a few 
    packages required to run the Notebook successfully.</li>
 <li>provide the <code>orgId</code>, <code>typeId</code>, <code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>, and <code>domain</code> and <code>caFile</code> as we noted them down in
-    <a href="#2-create-the-device-in-monitor-get-the-credentials">Section 2</a>.</li>
+    <a href="#2-create-the-devices-in-monitor-get-the-credentials">Section 2</a>.</li>
 <li>connect to MONITOR's Watson IoT Platform and read the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> pattern data.</li>
 <li>send the 1080 rows of data to MONITOR's Watson IoT Platform.</li>
 </ol>
@@ -1359,7 +1326,7 @@ Wait a couple of seconds for the runtime to initiate and for the Notebook to ope
 <h4 id="322-install-the-watson-iot-platform-python-sdk-and-required-packages">3.2.2 Install the Watson IoT Platform Python SDK and required packages</h4>
 <p>Let's use the <a href="https://ibm-watson-iot.github.io/iot-python/">Watson IoT Platform Python SDK</a>,
 and re-use the simplest possible code snippet (copy-pasted from the SDK's <a href="https://ibm-watson-iot.github.io/iot-python/application/mqtt/events/#publishing-device-events">Publishing Device Events</a> topic)
-to send data to the <code>CL_Device001</code> we registered in section <a href="#21-create-device-type-device">Section 2.1</a> section. In the Notebook we just created:</p>
+to send data to the <code>CL_Device001</code> we registered in section <a href="#21-create-device-type-devices">Section 2.1</a> section. In the Notebook we just created:</p>
 <ol>
 <li>
 <p>In the first cell of the Notebook, type <code># Install the Watson IoT Platform Python SDK</code>
@@ -1369,8 +1336,8 @@ to send data to the <code>CL_Device001</code> we registered in section <a href="
 <p><code>python
 pip install wiotp.sdk</code></p>
 <p>Click the <code>Run</code> button in the toolbar. This installation will take 5 to 10 seconds. Look for the message at the end of the output console, which should look like this:
-   <code>Successfully installed ... wiotp.sdk</code>.
-   Note: you may need to restart the kernel to use updated packages.
+   <em>Successfully installed iso8601-1.0.2 paho-mqtt-1.6.1 requests-toolbelt-0.9.1 wiotp.sdk
+   Note: you may need to restart the kernel to use updated packages</em>.
    From the <code>Kernel</code> menu, click <code>Restart Kernel</code>, and wait a couple seconds. 
    <strong>OPTIONAL</strong>: you can double-check the SDK was installed successfully by inserting a new cell, issuing a <code>pip list</code> command, and checking that
    it returns <em>wiotp-sdk 0.11.0</em> as an installed package.</p>
@@ -1391,15 +1358,13 @@ from datetime import datetime
 <h4 id="323-capture-the-monitor-and-device-details">3.2.3 Capture the Monitor and Device details</h4>
 <p>We are now going to capture the 'configuration details' required to connect to then send the 
 <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> pattern file data 
-to the <code>CL_Device001</code>.
+to the <code>CL_Device001</code> we created in <a href="#21-create-device-type-device">Section 2.1</a>.
 There are 2 options, depending on whether your Monitor runs as a SaaS installation (Option A),
 or as part of a Maximo Application Suite (MAS) installation (Option B).</p>
-<p>Collect the values that we noted in <a href="#2-create-the-device-in-monitor-get-the-credentials">Section 2</a>, i.e. <code>orgId</code> (= <code>YOUR_ORGID</code>), 
-<code>typeId</code> (= <code>YOUR_Device</code>), <code>deviceId</code> (= <code>YOUR_Device001</code>), <code>YOUR_AUTHENTICATION_TOKEN</code>, and, 
-    additionally for a MONITOR-on-MAS instance: <code>domain</code> (= e.g. <code>iot.maximoabc.yourcloud.info</code>) and 
-<code>caFile</code> (= e.g. <code>iot-maximoabc-yourcloud-info-chain.pem</code> - note the <code>/project_data/data_asset/</code> substring ahead, which points to CPD4 Data Assets 'folder').</p>
+<p>Collect the values that we noted in <a href="#2-create-the-device-in-monitor-get-the-credentials">Section 2</a>, i.e. <code>orgId</code>, <code>typeId</code>,<code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>, and, 
+    additionally for a MONITOR-on-MAS instance: <code>domain</code> and <code>caFile</code>.</p>
 <p>From the Notebook <code>Insert</code> menu, use <code>Insert Cell below</code> to create <code>Markdown</code> cells as per image below.
-Create 1 <code>Code</code> cell, copy-paste 1 of the following code snippet (Option A or B - depending on your MONITOR env) 
+Create 1 <code>Code</code> cell, and copy-paste 1 of the following code snippet (Option A or B - depending on your MONITOR env) 
 into the cell, and replace the <code>orgId</code>, <code>typeId</code> etc with the values you just collected. </p>
 <p>Click <code>Run</code> - note that will not generate any output.
 <img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.3.png" />&nbsp;
@@ -1446,16 +1411,16 @@ myConfig = {
 }
 </code></pre>
 <h4 id="324-connect-to-monitor-and-read-the-pattern-file">3.2.4 Connect to Monitor and read the pattern file</h4>
-<p>We can now connect to the <code>Device001</code> on MONITOR's Watson IoT Platform 
+<p>We can finally connect to the <code>Device001</code> on MONITOR's Watson IoT Platform 
 using the <code>myConfig</code> (Option A or B) we defined in the previous section/cell.</p>
-<p>1. From the Notebook <code>Insert</code> menu, click <code>Insert Cell below</code>. Copy-paste the below code, and <code>Run</code> the cell.</p>
+<p>1.From the Notebook <code>Insert</code> menu, click <code>Insert Cell below</code>. Copy-paste the below code, and <code>Run</code> the cell.</p>
 <pre><code class="language-python">deviceCli = wiotp.sdk.device.DeviceClient(config=myConfig)
 print(myConfig)
 deviceCli.connect()
 </code></pre>
 <p>Notice that we are using the <code>connect()</code> method of the <a href="https://ibm-watson-iot.github.io/iot-python/device/">Watson IoT Platform - Python Device SDK</a> 
 <code>wiotp.sdk.device.DeviceClient</code>, using <code>myConfig</code>. The red output of the cell should be a string (cf. 1. in image below) containing <code>wiotp.sdk.device.client.DeviceClient  INFO    Connected successfully</code>.</p>
-<p>2. Remember the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> (included in <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>)
+<p>2.Remember the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> (included in <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>)
 we loaded to CP4D in <a href="#12-setup-a-cp4d-project-and-load-the-pattern-files">Section 1.2</a> ?
 Let's now read it into a pandas <code>monitor_patterns_readings</code> dataframe that we will then use to send the data.
 Insert a new <code>Code</code> cell and copy-paste the following code:</p>
@@ -1463,18 +1428,11 @@ Insert a new <code>Code</code> cell and copy-paste the following code:</p>
                  index_col=False)
 monitor_patterns_readings.info()
 </code></pre>
-<p><code>Run</code> the cell. The output should confirm that the file has 1080 rows of <code>reading_1</code> to <code>reading_6</code> readings.</p>
+<p><code>Run</code> the cell. The output should confirm that the file has 1080 rows of <code>reading_1</code> to <code>reading_6</code>.</p>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.4.png" />&nbsp;</p>
 <h4 id="325-send-the-data-to-the-device-on-monitor">3.2.5 Send the data to the Device on Monitor</h4>
-<p>This is the key part of the Notebook, where we finally send the pattern data to <code>CL_Device001</code>.
-The code is pretty self-explanatory, i.e. it loops over the 1080 rows of the <code>monitor_patterns_readings</code> dataframe,
-publishes an event for each (<code>publishEvent(...)</code>), and does a <code>disconnect()</code> when all rows have been read.</p>
-<p>Do notice the
-<code>parser.add_argument("-D", "--delay", required=False, type=float, default=5, help="number of seconds between msgs")</code>
-line where you can define the frequency of your 'data sending' (cf. table in <a href="#11-what-are-the-6-pattern-demo-files-all-about">Section 1.1</a>),
-e.g. using <code>default=5</code> means a message is sent every 5 seconds, i.e. it will take 1.5 hour for the 1080 rows to be sent. </p>
-<p>1. From the Notebook <code>Insert menu</code>, click <code>Insert Cell below</code> and copy-paste the below code snippet into it.
-Click <code>Run</code>.</p>
+<p>This is the key part of the Notebook, where we will finally send the pattern data to <code>CL_Device001</code>.
+<code>parser.add_argument("-D", "--delay", required=False, type=float, default=5, help="number of seconds between msgs")</code></p>
 <pre><code class="language-python">for index, row in monitor_patterns_readings.iterrows():
     data = {'reading_1': row['reading_1'],
             'reading_2': row['reading_2'],
@@ -1506,17 +1464,11 @@ Click <code>Run</code>.</p>
 deviceCli.disconnect()
 
 </code></pre>
-<p>This cell will keep running for the duration of the 1080 rows 'iteration'.
-Every e.g. 5 seconds, you will see one new message in the output console, which should look like this:
-<code>{'reading_1': 10.59574274, 'reading_2': 10.80853745, 'reading_3': 20.87205928, 'reading_4': 20.10878476, 'reading_5': 10.17112379, 'reading_6': 10.32845991}
-======SUCCESS====== 2022-01-06 08:29:27.415862 ===Row: 1 Success: True</code>.
-Also note that at the end of the '1080-iteration', you will get a final <code>Dicsonnected from the Watson IoT Platform</code> message.</p>
-<p>2. Let's now check that the data is flowing into MONITOR's Watson IoT Platform.
-Back to your MONITOR Homepage, click the <code>Connect</code> menu (left-side bar) and go to the <code>Devices</code> tab. 
-Search and select <code>CL_Device001</code>. Wait a couple of seconds, and you will see on the <code>Recent events</code> section
-that new MQTT messages pop up at the frequency you defined (e.g. every 5 seconds).</p>
-<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.5.png" />&nbsp;</p>
 <hr />
+<h3 id="33-verify-the-data-is-flowing-into-the-device-in-monitor">3.3 Verify the data is flowing into the Device in Monitor</h3>
+<pre><code class="language-python">deviceCli = wiotp.sdk.device.DeviceClient(config=myConfig)                        
+deviceCli.connect()
+</code></pre>
 <hr />
 <h2 id="4-create-the-physical-logical-interfaces">4. Create the Physical &amp; Logical Interfaces</h2>
 <p>In order for the pattern data to land into MONITOR's data lake, we now need to create both Physical and Logical Interfaces.</p>
@@ -1528,7 +1480,7 @@ that new MQTT messages pop up at the frequency you defined (e.g. every 5 seconds
 Click on the <code>CL_Device</code> row. On the opened screen, click <code>Edit</code> (top-right). Scroll down to the <code>Data from devices - physical interface</code> section.
 Click the <code>+</code> button next to the <code>Event Types</code> label and select <code>From received event</code>.</li>
 <li>Within a couple of seconds, the <code>reading_1</code> to <code>reading_6</code> of the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> data
-that we started sending in <a href="#324-connect-to-monitor-and-read-the-pattern-file">Section 3.2.4</a> should appear. Click the <code>event</code> box. Click <code>Create</code>.</li>
+that we started sending in <a href="#324-send-the-data-to-the-device-on-monitor">Section 3.2.4</a> should appear. Click the <code>event</code> box. Click <code>Create</code>.</li>
 <li>You should now see <code>reading_1</code> to <code>reading_6</code> appear in the <code>event</code> frame. Click <code>Save and finish</code> (bottom-right).   </li>
 </ol>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.1.png" />&nbsp;</p>
@@ -1575,115 +1527,15 @@ Data will now soon arrive (wait 5 minutes) into the MONITOR data lake.
 Let's check !</p>
 <hr />
 <h3 id="43-view-the-data-in-ootb-dashboards">4.3 View the data in ootb Dashboards</h3>
-<p>After minimum 5 minutes:</p>
-<ol>
-<li>Go to the <code>Monitor</code> menu (left bar). On the <code>Device types</code> tab, search and select <code>CL_Device</code>.</li>
-<li>In the <code>Devices</code> (left panel), select the individual <code>CL_Device001</code> device. Go to the <code>Asset Metrics Dashboard</code>.
-The screenshot below shows how that dashboard progressively builds up, as the 1080 rows get injected into the data lake.
-   When the iteration is 'done', your dashboard should look like the last picture below.</li>
-</ol>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.3.1.png" />&nbsp;</p>
 <hr />
+<h2 id="5-create-anomaly-functions-to-detect-pattern-file-anomalies-in-monitor">5. Create Anomaly Functions to detect Pattern file anomalies in Monitor</h2>
 <hr />
-<h2 id="5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies">5. Create Anomaly Detection Functions to detect the pattern data anomalies</h2>
-<p>We are now going to create Anomaly Detection functions on the data, to see how they behave
-on the various <code>reading_1</code> to <code>reading_6</code> 'anomaly' patterns. </p>
-<hr />
-<h3 id="51-create-anomaly-detection-functions">5.1 Create Anomaly Detection Functions</h3>
-<ol>
-<li>Go to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button). Go to the <code>Data</code> tab.</li>
-<li>
-<p>On the left <code>Data items</code> section, click the <code>+</code> button. That will open the functions catalog. Type <code>Anmoly</code> in the search bar. 
-   Select the <code>KMeansAnomalyScore</code> function.</p>
-</li>
-<li>
-<p>Select <code>Apply to all assets of the selected type</code> option, click <code>Next</code>. in the data <code>item</code> drop-down, select <code>reading_1</code>.
-In the <code>windowsize</code> box, enter <code>12</code> ( which is the default value), click <code>Next</code>.
-   Turn the <code>Auto schedule</code> to <code>Off</code>. Enter <code>5</code> in the <code>Executing every</code> box, and <code>1 Day</code> in the 
-   <code>Calculating the last</code> box. In the <code>Output metric</code>, enter <code>reading_1_Anomaly_KMeans</code>. Click <code>Create</code>.</p>
-</li>
-</ol>
-<p>Repeat the above steps by creating <code>reading_2_Anomaly_KMeans</code> to <code>reading_6_Anomaly_KMeans</code> Anomaly Detection functions for the 
-remaining <code>reading_2</code> to <code>reading_6</code> readings.</p>
-<p><strong>OPTIONAL</strong>: Feel free to explore more of the Functions Catalog, and create other types of Anomaly Detection
-functions on the data - e.g. in step 2. above, instead of the <code>KMeansAnomalyScore</code> function, select <code>FFTbasedGeneralizedAnomalyScore</code> or <code>GeneralizedAnomalyScore</code> or
-<code>SaliencybasedGeneralizedAnomalyScore</code> or <code>SpectralAnomalyScore</code>.</p>
+<h3 id="51-create-anomaly-functions">5.1 Create Anomaly Functions</h3>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.1.1.png" />&nbsp;</p>
 <hr />
 <h3 id="52-add-anomaly-scores-to-the-dashboard">5.2 Add Anomaly Scores to the Dashboard</h3>
-<p>Our goal is now to overlay the <code>reading_n</code> timeseries on the cards of the dashboard with the scores of the Anomaly Detection 
-functions we just defined.</p>
-<ol>
-<li>
-<p>Go back to your <code>CL_Device001</code>'s <code>Asset Metrics Dashboard</code>. Click the <code>Edit Dashboard</code> icon (to-right).
-Click the <code>reading_1</code> timeseries card. On the right <code>Content</code> panel, select <code>reading_1_Anomaly_KMeans</code> in the <code>Data Item</code> filter. That will add the
-   anomaly reading to the timeseries card.</p>
-</li>
-<li>
-<p>Repeat step 1. for <code>reading_2</code> to <code>reading_6</code> cards. Click <code>Save and close</code>. Your Dashboard should now look like the below, i.e. with
-   each card now displaying the raw readings, and associated Anomaly scores.</p>
-</li>
-</ol>
-<p>What is important to notice here is how the Anomaly Scores react (e.g. with spikes) each time there is an anomaly or 'change of behaviour' in the pattern data. </p>
-<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.2.png" />&nbsp;</p>
-<hr />
-<hr />
 <h2 id="6-create-alerts-based-on-the-anomalies-detected">6. Create Alerts based on the Anomalies detected</h2>
-<p>In this final step, we'll now analyse the Anomaly Scores, and create an Alerting system based on those.</p>
-<hr />
-<h3 id="61-analyze-the-anomaly-scores">6.1 Analyze the Anomaly Scores</h3>
-<p>This is an important step to understand what 'anomaly thresholds' we should use to define the anomaly-based Alerts in the following section.
-We want to avoid having hundreds or thousands of Alerts that would just generate an 'Alert Storm'.</p>
-<ol>
-<li>
-<p>On the <code>reading_1</code> timeseries card, <code>Expand to fullscreen</code> (top-right). 
-This will expand the card and allow us to zoom-in/out of the data. Also, in the table below the graph, click the <code>reading_1_Anomaly_KMeans</code>
-   to order it ascendingly. </p>
-<p>Notice the values of the <code>reading_1_Anomaly_KMeans</code> scores over time. Take the 3 top values - e.g. in below screen, there are 3
-   times when the Anomaly Score goes above a value of <code>6.7</code> (check your scores which might slightly differ). This is the 'threshold' value that we will use to create the Alerts in next section.</p>
-</li>
-<li>
-<p>For the remaining <code>reading_2</code> to <code>reading_6</code>, repeat step 1., i.e. take note of the 3 top score values for the anomaly score. </p>
-</li>
-</ol>
-<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.1.png" />&nbsp;</p>
-<hr />
-<h3 id="62-create-the-alerts">6.2 Create the Alerts</h3>
-<ol>
-<li>
-<p>Back to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button). Go to the <code>Data</code> tab.
-On the left <code>Data items</code> section, click the <code>+</code> button. Type <code>Alert</code> in the search bar. 
-   Select the <code>AlertHighValue</code> function. Select the <code>reading_1_Anomaly_KMeans</code> in the <code>input_item</code> box, and enter <code>6.7</code> in the <code>upper_threshold</code> box.
-   Select a <code>Severity</code> (e.g. <code>Medium</code>) and a <code>Status</code> (e.g. <code>New</code>). Click <code>Next</code>.
-   Turn the <code>Auto schedule</code> to <code>Off</code>. Enter <code>5</code> in the <code>Executing every</code> box, and <code>1 Day</code> in the 
-   <code>Calculating the last</code> box. In the <code>Output metric</code>, enter <code>reading_1_Alert_KMeans</code>. Click <code>Create</code>.</p>
-</li>
-<li>
-<p>Wait 5 minutes. Then on the <code>Data Items</code> (left) <code>Alert (calculated)</code> section. You will now see 3 <code>reading_1_Alert_KMeans</code> Alerts !</p>
-</li>
-<li>You can also see the Alerts by going back to the <code>Monitor</code> menu, selecting <code>CL_Device</code> then <code>CL_Device001</code> and watching the ootb <code>Alerts</code> tab.</li>
-</ol>
-<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.2.png" />&nbsp;</p>
-<hr />
-<h3 id="63-add-the-alerts-to-the-dashboard">6.3 Add the Alerts to the Dashboard</h3>
-<p>Finally, let's see how we can overlay those Alerts on our timeseries cards - we will do this only for <code>reading_1</code> here,
-but you can of course repeat the steps for the other <code>reading_2</code> to <code>reading_6</code>.</p>
-<ol>
-<li>
-<p>Back to your <code>CL_Device001</code>'s <code>Asset Metrics Dashboard</code>, click the <code>Edit Dashboard</code> icon (to-right).
-Click the <code>reading_1</code> timeseries card. On the right <code>Content</code> panel, click the <code>Overlay with alerts</code> check box, and select 
-   the <code>reading_1_Alert_KMeans</code>. Click <code>Save and close</code>.</p>
-</li>
-<li>
-<p>Back on the dashboard, expand the <code>reading_1</code> timeseries card and notice how the Alerts now appear (as red dots).</p>
-</li>
-</ol>
-<p>BRAVO, you completed the Lab - hope you enjoyed !</p>
-<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.3.png" />&nbsp;</p>
-<p><strong>Suggested Next Steps</strong>: as you'll notice in previous picture, we only generated Alerts for the 'central peak' of <code>reading_1</code>.
-Have a new look at the Anomaly scores (cf. <a href="#61-analyze-the-anomaly-scores">Section 6.1</a>), and try to change the 
-<code>6.7</code> value we used to create the Alerts (cf. <a href="#62-create-the-alerts">Section 6.2</a>) to a lower value that will also
-generate Alerts for the other anomalies in the series (i.e for the other smaller peak, for the drop and the buildup).</p>
                 
               
               
