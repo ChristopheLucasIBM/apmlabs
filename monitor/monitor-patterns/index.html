@@ -452,16 +452,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-create-anomaly-functions-to-detect-pattern-file-anomalies-in-monitor" class="md-nav__link">
-    5. Create Anomaly Functions to detect Pattern file anomalies in Monitor
+  <a href="#5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies" class="md-nav__link">
+    5. Create Anomaly Detection Functions to detect the pattern data anomalies
   </a>
   
-    <nav class="md-nav" aria-label="5. Create Anomaly Functions to detect Pattern file anomalies in Monitor">
+    <nav class="md-nav" aria-label="5. Create Anomaly Detection Functions to detect the pattern data anomalies">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-create-anomaly-functions" class="md-nav__link">
-    5.1 Create Anomaly Functions
+  <a href="#51-create-anomaly-detection-functions" class="md-nav__link">
+    5.1 Create Anomaly Detection Functions
   </a>
   
 </li>
@@ -950,16 +950,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-create-anomaly-functions-to-detect-pattern-file-anomalies-in-monitor" class="md-nav__link">
-    5. Create Anomaly Functions to detect Pattern file anomalies in Monitor
+  <a href="#5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies" class="md-nav__link">
+    5. Create Anomaly Detection Functions to detect the pattern data anomalies
   </a>
   
-    <nav class="md-nav" aria-label="5. Create Anomaly Functions to detect Pattern file anomalies in Monitor">
+    <nav class="md-nav" aria-label="5. Create Anomaly Detection Functions to detect the pattern data anomalies">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#51-create-anomaly-functions" class="md-nav__link">
-    5.1 Create Anomaly Functions
+  <a href="#51-create-anomaly-detection-functions" class="md-nav__link">
+    5.1 Create Anomaly Detection Functions
   </a>
   
 </li>
@@ -1526,11 +1526,11 @@ The screenshot below shows how that dashboard progressively builds up, as the 10
 </ol>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.3.1.png" />&nbsp;</p>
 <hr />
-<h2 id="5-create-anomaly-functions-to-detect-pattern-file-anomalies-in-monitor">5. Create Anomaly Functions to detect Pattern file anomalies in Monitor</h2>
+<h2 id="5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies">5. Create Anomaly Detection Functions to detect the pattern data anomalies</h2>
 <p>We are now going to create Anomaly Detection functions on the data, to see how they behave
 on the various <code>reading_1</code> to <code>reading_6</code> 'anomaly' patterns. </p>
 <hr />
-<h3 id="51-create-anomaly-functions">5.1 Create Anomaly Functions</h3>
+<h3 id="51-create-anomaly-detection-functions">5.1 Create Anomaly Detection Functions</h3>
 <ol>
 <li>Go to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button). Go to the <code>Data</code> tab.</li>
 <li>
@@ -1538,15 +1538,22 @@ on the various <code>reading_1</code> to <code>reading_6</code> 'anomaly' patter
    Select the <code>KMeansAnomalyScore</code> function.</p>
 </li>
 <li>
-<p>Select <code>Apply to all assets of the selected type</code> option, click <code>Next</code>. in the data <code>item</code> drop down, seelect <code>reading_1</code>.
+<p>Select <code>Apply to all assets of the selected type</code> option, click <code>Next</code>. in the data <code>item</code> drop-down, select <code>reading_1</code>.
 In the <code>windowsize</code> box, enter <code>12</code> ( which is the default value), click <code>Next</code>.
    Turn the <code>Auto schedule</code> to <code>Off</code>. Enter <code>5</code> in the <code>Executing every</code> box, and <code>1 Day</code> in the 
    <code>Calculating the last</code> box. In the <code>Output metric</code>, enter <code>reading_1_Anomaly_KMeans</code>. Click <code>Create</code>.</p>
 </li>
 </ol>
+<p>Repeat the above steps by creating <code>reading_2_Anomaly_KMeans</code> to <code>reading_6_Anomaly_KMeans</code> Anomaly Detection functions for the 
+remaining <code>reading_2</code> to <code>reading_6</code> readings.</p>
+<p><strong>OPTIONAL</strong>: Feel free to explore more of the Functions Catalog, and create other types of Anomaly Detection
+functions on the data - e.g. try with <code>FFTbasedGeneralizedAnomalyScore</code> or <code>GeneralizedAnomalyScore</code> or
+<code>SaliencybasedGeneralizedAnomalyScore</code> or <code>SpectralAnomalyScore</code>.</p>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.1.1.png" />&nbsp;</p>
 <hr />
 <h3 id="52-add-anomaly-scores-to-the-dashboard">5.2 Add Anomaly Scores to the Dashboard</h3>
+<p>Our goal is now</p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.2.png" />&nbsp;</p>
 <h2 id="6-create-alerts-based-on-the-anomalies-detected">6. Create Alerts based on the Anomalies detected</h2>
                 
               
