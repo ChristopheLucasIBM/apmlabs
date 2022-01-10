@@ -1149,11 +1149,11 @@ can have a look at how I manually built those files, about 50 rows by 50 rows, u
 </thead>
 <tbody>
 <tr>
-<td><b>1_1080_2Peaks_1Drop_1BuildUp</b> (<a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv">.csv</a>, <a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.xlsx">.xlsx</a>) <br> Continuous readings of random values between 10 &amp; 11 (i.e. <code>=10+1*RAND()</code> ), with 4 noticeable events: <br> (1) a drop to values between 7 &amp; 8 (rows 200 to 250). <br> (2) a peak to values between 12 &amp; 13 (rows 350 to 380), <br> (3) a small spike buildup with values up to <code>=10.8+1*RAND()</code> (rows 500 to 515). <br> (4) a small 'buildown' where values progressively drop down to <code>=9.3+1*RAND()</code> (rows 600 to 680).</td>
+<td><b>1_1080_2Peaks_1Drop_1BuildUp</b> (<a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv">.csv</a>, <a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.xlsx">.xlsx</a>) <br> Continuous readings of random values between 10 &amp; 11 (i.e. <code>=10+1*RAND()</code> ), with 4 noticeable events: <br> (1) a drop to values between 7 &amp; 8 (rows 200 to 250) <br> (2) a peak to values between 12 &amp; 13 (rows 350 to 380) <br> (3) a small spike buildup with values up to <code>=10.8+1*RAND()</code> (rows 500 to 515) <br> (4) a small 'buildown' where values progressively drop down to <code>=9.3+1*RAND()</code> (rows 600 to 680)</td>
 <td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.1.png" />&nbsp;</td>
 </tr>
 <tr>
-<td><b>2_1080_Sinus_1Peak_2Drops</b> (<a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.csv">.csv</a>, <a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.xlsx">.xlsx</a>)<br> A sinusoidal type of input, with 3 noticeable events: <br> (1) a dropdown (rows around 323). <br> (2) another dropdown (around row 627), <br> (3) a spike (around row 839)</td>
+<td><b>2_1080_Sinus_1Peak_2Drops</b> (<a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.csv">.csv</a>, <a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.xlsx">.xlsx</a>)<br> A sinusoidal type of input, with 3 noticeable events: <br> (1) a dropdown (rows around 323) <br> (2) another dropdown (around row 627) <br> (3) a spike (around row 839)</td>
 <td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.2.png" />&nbsp;</td>
 </tr>
 <tr>
@@ -1190,12 +1190,12 @@ that will send the data to MONITOR.</p>
 <img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.2.1.png" />&nbsp; </li>
 </ol>
 <p>Download the zip file <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>.
-Unzip it on your local drive.
+Unzip it on your local drive - the zip contains 14 (2 x 6+1 Files) files.
 In your newly created <code>CL_Monitor_Patterns</code> project:</p>
 <ol>
 <li>
 <p>Click on the <code>Assets</code> tab and on the top-right <code>Data</code> icon. This will open a right-side 
-   window. On the <code>Load</code> tab, just drag and drop the 2 x 6+1 Pattern Files (.csv and .xlsx formats).</p>
+   window. On the <code>Load</code> tab, just drag and drop the 14 files (.csv and .xlsx formats).</p>
 </li>
 <li>
 <p>After a couple of seconds, those 14 files will appear under the <code>Data Assets</code> section of the <code>Assets</code> tab. </p>
@@ -1207,7 +1207,7 @@ In your newly created <code>CL_Monitor_Patterns</code> project:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The following instructions can be carried using either the .csv or the 
-.xlsx files. We will refer to the .csv versions here, as ultimately it will be the .csv version we will 
+.xlsx version of the files. We will refer to the .csv version here, as ultimately it will be the .csv version we will 
 use to send the data to MONITOR's Watson IoT Platform.  </p>
 </div>
 <p>Let's first look at the <a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv">1_1080_2Peaks_1Drop_1BuildUp.csv</a>
@@ -1241,7 +1241,7 @@ The following image illustrates just some examples:</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Make sure that in this section' exercises, you take note of the following values which
-we will later need in the <a href="#323-capture-the-monitor-and-device-details-and-read-the-pattern-file">Section 3.2.3</a>:
+we will later need in the <a href="#323-capture-the-monitor-and-device-details">Section 3.2.3</a>:
 <code>orgId</code>, <code>typeId</code>,<code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>, and, 
 additionally for a MONITOR-on-MAS instance: <code>domain</code> and <code>caFile</code>.</p>
 </div>
@@ -1297,7 +1297,8 @@ Using a Firefox browser:</p>
    Save it to your local <code>Downloads</code> folder. <strong>NOTE</strong>: that is the file that we will use as our <code>caFile</code> in 
    <a href="#32-build-the-jupyter-notebook-in-cp4d">Section 3.2</a>.</li>
 <li>Back to CP4D's <code>Assets</code> tab, click the little top-right <code>Find and add data</code> waffle and drag and drop the
-<code>iot-maximoabc-yourcloud-info-chain.pem</code> file you just downloaded. Make sure it then appears on the </li>
+<code>iot-maximoabc-yourcloud-info-chain.pem</code> file you just downloaded. Make sure it then appears on the 
+   <code>Data Assets</code> section.</li>
 </ol>
 <p><img alt="Monitor1" src="../../img/monitor-patterns/monitor-patterns-2.2.1.png" />&nbsp; </p>
 <p>To confirm your <code>orgID</code>, and to get the <code>domain</code> value of the Watson IoT Platform associated to your MAS-MONITOR instance, 
@@ -1340,7 +1341,7 @@ Wait a couple of seconds for the runtime to initiate and for the Notebook to ope
 <li>install the required <a href="https://ibm-watson-iot.github.io/iot-python/">Watson IoT Platform Python SDK</a> and import a few 
    packages required to run the Notebook successfully.</li>
 <li>provide the <code>orgId</code>, <code>typeId</code>, <code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>, and <code>domain</code> and <code>caFile</code> as we noted them down in
-    <a href="#2-create-the-devices-in-monitor-get-the-credentials">Section 2</a>.</li>
+    <a href="#2-create-the-device-in-monitor-get-the-credentials">Section 2</a>.</li>
 <li>connect to MONITOR's Watson IoT Platform and read the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> pattern data.</li>
 <li>send the 1080 rows of data to MONITOR's Watson IoT Platform.</li>
 </ol>
@@ -1358,7 +1359,7 @@ Wait a couple of seconds for the runtime to initiate and for the Notebook to ope
 <h4 id="322-install-the-watson-iot-platform-python-sdk-and-required-packages">3.2.2 Install the Watson IoT Platform Python SDK and required packages</h4>
 <p>Let's use the <a href="https://ibm-watson-iot.github.io/iot-python/">Watson IoT Platform Python SDK</a>,
 and re-use the simplest possible code snippet (copy-pasted from the SDK's <a href="https://ibm-watson-iot.github.io/iot-python/application/mqtt/events/#publishing-device-events">Publishing Device Events</a> topic)
-to send data to the <code>CL_Device001</code> we registered in section <a href="#21-create-device-type-devices">Section 2.1</a> section. In the Notebook we just created:</p>
+to send data to the <code>CL_Device001</code> we registered in section <a href="#21-create-device-type-device">Section 2.1</a> section. In the Notebook we just created:</p>
 <ol>
 <li>
 <p>In the first cell of the Notebook, type <code># Install the Watson IoT Platform Python SDK</code>
@@ -1390,13 +1391,15 @@ from datetime import datetime
 <h4 id="323-capture-the-monitor-and-device-details">3.2.3 Capture the Monitor and Device details</h4>
 <p>We are now going to capture the 'configuration details' required to connect to then send the 
 <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> pattern file data 
-to the <code>CL_Device001</code> we created in <a href="#21-create-device-type-device">Section 2.1</a>.
+to the <code>CL_Device001</code>.
 There are 2 options, depending on whether your Monitor runs as a SaaS installation (Option A),
 or as part of a Maximo Application Suite (MAS) installation (Option B).</p>
-<p>Collect the values that we noted in <a href="#2-create-the-device-in-monitor-get-the-credentials">Section 2</a>, i.e. <code>orgId</code>, <code>typeId</code>,<code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>, and, 
-    additionally for a MONITOR-on-MAS instance: <code>domain</code> and <code>caFile</code>.</p>
+<p>Collect the values that we noted in <a href="#2-create-the-device-in-monitor-get-the-credentials">Section 2</a>, i.e. <code>orgId</code> (= <code>YOUR_ORGID</code>), 
+<code>typeId</code> (= <code>YOUR_Device</code>), <code>deviceId</code> (= <code>YOUR_Device001</code>), <code>YOUR_AUTHENTICATION_TOKEN</code>, and, 
+    additionally for a MONITOR-on-MAS instance: <code>domain</code> (= e.g. <code>iot.maximoabc.yourcloud.info</code>) and 
+<code>caFile</code> (= e.g. <code>iot-maximoabc-yourcloud-info-chain.pem</code> - note the <code>/project_data/data_asset/</code> substring ahead, which points to CPD4 Data Assets 'folder').</p>
 <p>From the Notebook <code>Insert</code> menu, use <code>Insert Cell below</code> to create <code>Markdown</code> cells as per image below.
-Create 1 <code>Code</code> cell, and copy-paste 1 of the following code snippet (Option A or B - depending on your MONITOR env) 
+Create 1 <code>Code</code> cell, copy-paste 1 of the following code snippet (Option A or B - depending on your MONITOR env) 
 into the cell, and replace the <code>orgId</code>, <code>typeId</code> etc with the values you just collected. </p>
 <p>Click <code>Run</code> - note that will not generate any output.
 <img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.3.png" />&nbsp;
@@ -1443,7 +1446,7 @@ myConfig = {
 }
 </code></pre>
 <h4 id="324-connect-to-monitor-and-read-the-pattern-file">3.2.4 Connect to Monitor and read the pattern file</h4>
-<p>We can finally connect to the <code>Device001</code> on MONITOR's Watson IoT Platform 
+<p>We can now connect to the <code>Device001</code> on MONITOR's Watson IoT Platform 
 using the <code>myConfig</code> (Option A or B) we defined in the previous section/cell.</p>
 <p>1. From the Notebook <code>Insert</code> menu, click <code>Insert Cell below</code>. Copy-paste the below code, and <code>Run</code> the cell.</p>
 <pre><code class="language-python">deviceCli = wiotp.sdk.device.DeviceClient(config=myConfig)
@@ -1463,7 +1466,7 @@ monitor_patterns_readings.info()
 <p><code>Run</code> the cell. The output should confirm that the file has 1080 rows of <code>reading_1</code> to <code>reading_6</code> readings.</p>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.4.png" />&nbsp;</p>
 <h4 id="325-send-the-data-to-the-device-on-monitor">3.2.5 Send the data to the Device on Monitor</h4>
-<p>This is the key part of the Notebook, where we finally send the pattern data to <code>CL_Device001</code> on MONITOR's Watson IoT Platform.
+<p>This is the key part of the Notebook, where we finally send the pattern data to <code>CL_Device001</code>.
 The code is pretty self-explanatory, i.e. it loops over the 1080 rows of the <code>monitor_patterns_readings</code> dataframe,
 publishes an event for each (<code>publishEvent(...)</code>), and does a <code>disconnect()</code> when all rows have been read.</p>
 <p>Do notice the
@@ -1471,12 +1474,7 @@ publishes an event for each (<code>publishEvent(...)</code>), and does a <code>d
 line where you can define the frequency of your 'data sending' (cf. table in <a href="#11-what-are-the-6-pattern-demo-files-all-about">Section 1.1</a>),
 e.g. using <code>default=5</code> means a message is sent every 5 seconds, i.e. it will take 1.5 hour for the 1080 rows to be sent. </p>
 <p>1. From the Notebook <code>Insert menu</code>, click <code>Insert Cell below</code> and copy-paste the below code snippet into it.
-Click <code>Run</code>. </p>
-<p>This cell will keep running for the duration of the 1080 rows 'iteration'.
-Every e.g. 5 seconds, you will see one new message in the output console, which should look like this:
-<code>{'reading_1': 10.59574274, 'reading_2': 10.80853745, 'reading_3': 20.87205928, 'reading_4': 20.10878476, 'reading_5': 10.17112379, 'reading_6': 10.32845991}
-======SUCCESS====== 2022-01-06 08:29:27.415862 ===Row: 1 Success: True</code>.
-Also note that at the end of the '1080-iteration', you will get a final <code>Dicsonnected from the Watson IoT Platform</code> message.</p>
+Click <code>Run</code>.</p>
 <pre><code class="language-python">for index, row in monitor_patterns_readings.iterrows():
     data = {'reading_1': row['reading_1'],
             'reading_2': row['reading_2'],
@@ -1508,10 +1506,15 @@ Also note that at the end of the '1080-iteration', you will get a final <code>Di
 deviceCli.disconnect()
 
 </code></pre>
+<p>This cell will keep running for the duration of the 1080 rows 'iteration'.
+Every e.g. 5 seconds, you will see one new message in the output console, which should look like this:
+<code>{'reading_1': 10.59574274, 'reading_2': 10.80853745, 'reading_3': 20.87205928, 'reading_4': 20.10878476, 'reading_5': 10.17112379, 'reading_6': 10.32845991}
+======SUCCESS====== 2022-01-06 08:29:27.415862 ===Row: 1 Success: True</code>.
+Also note that at the end of the '1080-iteration', you will get a final <code>Dicsonnected from the Watson IoT Platform</code> message.</p>
 <p>2. Let's now check that the data is flowing into MONITOR's Watson IoT Platform.
 Back to your MONITOR Homepage, click the <code>Connect</code> menu (left-side bar) and go to the <code>Devices</code> tab. 
 Search and select <code>CL_Device001</code>. Wait a couple of seconds, and you will see on the <code>Recent events</code> section
-that new MQTT messages pop up at the frequency you definedn (e.g. every 5 seconds).</p>
+that new MQTT messages pop up at the frequency you defined (e.g. every 5 seconds).</p>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.5.png" />&nbsp;</p>
 <hr />
 <hr />
@@ -1525,7 +1528,7 @@ that new MQTT messages pop up at the frequency you definedn (e.g. every 5 second
 Click on the <code>CL_Device</code> row. On the opened screen, click <code>Edit</code> (top-right). Scroll down to the <code>Data from devices - physical interface</code> section.
 Click the <code>+</code> button next to the <code>Event Types</code> label and select <code>From received event</code>.</li>
 <li>Within a couple of seconds, the <code>reading_1</code> to <code>reading_6</code> of the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> data
-that we started sending in <a href="#324-send-the-data-to-the-device-on-monitor">Section 3.2.4</a> should appear. Click the <code>event</code> box. Click <code>Create</code>.</li>
+that we started sending in <a href="#324-connect-to-monitor-and-read-the-pattern-file">Section 3.2.4</a> should appear. Click the <code>event</code> box. Click <code>Create</code>.</li>
 <li>You should now see <code>reading_1</code> to <code>reading_6</code> appear in the <code>event</code> frame. Click <code>Save and finish</code> (bottom-right).   </li>
 </ol>
 <p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.1.png" />&nbsp;</p>
@@ -1672,7 +1675,7 @@ Click the <code>reading_1</code> timeseries card. On the right <code>Content</co
    the <code>reading_1_Alert_KMeans</code>. Click <code>Save and close</code>.</p>
 </li>
 <li>
-<p>Back on the dashboard, expan the <code>reading_1</code> timeseries card and notice how the Alerts now appear (as red dots).</p>
+<p>Back on the dashboard, expand the <code>reading_1</code> timeseries card and notice how the Alerts now appear (as red dots).</p>
 </li>
 </ol>
 <p>BRAVO, you completed the Lab - hope you enjoyed !</p>
@@ -1680,7 +1683,7 @@ Click the <code>reading_1</code> timeseries card. On the right <code>Content</co
 <p><strong>Suggested Next Steps</strong>: as you'll notice in previous picture, we only generated Alerts for the 'central peak' of <code>reading_1</code>.
 Have a new look at the Anomaly scores (cf. <a href="#61-analyze-the-anomaly-scores">Section 6.1</a>), and try to change the 
 <code>6.7</code> value we used to create the Alerts (cf. <a href="#62-create-the-alerts">Section 6.2</a>) to a lower value that will also
-generate Alerts for the other anomalies in the series.</p>
+generate Alerts for the other anomalies in the series (i.e for the other smaller peak, for the drop and the buildup).</p>
                 
               
               
