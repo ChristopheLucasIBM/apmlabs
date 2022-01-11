@@ -1,0 +1,1766 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Maximo APM Hands on Labs">
+      
+      
+      
+        <meta name="author" content="Christophe Lucas">
+      
+      
+        <link rel="canonical" href="https://christophelucasibm.github.io/apmlabs/monitor/monitor-patterns/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.1">
+    
+    
+      
+        <title>(MAS86) Discover Monitor with Pattern Files - IBM Maximo Asset Performance Management (APM) Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1c75ef36.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#discover-monitor-with-pattern-files" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IBM Maximo Asset Performance Management (APM) Labs" class="md-header__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Maximo Asset Performance Management (APM) Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              (MAS86) Discover Monitor with Pattern Files
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IBM Maximo Asset Performance Management (APM) Labs" class="md-nav__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    IBM Maximo Asset Performance Management (APM) Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Intro - Start Here
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Monitor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitor" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Monitor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          (MAS86) Discover Monitor with Pattern Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        (MAS86) Discover Monitor with Pattern Files
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-objectives-tips" class="md-nav__link">
+    0. Objectives &amp; Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-analyse-the-pattern-files-in-ibm-cloud-pak-for-data-cp4d" class="md-nav__link">
+    1. Analyse the pattern files in IBM Cloud Pak for Data (CP4D)
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Analyse the pattern files in IBM Cloud Pak for Data (CP4D)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-are-the-6-pattern-demo-files-all-about" class="md-nav__link">
+    1.1 What are the 6 pattern demo files all about ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-setup-a-cp4d-project-and-load-the-pattern-files" class="md-nav__link">
+    1.2 Setup a CP4D Project and load the pattern files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-use-cp4d-data-refinery-to-visualise-the-data" class="md-nav__link">
+    1.3 Use CP4D Data Refinery to visualise the data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-the-device-in-monitor-get-the-credentials" class="md-nav__link">
+    2. Create the Device in Monitor &amp; get the credentials
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Create the Device in Monitor &amp; get the credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-create-device-type-device" class="md-nav__link">
+    2.1 Create Device Type &amp; Device
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-get-monitor-saas-or-mas-instance-details" class="md-nav__link">
+    2.2 Get Monitor (SaaS or MAS) Instance details
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Get Monitor (SaaS or MAS) Instance details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-option-a-monitor-saas" class="md-nav__link">
+    2.2.1 Option A - Monitor SaaS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-option-b-monitor-on-mas-maximo-application-suite" class="md-nav__link">
+    2.2.2 Option B - Monitor on MAS (Maximo Application Suite)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-send-the-pattern-files-data-to-monitor" class="md-nav__link">
+    3. Send the Pattern Files Data to Monitor
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Send the Pattern Files Data to Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-overview-of-the-jupyter-notebook-we-will-build" class="md-nav__link">
+    3.1 Overview of the Jupyter Notebook we will build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-build-the-jupyter-notebook-in-cp4d" class="md-nav__link">
+    3.2 Build the Jupyter Notebook in CP4D
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Build the Jupyter Notebook in CP4D">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-create-the-jupyter-notebook-in-cp4d" class="md-nav__link">
+    3.2.1 Create the Jupyter Notebook in CP4D
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-install-the-watson-iot-platform-python-sdk-and-required-packages" class="md-nav__link">
+    3.2.2 Install the Watson IoT Platform Python SDK and required packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-capture-the-monitor-and-device-details" class="md-nav__link">
+    3.2.3 Capture the Monitor and Device details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-connect-to-monitor-and-read-the-pattern-file" class="md-nav__link">
+    3.2.4 Connect to Monitor and read the pattern file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#325-send-the-data-to-the-device-on-monitor" class="md-nav__link">
+    3.2.5 Send the data to the Device on Monitor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-the-physical-logical-interfaces" class="md-nav__link">
+    4. Create the Physical &amp; Logical Interfaces
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Create the Physical &amp; Logical Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-create-the-physical-interface" class="md-nav__link">
+    4.1 Create the Physical Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-create-the-logical-interface-and-mappings" class="md-nav__link">
+    4.2 Create the Logical Interface and Mappings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-view-the-data-in-ootb-dashboards" class="md-nav__link">
+    4.3 View the data in ootb Dashboards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies" class="md-nav__link">
+    5. Create Anomaly Detection Functions to detect the pattern data anomalies
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Create Anomaly Detection Functions to detect the pattern data anomalies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-create-anomaly-detection-functions" class="md-nav__link">
+    5.1 Create Anomaly Detection Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-add-anomaly-scores-to-the-dashboard" class="md-nav__link">
+    5.2 Add Anomaly Scores to the Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-alerts-based-on-the-anomalies-detected" class="md-nav__link">
+    6. Create Alerts based on the Anomalies detected
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Create Alerts based on the Anomalies detected">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-analyze-the-anomaly-scores" class="md-nav__link">
+    6.1 Analyze the Anomaly Scores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-create-the-alerts" class="md-nav__link">
+    6.2 Create the Alerts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-add-the-alerts-to-the-dashboard" class="md-nav__link">
+    6.3 Add the Alerts to the Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitor/" class="md-nav__link">
+        (MAS83) Monitor on Maximo Application Suite & Saas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Health
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Health" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Health
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../health/health-mas/" class="md-nav__link">
+        (MAS83) Health on Maximo Application Suite 8.3 [NEW]
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../health/health/" class="md-nav__link">
+        (MAHI) Maximo Asset Health Insights 7.6.1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Predict
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Predict" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Predict
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predict/predict/" class="md-nav__link">
+        Predict on Maximo Application Suite [TBA]
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Assist
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Assist" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Assist
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assist/assist/" class="md-nav__link">
+        Assist on Maximo Application Suite [TBA]
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          (About, Feedback & Extras)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="(About, Feedback & Extras)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          (About, Feedback & Extras)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/about/" class="md-nav__link">
+        About & Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/extras/" class="md-nav__link">
+        Extras & Archive
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-objectives-tips" class="md-nav__link">
+    0. Objectives &amp; Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-analyse-the-pattern-files-in-ibm-cloud-pak-for-data-cp4d" class="md-nav__link">
+    1. Analyse the pattern files in IBM Cloud Pak for Data (CP4D)
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Analyse the pattern files in IBM Cloud Pak for Data (CP4D)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-what-are-the-6-pattern-demo-files-all-about" class="md-nav__link">
+    1.1 What are the 6 pattern demo files all about ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-setup-a-cp4d-project-and-load-the-pattern-files" class="md-nav__link">
+    1.2 Setup a CP4D Project and load the pattern files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-use-cp4d-data-refinery-to-visualise-the-data" class="md-nav__link">
+    1.3 Use CP4D Data Refinery to visualise the data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-the-device-in-monitor-get-the-credentials" class="md-nav__link">
+    2. Create the Device in Monitor &amp; get the credentials
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Create the Device in Monitor &amp; get the credentials">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-create-device-type-device" class="md-nav__link">
+    2.1 Create Device Type &amp; Device
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-get-monitor-saas-or-mas-instance-details" class="md-nav__link">
+    2.2 Get Monitor (SaaS or MAS) Instance details
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Get Monitor (SaaS or MAS) Instance details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#221-option-a-monitor-saas" class="md-nav__link">
+    2.2.1 Option A - Monitor SaaS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#222-option-b-monitor-on-mas-maximo-application-suite" class="md-nav__link">
+    2.2.2 Option B - Monitor on MAS (Maximo Application Suite)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-send-the-pattern-files-data-to-monitor" class="md-nav__link">
+    3. Send the Pattern Files Data to Monitor
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Send the Pattern Files Data to Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-overview-of-the-jupyter-notebook-we-will-build" class="md-nav__link">
+    3.1 Overview of the Jupyter Notebook we will build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-build-the-jupyter-notebook-in-cp4d" class="md-nav__link">
+    3.2 Build the Jupyter Notebook in CP4D
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Build the Jupyter Notebook in CP4D">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-create-the-jupyter-notebook-in-cp4d" class="md-nav__link">
+    3.2.1 Create the Jupyter Notebook in CP4D
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-install-the-watson-iot-platform-python-sdk-and-required-packages" class="md-nav__link">
+    3.2.2 Install the Watson IoT Platform Python SDK and required packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#323-capture-the-monitor-and-device-details" class="md-nav__link">
+    3.2.3 Capture the Monitor and Device details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#324-connect-to-monitor-and-read-the-pattern-file" class="md-nav__link">
+    3.2.4 Connect to Monitor and read the pattern file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#325-send-the-data-to-the-device-on-monitor" class="md-nav__link">
+    3.2.5 Send the data to the Device on Monitor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-the-physical-logical-interfaces" class="md-nav__link">
+    4. Create the Physical &amp; Logical Interfaces
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Create the Physical &amp; Logical Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-create-the-physical-interface" class="md-nav__link">
+    4.1 Create the Physical Interface
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-create-the-logical-interface-and-mappings" class="md-nav__link">
+    4.2 Create the Logical Interface and Mappings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-view-the-data-in-ootb-dashboards" class="md-nav__link">
+    4.3 View the data in ootb Dashboards
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies" class="md-nav__link">
+    5. Create Anomaly Detection Functions to detect the pattern data anomalies
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Create Anomaly Detection Functions to detect the pattern data anomalies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-create-anomaly-detection-functions" class="md-nav__link">
+    5.1 Create Anomaly Detection Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-add-anomaly-scores-to-the-dashboard" class="md-nav__link">
+    5.2 Add Anomaly Scores to the Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-alerts-based-on-the-anomalies-detected" class="md-nav__link">
+    6. Create Alerts based on the Anomalies detected
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Create Alerts based on the Anomalies detected">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-analyze-the-anomaly-scores" class="md-nav__link">
+    6.1 Analyze the Anomaly Scores
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-create-the-alerts" class="md-nav__link">
+    6.2 Create the Alerts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-add-the-alerts-to-the-dashboard" class="md-nav__link">
+    6.3 Add the Alerts to the Dashboard
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <p><em>[Page last updated on 10 January 2022]</em></p>
+<h1 id="discover-monitor-with-pattern-files">Discover MONITOR with Pattern Files</h1>
+<hr />
+<p><strong>PREREQUISITES &amp; DISCLAIMER</strong>  </p>
+<div class="admonition disclaimer">
+<p class="admonition-title">Disclaimer</p>
+<p>This Lab is provided as-is and does NOT represent formal IBM documentation in any way. Please send any feedback directly 
+to <a href="https://www.linkedin.com/in/christophe-lucas-a5abab28/">Christophe Lucas</a>.</p>
+</div>
+<p>This Lab assumes that you have:</p>
+<ul>
+<li>
+<p>an ID to connect to a <a href="https://www.ibm.com/au-en/products/maximo/remote-monitoring">MONITOR</a> 8.6 instance - either a SaaS instance, or a MONITOR instance 
+  part of a <a href="https://www.ibm.com/au-en/products/maximo">Maximo Application Suite</a> (aka MAS) installation.</p>
+</li>
+<li>
+<p>an ID to access a <a href="https://www.ibm.com/au-en/products/cloud-pak-for-data">Cloud Pak For Data</a> (aka CP4D) instance. CP4D is 
+  typically part of any MAS installation (as it contains e.g. the MONITOR DB2 data lake), and we recommend using your
+  MAS CP4D instance to run this lab - however the instructions should also work with a 'stand-alone' CP4D.</p>
+</li>
+</ul>
+<p>This Lab was built using a Cloud Pak For Data instance and a MONITOR 8.6 instance both part of a MAS 8.6 environment 
+running on <a href="https://www.ibm.com/au-en/cloud">IBM Cloud</a>.</p>
+<hr />
+<hr />
+<h2 id="0-objectives-tips">0. Objectives &amp; Tips</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>I tried to make the instructions of this Lab as (visually) clear as possible, i.e. each set of numbered instructions
+is followed by screenshots reflecting those numbers. Do not hesitate to right-click the images and <em>Open Image in New Tab</em>
+to see all the image details and zoom-in/out.</p>
+</div>
+<p>In this Lab you will:</p>
+<ul>
+<li>Discover and analyse 6 pattern files:<ul>
+<li>Understand why and how the 6 data patterns were constructed</li>
+<li>Visualize the data and the anomalies (or 'changes of behaviour') that those 6 files contain using 
+     Cloud Pak For Data (aka CP4D) Data Refinery tool</li>
+</ul>
+</li>
+<li>Learn how to:<ul>
+<li>Create the device in MONITOR that will receive the pattern readings </li>
+<li>Create a Jupyter Notebook on CP4D to send the content of the pattern files to the device</li>
+<li>Visualise the data on MONITOR's dashboard</li>
+<li>Apply (some of) MONITOR's out-of-the-box Anomaly Detection functions on the pattern data,
+and create Alerts based on the anomaly scores.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<hr />
+<h2 id="1-analyse-the-pattern-files-in-ibm-cloud-pak-for-data-cp4d">1. Analyse the pattern files in IBM Cloud Pak for Data (CP4D)</h2>
+<hr />
+<h3 id="11-what-are-the-6-pattern-demo-files-all-about">1.1 What are the 6 pattern demo files all about ?</h3>
+<p>The 6 following files were created to represent just a very few examples of 'typical behaviours and anomalies' that can 
+  be observed in industrial machine readings.
+They were constructed with the following ideas in mind:</p>
+<ul>
+<li>Each file contains 1080 rows of 1 reading type (generically called <code>reading_1</code>). That means that, depending on the frequency you will
+  use to send the data to MONITOR's Watson IoT Platform (cf. <a href="#3-send-the-pattern-files-data-to-monitor">Section 3</a>), 
+  you will be able to complete a 'full iteration' of the 
+  sample data in 18 minutes, a couple hours, or more - as per table below:</li>
+</ul>
+<pre><code class="language-python">------------------------------------------------------------------
+Message Frequency ---&gt; = Messages per Hour ---&gt; = 1080 Demo Time   
+------------------------------------------------------------------
+Every 1 second    ---&gt; 3,600 per hour ---&gt; 18 minutes
+Every 5 seconds   ---&gt; 720 per hour   ---&gt; 1 hour 30 minutes
+Every 10 seconds  ---&gt; 360 per hour   ---&gt; 3 hours 
+Every 30 seconds  ---&gt; 120 per hour   ---&gt; 9 hours
+</code></pre>
+<ul>
+<li>
+<p>Each file contains some anomalies (or 'changes of behaviour') that are pretty visible to the naked eye. The goal is to see in the last 2 
+sections of this Lab (<a href="#5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies">Section 5</a> &amp; 
+  <a href="#6-create-alerts-based-on-the-anomalies-detected">Section 6</a>)
+  how (some of) MONITOR's out-of-the-box
+  <a href="https://www.ibm.com/docs/en/maximo-monitor/8.6.0?topic=data-detecting-anomalies">Anomaly Detection</a> functions
+  pick those anomalies up, and how Alerts can be created using the Anomaly scores of those functions.</p>
+</li>
+<li>
+<p>For each file, I provided .csv and .xlsx versions. The reason I provided the .xlsx format is that you
+can have a look at how I manually built those files, about 50 rows by 50 rows, using the simplest Excel formula
+  to generate random data between values (for example, <code>=10.4+1*RAND()</code> means <code>generate a random number between 10.4 and 11.4</code>).
+  With that, you should easily be able to create your own new .xlsx files by changing just some rows in the .xlsx.</p>
+</li>
+</ul>
+<p>The 6 files (cvs and xlsx format), as well as a <code>0_1080_All</code> file which concatenates those 
+6 files readings into 1 file, have all been zipped into <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>.</p>
+<p>The table below summarises the data that each file contains:</p>
+<table>
+<thead>
+<tr>
+<th>File Name</th>
+<th align="left">Data Overview</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><b>1_1080_2Peaks_1Drop_1BuildUp</b> (<a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv">.csv</a>, <a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.xlsx">.xlsx</a>) <br> Continuous readings of random values between 10 &amp; 11 (i.e. <code>=10+1*RAND()</code> ), with 4 noticeable events: <br> (1) a drop to values between 7 &amp; 8 (rows 200 to 250) <br> (2) a peak to values between 12 &amp; 13 (rows 350 to 380) <br> (3) a small spike buildup with values up to <code>=10.8+1*RAND()</code> (rows 500 to 515) <br> (4) a small 'buildown' where values progressively drop down to <code>=9.3+1*RAND()</code> (rows 600 to 680)</td>
+<td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.1.png" />&nbsp;</td>
+</tr>
+<tr>
+<td><b>2_1080_Sinus_1Peak_2Drops</b> (<a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.csv">.csv</a>, <a href="../../files/monitor-patterns-data/2_1080_Sinus_1Peak_2Drops.xlsx">.xlsx</a>)<br> A sinusoidal type of input, with 3 noticeable events: <br> (1) a dropdown (rows around 323) <br> (2) another dropdown (around row 627) <br> (3) a spike (around row 839)</td>
+<td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.2.png" />&nbsp;</td>
+</tr>
+<tr>
+<td><b>3_1080_Sinus_2Woblings</b> (<a href="../../files/monitor-patterns-data/3_1080_Sinus_2Woblings.csv">.csv</a>, <a href="../../files/monitor-patterns-data/3_1080_Sinus_2Woblings.xlsx">.xlsx</a>)<br> Some strange things going on here, i.e. amplitude change between rows 400 and 550 (vs. the standard sinusoidal-like background) ...</td>
+<td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.3.png" />&nbsp;</td>
+</tr>
+<tr>
+<td><b>4_1080_Sinus_SignalLoss</b> (<a href="../../files/monitor-patterns-data/4_1080_Sinus_SignalLoss.csv">.csv</a>, <a href="../../files/monitor-patterns-data/4_1080_Sinus_SignalLoss.xlsx">.xlsx</a>)<br> On this one, notice that between rows 370 and 470, a constant value of 23 is sent, 'breaking the sinus' ...</td>
+<td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.4.png" />&nbsp;</td>
+</tr>
+<tr>
+<td><b>5_1080_Plateaus</b>  (<a href="../../files/monitor-patterns-data/5_1080_Plateaus.csv">.csv</a>, <a href="../../files/monitor-patterns-data/5_1080_Plateaus.xlsx">.xlsx</a>)<br> Here, we have several plateaus of values. Let's see later if the Anomaly Detection functions react each time there is a plateau change ...</td>
+<td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.5.png" />&nbsp;</td>
+</tr>
+<tr>
+<td><b>6_1080_Amplitude_Changes</b> (<a href="../../files/monitor-patterns-data/6_1080_Amplitude_Changes.csv">.csv</a>, <a href="../../files/monitor-patterns-data/6_1080_Amplitude_Changes.xlsx">.xlsx</a>)<br> This shows a varying signal which amplitude regularly changes.</td>
+<td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.6.png" />&nbsp;</td>
+</tr>
+<tr>
+<td><b>0_1080_All</b> (<a href="../../files/monitor-patterns-data/0_1080_All.csv">.csv</a>, <a href="../../files/monitor-patterns-data/0_1080_All.xlsx">.xlsx</a>.)<br> This last graph shows the 'concatenated readings' of all 6 previous files, i.e. <code>reading_1</code> corresponds to <code>1_1080_2Peaks_1Drop_1BuildUp.csv</code> readings, <code>reading_2</code> corresponds to <code>2_1080_Sinus_1Peak_2Drops.csv</code> readings, <code>reading_3</code> corresponds to <code>3_1080_Sinus_2Woblings.csv</code> etc</td>
+<td align="left"><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.1.7.png" />&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="12-setup-a-cp4d-project-and-load-the-pattern-files">1.2 Setup a CP4D Project and load the pattern files</h3>
+<p>Let's first create the CP4D Project that we will use to load and visualise the data, then to build the Jupyter Notebook 
+that will send the data to MONITOR.</p>
+<ol>
+<li>Login to CP4D and click <code>New project</code> in the <code>Recent Projects</code> box. 
+   Select <code>Create an empty project</code>.</li>
+<li>Name your Project e.g. <code>CL_Monitor_Patterns</code> (replace <code>CL_</code> with your own initials). 
+   Click <code>Create</code>. 
+<img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.2.1.png" />&nbsp; </li>
+</ol>
+<p>Download the zip file <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>.
+Unzip it on your local drive - the zip contains 14 (2 x 6+1 Files) files.
+In your newly created <code>CL_Monitor_Patterns</code> project:</p>
+<ol>
+<li>
+<p>Click on the <code>Assets</code> tab and on the top-right <code>Data</code> icon. This will open a right-side 
+   window. On the <code>Load</code> tab, just drag and drop the 14 files (.csv and .xlsx formats).</p>
+</li>
+<li>
+<p>After a couple of seconds, those 14 files will appear under the <code>Data Assets</code> section of the <code>Assets</code> tab. </p>
+</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.2.2.png" />&nbsp; </p>
+<hr />
+<h3 id="13-use-cp4d-data-refinery-to-visualise-the-data">1.3 Use CP4D Data Refinery to visualise the data</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following instructions can be carried using either the .csv or the 
+.xlsx version of the files. We will refer to the .csv version here, as ultimately it will be the .csv version we will 
+use to send the data to MONITOR's Watson IoT Platform.  </p>
+</div>
+<p>Let's first look at the <a href="../../files/monitor-patterns-data/1_1080_2Peaks_1Drop_1BuildUp.csv">1_1080_2Peaks_1Drop_1BuildUp.csv</a>
+file.</p>
+<ol>
+<li>In the <code>Data assets</code> box, on the <code>1_1080_2Peaks_1Drop_1BuildUp.csv</code> row, click <code>Refine</code> in the right menu.</li>
+<li>On the opened window, click the <code>Profile</code> tab and see how the system provides you with
+   basic info on the data (e.g. minimum, maximum or standard deviation values).</li>
+<li>Click on the <code>Visualizations</code> tab and observe the vast array of charts that we can create in a couple of clicks.</li>
+<li>Click on the <code>Line</code> chart type. On the left panel, enter <code>time</code> in the <code>X-axis</code> and <code>reading_1</code> in the <code>Y-axis</code>.
+Expand and visualise the file readings, including the 2 peaks, 1 drop and 1 buildup of <code>reading_1</code>.</li>
+</ol>
+<p>Repeat steps 1. to 4. with the 5 other .csv files we saw in <a href="#11-what-are-the-6-pattern-demo-files-all-about">Section 1.1</a>.</p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.3.1.png" />&nbsp;</p>
+<p>Now, let's look at some of the other chart types that can be quickly created in CP4D. 
+The following image illustrates just some examples:</p>
+<ol>
+<li>A <code>3D</code> chart where we selected <code>time</code> as the <code>X-axis</code>, <code>reading_1</code> (corresponding to the <code>1_1080_2Peaks_1Drop_1BuildUp.csv</code> file readings)
+   as both the <code>Y-axis</code> and <code>Z-axis</code>. See how we clearly see the peaks, drops and buildups there.</li>
+<li>A <code>Box Plot</code> chart where we selected <code>reading_3</code> (corresponding to the <code>3_1080_Sinus_2Woblings.csv</code> file readings) as the <code>Column</code>.
+    Notice how we clearly see the outliers here, corresponding to the 'Woblings' readings.</li>
+<li>A <code>Histogram</code> chart, where we selected <code>reading_4</code> (corresponding to the <code>4_1080_Sinus_SignalLoss.csv</code> file readings) as the <code>X-axis</code>.
+    Notice the main central bar corresponding to those 'flat readings' of value 23.</li>
+<li>Here, we can clearly see on a <code>Scatter Plot</code> the 3 main 'groups of amplitude' that can be seen on <code>reading_6</code>
+   (corresponding to the <code>6_1080_Amplitude_Changes.csv</code> file readings)</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-1.3.2.png" />&nbsp;</p>
+<hr />
+<hr />
+<h2 id="2-create-the-device-in-monitor-get-the-credentials">2. Create the Device in Monitor &amp; get the credentials</h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Make sure that in this section' exercises, you take note of the following values which
+we will later need in the <a href="#323-capture-the-monitor-and-device-details">Section 3.2.3</a>:
+<code>orgId</code>, <code>typeId</code>,<code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>, and, 
+additionally for a MONITOR-on-MAS instance: <code>domain</code> and <code>caFile</code>.</p>
+</div>
+<hr />
+<h3 id="21-create-device-type-device">2.1 Create Device Type &amp; Device</h3>
+<p>In this step, take note of <code>orgId</code>, <code>typeId</code>, <code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>.</p>
+<p>From your MONITOR home page, click the <code>Connect</code> menu in the left bar, and go to the <code>Device types</code> tab.</p>
+<ol>
+<li>Click the blue <code>Add new device type</code> button (top-right). Name it e.g. <code>CL_Device</code> (replace the <code>CL_</code> with your initials).
+   Click the <code>Create Device type</code> button.</li>
+<li>Go to the <code>Devices</code> tab, click <code>Add a device</code>, click <code>Use existing type</code> and select the <code>CL_Device</code> device type you just created.
+   Click <code>Next</code>. On the <code>Identity</code> step, Name the device e.g. <code>CL_Device001</code>. Click <code>Next</code>. On the <code>Security</code> step, 
+   enter an <code>Authentication Token</code> of your own.</li>
+<li>The <code>Summary</code> screen summarizes the info you just entered. 
+   <strong>IMPORTANT</strong> Make sure that on this screen, you take note of
+   <code>Organization ID</code> (= <code>orgid</code>), <code>Device Type</code> (= <code>typeId</code>), <code>Device ID</code> (= <code>deviceId</code>), <code>Authentication Token</code> (=<code>YOUR_AUTHENTICATION_TOKEN</code>). 
+   Click <code>Finish</code>.</li>
+</ol>
+<p><strong>NOTE:</strong> The <code>orgID</code> we just took note of is the Organization ID of the Watson IoT Platform associated to your MONITOR instance.
+Refer to next section to confirm the value of that <code>orgID</code>.</p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-2.1.1.png" />&nbsp;</p>
+<hr />
+<h3 id="22-get-monitor-saas-or-mas-instance-details">2.2 Get Monitor (SaaS or MAS) Instance details</h3>
+<p>In this step, confirm the <code>orgID</code> of the Watson IoT Platform associated to your MONITOR instance (SaaS or MAS), 
+and, for MONITOR-on-MAS only, find and take note of <code>domain</code> and <code>caFile</code>.</p>
+<p>Follow <strong>either</strong> Option A <strong>or</strong> Option B below (<strong>not both</strong>), depending on your MONITOR instance.</p>
+<h4 id="221-option-a-monitor-saas">2.2.1 Option A - Monitor SaaS</h4>
+<p>For a MONITOR SaaS instance, the only instance info that we will need for <a href="#32-build-the-jupyter-notebook-in-cp4d">Section 3.2</a>
+is the <code>orgID</code> that we just took note of in <a href="#21-create-device-type-device">Section 2.1</a>.
+Confirm the value of that <code>orgID</code> by doing this:
+From your MONITOR <code>Connect</code> menu, click <code>Open Platform Service application</code> button (top-right).
+That will open the Watson IoT Platform in a separate tab - observe its URL.</p>
+<p>Below is an example of how to confirm your <code>orgID</code> based on your MONITOR's Watson IoT Platform URL: </p>
+<pre><code>------------------------------------------------------------------
+OPTION A - MONITOR SaaS Example
+------------------------------------------------------------------
+IF your MONITOR Watson IoT Platform address is:
+https://abc123.internetofthings.ibmcloud.com/dashboard/
+THEN orgID = abc123
+</code></pre>
+<h4 id="222-option-b-monitor-on-mas-maximo-application-suite">2.2.2 Option B - Monitor on MAS (Maximo Application Suite)</h4>
+<p>For a MONITOR instance on MAS, we need 2 extra pieces of info: <code>domain</code> and <code>caFile</code>.</p>
+<p>Let's first get the required certificate, i.e. the <code>caFile</code> file.
+Using a Firefox browser:</p>
+<ol>
+<li>From your MAS or MONITOR Homepage, click the waffle menu (top-right), select <code>IoT</code> in the <code>My applications</code> list.
+   That will open the Watson IoT Platform in a separate tab.</li>
+<li>In the Watson IoT Platform browser bar, click the Security icon just next to the URL. Click the <code>Connection Secure</code> line.</li>
+<li>Then click the <code>More information</code> line. That will open a pop-up window.</li>
+<li>On the popped-up window, click <code>View Certificate</code>. That will open a new tab on your browser.</li>
+<li>On the opened <code>Certificate</code> browser tab, click the <code>ISRG Root X1</code> tab. In the <code>Miscellaneous</code> section, click
+   the <code>PEM (chain)</code> link. That will download a file which name should look like: <code>iot-maximoabc-yourcloud-info-chain.pem</code>.
+   Save it to your local <code>Downloads</code> folder. <strong>NOTE</strong>: that is the file that we will use as our <code>caFile</code> in 
+   <a href="#32-build-the-jupyter-notebook-in-cp4d">Section 3.2</a>.</li>
+<li>Back to CP4D's <code>Assets</code> tab, click the little top-right <code>Find and add data</code> waffle and drag and drop the
+<code>iot-maximoabc-yourcloud-info-chain.pem</code> file you just downloaded. Make sure it then appears on the 
+   <code>Data Assets</code> section.</li>
+</ol>
+<p><img alt="Monitor1" src="../../img/monitor-patterns/monitor-patterns-2.2.1.png" />&nbsp; </p>
+<p>To confirm your <code>orgID</code>, and to get the <code>domain</code> value of the Watson IoT Platform associated to your MAS-MONITOR instance, 
+observe the URLs of your MAS, MAS-MONITOR and MAS-MONITOR-WatsonIoTPlatform Homepages, and follow the example below:</p>
+<pre><code>------------------------------------------------------------------
+OPTION B - MONITOR on MAS (Maximo Application Suite) Example
+------------------------------------------------------------------
+IF 'MAS Homepage' URL looks like this:
+https://demo.home.maximoabc.yourcloud.info/
+
+THEN 'MAS - MONITOR Homepage' URL should look like this:
+https://demo.monitor.maximoabc.yourcloud.info/home
+
+THEN 'MAS - MONITOR - Watson IoT Platform Homepage' should look like this:
+https://demo.iot.maximoabc.yourcloud.info/dashboard/
+
+THEN &amp; THEREFORE:
+orgID = demo
+domain = iot.maximoabc.yourcloud.info
+
+</code></pre>
+<hr />
+<hr />
+<h2 id="3-send-the-pattern-files-data-to-monitor">3. Send the Pattern Files Data to Monitor</h2>
+<p>Great - we now know which data we want to send, and have collected all the information we need to 
+start sending it to MONITOR's Watson IoT Platform.
+We will now use a Jupyter Notebook to connect to the platform, and send the data to it. </p>
+<hr />
+<h3 id="31-overview-of-the-jupyter-notebook-we-will-build">3.1 Overview of the Jupyter Notebook we will build</h3>
+<p>We will build the Jupyter Notebook from scratch, cell by cell, in the following sections.
+However, you can already download its final version here <a href="../../notebooks/Load_Pattern_Files_To_Monitor_FINAL.ipynb">Load_Pattern_Files_To_Monitor_FINAL.ipynb</a>.
+Let's first have a look at it to understand what we are aiming at.</p>
+<p>First (0.), in CP4D, click <code>Add to project</code> (top-right button), select <code>Notebook</code>. Click the <code>From File</code>
+tab and drag and drop the just-downloaded <a href="../../notebooks/Load_Pattern_Files_To_Monitor_FINAL.ipynb">Load_Pattern_Files_To_Monitor_FINAL.ipynb</a> file
+in the <code>Drag and drop files here or upload</code> box. 
+Select the <code>Default Python 3.7</code> runtime. Click <code>Create</code>.
+Wait a couple of seconds for the runtime to initiate and for the Notebook to open in CP4D.</p>
+<p>We can now see the 4 main parts of the Notebook in which we will:</p>
+<ol>
+<li>install the required <a href="https://ibm-watson-iot.github.io/iot-python/">Watson IoT Platform Python SDK</a> and import a few 
+   packages required to run the Notebook successfully.</li>
+<li>provide the <code>orgId</code>, <code>typeId</code>, <code>deviceId</code>, <code>YOUR_AUTHENTICATION_TOKEN</code>, and <code>domain</code> and <code>caFile</code> as we noted them down in
+    <a href="#2-create-the-device-in-monitor-get-the-credentials">Section 2</a>.</li>
+<li>connect to MONITOR's Watson IoT Platform and read the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> pattern data.</li>
+<li>send the 1080 rows of data to MONITOR's Watson IoT Platform.</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.1.1.png" />&nbsp;</p>
+<hr />
+<h3 id="32-build-the-jupyter-notebook-in-cp4d">3.2 Build the Jupyter Notebook in CP4D</h3>
+<h4 id="321-create-the-jupyter-notebook-in-cp4d">3.2.1 Create the Jupyter Notebook in CP4D</h4>
+<p>From the <code>Assets</code> tab in CP4D:</p>
+<ol>
+<li>Click <code>Add to project</code> top-right button, select <code>Notebook</code>.</li>
+<li>Give the Notebook a name: <code>Load_Pattern_Files_to_Monitor</code> and select the <code>Default Python 3.7</code> runtime. Click <code>Create</code>.</li>
+<li>Your (blank) Notebook should now open.</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.1.png" />&nbsp;</p>
+<h4 id="322-install-the-watson-iot-platform-python-sdk-and-required-packages">3.2.2 Install the Watson IoT Platform Python SDK and required packages</h4>
+<p>Let's use the <a href="https://ibm-watson-iot.github.io/iot-python/">Watson IoT Platform Python SDK</a>,
+and re-use the simplest possible code snippet (copy-pasted from the SDK's <a href="https://ibm-watson-iot.github.io/iot-python/application/mqtt/events/#publishing-device-events">Publishing Device Events</a> topic)
+to send data to the <code>CL_Device001</code> we registered in section <a href="#21-create-device-type-device">Section 2.1</a> section. In the Notebook we just created:</p>
+<ol>
+<li>
+<p>In the first cell of the Notebook, type <code># Install the Watson IoT Platform Python SDK</code>
+   and select <code>Markdown</code> in the <code>Format</code> toolbar. Click <code>Run</code> - this is just a header, not code.</p>
+<p>Let's now install the Python SDK itself. From the Notebook <code>Insert</code> menu, click <code>Insert Cell below</code>.
+   Select <code>Code</code> in the <code>Format</code> toolbar and enter this content in the cell:</p>
+<p><code>python
+pip install wiotp.sdk</code></p>
+<p>Click the <code>Run</code> button in the toolbar. This installation will take 5 to 10 seconds. Look for the message at the end of the output console, which should look like this:
+   <code>Successfully installed ... wiotp.sdk</code>.
+   Note: you may need to restart the kernel to use updated packages.
+   From the <code>Kernel</code> menu, click <code>Restart Kernel</code>, and wait a couple seconds. 
+   <strong>OPTIONAL</strong>: you can double-check the SDK was installed successfully by inserting a new cell, issuing a <code>pip list</code> command, and checking that
+   it returns <em>wiotp-sdk 0.11.0</em> as an installed package.</p>
+</li>
+<li>
+<p>From the Notebook <code>Insert</code> menu, click <code>Insert Cell below</code>. Type <code># Import the (few) required packages</code>
+   and select <code>Markdown</code> in the <code>Format</code> toolbar. Click <code>Run</code> - this is just a header, not code.
+   Insert another cell, select <code>Code</code> in the <code>Format</code> toolbar, and enter this content in the cell and click the <code>Run</code> button in the toolbar - note that will not generate any output.</p>
+</li>
+</ol>
+<pre><code class="language-python">import wiotp.sdk.device
+import pandas as pd
+import time
+import argparse
+from datetime import datetime
+</code></pre>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.2.png" />&nbsp;</p>
+<h4 id="323-capture-the-monitor-and-device-details">3.2.3 Capture the Monitor and Device details</h4>
+<p>We are now going to capture the 'configuration details' required to connect to then send the 
+<a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> pattern file data 
+to the <code>CL_Device001</code>.
+There are 2 options, depending on whether your Monitor runs as a SaaS installation (Option A),
+or as part of a Maximo Application Suite (MAS) installation (Option B).</p>
+<p>Collect the values that we noted in <a href="#2-create-the-device-in-monitor-get-the-credentials">Section 2</a>, i.e. <code>orgId</code> (= <code>YOUR_ORGID</code>), 
+<code>typeId</code> (= <code>YOUR_Device</code>), <code>deviceId</code> (= <code>YOUR_Device001</code>), <code>YOUR_AUTHENTICATION_TOKEN</code>, and, 
+    additionally for a MONITOR-on-MAS instance: <code>domain</code> (= e.g. <code>iot.maximoabc.yourcloud.info</code>) and 
+<code>caFile</code> (= e.g. <code>iot-maximoabc-yourcloud-info-chain.pem</code> - note the <code>/project_data/data_asset/</code> substring ahead, which points to CPD4 Data Assets 'folder').</p>
+<p>From the Notebook <code>Insert</code> menu, use <code>Insert Cell below</code> to create <code>Markdown</code> cells as per image below.
+Create 1 <code>Code</code> cell, copy-paste 1 of the following code snippet (Option A or B - depending on your MONITOR env) 
+into the cell, and replace the <code>orgId</code>, <code>typeId</code> etc with the values you just collected. </p>
+<p>Click <code>Run</code> - note that will not generate any output.
+<img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.3.png" />&nbsp;
+1.<strong> OPTION A: MONITOR SaaS </strong></p>
+<pre><code class="language-python"># OPTION A: For MONITOR SaaS
+
+import wiotp.sdk.device
+
+myConfig = { 
+    &quot;identity&quot;: {
+        &quot;orgId&quot;: &quot;YOUR_ORGID&quot;,
+        &quot;typeId&quot;: &quot;YOUR_Device&quot;,
+        &quot;deviceId&quot;: &quot;YOUR_Device001&quot;
+    },
+    &quot;auth&quot;: {
+        &quot;token&quot;: &quot;YOUR_AUTHENTICATION_TOKEN&quot;
+    }
+}
+</code></pre>
+<p>2.<strong> OPTION B: MONITOR as part of MAS </strong></p>
+<pre><code class="language-python"># OPTION B: For MONITOR on MAS (Maximop Application Suite)
+
+import wiotp.sdk.device
+
+myConfig = { 
+    &quot;identity&quot;: {
+        &quot;orgId&quot;: &quot;YOUR_ORGID&quot;,
+        &quot;typeId&quot;: &quot;YOUR_Device&quot;,
+        &quot;deviceId&quot;: &quot;YOUR_Device001&quot;
+    },
+    &quot;auth&quot;: {
+        &quot;token&quot;: &quot;YOUR_AUTHENTICATION_TOKEN&quot;
+    },
+    &quot;options&quot;: {
+        &quot;domain&quot;: &quot;iot.maximoabc.yourcloud.info&quot;,
+        &quot;http&quot;:{
+            &quot;verify&quot;: &quot;True&quot;
+        },
+        &quot;mqtt&quot;:{
+            &quot;port&quot;:443,
+            &quot;caFile&quot;: &quot;/project_data/data_asset/iot-maximoabc-yourcloud-info-chain.pem&quot;
+        }
+    }
+}
+</code></pre>
+<h4 id="324-connect-to-monitor-and-read-the-pattern-file">3.2.4 Connect to Monitor and read the pattern file</h4>
+<p>We can now connect to the <code>Device001</code> on MONITOR's Watson IoT Platform 
+using the <code>myConfig</code> (Option A or B) we defined in the previous section/cell.</p>
+<p>1. From the Notebook <code>Insert</code> menu, click <code>Insert Cell below</code>. Copy-paste the below code, and <code>Run</code> the cell.</p>
+<pre><code class="language-python">deviceCli = wiotp.sdk.device.DeviceClient(config=myConfig)
+print(myConfig)
+deviceCli.connect()
+</code></pre>
+<p>Notice that we are using the <code>connect()</code> method of the <a href="https://ibm-watson-iot.github.io/iot-python/device/">Watson IoT Platform - Python Device SDK</a> 
+<code>wiotp.sdk.device.DeviceClient</code>, using <code>myConfig</code>. The red output of the cell should be a string (cf. 1. in image below) containing <code>wiotp.sdk.device.client.DeviceClient  INFO    Connected successfully</code>.</p>
+<p>2. Remember the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> (included in <a href="../../files/monitor-patterns-data/All_Pattern_Files.zip">All_Pattern_Files.zip</a>)
+we loaded to CP4D in <a href="#12-setup-a-cp4d-project-and-load-the-pattern-files">Section 1.2</a> ?
+Let's now read it into a pandas <code>monitor_patterns_readings</code> dataframe that we will then use to send the data.
+Insert a new <code>Code</code> cell and copy-paste the following code:</p>
+<pre><code class="language-python">monitor_patterns_readings = pd.read_csv('/project_data/data_asset/0_1080_All.csv',
+                 index_col=False)
+monitor_patterns_readings.info()
+</code></pre>
+<p><code>Run</code> the cell. The output should confirm that the file has 1080 rows of <code>reading_1</code> to <code>reading_6</code> readings.</p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.4.png" />&nbsp;</p>
+<h4 id="325-send-the-data-to-the-device-on-monitor">3.2.5 Send the data to the Device on Monitor</h4>
+<p>This is the key part of the Notebook, where we finally send the pattern data to <code>CL_Device001</code>.
+The code is pretty self-explanatory, i.e. it loops over the 1080 rows of the <code>monitor_patterns_readings</code> dataframe,
+publishes an event for each (<code>publishEvent(...)</code>), and does a <code>disconnect()</code> when all rows have been read.</p>
+<p>Do notice the
+<code>parser.add_argument("-D", "--delay", required=False, type=float, default=5, help="number of seconds between msgs")</code>
+line where you can define the frequency of your 'data sending' (cf. table in <a href="#11-what-are-the-6-pattern-demo-files-all-about">Section 1.1</a>),
+e.g. using <code>default=5</code> means a message is sent every 5 seconds, i.e. it will take 1.5 hour for the 1080 rows to be sent. </p>
+<p>1. From the Notebook <code>Insert menu</code>, click <code>Insert Cell below</code> and copy-paste the below code snippet into it.
+Click <code>Run</code>.</p>
+<pre><code class="language-python">for index, row in monitor_patterns_readings.iterrows():
+    data = {'reading_1': row['reading_1'],
+            'reading_2': row['reading_2'],
+            'reading_3': row['reading_3'],
+            'reading_4': row['reading_4'],
+            'reading_5': row['reading_5'],
+            'reading_6': row['reading_6']
+            }
+    print(data)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(&quot;-E&quot;, &quot;--event&quot;, required=False, default=&quot;event&quot;, help=&quot;type of event to send&quot;)
+    parser.add_argument(&quot;-N&quot;, &quot;--nummsgs&quot;, required=False, type=int, default=1, help=&quot;send this many messages before disconnecting&quot;)
+
+    parser.add_argument(&quot;-D&quot;, &quot;--delay&quot;, required=False, type=float, default=5, help=&quot;number of seconds between msgs&quot;)
+    args, unknown = parser.parse_known_args()
+
+    def myOnPublishCallback():
+        print()
+
+    success = deviceCli.publishEvent(args.event, &quot;json&quot;, data, qos=0, onPublish=myOnPublishCallback)
+    now = datetime.now()
+    print(&quot;======SUCCESS======&quot;, now, &quot;===Row:&quot;, index,&quot;Success:&quot;, success)
+    if not success:
+        print(&quot;Not connected to WIoTP&quot;)
+
+    time.sleep(args.delay)
+
+deviceCli.disconnect()
+
+</code></pre>
+<p>This cell will keep running for the duration of the 1080 rows 'iteration'.
+Every e.g. 5 seconds, you will see one new message in the output console, which should look like this:
+<code>{'reading_1': 10.59574274, 'reading_2': 10.80853745, 'reading_3': 20.87205928, 'reading_4': 20.10878476, 'reading_5': 10.17112379, 'reading_6': 10.32845991}
+======SUCCESS====== 2022-01-06 08:29:27.415862 ===Row: 1 Success: True</code>.
+Also note that at the end of the '1080-iteration', you will get a final <code>Dicsonnected from the Watson IoT Platform</code> message.</p>
+<p>2. Let's now check that the data is flowing into MONITOR's Watson IoT Platform.
+Back to your MONITOR Homepage, click the <code>Connect</code> menu (left-side bar) and go to the <code>Devices</code> tab. 
+Search and select <code>CL_Device001</code>. Wait a couple of seconds, and you will see on the <code>Recent events</code> section
+that new MQTT messages pop up at the frequency you defined (e.g. every 5 seconds).</p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-3.2.5.png" />&nbsp;</p>
+<hr />
+<hr />
+<h2 id="4-create-the-physical-logical-interfaces">4. Create the Physical &amp; Logical Interfaces</h2>
+<p>In order for the pattern data to land into MONITOR's data lake, we now need to create both Physical and Logical Interfaces.</p>
+<hr />
+<h3 id="41-create-the-physical-interface">4.1 Create the Physical Interface</h3>
+<p>Go back to your MONITOR Homepage.</p>
+<ol>
+<li>Click the <code>Connect</code> left-menu. Go to the <code>Device types</code> tab. Enter<code>CL_Device</code> in the search field.
+Click on the <code>CL_Device</code> row. On the opened screen, click <code>Edit</code> (top-right). Scroll down to the <code>Data from devices - physical interface</code> section.
+Click the <code>+</code> button next to the <code>Event Types</code> label and select <code>From received event</code>.</li>
+<li>Within a couple of seconds, the <code>reading_1</code> to <code>reading_6</code> of the <a href="../../files/monitor-patterns-data/0_1080_All.csv">0_1080_All.csv</a> data
+that we started sending in <a href="#324-connect-to-monitor-and-read-the-pattern-file">Section 3.2.4</a> should appear. Click the <code>event</code> box. Click <code>Create</code>.</li>
+<li>You should now see <code>reading_1</code> to <code>reading_6</code> appear in the <code>event</code> frame. Click <code>Save and finish</code> (bottom-right).   </li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.1.png" />&nbsp;</p>
+<hr />
+<h3 id="42-create-the-logical-interface-and-mappings">4.2 Create the Logical Interface and Mappings</h3>
+<p>From your MONITOR Homepage:</p>
+<ol>
+<li>
+<p>Click the <code>Connect</code> left-menu. Go to the <code>Interfaces</code> tab. Click the <code>Add new interface</code> button.
+Name the Interface <code>CL_Device</code>. </p>
+<p>In the <code>schema</code> section, click the <code>Add property</code> button, and add <code>reading_1</code> in <code>Property</code>
+and <code>number</code> as the <code>Data Type</code>. Repeat this for <code>reading_2</code> to <code>reading_6</code>. Click <code>Create interface</code> button (bottom).</p>
+</li>
+<li>
+<p>Go back to the <code>Device types</code> tab, find and select the <code>CL_Device</code> device type. Click <code>Edit</code> (top-right).
+   Go to the <code>Mapping to logical interfaces</code> section. Click the <code>+</code> button next to the <code>Logical Interfaces</code>.</p>
+<p>In the pop-up window, search and select the <code>CL_Device</code> Logical Interface we just created and click the 
+   <code>Start mappings</code> button. Back to the <code>Mapping to logical interfaces</code> section, click the <code>Edit mappings</code> button on the right. </p>
+<p>In the pop-up window, select <code>event</code> in the <code>Event Types</code> left panel, and
+   click the <code>Add mapping +</code> button next to <code>reading_1</code>. In the <code>Mapping</code> column, enter this string: <code>$event.reading_1</code>.
+   Repeat this for <code>reading_2</code> to <code>reading_6</code>. Click the <code>Close</code> button.</p>
+</li>
+<li>
+<p>Back to the <code>Mapping to logical interfaces</code> section, change the <code>State Model</code> drop-down value to <code>Notify on every event</code>.
+Click <code>Save and finish</code>. </p>
+</li>
+</ol>
+<p>This (see 3. in picture below) is what your screen should now look like. </p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.2.1.png" />&nbsp;</p>
+<p>Finally, we now need to activate the Logical Interface.</p>
+<ol>
+<li>
+<p>On the <code>Mapping to logical interfaces</code> section, click the <code>View and activate interface</code> blue link.</p>
+</li>
+<li>
+<p>That will open the <code>CL_Device</code> Logical Interface where you should now see in the top-right a green message
+   stating <code>All device types ready to activate</code>. Go to the <code>Usage</code> section at the bottom of the screen and click 
+   <code>Activate All</code> - you will now see a green <code>Activated on ...</code> message (top-right).</p>
+</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.2.2.png" />&nbsp;</p>
+<p>That concludes the setup of the interfaces. 
+Data will now soon arrive (wait 5 minutes) into the MONITOR data lake.
+Let's check !</p>
+<hr />
+<h3 id="43-view-the-data-in-ootb-dashboards">4.3 View the data in ootb Dashboards</h3>
+<p>After minimum 5 minutes:</p>
+<ol>
+<li>Go to the <code>Monitor</code> menu (left bar). On the <code>Device types</code> tab, search and select <code>CL_Device</code>.</li>
+<li>In the <code>Devices</code> (left panel), select the individual <code>CL_Device001</code> device. Go to the <code>Asset Metrics Dashboard</code>.
+The screenshot below shows how that dashboard progressively builds up, as the 1080 rows get injected into the data lake.
+   When the iteration is 'done', your dashboard should look like the last picture below.</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-4.3.1.png" />&nbsp;</p>
+<hr />
+<hr />
+<h2 id="5-create-anomaly-detection-functions-to-detect-the-pattern-data-anomalies">5. Create Anomaly Detection Functions to detect the pattern data anomalies</h2>
+<p>We are now going to create Anomaly Detection functions on the data, to see how they behave
+on the various <code>reading_1</code> to <code>reading_6</code> 'anomaly' patterns. </p>
+<hr />
+<h3 id="51-create-anomaly-detection-functions">5.1 Create Anomaly Detection Functions</h3>
+<ol>
+<li>Go to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button). Go to the <code>Data</code> tab.</li>
+<li>
+<p>On the left <code>Data items</code> section, click the <code>+</code> button. That will open the functions catalog. Type <code>Anmoly</code> in the search bar. 
+   Select the <code>KMeansAnomalyScore</code> function.</p>
+</li>
+<li>
+<p>Select <code>Apply to all assets of the selected type</code> option, click <code>Next</code>. in the data <code>item</code> drop-down, select <code>reading_1</code>.
+In the <code>windowsize</code> box, enter <code>12</code> ( which is the default value), click <code>Next</code>.
+   Turn the <code>Auto schedule</code> to <code>Off</code>. Enter <code>5</code> in the <code>Executing every</code> box, and <code>1 Day</code> in the 
+   <code>Calculating the last</code> box. In the <code>Output metric</code>, enter <code>reading_1_Anomaly_KMeans</code>. Click <code>Create</code>.</p>
+</li>
+</ol>
+<p>Repeat the above steps by creating <code>reading_2_Anomaly_KMeans</code> to <code>reading_6_Anomaly_KMeans</code> Anomaly Detection functions for the 
+remaining <code>reading_2</code> to <code>reading_6</code> readings.</p>
+<p><strong>OPTIONAL</strong>: Feel free to explore more of the Functions Catalog, and create other types of Anomaly Detection
+functions on the data - e.g. in step 2. above, instead of the <code>KMeansAnomalyScore</code> function, select <code>FFTbasedGeneralizedAnomalyScore</code> or <code>GeneralizedAnomalyScore</code> or
+<code>SaliencybasedGeneralizedAnomalyScore</code> or <code>SpectralAnomalyScore</code>.</p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.1.1.png" />&nbsp;</p>
+<hr />
+<h3 id="52-add-anomaly-scores-to-the-dashboard">5.2 Add Anomaly Scores to the Dashboard</h3>
+<p>Our goal is now to overlay the <code>reading_n</code> timeseries on the cards of the dashboard with the scores of the Anomaly Detection 
+functions we just defined.</p>
+<ol>
+<li>
+<p>Go back to your <code>CL_Device001</code>'s <code>Asset Metrics Dashboard</code>. Click the <code>Edit Dashboard</code> icon (to-right).
+Click the <code>reading_1</code> timeseries card. On the right <code>Content</code> panel, select <code>reading_1_Anomaly_KMeans</code> in the <code>Data Item</code> filter. That will add the
+   anomaly reading to the timeseries card.</p>
+</li>
+<li>
+<p>Repeat step 1. for <code>reading_2</code> to <code>reading_6</code> cards. Click <code>Save and close</code>. Your Dashboard should now look like the below, i.e. with
+   each card now displaying the raw readings, and associated Anomaly scores.</p>
+</li>
+</ol>
+<p>What is important to notice here is how the Anomaly Scores react (e.g. with spikes) each time there is an anomaly or 'change of behaviour' in the pattern data. </p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-5.2.png" />&nbsp;</p>
+<hr />
+<hr />
+<h2 id="6-create-alerts-based-on-the-anomalies-detected">6. Create Alerts based on the Anomalies detected</h2>
+<p>In this final step, we'll now analyse the Anomaly Scores, and create an Alerting system based on those.</p>
+<hr />
+<h3 id="61-analyze-the-anomaly-scores">6.1 Analyze the Anomaly Scores</h3>
+<p>This is an important step to understand what 'anomaly thresholds' we should use to define the anomaly-based Alerts in the following section.
+We want to avoid having hundreds or thousands of Alerts that would just generate an 'Alert Storm'.</p>
+<ol>
+<li>
+<p>On the <code>reading_1</code> timeseries card, <code>Expand to fullscreen</code> (top-right). 
+This will expand the card and allow us to zoom-in/out of the data. Also, in the table below the graph, click the <code>reading_1_Anomaly_KMeans</code>
+   to order it ascendingly. </p>
+<p>Notice the values of the <code>reading_1_Anomaly_KMeans</code> scores over time. Take the 3 top values - e.g. in below screen, there are 3
+   times when the Anomaly Score goes above a value of <code>6.7</code> (check your scores which might slightly differ). This is the 'threshold' value that we will use to create the Alerts in next section.</p>
+</li>
+<li>
+<p>For the remaining <code>reading_2</code> to <code>reading_6</code>, repeat step 1., i.e. take note of the 3 top score values for the anomaly score. </p>
+</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.1.png" />&nbsp;</p>
+<hr />
+<h3 id="62-create-the-alerts">6.2 Create the Alerts</h3>
+<ol>
+<li>
+<p>Back to the <code>Setup</code> menu (left bar). Search and select <code>CL_Device</code>. Click the <code>Setup device types</code> (right button). Go to the <code>Data</code> tab.
+On the left <code>Data items</code> section, click the <code>+</code> button. Type <code>Alert</code> in the search bar. 
+   Select the <code>AlertHighValue</code> function. Select the <code>reading_1_Anomaly_KMeans</code> in the <code>input_item</code> box, and enter <code>6.7</code> in the <code>upper_threshold</code> box.
+   Select a <code>Severity</code> (e.g. <code>Medium</code>) and a <code>Status</code> (e.g. <code>New</code>). Click <code>Next</code>.
+   Turn the <code>Auto schedule</code> to <code>Off</code>. Enter <code>5</code> in the <code>Executing every</code> box, and <code>1 Day</code> in the 
+   <code>Calculating the last</code> box. In the <code>Output metric</code>, enter <code>reading_1_Alert_KMeans</code>. Click <code>Create</code>.</p>
+</li>
+<li>
+<p>Wait 5 minutes. Then on the <code>Data Items</code> (left) <code>Alert (calculated)</code> section. You will now see 3 <code>reading_1_Alert_KMeans</code> Alerts !</p>
+</li>
+<li>You can also see the Alerts by going back to the <code>Monitor</code> menu, selecting <code>CL_Device</code> then <code>CL_Device001</code> and watching the ootb <code>Alerts</code> tab.</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.2.png" />&nbsp;</p>
+<hr />
+<h3 id="63-add-the-alerts-to-the-dashboard">6.3 Add the Alerts to the Dashboard</h3>
+<p>Finally, let's see how we can overlay those Alerts on our timeseries cards - we will do this only for <code>reading_1</code> here,
+but you can of course repeat the steps for the other <code>reading_2</code> to <code>reading_6</code>.</p>
+<ol>
+<li>
+<p>Back to your <code>CL_Device001</code>'s <code>Asset Metrics Dashboard</code>, click the <code>Edit Dashboard</code> icon (to-right).
+Click the <code>reading_1</code> timeseries card. On the right <code>Content</code> panel, click the <code>Overlay with alerts</code> check box, and select 
+   the <code>reading_1_Alert_KMeans</code>. Click <code>Save and close</code>.</p>
+</li>
+<li>
+<p>Back on the dashboard, expand the <code>reading_1</code> timeseries card and notice how the Alerts now appear (as red dots).</p>
+</li>
+</ol>
+<p>BRAVO, you completed the Lab - hope you enjoyed !</p>
+<p><img alt="Monitor0" src="../../img/monitor-patterns/monitor-patterns-6.3.png" />&nbsp;</p>
+<p><strong>Suggested Next Steps</strong>: as you'll notice in previous picture, we only generated Alerts for the 'central peak' of <code>reading_1</code>.
+Have a new look at the Anomaly scores (cf. <a href="#61-analyze-the-anomaly-scores">Section 6.1</a>), and try to change the 
+<code>6.7</code> value we used to create the Alerts (cf. <a href="#62-create-the-alerts">Section 6.2</a>) to a lower value that will also
+generate Alerts for the other anomalies in the series (i.e for the other smaller peak, for the drop and the buildup).</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Intro - Start Here" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Intro - Start Here
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../monitor/" class="md-footer__link md-footer__link--next" aria-label="Next: (MAS83) Monitor on Maximo Application Suite &amp; Saas" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              (MAS83) Monitor on Maximo Application Suite & Saas
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c7d1b464.min.js"></script>
+      
+    
+  </body>
+</html>
