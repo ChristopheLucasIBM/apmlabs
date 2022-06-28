@@ -1,0 +1,1071 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Maximo APM Hands on Labs">
+      
+      
+        <meta name="author" content="Christophe Lucas">
+      
+      
+        <link rel="canonical" href="https://christophelucasibm.github.io/apmlabs/monitor/monitor-restapis/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.9">
+    
+    
+      
+        <title>(MAS86) Extract Monitor Data with the REST API and Display it in a Seaborn Plot - IBM Maximo Asset Performance Management (APM) Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.120efc48.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.9647289d.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mas86-extract-monitor-data-with-the-rest-api-and-display-it-in-a-seaborn-plot" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="IBM Maximo Asset Performance Management (APM) Labs" class="md-header__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Maximo Asset Performance Management (APM) Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              (MAS86) Extract Monitor Data with the REST API and Display it in a Seaborn Plot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IBM Maximo Asset Performance Management (APM) Labs" class="md-nav__button md-logo" aria-label="IBM Maximo Asset Performance Management (APM) Labs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IBM Maximo Asset Performance Management (APM) Labs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Intro - Start Here
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Monitor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Monitor" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Monitor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          (MAS86) Extract Monitor Data with the REST API and Display it in a Seaborn Plot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        (MAS86) Extract Monitor Data with the REST API and Display it in a Seaborn Plot
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites-disclaimer" class="md-nav__link">
+    PREREQUISITES &amp; DISCLAIMER
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-objectives-tips" class="md-nav__link">
+    0. Objectives &amp; Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-get-your-mas-monitor-instance-details" class="md-nav__link">
+    1. Get your MAS Monitor Instance Details
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Get your MAS Monitor Instance Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-get-api-key-token" class="md-nav__link">
+    1.1 Get API Key &amp; Token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-build-the-lab-root-api-call-string" class="md-nav__link">
+    1.2 Build the 'Lab Root API Call' String
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-have-a-look-at-the-available-monitor-apis-including-the-latestrawdata-api" class="md-nav__link">
+    2. Have a look at the available Monitor APIs, including the latestRawData API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-test-the-latestrawdata-api-call-in-postman-and-build-the-code" class="md-nav__link">
+    3. Test the latestRawData API call in Postman and build the Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-cp4d-project-and-a-jupyter-notebook" class="md-nav__link">
+    4. Create a CP4D Project and a Jupyter Notebook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-build-and-run-the-notebook" class="md-nav__link">
+    5. Build and Run the Notebook
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitor-patterns/" class="md-nav__link">
+        (MAS86) Discover Monitor with Pattern Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitor/" class="md-nav__link">
+        (MAS83) Monitor on Maximo Application Suite & Saas
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Health
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Health" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Health
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../health/health-mas/" class="md-nav__link">
+        (MAS83) Health on Maximo Application Suite 8.3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../health/health/" class="md-nav__link">
+        (MAHI) Maximo Asset Health Insights 7.6.1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Predict
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Predict" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Predict
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predict/predict/" class="md-nav__link">
+        (MAS86) PREDICT - From Zero to Hero in 27 Minutes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Assist
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Assist" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Assist
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assist/assist/" class="md-nav__link">
+        Assist on Maximo Application Suite [TBA]
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          (About, Feedback & Extras)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="(About, Feedback & Extras)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          (About, Feedback & Extras)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/about/" class="md-nav__link">
+        About & Feedback
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/extras/" class="md-nav__link">
+        Extras & Archive
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites-disclaimer" class="md-nav__link">
+    PREREQUISITES &amp; DISCLAIMER
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-objectives-tips" class="md-nav__link">
+    0. Objectives &amp; Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-get-your-mas-monitor-instance-details" class="md-nav__link">
+    1. Get your MAS Monitor Instance Details
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Get your MAS Monitor Instance Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-get-api-key-token" class="md-nav__link">
+    1.1 Get API Key &amp; Token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-build-the-lab-root-api-call-string" class="md-nav__link">
+    1.2 Build the 'Lab Root API Call' String
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-have-a-look-at-the-available-monitor-apis-including-the-latestrawdata-api" class="md-nav__link">
+    2. Have a look at the available Monitor APIs, including the latestRawData API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-test-the-latestrawdata-api-call-in-postman-and-build-the-code" class="md-nav__link">
+    3. Test the latestRawData API call in Postman and build the Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-a-cp4d-project-and-a-jupyter-notebook" class="md-nav__link">
+    4. Create a CP4D Project and a Jupyter Notebook
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-build-and-run-the-notebook" class="md-nav__link">
+    5. Build and Run the Notebook
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><em>[Page last updated on 29 June 2022]</em></p>
+<h1 id="mas86-extract-monitor-data-with-the-rest-api-and-display-it-in-a-seaborn-plot">(MAS86) Extract Monitor Data with the REST API and Display it in a Seaborn Plot</h1>
+<hr />
+<h2 id="prerequisites-disclaimer">PREREQUISITES &amp; DISCLAIMER</h2>
+<div class="admonition disclaimer">
+<p class="admonition-title">Disclaimer</p>
+<p><strong> This Lab is provided as-is and does NOT represent formal IBM documentation in any way. Please send any feedback directly 
+to <a href="https://www.linkedin.com/in/christophe-lucas-a5abab28/">Christophe Lucas</a>.</strong></p>
+</div>
+<p>This Lab assumes that you have:</p>
+<ul>
+<li>
+<p>an ID and password to connect to the <a href="https://www.ibm.com/au-en/products/maximo/remote-monitoring">MONITOR</a> application 
+  of a <a href="https://www.ibm.com/au-en/products/maximo">Maximo Application Suite</a> (aka MAS) environment.</p>
+</li>
+<li>
+<p>an ID and password to access a <a href="https://www.ibm.com/au-en/products/cloud-pak-for-data">Cloud Pak For Data</a> (aka CP4D) instance. CP4D is 
+  typically part of any MAS installation (as it contains e.g. the MONITOR DB2 data lake), and we recommend using your
+  MAS CP4D instance to run this lab.</p>
+</li>
+<li>
+<p>an ID and password to access the underlying OpenShift console of your MAS environment (will be required to get your Monitor API key and token).</p>
+</li>
+<li>
+<p><a href="https://www.postman.com/">Postman</a> (or an equivalent 'API building &amp; testing' tool) installed, to test the MONITOR APIs. </p>
+</li>
+</ul>
+<p>This Lab was built using MAS MONITOR 8.6 and Cloud Pak For Data 3.5 - both part of a MAS 8.6 environment 
+running on <a href="https://www.ibm.com/au-en/cloud">IBM Cloud</a>.</p>
+<hr />
+<h2 id="0-objectives-tips">0. Objectives &amp; Tips</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>I tried to make the instructions of this Lab as (visually) clear as possible, i.e. each set of numbered instructions
+is followed by screenshots reflecting those numbers. Do not hesitate to right-click the images and <em>Open Image in New Tab</em>
+to see all the image details and zoom-in/out.</p>
+</div>
+<p>In this Lab you will:</p>
+<ol>
+<li>
+<p><a href="#1-get-your-mas-monitor-instance-details">Get your MAS Monitor Instance Details</a>
+  Gather the API Key and Token of your Monitor Environment, and build what I call the 'Lab Root API Call' String for your Monitor API Call.</p>
+</li>
+<li>
+<p><a href="#2-have-a-look-at-the-available-monitor-apis-including-the-latestrawdata-api">Have a look at the available Monitor APIs, including the latestRawData API</a>
+Have a look at the list of available Monitor APIs, and focus on the <code>latestRawData</code> API which you will use to extract the latest data 
+  of a given Device Type.</p>
+</li>
+<li>
+<p><a href="#3-test-the-latestrawdata-api-call-in-postman-and-build-the-code">Test the latestRawData API call in Postman and build the Code</a>. Using Postman,
+build and test the <code>latestRawData</code> API call, and build the Python code that will be further used in the Jupyter Notebook.</p>
+</li>
+<li>
+<p><a href="#4-create-a-cp4d-project-and-a-jupyter-notebook">Create a CP4D Project and a Jupyter Notebook</a> Setup the required CP4D Project and create an empty Jupyter Notebook.</p>
+</li>
+<li>
+<p><a href="#5-build-and-run-the-notebook">Build and Run the Notebook</a> Put everything together in a simple 4-cells Jupyter Notebook where you will extract the latest 
+   raw data of a given Device Type, and finally display it in a Seaborn line plot.</p>
+</li>
+</ol>
+<hr />
+<h2 id="1-get-your-mas-monitor-instance-details">1. Get your MAS Monitor Instance Details</h2>
+<hr />
+<h3 id="11-get-api-key-token">1.1 Get API Key &amp; Token</h3>
+<p>In order to call Monitor's REST APIs, a key first step is to get your MAS Monitor instance <code>X-API-KEY</code> &amp; <code>X-API-TOKEN</code> values.</p>
+<p>The procedure to get those 2 values is described in the <a href="https://www.ibm.com/docs/en/maximo-monitor/8.6.0?topic=monitor-connection-parameters">Connection Parameters - Analytics Service APIs</a>
+section of Monitor's documentation. Do the following:</p>
+<ol>
+<li>Access the OpenShift Container Platform web console on which your MAS environment is running. 
+   From the left menu, select <code>Project</code>. In the Search field, type <code>monitor</code> and select the Project 
+   that looks like <code>mas-something-monitor</code> - in my case and screenshot below, it is <code>mas-masdemo-monitor</code>. Click on that Project.</li>
+<li>In the opened Project, go to the bottom-left of the screen on the <code>Inventory</code> card, and click the <code>Secrets</code> link.</li>
+<li>In the opened Secrets window Filter-Search field, type and select the <code>monitor-api</code> Secret. Click on that Secret.</li>
+<li>At the bottom of the Details tab of that Secret, in the Data section, you will see a field called <code>as_apikey</code>.
+   Click the <code>Copy to clipboard</code> and paste that value somewhere on your machine e.g. in your Notepad. That <code>as_apikey</code> = the <code>X-API-KEY</code> that
+   we will use with our Monitor REST API Call(s). Repeat the same steps for the field called <code>as_apitoken</code> - that <code>as_apitoken</code> 
+   = the <code>X-API-TOKEN</code> that we will also need for our REST API Call(s).</li>
+</ol>
+<p>In the rest of this Lab, the value of <code>X-API-KEY</code> will be referred to as <code>YOUR-X-API-KEY</code> 
+and the value of <code>X-API-TOKEN</code> as <code>YOUR-X-API-TOKEN</code>. <br />
+<img alt="MonitorRestAPIs" src="../../img/monitor-restapis/monitor-rest-apis-1.1.1.png" />&nbsp;</p>
+<hr />
+<h3 id="12-build-the-lab-root-api-call-string">1.2 Build the 'Lab Root API Call' String</h3>
+<p>For you to be able to call the <code>lastestRawData</code>Monitor API
+in <a href="#3-test-the-latestrawdata-api-call-in-postman-and-build-the-code">Section 3</a>, 
+you need to build what I call the 'LAB Root API Call' string.
+That string depends on your MAS Monitor env. Here is how you can find and build it:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>------------------------------------------------------------------
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>Build the &#39;Lab Root API Call&#39; String for your Monitor API Calls 
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>------------------------------------------------------------------
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a>IF your &#39;MAS Homepage&#39; URL looks like this:
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>https://mydemo.home.maximoabc.yourcloud.info/
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>THEN your &#39;MAS - MONITOR Homepage&#39; URL should look like this:
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a>https://mydemo.monitor.maximoabc.yourcloud.info/home
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a>THEN your &#39;MAS - MONITOR - Watson IoT Platform Homepage&#39; should look like this:
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>https://mydemo.iot.maximoabc.yourcloud.info/
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>THEN &amp; FINALLY your &#39;MAS - MONITOR - Lab Root API Call String&#39; should look like this:
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/
+</code></pre></div>
+So, long story short, the 'Root API Call String' that we will use in this Lab = <code>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/</code>.</p>
+<p>[Note that <code>mydemo</code> also corresponds to the Watson IoT Platform <code>{tenantName}</code> (see next section)] </p>
+<hr />
+<h2 id="2-have-a-look-at-the-available-monitor-apis-including-the-latestrawdata-api">2. Have a look at the available Monitor APIs, including the latestRawData API</h2>
+<p>The list of MAS Monitor APIs can be accessed as follows:</p>
+<ol>
+<li>
+<p>Access the <a href="https://developer.ibm.com/components/maximo/apis/">MAS APIs Main Page</a></p>
+</li>
+<li>
+<p>Click on and access the <a href="https://developer.ibm.com/apis/catalog/maximo--ibm-maximo-asset-monitor-rest-apis/Introduction">IBM Maximo Asset Monitor REST APIs</a>.
+Here, on the left-side menu, go through the multiple APIs to get an idea of the vast amount of possibilities that are available to
+   interact with Monitor's data !</p>
+</li>
+<li>
+<p>Click on the <code>Query Data</code> folder, then on the <a href="https://developer.ibm.com/apis/catalog/maximo--ibm-maximo-asset-monitor-rest-apis/api/API--maximo--ibm-maximo-asset-monitor-rest-apis#get1469643301">Get Latest Raw Data</a> API. </p>
+</li>
+</ol>
+<p>Watch how that <code>latestRawData</code> GET call has this form <code>/master/v1/{tenantName}/entityType/{entityTypeName}/latestRawData</code>.</p>
+<p>Combining that with the 'Lab Root API Call' we defined in earlier section, the GET string that we will use in Postman in the next section should
+be <code>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/entityType/{entityTypeName}/latestRawData</code> where the last piece
+you'll need to chose is the <code>{entityTypeName}</code>.</p>
+<p><img alt="MonitorRestAPIs" src="../../img/monitor-restapis/monitor-rest-apis-2.1.png" />&nbsp;</p>
+<hr />
+<h2 id="3-test-the-latestrawdata-api-call-in-postman-and-build-the-code">3. Test the latestRawData API call in Postman and build the Code</h2>
+<p><strong>PREREQUISITE</strong>: The <code>latestRawData</code> API call will work with <strong>any</strong> Device Type that has Devices with data appearing in Monitor.
+That Device Type corresponds to the <code>{entityTypeName}</code> in the API call. The <code>latestRawData</code> will return all the latest data for all Devices of
+that given Device Type.
+So, choose <strong>any</strong> Device Type (which has at least 1 Device with data in Monitor) that you want. If you have none yet, follow e.g.
+this <a href="https://christophelucasibm.github.io/apmlabs/monitor/monitor-patterns/">Discover MONITOR with Pattern Files</a> to create a Device Type, a Device
+and send data to it.</p>
+<p>In this Lab, we will use a Device Type called <code>CL_Device</code> and its associated <code>CL_Device001</code> Device, to which 
+1080 rows of readings (with reading types <code>reading_1</code> to <code>reading_6</code>) were sent as per the <a href="https://christophelucasibm.github.io/apmlabs/monitor/monitor-patterns/">Discover MONITOR with Pattern Files</a> Lab.</p>
+<p>This is what that data looks like - and it is that exact data that we are going to extract then display into a Seaborn Plot.</p>
+<p><img alt="MonitorRestAPIs" src="../../img/monitor-restapis/monitor-rest-apis-3.0.png" />&nbsp;</p>
+<p>So, first choose the Device Type that you want to extract data from - and in all subsequent sections, replace <code>CL_Device</code>
+by your chosen Device Type name.</p>
+<ol>
+<li>Launch your Postman application. From the Homepage <code>Get started with Postman</code> section, click <code>Create New</code> in the
+   <code>Start with something new</code>section, then select and click the <code>HTTP Request</code> block.</li>
+<li>That will open an empty Request as per image below.</li>
+</ol>
+<p><img alt="MonitorRestAPIs" src="../../img/monitor-restapis/monitor-rest-apis-3.1.png" />&nbsp;</p>
+<p>In the opened HTTP Request:</p>
+<ol>
+<li>In the top field, Select <code>GET</code>, and enter the API call string we earlier built, i.e. 
+   <code>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/entityType/CL_Device/latestRawData</code>.
+   (<strong>Attention</strong>: Do replace <code>CL_Device</code> by your chosen Device Type, and the <code>mydemo.api.monitor.maximoabc.yourcloud.info</code> string with your MAS Monitor Environment value,
+   as you found it in <a href="#12-build-the-lab-root-api-call-string">1.2 Build the 'Lab Root API Call' String</a>). </li>
+<li>In the <code>Headers</code> tab, enter 2 lines, one called <code>X-API-KEY</code> and the other <code>X-API-TOKEN</code>, and in the VALUE columns, 
+   enter the <code>YOUR-X-API-KEY</code> and <code>YOUR-X-API-TOKEN</code> values that you found for your Monitor Env in the <a href="#11-get-api-key-token">1.1 Get API Key &amp; Token</a> section.
+   Leave the other tabs as-is.</li>
+<li>Next to the <code>Get</code> statement, click the <code>Send</code> button ... and observe how in the output <code>Body</code> section, you can see a json file
+    which lists all the latest readings of your chosen Device Type. Well done !</li>
+<li>Optionally, do <code>Save As</code> your Request in a Postman Collection (just follow the prompts) - for future re-use !     </li>
+</ol>
+<p><img alt="MonitorRestAPIs" src="../../img/monitor-restapis/monitor-rest-apis-3.2.png" />&nbsp;</p>
+<p>As you will have noticed in the <a href="https://developer.ibm.com/apis/catalog/maximo--ibm-maximo-asset-monitor-rest-apis/api/API--maximo--ibm-maximo-asset-monitor-rest-apis#get1469643301">Get Latest Raw Data</a>
+documentation, the API call can also take some input parameters, e.g. <code>limit</code>, <code>tsBegin</code>, <code>tsEnd</code> etc.
+So, if e.g. you want the latest 1080 rows of data to be returned, in timestamp-descending order, just update your string to:
+<code>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/entityType/CL_Device/latestRawData?limit=1080&amp;tsOrder=DESC</code>
+and re-Send the API call.</p>
+<p>Fantastic ! We now have a perfectly working API call.
+Let's further use Postman to create the Python code that we will use in the Jupyter Notebook.</p>
+<ol>
+<li>One of Postman's best-kept secrets is the little <code>&lt; / &gt; Code</code> button in the far-right toolbar. Click it.
+   In the<code>Code Snippet</code> dropdown box, notice that Postman can actually create a code snippet out of your GET call in a vast array of languages.
+   Select the <code>Python - http.client</code> option.</li>
+<li>Notice how Postman generated a Python code snippet for you. Copy this code snippet as we will use it in 
+   one of the key cells of our Jupyter Notebook. Note that it may be that a <code>Cookie</code> auto-generated line appears 
+    in the code snippet - you can just comment it out.</li>
+</ol>
+<p>The code snippet should look like this.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">http.client</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s2">&quot;mydemo.api.monitor.maximoabc.yourcloud.info&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>  <span class="s1">&#39;X-API-KEY&#39;</span><span class="p">:</span> <span class="s1">&#39;YOUR-X-API-KEY&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>  <span class="s1">&#39;X-API-TOKEN&#39;</span><span class="p">:</span> <span class="s1">&#39;YOUR-X-API-TOKEN&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>  <span class="c1"># &#39;Cookie &#39;: &#39;Auto-Generated, You can Comment this out&#39;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">}</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/api/master/v1/demo/entityType/CL_Device/latestRawData??limit=1080&amp;tsOrder=DESC&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="MonitorRestAPIs" src="../../img/monitor-restapis/monitor-rest-apis-3.3.png" />&nbsp;</p>
+<hr />
+<h2 id="4-create-a-cp4d-project-and-a-jupyter-notebook">4. Create a CP4D Project and a Jupyter Notebook</h2>
+<p>Now that we have the exact API call and checked that it worked, we're going to use it in a Jupyter Notebook part of a CP4D Project.  </p>
+<p>Let's first create the CP4D Project:</p>
+<ol>
+<li>Login to CP4D and click <code>New project</code> in the <code>Recent Projects</code> box. 
+   Select <code>Create an empty project</code>.</li>
+<li>Name your Project e.g. <code>From Monitor to Seaborn using the REST API</code>. 
+   Click <code>Create</code>.</li>
+<li>Click the blue <code>Add to Project</code> button, and select <code>Notebook</code>. Name it e.g. <code>From Monitor to Seaborn using the REST API</code>.
+Select the default <code>Python 3.7 (1 vCPU, 2 GB RAM)</code> runtime. Click <code>Create</code>.</li>
+</ol>
+<p>We are now ready to build the few cells required to extract the MONITOR data then send it to a Seaborn Plot.</p>
+<p><img alt="Monitor0" src="../../img/monitor-restapis/monitor-rest-apis-4.1.png" />&nbsp; </p>
+<hr />
+<h2 id="5-build-and-run-the-notebook">5. Build and Run the Notebook</h2>
+<p>Click on the Notebook you just created, and when opened, click the little pencil icon (top bar) to edit it.</p>
+<ol>
+<li>In the first cell, write <code># Import required Packages</code>, select <code>Markdown</code> format, and run the cell.
+Click the <code>Insert</code> menu and select <code>Insert Cell Below</code>. In the new cell, select <code>Code</code> format, enter the below code, then run the cell.
+   Note this should generate no output - it just means we are importing the required packages 
+   to run the next cells (e.g. <a href="https://pandas.pydata.org/docs/getting_started/index.html">pandas</a>
+   which is the de-facto data analysis tool for Python, <a href="https://seaborn.pydata.org/index.html">seaborn</a> which is a data visualization package based on 
+   <a href="https://matplotlib.org/">matplotlib</a> etc).
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kn">import</span> <span class="nn">http.client</span>
+</code></pre></div></li>
+<li>In a new cell, write <code># Get Monitor Data (using http.client)</code>, select <code>Markdown</code> format, and run the cell.
+Again, <code>Insert Cell Below</code>, and in the new cell, write the code that you generated in the 
+   <a href="#3-test-the-latestrawdata-api-call-in-postman-and-build-the-code">Test the latestRawData API call in Postman and build the Code</a> section 
+   (with, of course, your own <code>YOUR-X-API-KEY</code>,<code>YOUR-X-API-TOKEN</code>, HTTPConnection string etc). Run the cell.
+   This is a key moment as this is the cell which will connect to Monitor and return the same data that we earlier returned with Postman. </li>
+</ol>
+<p>As a reminder, your cell should look like this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">http.client</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s2">&quot;mydemo.api.monitor.maximoabc.yourcloud.info&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>  <span class="s1">&#39;X-API-KEY&#39;</span><span class="p">:</span> <span class="s1">&#39;YOUR-X-API-KEY&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>  <span class="s1">&#39;X-API-TOKEN&#39;</span><span class="p">:</span> <span class="s1">&#39;YOUR-X-API-TOKEN&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>  <span class="c1"># &#39;Cookie &#39;: &#39;Auto-Generated, You can Comment this out&#39;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="p">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="n">conn</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/api/master/v1/demo/entityType/CL_Device/latestRawData?limit=1080&amp;tsOrder=DESC&quot;</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="n">res</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="n">data</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p>At this stage, your Notebook should look like this:
+<img alt="Monitor0" src="../../img/monitor-restapis/monitor-rest-apis-5.1.png" />&nbsp; </p>
+<p>Are you ready to finally display that data in a basic Seaborn Line Plot ? Let's go for the last mile ...</p>
+<p>Now we are going to transform that data into a pandas dataframe, which values we will finally display into the Seaborn plot. </p>
+<ol>
+<li>
+<p>In a new cell, write <code># Put your Monitor Data into a Pandas Data Frame and display it in a Seborn lineplot</code>, select <code>Markdown</code> format, and run the cell.
+Again, <code>Insert Cell Below</code>, and in the new cell, write the following code, and run the cell.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">json_normalize</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="n">df</span> <span class="o">=</span> <span class="n">json_normalize</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div>
+The output should look as per picture below - we now have a pandas data frame, yeah !</p>
+</li>
+<li>
+<p>Finally, let's build the Seaborn lineplot ! Copy-paste this code into a last cell, and run it. Note that we here use
+the 6 types of reading (<code>reading_1</code> to <code>reading_6</code>) of our chosen <code>CL_Device</code> Device Type. If you chose another Device Type for this Lab,
+   you should obviously replace the <code>reading_1</code> etc strings below by the actual IoT readings that your chosen Device Type captures (e.g. could be 
+   <code>pressure</code>, <code>temerature</code>, <code>vibration</code> etc). And ... there you go - you just displayed the last 1080 readings (all of them) of a Monitor 
+   Device Type into a Seaborn plot !
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;reading_1&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;reading_2&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;reading_3&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;reading_4&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;reading_5&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;reading_6&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+</ol>
+<p><img alt="Monitor0" src="../../img/monitor-restapis/monitor-rest-apis-5.2.png" />&nbsp; </p>
+<p>One last thing ! You noticed in the above lineplot that we actually display the <code>latestRawData</code> values of the 6 types of reading (<code>reading_1</code> to <code>reading_6</code>)
+of our chosen <code>CL_Device</code> Device Type. 
+Want to display just 1 or a selected set of those readings ? Nothing easier, just comment out any of the lines you do not want to see !</p>
+<p>This final picture compares what the original data looked like in Monitor, and how it is exactly reflected in those Seaborn line plots. </p>
+<p>Well done, you made it ! 
+<img alt="Monitor0" src="../../img/monitor-restapis/monitor-rest-apis-5.3.png" />&nbsp;</p>
+<p><strong>Suggested Next Steps</strong>. </p>
+<p>This Lab only used 1 API from Monitor (<code>latestRawData</code>) and only made a very basic Seaborn visualization. If you feel like it:</p>
+<ul>
+<li>try the other <a href="https://developer.ibm.com/apis/catalog/maximo--ibm-maximo-asset-monitor-rest-apis/Introduction">Monitor REST APIs</a> and display other 
+  results than just the latest raw data.</li>
+<li>create new types of Seaborn plots (there is so much more than just lineplots in that package).  </li>
+<li>put your Seaborn plot into e.g. a Dashboard and make it interactive so you can e.g. select reading types to be displayed, filter by Devices etc.</li>
+<li>explore and try out other Visualisations tools like e.g. <a href="https://docs.bokeh.org/en/latest/docs/first_steps.html">Bokeh</a> </li>
+<li>etc, etc, etc ...</li>
+</ul>
+<p>Thanks a lot for your time, hope you enjoyed - see you soon for more Lab adventures !</p>
+<p>Cheers, Christophe</p>
+<hr />
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Intro - Start Here" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Intro - Start Here
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../monitor-patterns/" class="md-footer__link md-footer__link--next" aria-label="Next: (MAS86) Discover Monitor with Pattern Files" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              (MAS86) Discover Monitor with Pattern Files
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6e54b5cd.min.js"></script>
+      
+    
+  </body>
+</html>
