@@ -722,7 +722,7 @@ to <a href="https://www.linkedin.com/in/christophe-lucas-a5abab28/">Christophe L
   MAS CP4D instance to run this lab.</p>
 </li>
 <li>
-<p>an ID and password to access the underlying OpenShift console of your MAS environment (will be required to get your Monitor API key and token).</p>
+<p>an ID and password to access the underlying OpenShift console of your MAS environment (will be required to get your MONITOR API key and token).</p>
 </li>
 <li>
 <p><a href="https://www.postman.com/">Postman</a> (or an equivalent 'API building &amp; testing' tool) installed, to test the MONITOR APIs. </p>
@@ -804,7 +804,7 @@ That string depends on your MAS Monitor env. Here is how you can find and build 
 <a id="__codelineno-0-14" name="__codelineno-0-14"></a>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/
 </code></pre></div>
 So, long story short, the 'Root API Call String' that we will use in this Lab = <code>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/</code>.</p>
-<p>[Note that <code>mydemo</code> also corresponds to the Watson IoT Platform <code>{tenantName}</code> (see next section)] </p>
+<p>[Note that <code>mydemo</code> also corresponds to the MAS Monitor - Watson IoT Platform <code>{tenantName}</code> (see next section)] </p>
 <hr />
 <h2 id="2-have-a-look-at-the-available-monitor-apis-including-the-latestrawdata-api">2. Have a look at the available Monitor APIs, including the latestRawData API</h2>
 <p>The list of MAS Monitor APIs can be accessed as follows:</p>
@@ -824,7 +824,7 @@ Here, on the left-side menu, go through the multiple APIs to get an idea of the 
 <p>Watch how that <code>latestRawData</code> GET call has this form <code>/master/v1/{tenantName}/entityType/{entityTypeName}/latestRawData</code>.</p>
 <p>Combining that with the 'Lab Root API Call' we defined in earlier section, the GET string that we will use in Postman in the next section should
 be <code>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/entityType/{entityTypeName}/latestRawData</code> where the last piece
-you'll need to chose is the <code>{entityTypeName}</code>.</p>
+you'll need to choose is the <code>{entityTypeName}</code>.</p>
 <p><img alt="MonitorRestAPIs" src="../../img/monitor-restapis/monitor-rest-apis-2.1.png" />&nbsp;</p>
 <hr />
 <h2 id="3-test-the-latestrawdata-api-call-in-postman-and-build-the-code">3. Test the latestRawData API call in Postman and build the Code</h2>
@@ -848,7 +848,7 @@ by your chosen Device Type name.</p>
 <p><img alt="MonitorRestAPIs" src="../../img/monitor-restapis/monitor-rest-apis-3.1.png" />&nbsp;</p>
 <p>In the opened HTTP Request:</p>
 <ol>
-<li>In the top field, Select <code>GET</code>, and enter the API call string we earlier built, i.e. 
+<li>In the top field, select <code>GET</code>, and enter the API call string we earlier built, i.e. 
    <code>https://mydemo.api.monitor.maximoabc.yourcloud.info/api/master/v1/mydemo/entityType/CL_Device/latestRawData</code>.
    (<strong>Attention</strong>: Do replace <code>CL_Device</code> by your chosen Device Type, and the <code>mydemo.api.monitor.maximoabc.yourcloud.info</code> string with your MAS Monitor Environment value,
    as you found it in <a href="#12-build-the-lab-root-api-call-string">1.2 Build the 'Lab Root API Call' String</a>). </li>
@@ -875,7 +875,7 @@ Let's further use Postman to create the Python code that we will use in the Jupy
    one of the key cells of our Jupyter Notebook. Note that it may be that a <code>Cookie</code> auto-generated line appears 
     in the code snippet - you can just comment it out.</li>
 </ol>
-<p>The code snippet should look like this.</p>
+<p>The code snippet should look like this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">http.client</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">(</span><span class="s2">&quot;mydemo.api.monitor.maximoabc.yourcloud.info&quot;</span><span class="p">)</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">payload</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
@@ -902,7 +902,7 @@ Let's further use Postman to create the Python code that we will use in the Jupy
 <li>Click the blue <code>Add to Project</code> button, and select <code>Notebook</code>. Name it e.g. <code>From Monitor to Seaborn using the REST API</code>.
 Select the default <code>Python 3.7 (1 vCPU, 2 GB RAM)</code> runtime. Click <code>Create</code>.</li>
 </ol>
-<p>We are now ready to build the few cells required to extract the MONITOR data then send it to a Seaborn Plot.</p>
+<p>We are now ready to build the few cells required to extract the Monitor data then send it to a Seaborn Plot.</p>
 <p><img alt="Monitor0" src="../../img/monitor-restapis/monitor-rest-apis-4.1.png" />&nbsp; </p>
 <hr />
 <h2 id="5-build-and-run-the-notebook">5. Build and Run the Notebook</h2>
@@ -978,9 +978,11 @@ the 6 types of reading (<code>reading_1</code> to <code>reading_6</code>) of our
 </ol>
 <p><img alt="Monitor0" src="../../img/monitor-restapis/monitor-rest-apis-5.2.png" />&nbsp; </p>
 <p>One last thing ! You noticed in the above lineplot that we actually display the <code>latestRawData</code> values of the 6 types of reading (<code>reading_1</code> to <code>reading_6</code>)
-of our chosen <code>CL_Device</code> Device Type. 
-Want to display just 1 or a selected set of those readings ? Nothing easier, just comment out any of the lines you do not want to see !</p>
-<p>This final picture compares what the original data looked like in Monitor, and how it is exactly reflected in those Seaborn line plots. </p>
+of our chosen <code>CL_Device</code> Device Type.</p>
+<p>Do you want to display just 1 or a selected set of those readings ? 
+Nothing easier, just comment out any of the line(s) you do not want to see, e.g. <code># sns.lineplot(data=df, x='timestamp', y='reading_1')</code> 
+will simply exclude the visualization of <code>reading_1</code> !</p>
+<p>This final picture compares what the original data looked like in MAS Monitor, and how it is exactly reflected in those Seaborn line plots. </p>
 <p>Well done, you made it ! 
 <img alt="Monitor0" src="../../img/monitor-restapis/monitor-rest-apis-5.3.png" />&nbsp;</p>
 <p><strong>Suggested Next Steps</strong>. </p>
@@ -990,7 +992,7 @@ Want to display just 1 or a selected set of those readings ? Nothing easier, jus
   results than just the latest raw data.</li>
 <li>create new types of Seaborn plots (there is so much more than just lineplots in that package).  </li>
 <li>put your Seaborn plot into e.g. a Dashboard and make it interactive so you can e.g. select reading types to be displayed, filter by Devices etc.</li>
-<li>explore and try out other Visualisations tools like e.g. <a href="https://docs.bokeh.org/en/latest/docs/first_steps.html">Bokeh</a> </li>
+<li>explore and try out other Visualizations tools like e.g. <a href="https://docs.bokeh.org/en/latest/docs/first_steps.html">Bokeh</a> </li>
 <li>etc, etc, etc ...</li>
 </ul>
 <p>Thanks a lot for your time, hope you enjoyed - see you soon for more Lab adventures !</p>
